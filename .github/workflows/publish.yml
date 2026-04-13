@@ -1,0 +1,61 @@
+name: Publish PR Result
+
+# Runs after Scarf Validate finishes. This workflow is ALWAYS read from the
+# repository's default branch (main), so it cannot be modified by a PR.
+# That's why it's safe to grant write permissions here even though the
+# validation workflow runs untrusted PR code.
+on:
+  workflow_run:
+    workflows: ["Scarf Validate"]
+    types: [completed]
+
+permissions:
+  contents: read
+  pull-requests: write
+  actions: read
+
+jobs:
+  publish:
+    if: github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download pr-meta artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-meta
+          path: pr-meta
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read PR number
+        id: pr
+        run: |
+          number=$(cat pr-meta/number)
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Comment done and close PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = Number('${{ steps.pr.outputs.number }}');
+            const { owner, repo } = context.repo;
+            const conclusion = context.payload.workflow_run.conclusion;
+
+            const marker = '<!-- scarfbench-leaderboard -->';
+            const body = conclusion === 'success'
+              ? `${marker}\ndone!`
+              : `${marker}\nvalidation failed (\`${conclusion}\`) — see the workflow run for details.`;
+
+            const existing = await github.paginate(github.rest.issues.listComments, {
+              owner, repo, issue_number, per_page: 100,
+            });
+            const prior = existing.find(c => c.body && c.body.startsWith(marker));
+            if (prior) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: prior.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
+
+            if (conclusion === 'success') {
+              await github.rest.issues.update({ owner, repo, issue_number, state: 'closed' });
+            }
