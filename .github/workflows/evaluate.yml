@@ -23,6 +23,8 @@ jobs:
 
       - id: set-matrix
         shell: bash
+        env:
+          CHUNK_SIZE: 8
         run: |
           set -euo pipefail
           mapfile -t dirs < <(
@@ -35,12 +37,18 @@ jobs:
             echo 'matrix={"include":[]}' >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          json=$(printf '%s\n' "${dirs[@]}" | jq -R . | jq -s '{include: map({dir: .})}')
+          # Compact JSON (-c) — $GITHUB_OUTPUT can't take multi-line values.
+          # Chunk N roots per shard so we stay under GitHub's 256-job matrix cap.
+          json=$(printf '%s\n' "${dirs[@]}" \
+            | jq -R . \
+            | jq -sc --argjson n "${CHUNK_SIZE}" '
+                {include: [ _nwise($n) | {dirs: (. | join("\n"))} ]}
+              ')
           echo "matrix=$json" >> "$GITHUB_OUTPUT"
-          echo "$json" | jq .
+          echo "Sharded ${#dirs[@]} roots into $(jq '.include | length' <<<"$json") chunk(s)"
 
   validate:
-    name: Validate ${{ matrix.dir }}
+    name: Validate chunk ${{ strategy.job-index }}
     needs: discover
     if: needs.discover.outputs.matrix != '{"include":[]}'
     runs-on: ubuntu-latest
@@ -68,27 +76,42 @@ jobs:
           scarf --version
 
       - name: Validate
+        env:
+          DIRS: ${{ matrix.dirs }}
         run: |
+          set -euo pipefail
           # NOTE: --dont-rerun is a TEMPORARY testing mode. Submissions today ship
           # with pre-baked run.log files. Remove --dont-rerun once real submissions
           # are expected to run `make test` fresh in CI.
-          scarf validate \
-            --conversions-dir "submissions/${{ matrix.dir }}" \
-            --validations-dir harness \
-            --timeout 5 \
-            --dont-rerun
+          while IFS= read -r dir; do
+            [ -z "$dir" ] && continue
+            echo "::group::$dir"
+            scarf validate \
+              --conversions-dir "submissions/$dir" \
+              --validations-dir harness \
+              --timeout 5 \
+              --dont-rerun
+            echo "::endgroup::"
+          done <<< "$DIRS"
 
       - name: Package shard output
         if: always()
+        env:
+          DIRS: ${{ matrix.dirs }}
         run: |
+          set -euo pipefail
           mkdir -p shard
-          rsync -a --prune-empty-dirs \
-                --include='*/' \
-                --include='metadata.json' \
-                --include='run.log' \
-                --exclude='*' \
-                "submissions/${{ matrix.dir }}/" \
-                "shard/submissions/${{ matrix.dir }}/"
+          while IFS= read -r dir; do
+            [ -z "$dir" ] && continue
+            mkdir -p "shard/submissions/$dir"
+            rsync -a --prune-empty-dirs \
+                  --include='*/' \
+                  --include='metadata.json' \
+                  --include='run.log' \
+                  --exclude='*' \
+                  "submissions/$dir/" \
+                  "shard/submissions/$dir/"
+          done <<< "$DIRS"
 
       - uses: actions/upload-artifact@v4
         if: always()
