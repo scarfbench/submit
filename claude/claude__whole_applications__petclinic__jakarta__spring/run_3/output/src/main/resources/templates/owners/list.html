@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}"></head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<div class="container">
+    <h1>Owners</h1>
+    <form th:action="@{/owners}" method="get" class="mb-3">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search owners..." th:value="${search}"/>
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <a th:href="@{/owners}" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="owner : ${owners}">
+            <td><a th:href="@{/owners/{id}(id=${owner.id})}" th:text="${owner.lastName + ', ' + owner.firstName}"></a></td>
+            <td th:text="${owner.address + ' ' + owner.houseNumber}"></td>
+            <td th:text="${owner.city}"></td>
+            <td th:text="${owner.phoneNumber}"></td>
+            <td th:text="${owner.email}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p th:if="${#lists.isEmpty(owners)}">No owners found.</p>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

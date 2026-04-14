@@ -1,0 +1,6 @@
+docker logs "timersession-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: timersession-spring
+make: *** [Makefile:44: logs] Error 1

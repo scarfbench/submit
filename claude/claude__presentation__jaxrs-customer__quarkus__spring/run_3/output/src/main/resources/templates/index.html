@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+
+    Copyright (c), Eclipse Foundation, Inc. and its licensors.
+
+    All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v1.0, which is available at
+    https://www.eclipse.org/org/documents/edl-v10.php
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Tutorial: REST Customer example</title>
+    <meta charset="UTF-8"/>
+    <style>
+        table { border-collapse: collapse; }
+        td, th { padding: 10px; text-align: left; }
+        label { display: inline-block; width: 150px; }
+        input { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Create Customer</h1>
+    <form action="#" th:action="@{/create}" th:object="${customer}" method="post">
+        <table>
+            <tr>
+                <td><label for="firstname">First name:</label></td>
+                <td><input type="text" id="firstname" th:field="*{firstname}" /></td>
+            </tr>
+            <tr>
+                <td><label for="lastname">Last name:</label></td>
+                <td><input type="text" id="lastname" th:field="*{lastname}" /></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" id="email" th:field="*{email}" /></td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone Number:</label></td>
+                <td><input type="text" id="phone" th:field="*{phone}" /></td>
+            </tr>
+            <tr>
+                <td><label for="street">Street:</label></td>
+                <td><input type="text" id="street" th:field="*{address.street}" /></td>
+            </tr>
+            <tr>
+                <td><label for="city">City:</label></td>
+                <td><input type="text" id="city" th:field="*{address.city}" /></td>
+            </tr>
+            <tr>
+                <td><label for="province">State:</label></td>
+                <td><input type="text" id="province" th:field="*{address.province}" /></td>
+            </tr>
+            <tr>
+                <td><label for="zip">Zip:</label></td>
+                <td><input type="text" id="zip" th:field="*{address.zip}" /></td>
+            </tr>
+            <tr>
+                <td><label for="country">Country:</label></td>
+                <td><input type="text" id="country" th:field="*{address.country}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Create Customer</button>
+                    <a href="/" style="margin-left: 10px;">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br/>
+    <a href="/list">View All Customers</a>
+</body>
+</html>

@@ -1,0 +1,9 @@
+docker build -f Dockerfile -t "jobs-quarkus:latest" .
+[INFO] Built image: jobs-quarkus:latest
+### Run the container in detached mode
+docker run -d --name "jobs-quarkus" "jobs-quarkus:latest"
+e03901765a5ba85328b25fdd85489370f336404fa86a0087c8e0f591068b8c9c
+[INFO] Started jobs-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.

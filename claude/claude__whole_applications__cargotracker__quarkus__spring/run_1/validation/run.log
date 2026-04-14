@@ -1,0 +1,2075 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 442B done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 4.19MB 0.0s done
+#5 DONE 0.1s
+
+#6 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#7 CACHED
+
+#8 [5/9] RUN playwright install --with-deps chromium
+#8 CACHED
+
+#9 [6/9] WORKDIR /app
+#9 CACHED
+
+#10 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#10 CACHED
+
+#11 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#11 CACHED
+
+#12 [7/9] COPY . .
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:1b00b368a132171d44b5c4bb5cbb374476853975375d8a6535a4884d14ab8ee3 0.0s done
+#14 exporting config sha256:133d3667667e1b5a2d22eeb926ef0f2fd7584ea40dda25c7514a29c04d643421 0.0s done
+#14 exporting attestation manifest sha256:4bf1a6156fc86d8efd99ed90cdd4bf13fb6f816821ab0dec5853dc321c072242
+#14 ...
+
+#9 [6/9] WORKDIR /app
+#9 CACHED
+
+#14 exporting to image
+#14 exporting attestation manifest sha256:4bf1a6156fc86d8efd99ed90cdd4bf13fb6f816821ab0dec5853dc321c072242 0.1s done
+#14 exporting manifest list sha256:85328689894eaf0bde7b67efb2bfb680baa543f54920775af65f9fec1af793d1
+#14 exporting manifest list sha256:85328689894eaf0bde7b67efb2bfb680baa543f54920775af65f9fec1af793d1 0.1s done
+#14 naming to docker.io/library/cargo-tracker-spring:cc431ec8 0.0s done
+#14 unpacking to docker.io/library/cargo-tracker-spring:cc431ec8 0.1s done
+#14 DONE 0.5s
+[INFO] Built image: cargo-tracker-spring:cc431ec8
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name cargo-tracker-spring-608f5949 cargo-tracker-spring:cc431ec8
+3da9d5a4bf61e89d94111c5fa174761fa5ef0ba0317b3f142f8aebb358ea2fbd
+[INFO] Started cargo-tracker-spring-608f5949, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.3)
+
+2026-03-24T03:01:30.604Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : Starting CargoTrackerApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/cargo-tracker-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T03:01:30.607Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T03:01:31.773Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T03:01:31.808Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 0 JPA repository interfaces.
+2026-03-24T03:01:32.341Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T03:01:32.349Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T03:01:32.349Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2026-03-24T03:01:32.361Z  INFO 19 --- [           main] o.a.c.c.C.[.[.[/cargo-tracker]           : Initializing Spring embedded WebApplicationContext
+2026-03-24T03:01:32.363Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1659 ms
+2026-03-24T03:01:32.470Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T03:01:32.514Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2026-03-24T03:01:32.536Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T03:01:32.800Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T03:01:32.827Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T03:01:33.078Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:cargo-tracker-database user=SA
+2026-03-24T03:01:33.080Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T03:01:33.104Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T03:01:33.120Z  INFO 19 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-24T03:01:33.878Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_handling_event(rn_ integer not null, cargo_id bigint, completion_time timestamp(6), id bigint, location_id bigint, registration timestamp(6), voyage_id bigint, type enum ('CLAIM','CUSTOMS','LOAD','RECEIVE','UNLOAD'), primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.886Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_carrier_movement(rn_ integer not null, arrival_location_id bigint, arrival_time timestamp(6), departure_location_id bigint, departure_time timestamp(6), id bigint, primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.886Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_leg(rn_ integer not null, id bigint, load_location_id bigint, load_time timestamp(6), unload_location_id bigint, unload_time timestamp(6), voyage_id bigint, primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.887Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_location(rn_ integer not null, id bigint, name varchar(255), unlocode varchar(255), primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.888Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_voyage(rn_ integer not null, id bigint, voyage_number varchar(255), primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.888Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_cargo(misdirected boolean, rn_ integer not null, spec_arrival_deadline date, unloaded_at_dest boolean, calculated_at timestamp(6), current_voyage_id bigint, eta timestamp(6), id bigint, last_event_id bigint, last_known_location_id bigint, next_expected_location_id bigint, next_expected_voyage_id bigint, origin_id bigint, spec_destination_id bigint, spec_origin_id bigint, tracking_id varchar(255), next_expected_handling_event_type enum ('CLAIM','CUSTOMS','LOAD','RECEIVE','UNLOAD'), routing_status enum ('MISROUTED','NOT_ROUTED','ROUTED'), transport_status enum ('CLAIMED','IN_PORT','NOT_RECEIVED','ONBOARD_CARRIER','UNKNOWN'), primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.989Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-24T03:01:34.215Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists application_settings cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists cargo cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists carrier_movement cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists handling_event cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists leg cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists location cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists voyage cascade 
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists cargo_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists carrier_movement_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists handling_event_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists leg_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists location_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists voyage_seq
+2026-03-24T03:01:34.219Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence cargo_seq start with 1 increment by 50
+2026-03-24T03:01:34.220Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence carrier_movement_seq start with 1 increment by 50
+2026-03-24T03:01:34.220Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence handling_event_seq start with 1 increment by 50
+2026-03-24T03:01:34.220Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence leg_seq start with 1 increment by 50
+2026-03-24T03:01:34.221Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence location_seq start with 1 increment by 50
+2026-03-24T03:01:34.221Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence voyage_seq start with 1 increment by 50
+2026-03-24T03:01:34.224Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table application_settings (sample_loaded boolean not null, id bigint not null, primary key (id))
+2026-03-24T03:01:34.225Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table cargo (misdirected boolean, spec_arrival_deadline date, unloaded_at_dest boolean, calculated_at timestamp(6), current_voyage_id bigint, eta timestamp(6), id bigint not null, last_event_id bigint, last_known_location_id bigint, next_expected_location_id bigint, next_expected_voyage_id bigint, origin_id bigint not null, spec_destination_id bigint, spec_origin_id bigint, tracking_id varchar(255) unique, next_expected_handling_event_type enum ('CLAIM','CUSTOMS','LOAD','RECEIVE','UNLOAD'), routing_status enum ('MISROUTED','NOT_ROUTED','ROUTED'), transport_status enum ('CLAIMED','IN_PORT','NOT_RECEIVED','ONBOARD_CARRIER','UNKNOWN'), primary key (id))
+2026-03-24T03:01:34.226Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table carrier_movement (movement_order integer, arrival_location_id bigint not null, arrival_time timestamp(6) not null, departure_location_id bigint not null, departure_time timestamp(6) not null, id bigint not null, voyage_id bigint, primary key (id))
+2026-03-24T03:01:34.227Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table handling_event (cargo_id bigint not null, completion_time timestamp(6) not null, id bigint not null, location_id bigint not null, registration timestamp(6) not null, voyage_id bigint, type enum ('CLAIM','CUSTOMS','LOAD','RECEIVE','UNLOAD') not null, primary key (id))
+2026-03-24T03:01:34.227Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table leg (leg_order integer, cargo_id bigint, id bigint not null, load_location_id bigint not null, load_time timestamp(6) not null, unload_location_id bigint not null, unload_time timestamp(6) not null, voyage_id bigint not null, primary key (id))
+2026-03-24T03:01:34.228Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table location (id bigint not null, name varchar(255) not null, unlocode varchar(255), primary key (id))
+2026-03-24T03:01:34.228Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table voyage (id bigint not null, voyage_number varchar(255), primary key (id))
+2026-03-24T03:01:34.229Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKjg7tqvng4lrroi3x7k2pgcg8s foreign key (current_voyage_id) references voyage
+2026-03-24T03:01:34.236Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FK9lgjt11lhhs90je4ts8vdps3h foreign key (last_event_id) references handling_event
+2026-03-24T03:01:34.237Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKlevr3jshtdpkr0b0cs3x2xai8 foreign key (last_known_location_id) references location
+2026-03-24T03:01:34.238Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FK8j6s79x483hpgpow41m2jr8al foreign key (next_expected_location_id) references location
+2026-03-24T03:01:34.238Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKfllsyoa5okq5wj3xso3fl5bds foreign key (next_expected_voyage_id) references voyage
+2026-03-24T03:01:34.239Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKsh6x4pwr7fh8essy98rdttn3m foreign key (origin_id) references location
+2026-03-24T03:01:34.240Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKt96v2sqou50rrb83xb94rraih foreign key (spec_destination_id) references location
+2026-03-24T03:01:34.241Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKkefgnvxcwmyu13fii34934qoa foreign key (spec_origin_id) references location
+2026-03-24T03:01:34.242Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists carrier_movement add constraint FKprwsa5jli519iuk0riayqriv2 foreign key (arrival_location_id) references location
+2026-03-24T03:01:34.242Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists carrier_movement add constraint FKq0fuy9xktyi60qbt7om3ggvj6 foreign key (departure_location_id) references location
+2026-03-24T03:01:34.243Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists carrier_movement add constraint FK19nu70gglmxo40637vykhb34j foreign key (voyage_id) references voyage
+2026-03-24T03:01:34.244Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists handling_event add constraint FKt8gxdebmo4brebryyt5rwjbhs foreign key (cargo_id) references cargo
+2026-03-24T03:01:34.245Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists handling_event add constraint FKfou7tlvonxq8mw2l3hijids55 foreign key (location_id) references location
+2026-03-24T03:01:34.245Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists handling_event add constraint FKjg6vht4yhuerxyilfag4npjpi foreign key (voyage_id) references voyage
+2026-03-24T03:01:34.246Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists leg add constraint FK1u5uafbfq1msjbkqxlp0afgl1 foreign key (load_location_id) references location
+2026-03-24T03:01:34.247Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists leg add constraint FK6qhii1yfvw5kdbi6g5bb4034w foreign key (unload_location_id) references location
+2026-03-24T03:01:34.247Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists leg add constraint FKkfw0ujiodsdy5opctigsvvl35 foreign key (voyage_id) references voyage
+2026-03-24T03:01:34.248Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists leg add constraint FKfyrfbxc9avv0joklx7jcu6c9x foreign key (cargo_id) references cargo
+2026-03-24T03:01:34.249Z DEBUG 19 --- [           main] org.hibernate.SQL                        : INSERT INTO ApplicationSettings (id, sampleLoaded) VALUES (1, FALSE)
+2026-03-24T03:01:34.250Z  WARN 19 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO ApplicationSettings (id, sampleLoaded) VALUES (1, FALSE)" via JDBC [Table "APPLICATIONSETTINGS" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO ApplicationSettings (id, sampleLoaded) VALUES (1, FALSE)" via JDBC [Table "APPLICATIONSETTINGS" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.Helper.applyScript(Helper.java:255) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportFiles(SchemaCreatorImpl.java:694) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:597) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:186) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:144) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:120) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:250) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1517) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1859) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.3.jar!/:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.3.jar!/:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.eclipse.cargotracker.CargoTrackerApplication.main(CargoTrackerApplication.java:12) ~[!/:1.0.0-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586) ~[na:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102) ~[cargo-tracker-1.0.0-SNAPSHOT.jar:1.0.0-SNAPSHOT]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64) ~[cargo-tracker-1.0.0-SNAPSHOT.jar:1.0.0-SNAPSHOT]
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40) ~[cargo-tracker-1.0.0-SNAPSHOT.jar:1.0.0-SNAPSHOT]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APPLICATIONSETTINGS" not found; SQL statement:
+INSERT INTO ApplicationSettings (id, sampleLoaded) VALUES (1, FALSE) [42102-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.3.232.jar!/:na]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.3.232.jar!/:na]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.3.232.jar!/:na]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:7945) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:7916) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.readTableOrView(Parser.java:7895) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.readTableOrView(Parser.java:7857) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.parseInsert(Parser.java:1521) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.parsePrepared(Parser.java:698) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.parse(Parser.java:581) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.parse(Parser.java:556) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.prepareCommand(Parser.java:484) ~[h2-2.3.232.jar!/:na]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645) ~[h2-2.3.232.jar!/:na]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561) ~[h2-2.3.232.jar!/:na]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164) ~[h2-2.3.232.jar!/:na]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.3.232.jar!/:na]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.3.232.jar!/:na]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar!/:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar!/:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	... 43 common frames omitted
+
+2026-03-24T03:01:34.253Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T03:01:34.676Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T03:01:34.871Z  INFO 19 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:cargo-tracker-database'
+2026-03-24T03:01:34.923Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/cargo-tracker'
+2026-03-24T03:01:35.106Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : Started CargoTrackerApplication in 4.991 seconds (process running for 5.694)
+2026-03-24T03:01:35.140Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select as1_0.id,as1_0.sample_loaded from application_settings as1_0 where as1_0.id=? for update
+2026-03-24T03:01:35.191Z  INFO 19 --- [   scheduling-1] o.s.b.c.l.s.TaskExecutorJobLauncher      : Job: [SimpleJob: [name=EventFilesProcessorJob]] launched with the following parameters: [{'time':'{value=1774321295104, type=class java.lang.Long, identifying=true}'}]
+2026-03-24T03:01:35.204Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample data.
+2026-03-24T03:01:35.204Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample locations.
+2026-03-24T03:01:35.205Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for location_seq
+2026-03-24T03:01:35.207Z  INFO 19 --- [   scheduling-1] o.e.c.i.h.file.FileProcessorJobListener  : Handling event file processor batch job starting at 3/24/26, 3:01 AM
+2026-03-24T03:01:35.209Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for location_seq
+2026-03-24T03:01:35.209Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample voyages.
+2026-03-24T03:01:35.210Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for voyage_seq
+2026-03-24T03:01:35.211Z  INFO 19 --- [   scheduling-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [eventProcessingStep]
+2026-03-24T03:01:35.214Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for carrier_movement_seq
+2026-03-24T03:01:35.215Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for carrier_movement_seq
+2026-03-24T03:01:35.215Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for voyage_seq
+2026-03-24T03:01:35.216Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample cargo data.
+2026-03-24T03:01:35.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for cargo_seq
+2026-03-24T03:01:35.217Z  INFO 19 --- [   scheduling-1] o.e.c.i.handling.file.EventItemReader    : Scanning upload directory: upload_directory
+2026-03-24T03:01:35.217Z  INFO 19 --- [   scheduling-1] o.e.c.i.handling.file.EventItemReader    : Upload directory does not exist, creating it
+2026-03-24T03:01:35.218Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for leg_seq
+2026-03-24T03:01:35.218Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for leg_seq
+2026-03-24T03:01:35.230Z  INFO 19 --- [   scheduling-1] o.s.batch.core.step.AbstractStep         : Step: [eventProcessingStep] executed in 19ms
+2026-03-24T03:01:35.232Z  INFO 19 --- [   scheduling-1] o.e.c.i.h.file.FileProcessorJobListener  : Handling event file processor batch job completed at 3/24/26, 3:01 AM
+2026-03-24T03:01:35.233Z  INFO 19 --- [   scheduling-1] o.s.b.c.l.s.TaskExecutorJobLauncher      : Job: [SimpleJob: [name=EventFilesProcessorJob]] completed with the following parameters: [{'time':'{value=1774321295104, type=class java.lang.Long, identifying=true}'}] and the following status: [COMPLETED] in 32ms
+2026-03-24T03:01:35.257Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into application_settings (sample_loaded,id) values (?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.267Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.267Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.267Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.268Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.268Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.268Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.268Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.270Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.270Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.270Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.270Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.271Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.271Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.271Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.272Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+2026-03-24T03:01:35.273Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.273Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.273Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.274Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.277Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.277Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.277Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.277Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.278Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.279Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.283Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.283Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for handling_event_seq
+2026-03-24T03:01:35.284Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.285Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.286Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.286Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for handling_event_seq
+2026-03-24T03:01:35.287Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.288Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.289Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.290Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.291Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.291Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.291Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+2026-03-24T03:01:35.295Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for cargo_seq
+2026-03-24T03:01:35.296Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+2026-03-24T03:01:35.297Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.297Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.298Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.299Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+2026-03-24T03:01:35.300Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.300Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.300Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.300Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.302Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.303Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.304Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.304Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.306Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.307Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.308Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.309Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.310Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.312Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.313Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.314Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.314Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.314Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.314Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+2026-03-24T03:01:35.317Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+2026-03-24T03:01:35.318Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+2026-03-24T03:01:35.318Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.319Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+2026-03-24T03:01:35.319Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.319Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.321Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.322Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.323Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.324Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.325Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.326Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.327Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.328Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.329Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.330Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.331Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.332Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.333Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.333Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.333Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.333Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.334Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+2026-03-24T03:01:35.335Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+[INFO] Application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.3)
+
+2026-03-24T03:01:30.604Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : Starting CargoTrackerApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/cargo-tracker-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T03:01:30.607Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T03:01:31.773Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T03:01:31.808Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 0 JPA repository interfaces.
+2026-03-24T03:01:32.341Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T03:01:32.349Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T03:01:32.349Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2026-03-24T03:01:32.361Z  INFO 19 --- [           main] o.a.c.c.C.[.[.[/cargo-tracker]           : Initializing Spring embedded WebApplicationContext
+2026-03-24T03:01:32.363Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1659 ms
+2026-03-24T03:01:32.470Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T03:01:32.514Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2026-03-24T03:01:32.536Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T03:01:32.800Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T03:01:32.827Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T03:01:33.078Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:cargo-tracker-database user=SA
+2026-03-24T03:01:33.080Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T03:01:33.104Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T03:01:33.120Z  INFO 19 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-24T03:01:33.878Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_handling_event(rn_ integer not null, cargo_id bigint, completion_time timestamp(6), id bigint, location_id bigint, registration timestamp(6), voyage_id bigint, type enum ('CLAIM','CUSTOMS','LOAD','RECEIVE','UNLOAD'), primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.886Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_carrier_movement(rn_ integer not null, arrival_location_id bigint, arrival_time timestamp(6), departure_location_id bigint, departure_time timestamp(6), id bigint, primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.886Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_leg(rn_ integer not null, id bigint, load_location_id bigint, load_time timestamp(6), unload_location_id bigint, unload_time timestamp(6), voyage_id bigint, primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.887Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_location(rn_ integer not null, id bigint, name varchar(255), unlocode varchar(255), primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.888Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_voyage(rn_ integer not null, id bigint, voyage_number varchar(255), primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.888Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create global temporary table HTE_cargo(misdirected boolean, rn_ integer not null, spec_arrival_deadline date, unloaded_at_dest boolean, calculated_at timestamp(6), current_voyage_id bigint, eta timestamp(6), id bigint, last_event_id bigint, last_known_location_id bigint, next_expected_location_id bigint, next_expected_voyage_id bigint, origin_id bigint, spec_destination_id bigint, spec_origin_id bigint, tracking_id varchar(255), next_expected_handling_event_type enum ('CLAIM','CUSTOMS','LOAD','RECEIVE','UNLOAD'), routing_status enum ('MISROUTED','NOT_ROUTED','ROUTED'), transport_status enum ('CLAIMED','IN_PORT','NOT_RECEIVED','ONBOARD_CARRIER','UNKNOWN'), primary key (rn_)) TRANSACTIONAL
+2026-03-24T03:01:33.989Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-24T03:01:34.215Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists application_settings cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists cargo cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists carrier_movement cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists handling_event cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists leg cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists location cascade 
+2026-03-24T03:01:34.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop table if exists voyage cascade 
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists cargo_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists carrier_movement_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists handling_event_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists leg_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists location_seq
+2026-03-24T03:01:34.217Z DEBUG 19 --- [           main] org.hibernate.SQL                        : drop sequence if exists voyage_seq
+2026-03-24T03:01:34.219Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence cargo_seq start with 1 increment by 50
+2026-03-24T03:01:34.220Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence carrier_movement_seq start with 1 increment by 50
+2026-03-24T03:01:34.220Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence handling_event_seq start with 1 increment by 50
+2026-03-24T03:01:34.220Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence leg_seq start with 1 increment by 50
+2026-03-24T03:01:34.221Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence location_seq start with 1 increment by 50
+2026-03-24T03:01:34.221Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create sequence voyage_seq start with 1 increment by 50
+2026-03-24T03:01:34.224Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table application_settings (sample_loaded boolean not null, id bigint not null, primary key (id))
+2026-03-24T03:01:34.225Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table cargo (misdirected boolean, spec_arrival_deadline date, unloaded_at_dest boolean, calculated_at timestamp(6), current_voyage_id bigint, eta timestamp(6), id bigint not null, last_event_id bigint, last_known_location_id bigint, next_expected_location_id bigint, next_expected_voyage_id bigint, origin_id bigint not null, spec_destination_id bigint, spec_origin_id bigint, tracking_id varchar(255) unique, next_expected_handling_event_type enum ('CLAIM','CUSTOMS','LOAD','RECEIVE','UNLOAD'), routing_status enum ('MISROUTED','NOT_ROUTED','ROUTED'), transport_status enum ('CLAIMED','IN_PORT','NOT_RECEIVED','ONBOARD_CARRIER','UNKNOWN'), primary key (id))
+2026-03-24T03:01:34.226Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table carrier_movement (movement_order integer, arrival_location_id bigint not null, arrival_time timestamp(6) not null, departure_location_id bigint not null, departure_time timestamp(6) not null, id bigint not null, voyage_id bigint, primary key (id))
+2026-03-24T03:01:34.227Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table handling_event (cargo_id bigint not null, completion_time timestamp(6) not null, id bigint not null, location_id bigint not null, registration timestamp(6) not null, voyage_id bigint, type enum ('CLAIM','CUSTOMS','LOAD','RECEIVE','UNLOAD') not null, primary key (id))
+2026-03-24T03:01:34.227Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table leg (leg_order integer, cargo_id bigint, id bigint not null, load_location_id bigint not null, load_time timestamp(6) not null, unload_location_id bigint not null, unload_time timestamp(6) not null, voyage_id bigint not null, primary key (id))
+2026-03-24T03:01:34.228Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table location (id bigint not null, name varchar(255) not null, unlocode varchar(255), primary key (id))
+2026-03-24T03:01:34.228Z DEBUG 19 --- [           main] org.hibernate.SQL                        : create table voyage (id bigint not null, voyage_number varchar(255), primary key (id))
+2026-03-24T03:01:34.229Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKjg7tqvng4lrroi3x7k2pgcg8s foreign key (current_voyage_id) references voyage
+2026-03-24T03:01:34.236Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FK9lgjt11lhhs90je4ts8vdps3h foreign key (last_event_id) references handling_event
+2026-03-24T03:01:34.237Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKlevr3jshtdpkr0b0cs3x2xai8 foreign key (last_known_location_id) references location
+2026-03-24T03:01:34.238Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FK8j6s79x483hpgpow41m2jr8al foreign key (next_expected_location_id) references location
+2026-03-24T03:01:34.238Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKfllsyoa5okq5wj3xso3fl5bds foreign key (next_expected_voyage_id) references voyage
+2026-03-24T03:01:34.239Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKsh6x4pwr7fh8essy98rdttn3m foreign key (origin_id) references location
+2026-03-24T03:01:34.240Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKt96v2sqou50rrb83xb94rraih foreign key (spec_destination_id) references location
+2026-03-24T03:01:34.241Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists cargo add constraint FKkefgnvxcwmyu13fii34934qoa foreign key (spec_origin_id) references location
+2026-03-24T03:01:34.242Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists carrier_movement add constraint FKprwsa5jli519iuk0riayqriv2 foreign key (arrival_location_id) references location
+2026-03-24T03:01:34.242Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists carrier_movement add constraint FKq0fuy9xktyi60qbt7om3ggvj6 foreign key (departure_location_id) references location
+2026-03-24T03:01:34.243Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists carrier_movement add constraint FK19nu70gglmxo40637vykhb34j foreign key (voyage_id) references voyage
+2026-03-24T03:01:34.244Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists handling_event add constraint FKt8gxdebmo4brebryyt5rwjbhs foreign key (cargo_id) references cargo
+2026-03-24T03:01:34.245Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists handling_event add constraint FKfou7tlvonxq8mw2l3hijids55 foreign key (location_id) references location
+2026-03-24T03:01:34.245Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists handling_event add constraint FKjg6vht4yhuerxyilfag4npjpi foreign key (voyage_id) references voyage
+2026-03-24T03:01:34.246Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists leg add constraint FK1u5uafbfq1msjbkqxlp0afgl1 foreign key (load_location_id) references location
+2026-03-24T03:01:34.247Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists leg add constraint FK6qhii1yfvw5kdbi6g5bb4034w foreign key (unload_location_id) references location
+2026-03-24T03:01:34.247Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists leg add constraint FKkfw0ujiodsdy5opctigsvvl35 foreign key (voyage_id) references voyage
+2026-03-24T03:01:34.248Z DEBUG 19 --- [           main] org.hibernate.SQL                        : alter table if exists leg add constraint FKfyrfbxc9avv0joklx7jcu6c9x foreign key (cargo_id) references cargo
+2026-03-24T03:01:34.249Z DEBUG 19 --- [           main] org.hibernate.SQL                        : INSERT INTO ApplicationSettings (id, sampleLoaded) VALUES (1, FALSE)
+2026-03-24T03:01:34.250Z  WARN 19 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO ApplicationSettings (id, sampleLoaded) VALUES (1, FALSE)" via JDBC [Table "APPLICATIONSETTINGS" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO ApplicationSettings (id, sampleLoaded) VALUES (1, FALSE)" via JDBC [Table "APPLICATIONSETTINGS" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.Helper.applyScript(Helper.java:255) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportFiles(SchemaCreatorImpl.java:694) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:597) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:186) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:144) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:120) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:250) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1517) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1859) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.3.jar!/:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.3.jar!/:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.3.jar!/:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar!/:3.4.3]
+	at org.eclipse.cargotracker.CargoTrackerApplication.main(CargoTrackerApplication.java:12) ~[!/:1.0.0-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586) ~[na:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102) ~[cargo-tracker-1.0.0-SNAPSHOT.jar:1.0.0-SNAPSHOT]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64) ~[cargo-tracker-1.0.0-SNAPSHOT.jar:1.0.0-SNAPSHOT]
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40) ~[cargo-tracker-1.0.0-SNAPSHOT.jar:1.0.0-SNAPSHOT]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APPLICATIONSETTINGS" not found; SQL statement:
+INSERT INTO ApplicationSettings (id, sampleLoaded) VALUES (1, FALSE) [42102-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.3.232.jar!/:na]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.3.232.jar!/:na]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.3.232.jar!/:na]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:7945) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:7916) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.readTableOrView(Parser.java:7895) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.readTableOrView(Parser.java:7857) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.parseInsert(Parser.java:1521) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.parsePrepared(Parser.java:698) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.parse(Parser.java:581) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.parse(Parser.java:556) ~[h2-2.3.232.jar!/:na]
+	at org.h2.command.Parser.prepareCommand(Parser.java:484) ~[h2-2.3.232.jar!/:na]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645) ~[h2-2.3.232.jar!/:na]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561) ~[h2-2.3.232.jar!/:na]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164) ~[h2-2.3.232.jar!/:na]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.3.232.jar!/:na]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.3.232.jar!/:na]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar!/:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar!/:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.6.8.Final.jar!/:6.6.8.Final]
+	... 43 common frames omitted
+
+2026-03-24T03:01:34.253Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T03:01:34.676Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T03:01:34.871Z  INFO 19 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:cargo-tracker-database'
+2026-03-24T03:01:34.923Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/cargo-tracker'
+2026-03-24T03:01:35.106Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : Started CargoTrackerApplication in 4.991 seconds (process running for 5.694)
+2026-03-24T03:01:35.140Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select as1_0.id,as1_0.sample_loaded from application_settings as1_0 where as1_0.id=? for update
+2026-03-24T03:01:35.191Z  INFO 19 --- [   scheduling-1] o.s.b.c.l.s.TaskExecutorJobLauncher      : Job: [SimpleJob: [name=EventFilesProcessorJob]] launched with the following parameters: [{'time':'{value=1774321295104, type=class java.lang.Long, identifying=true}'}]
+2026-03-24T03:01:35.204Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample data.
+2026-03-24T03:01:35.204Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample locations.
+2026-03-24T03:01:35.205Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for location_seq
+2026-03-24T03:01:35.207Z  INFO 19 --- [   scheduling-1] o.e.c.i.h.file.FileProcessorJobListener  : Handling event file processor batch job starting at 3/24/26, 3:01 AM
+2026-03-24T03:01:35.209Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for location_seq
+2026-03-24T03:01:35.209Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample voyages.
+2026-03-24T03:01:35.210Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for voyage_seq
+2026-03-24T03:01:35.211Z  INFO 19 --- [   scheduling-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [eventProcessingStep]
+2026-03-24T03:01:35.214Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for carrier_movement_seq
+2026-03-24T03:01:35.215Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for carrier_movement_seq
+2026-03-24T03:01:35.215Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for voyage_seq
+2026-03-24T03:01:35.216Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample cargo data.
+2026-03-24T03:01:35.216Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for cargo_seq
+2026-03-24T03:01:35.217Z  INFO 19 --- [   scheduling-1] o.e.c.i.handling.file.EventItemReader    : Scanning upload directory: upload_directory
+2026-03-24T03:01:35.217Z  INFO 19 --- [   scheduling-1] o.e.c.i.handling.file.EventItemReader    : Upload directory does not exist, creating it
+2026-03-24T03:01:35.218Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for leg_seq
+2026-03-24T03:01:35.218Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for leg_seq
+2026-03-24T03:01:35.230Z  INFO 19 --- [   scheduling-1] o.s.batch.core.step.AbstractStep         : Step: [eventProcessingStep] executed in 19ms
+2026-03-24T03:01:35.232Z  INFO 19 --- [   scheduling-1] o.e.c.i.h.file.FileProcessorJobListener  : Handling event file processor batch job completed at 3/24/26, 3:01 AM
+2026-03-24T03:01:35.233Z  INFO 19 --- [   scheduling-1] o.s.b.c.l.s.TaskExecutorJobLauncher      : Job: [SimpleJob: [name=EventFilesProcessorJob]] completed with the following parameters: [{'time':'{value=1774321295104, type=class java.lang.Long, identifying=true}'}] and the following status: [COMPLETED] in 32ms
+2026-03-24T03:01:35.257Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into application_settings (sample_loaded,id) values (?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.265Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.266Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.267Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into location (name,unlocode,id) values (?,?,?)
+2026-03-24T03:01:35.267Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.267Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.268Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.268Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.268Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.268Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.269Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.270Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.270Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.270Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.270Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.271Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.271Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into voyage (voyage_number,id) values (?,?)
+2026-03-24T03:01:35.271Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+2026-03-24T03:01:35.272Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+2026-03-24T03:01:35.273Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.273Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.273Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.274Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.275Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.276Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.277Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.277Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update carrier_movement set voyage_id=?,movement_order=? where id=?
+2026-03-24T03:01:35.277Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.277Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.278Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.279Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.283Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.283Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for handling_event_seq
+2026-03-24T03:01:35.284Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.285Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.286Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.286Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for handling_event_seq
+2026-03-24T03:01:35.287Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.288Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.289Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.290Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.291Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.291Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.291Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+2026-03-24T03:01:35.295Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select next value for cargo_seq
+2026-03-24T03:01:35.296Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+2026-03-24T03:01:35.297Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.297Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.298Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.299Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+2026-03-24T03:01:35.300Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.300Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.300Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.300Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.302Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.303Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.304Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.304Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.306Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.307Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.308Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.309Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.310Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.312Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.313Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.314Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.314Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.314Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.314Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+2026-03-24T03:01:35.317Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+2026-03-24T03:01:35.318Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+2026-03-24T03:01:35.318Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+2026-03-24T03:01:35.319Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+2026-03-24T03:01:35.319Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update leg set cargo_id=?,leg_order=? where id=?
+2026-03-24T03:01:35.319Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.321Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.322Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.323Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.324Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.325Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.326Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+2026-03-24T03:01:35.327Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.328Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.329Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.330Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+2026-03-24T03:01:35.331Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+2026-03-24T03:01:35.332Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.333Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.333Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.333Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.333Z DEBUG 19 --- [           main] org.hibernate.SQL                        : insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+2026-03-24T03:01:35.334Z DEBUG 19 --- [           main] org.hibernate.SQL                        : select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+2026-03-24T03:01:35.335Z DEBUG 19 --- [           main] org.hibernate.SQL                        : update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+[INFO] Running smoke tests inside container cargo-tracker-spring-608f5949...
+Downloading cpython-3.14.3-linux-x86_64-gnu (download) (34.4MiB)
+ Downloaded cpython-3.14.3-linux-x86_64-gnu (download)
+Using CPython 3.14.3
+Creating virtual environment at: .venv
+Resolved 20 packages in 0.44ms
+Downloading pygments (1.2MiB)
+Downloading playwright (44.1MiB)
+ Downloaded pygments
+ Downloaded playwright
+Prepared 18 packages in 1.57s
+Installed 18 packages in 7ms
+ + certifi==2025.11.12
+ + charset-normalizer==3.4.4
+ + greenlet==3.2.4
+ + idna==3.11
+ + iniconfig==2.3.0
+ + packaging==25.0
+ + playwright==1.56.0
+ + pluggy==1.6.0
+ + pyee==13.0.0
+ + pygments==2.19.2
+ + pytest==8.4.2
+ + pytest-base-url==2.1.0
+ + pytest-playwright==0.7.1
+ + python-slugify==8.0.4
+ + requests==2.32.5
+ + text-unidecode==1.3
+ + typing-extensions==4.15.0
+ + urllib3==2.5.0
+Downloading Chromium 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-linux.zip
+|                                                                                |   0% of 173.9 MiB
+|■■■■■■■■                                                                        |  10% of 173.9 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 173.9 MiB
+Chromium 141.0.7390.37 (playwright build v1194) downloaded to /ms-playwright/chromium-1194
+Downloading FFMPEG playwright build v1011 from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+|                                                                                |   0% of 2.3 MiB
+|■■■■■■■■                                                                        |  10% of 2.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+FFMPEG playwright build v1011 downloaded to /ms-playwright/ffmpeg-1011
+Downloading Chromium Headless Shell 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-headless-shell-linux.zip
+|                                                                                |   0% of 104.3 MiB
+|■■■■■■■■                                                                        |  10% of 104.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 104.3 MiB
+Chromium Headless Shell 141.0.7390.37 (playwright build v1194) downloaded to /ms-playwright/chromium_headless_shell-1194
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0 -- /app/smoke/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app/smoke
+configfile: pyproject.toml
+plugins: base-url-2.1.0, playwright-0.7.1
+collecting ... collected 34 items
+
+smoke.py::test_cargo_tracker_homepage[chromium] FAILED                   [  2%]
+smoke.py::test_navigate_to_public_tracking_interface[chromium] FAILED    [  5%]
+smoke.py::test_navigate_to_administration_interface[chromium] FAILED     [  8%]
+smoke.py::test_open_event_logging_interface_popup[chromium] FAILED       [ 11%]
+smoke.py::test_verify_public_tracking_page_structure[chromium] FAILED    [ 14%]
+smoke.py::test_track_valid_cargo_abc123[chromium] FAILED                 [ 17%]
+smoke.py::test_track_valid_cargo_jkl567[chromium] FAILED                 [ 20%]
+smoke.py::test_track_valid_cargo_def789[chromium] FAILED                 [ 23%]
+smoke.py::test_track_valid_cargo_mno456[chromium] FAILED                 [ 26%]
+smoke.py::test_track_invalid_cargo_id[chromium] FAILED                   [ 29%]
+smoke.py::test_submit_empty_tracking_id[chromium] FAILED                 [ 32%]
+smoke.py::test_navigate_to_about_page_from_public_tracking[chromium] FAILED [ 35%]
+smoke.py::test_verify_dashboard_structure[chromium] FAILED               [ 38%]
+smoke.py::test_click_on_routed_cargo_details[chromium] FAILED            [ 41%]
+smoke.py::test_tooltip_verification[chromium] FAILED                     [ 44%]
+smoke.py::test_track_cargo_not_found_zzzzz[chromium] FAILED              [ 47%]
+smoke.py::test_tracking_shows_misdirection_warning_jkl567[chromium] FAILED [ 50%]
+smoke.py::test_tracking_shows_handling_event_history[chromium] FAILED    [ 52%]
+smoke.py::test_tracking_shows_map_iframe[chromium] FAILED                [ 55%]
+smoke.py::test_tracking_shows_eta_for_routed_cargo[chromium] FAILED      [ 58%]
+smoke.py::test_cargo_details_shows_itinerary[chromium] FAILED            [ 61%]
+smoke.py::test_misrouted_cargo_shows_warning_and_reroute[chromium] FAILED [ 64%]
+smoke.py::test_not_routed_cargo_links_to_route_page[chromium] FAILED     [ 67%]
+smoke.py::test_claimed_cargo_on_dashboard[chromium] FAILED               [ 70%]
+smoke.py::test_booking_flow_shows_location_dropdown[chromium] FAILED     [ 73%]
+smoke.py::test_event_logger_wizard_structure[chromium] FAILED            [ 76%]
+smoke.py::test_event_logger_tracking_id_dropdown[chromium] FAILED        [ 79%]
+smoke.py::test_rest_handling_report_submission[chromium] FAILED          [ 82%]
+smoke.py::test_rest_handling_report_invalid_tracking_id[chromium] PASSED [ 85%]
+smoke.py::test_rest_handling_report_invalid_unlocode[chromium] PASSED    [ 88%]
+smoke.py::test_rest_handling_report_invalid_event_type[chromium] PASSED  [ 91%]
+smoke.py::test_sse_cargo_endpoint[chromium] PASSED                       [ 94%]
+smoke.py::test_admin_tracking_page[chromium] FAILED                      [ 97%]
+smoke.py::test_admin_live_map_page[chromium] FAILED                      [100%]
+
+=================================== FAILURES ===================================
+____________________ test_cargo_tracker_homepage[chromium] _____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_cargo_tracker_homepage(page: Page):
+        # 1. Navigate to the Cargo Tracker homepage
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+    
+        # 2. Verify page title
+>       expect(page).to_have_title("Eclipse Cargo Tracker")
+E       AssertionError: Page title expected to be 'Eclipse Cargo Tracker'
+E       Actual value:  
+E       Call log:
+E         - Expect "to_have_title" with timeout 5000ms
+E           9 × unexpected value ""
+
+smoke.py:12: AssertionError
+_____________ test_navigate_to_public_tracking_interface[chromium] _____________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_navigate_to_public_tracking_interface(page: Page):
+        # 1. Navigate to home page
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+    
+        # 2. Click on "Public Tracking Interface" button
+>       page.get_by_role("link", name="Public Tracking Interface").click()
+
+smoke.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351521fe0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Public Tracking Interface")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_____________ test_navigate_to_administration_interface[chromium] ______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_navigate_to_administration_interface(page: Page):
+        # 1. Navigate to home page
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+    
+        # 2. Click on "Administration" button
+>       page.get_by_role("link", name="Administration").click()
+
+smoke.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351523c10>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Administration")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+______________ test_open_event_logging_interface_popup[chromium] _______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_open_event_logging_interface_popup(page: Page):
+        # 1. Navigate to home page
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+    
+        # 2. Click on "Event Logging Interface" button and wait for popup
+        with page.expect_popup() as popup_info:
+>           page.get_by_role("link", name="Event Logging Interface").click()
+
+smoke.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351523060>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Event Logging Interface")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_____________ test_verify_public_tracking_page_structure[chromium] _____________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_verify_public_tracking_page_structure(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Verify page title is "Track Cargo"
+>       expect(page).to_have_title("Track Cargo")
+E       AssertionError: Page title expected to be 'Track Cargo'
+E       Actual value:  
+E       Call log:
+E         - Expect "to_have_title" with timeout 5000ms
+E           9 × unexpected value ""
+
+smoke.py:86: AssertionError
+___________________ test_track_valid_cargo_abc123[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_valid_cargo_abc123(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "ABC123" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("ABC123")
+
+smoke.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351248eb0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_track_valid_cargo_jkl567[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_valid_cargo_jkl567(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "JKL567" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("JKL567")
+
+smoke.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec35124bd70>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_track_valid_cargo_def789[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_valid_cargo_def789(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "DEF789" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("DEF789")
+
+smoke.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351453320>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_track_valid_cargo_mno456[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_valid_cargo_mno456(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "MNO456" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("MNO456")
+
+smoke.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec3511ef480>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+____________________ test_track_invalid_cargo_id[chromium] _____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_invalid_cargo_id(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "INVALID999" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("INVALID999")
+
+smoke.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec3512071c0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_submit_empty_tracking_id[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_submit_empty_tracking_id(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Leave tracking ID input field empty
+        # 3. Click "Track!" button
+>       page.get_by_role("button", name="Track!").click()
+
+smoke.py:180: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351206b90>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("button", name="Track!")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+__________ test_navigate_to_about_page_from_public_tracking[chromium] __________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_navigate_to_about_page_from_public_tracking(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Click on "About" menu item in side panel
+        # PrimeFaces menu items render as links within .ui-menu-list
+>       page.locator(".ui-menu-list >> text=About").click()
+
+smoke.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351489900>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator(".ui-menu-list").locator("text=About")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+__________________ test_verify_dashboard_structure[chromium] ___________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_verify_dashboard_structure(page: Page):
+        """
+        Verify the basic structure of the dashboard page.
+        """
+        # 1. Navigate to admin dashboard page
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+    
+        # 2. Find the Routed Cargo Section table
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       expect(routed_cargo_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]")
+
+smoke.py:213: AssertionError
+_________________ test_click_on_routed_cargo_details[chromium] _________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_click_on_routed_cargo_details(page: Page):
+        """
+        Test clicking on a routed cargo item to view its details.
+        """
+        # 1. Navigate to admin dashboard page
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+    
+        # 2. Find the Routed Cargo Section table
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       expect(routed_cargo_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]")
+
+smoke.py:270: AssertionError
+_____________________ test_tooltip_verification[chromium] ______________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_tooltip_verification(page: Page):
+        """
+        Test to verify that tooltips appear correctly on hovering over specific elements.
+        """
+    
+        # 1. Navigate to admin dashboard page
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+    
+        # 2. Find the Routed Cargo Section table
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       expect(routed_cargo_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]")
+
+smoke.py:318: AssertionError
+__________________ test_track_cargo_not_found_zzzzz[chromium] __________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_cargo_not_found_zzzzz(page: Page):
+        """Track a non-existent cargo shows 'not found'."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("ZZZZZ")
+
+smoke.py:339: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec350ccbab0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+__________ test_tracking_shows_misdirection_warning_jkl567[chromium] ___________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_tracking_shows_misdirection_warning_jkl567(page: Page):
+        """Tracking page shows misdirection warning for JKL567."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("JKL567")
+
+smoke.py:347: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec350c73740>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_____________ test_tracking_shows_handling_event_history[chromium] _____________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_tracking_shows_handling_event_history(page: Page):
+        """Tracking page displays handling event history for ABC123."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("ABC123")
+
+smoke.py:355: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec350c0a8d0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_tracking_shows_map_iframe[chromium] ___________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_tracking_shows_map_iframe(page: Page):
+        """Tracking page includes a map iframe showing cargo location."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("ABC123")
+
+smoke.py:366: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec3506ac300>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+______________ test_tracking_shows_eta_for_routed_cargo[chromium] ______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_tracking_shows_eta_for_routed_cargo(page: Page):
+        """Tracking page shows ETA for routed, non-misdirected cargo."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("ABC123")
+
+smoke.py:375: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec3514897a0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_________________ test_cargo_details_shows_itinerary[chromium] _________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_cargo_details_shows_itinerary(page: Page):
+        """Cargo details page shows itinerary with voyage, load/unload locations, and times."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       routed_cargo_table.get_by_role("link", name="ABC123").click()
+
+smoke.py:387: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec3506e87d0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]").get_by_role("link", name="ABC123")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________ test_misrouted_cargo_shows_warning_and_reroute[chromium] ___________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_misrouted_cargo_shows_warning_and_reroute(page: Page):
+        """Cargo details page for misdirected cargo JKL567 shows routing details and itinerary."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       routed_cargo_table.get_by_role("link", name="JKL567").click()
+
+smoke.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec3506e97a0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]").get_by_role("link", name="JKL567")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_____________ test_not_routed_cargo_links_to_route_page[chromium] ______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_not_routed_cargo_links_to_route_page(page: Page):
+        """Not routed cargo table links to route selection page."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        not_routed_table = page.locator(
+            "//label[normalize-space(.)='Not Routed Cargo']/following::table[1]"
+        )
+>       expect(not_routed_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Not Routed Cargo']/following::table[1]")
+
+smoke.py:418: AssertionError
+__________________ test_claimed_cargo_on_dashboard[chromium] ___________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_claimed_cargo_on_dashboard(page: Page):
+        """Claimed cargo table shows MNO456."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        claimed_table = page.locator(
+            "//label[normalize-space(.)='Claimed Cargo']/following::table[1]"
+        )
+>       expect(claimed_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Claimed Cargo']/following::table[1]")
+
+smoke.py:431: AssertionError
+_____________ test_booking_flow_shows_location_dropdown[chromium] ______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_booking_flow_shows_location_dropdown(page: Page):
+        """Booking flow starts with origin selection showing all 13 locations."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        # Navigate to booking page via the Book link in the sidebar
+>       page.locator(".ui-menu-list >> text=Book").click()
+
+smoke.py:439: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec3513685c0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator(".ui-menu-list").locator("text=Book")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_________________ test_event_logger_wizard_structure[chromium] _________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_event_logger_wizard_structure(page: Page):
+        """Event Logger is a multi-step wizard with tracking ID, location, event type fields."""
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+        with page.expect_popup() as popup_info:
+>           page.get_by_role("link", name="Event Logging Interface").click()
+
+smoke.py:452: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351341dd0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Event Logging Interface")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_______________ test_event_logger_tracking_id_dropdown[chromium] _______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_event_logger_tracking_id_dropdown(page: Page):
+        """Event Logger tracking ID dropdown shows routed unclaimed cargos."""
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+        with page.expect_popup() as popup_info:
+>           page.get_by_role("link", name="Event Logging Interface").click()
+
+smoke.py:464: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec350422610>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Event Logging Interface")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+________________ test_rest_handling_report_submission[chromium] ________________
+
+page = <Page url='about:blank'>
+
+    def test_rest_handling_report_submission(page: Page):
+        """Submit a handling report via REST API."""
+        # Spring endpoint only accepts JSON (not form data)
+        # completionTime must use M/d/yyyy h:m a format (DateConverter.DATE_TIME_FORMAT)
+        response = page.request.post(
+            "http://localhost:8080/cargo-tracker/rest/handling/reports",
+            headers={"Content-Type": "application/json"},
+            data=json.dumps({
+                "completionTime": "3/1/2024 12:00 PM",
+                "trackingId": "ABC123",
+                "eventType": "UNLOAD",
+                "unLocode": "USNYC",
+                "voyageNumber": "0100S",
+            }),
+        )
+>       assert response.status in (200, 204)
+E       AssertionError: assert 500 in (200, 204)
+E        +  where 500 = <APIResponse url='http://localhost:8080/cargo-tracker/rest/handling/reports' status=500 status_text=''>.status
+
+smoke.py:493: AssertionError
+______________________ test_admin_tracking_page[chromium] ______________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_admin_tracking_page(page: Page):
+        """Admin tracking page is accessible and has tracking input."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+>       page.locator(".ui-menu-list >> text=Track").click()
+
+smoke.py:568: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec351066cf0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator(".ui-menu-list").locator("text=Track")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+______________________ test_admin_live_map_page[chromium] ______________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_admin_live_map_page(page: Page):
+        """Admin live map page is accessible."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+>       page.locator(".ui-menu-list >> text=Live").click()
+
+smoke.py:576: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ec352262900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ec350713060>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator(".ui-menu-list").locator("text=Live")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+=========================== short test summary info ============================
+FAILED smoke.py::test_cargo_tracker_homepage[chromium] - AssertionError: Page...
+FAILED smoke.py::test_navigate_to_public_tracking_interface[chromium] - playw...
+FAILED smoke.py::test_navigate_to_administration_interface[chromium] - playwr...
+FAILED smoke.py::test_open_event_logging_interface_popup[chromium] - playwrig...
+FAILED smoke.py::test_verify_public_tracking_page_structure[chromium] - Asser...
+FAILED smoke.py::test_track_valid_cargo_abc123[chromium] - playwright._impl._...
+FAILED smoke.py::test_track_valid_cargo_jkl567[chromium] - playwright._impl._...
+FAILED smoke.py::test_track_valid_cargo_def789[chromium] - playwright._impl._...
+FAILED smoke.py::test_track_valid_cargo_mno456[chromium] - playwright._impl._...
+FAILED smoke.py::test_track_invalid_cargo_id[chromium] - playwright._impl._er...
+FAILED smoke.py::test_submit_empty_tracking_id[chromium] - playwright._impl._...
+FAILED smoke.py::test_navigate_to_about_page_from_public_tracking[chromium]
+FAILED smoke.py::test_verify_dashboard_structure[chromium] - AssertionError: ...
+FAILED smoke.py::test_click_on_routed_cargo_details[chromium] - AssertionErro...
+FAILED smoke.py::test_tooltip_verification[chromium] - AssertionError: Locato...
+FAILED smoke.py::test_track_cargo_not_found_zzzzz[chromium] - playwright._imp...
+FAILED smoke.py::test_tracking_shows_misdirection_warning_jkl567[chromium] - ...
+FAILED smoke.py::test_tracking_shows_handling_event_history[chromium] - playw...
+FAILED smoke.py::test_tracking_shows_map_iframe[chromium] - playwright._impl....
+FAILED smoke.py::test_tracking_shows_eta_for_routed_cargo[chromium] - playwri...
+FAILED smoke.py::test_cargo_details_shows_itinerary[chromium] - playwright._i...
+FAILED smoke.py::test_misrouted_cargo_shows_warning_and_reroute[chromium] - p...
+FAILED smoke.py::test_not_routed_cargo_links_to_route_page[chromium] - Assert...
+FAILED smoke.py::test_claimed_cargo_on_dashboard[chromium] - AssertionError: ...
+FAILED smoke.py::test_booking_flow_shows_location_dropdown[chromium] - playwr...
+FAILED smoke.py::test_event_logger_wizard_structure[chromium] - playwright._i...
+FAILED smoke.py::test_event_logger_tracking_id_dropdown[chromium] - playwrigh...
+FAILED smoke.py::test_rest_handling_report_submission[chromium] - AssertionEr...
+FAILED smoke.py::test_admin_tracking_page[chromium] - playwright._impl._error...
+FAILED smoke.py::test_admin_live_map_page[chromium] - playwright._impl._error...
+=================== 30 failed, 4 passed in 700.17s (0:11:40) ===================

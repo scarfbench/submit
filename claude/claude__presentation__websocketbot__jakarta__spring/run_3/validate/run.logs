@@ -1,0 +1,6 @@
+docker logs "websocketbot-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: websocketbot-spring
+make: *** [Makefile:32: logs] Error 1

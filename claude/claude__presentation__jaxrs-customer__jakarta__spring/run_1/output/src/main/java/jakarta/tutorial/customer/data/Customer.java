@@ -1,0 +1,123 @@
+/*
+ * Copyright (c), Eclipse Foundation, Inc. and its licensors.
+ *
+ * All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Distribution License v1.0, which is available at
+ * https://www.eclipse.org/org/documents/edl-v10.php
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+package jakarta.tutorial.customer.data;
+
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+/**
+ *
+ * @author ievans
+ */
+@Entity
+@Table(name="CUSTOMER_CUSTOMER")
+@NamedQuery(
+    name="findAllCustomers",
+    query="SELECT c FROM Customer c " +
+          "ORDER BY c.id"
+)
+@JsonRootName("customer")
+public class Customer implements Serializable {
+    private static final Logger logger =
+            Logger.getLogger(Customer.class.getName());
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JacksonXmlProperty(isAttribute = true)
+    protected int id;
+
+    @JacksonXmlProperty(isAttribute = false)
+    protected String firstname;
+
+    @JacksonXmlProperty(isAttribute = false)
+    protected String lastname;
+
+    @JacksonXmlProperty(isAttribute = false)
+    @OneToOne
+    protected Address address;
+
+    @JacksonXmlProperty(isAttribute = false)
+    protected String email;
+
+    @JacksonXmlProperty(isAttribute = false)
+    protected String phone;
+    
+    public Customer() { 
+        address = new Address();
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        logger.log(Level.INFO, "setId called and set to {0}", id);
+        this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        logger.log(Level.INFO, "setFirstname called and set to {0}", firstname);
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastName) {
+        logger.log(Level.INFO, "setLastname called and set to {0}", lastName);
+        this.lastname = lastName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        logger.log(Level.INFO, "setAddress called");
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        logger.log(Level.INFO, "setEmail called and set to {0}", email);
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        logger.log(Level.INFO, "setPhone called and set to {0}", phone);
+        this.phone = phone;
+    }
+}

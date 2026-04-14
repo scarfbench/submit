@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Contact</title>
+    <link rel="stylesheet" th:href="@{/css/jsfcrud.css}"/>
+</head>
+<body>
+    <h1>Edit Contact</h1>
+
+    <form th:action="@{/contacts/{id}/edit(id=${contact.id})}" th:object="${contact}" method="post">
+        <table role="presentation">
+            <tr>
+                <td><label for="firstName">First Name:</label></td>
+                <td><input type="text" id="firstName" th:field="*{firstName}"/></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last Name:</label></td>
+                <td><input type="text" id="lastName" th:field="*{lastName}"/></td>
+            </tr>
+            <tr>
+                <td><label for="birthday">Birthday:</label></td>
+                <td><input type="text" id="birthday" th:field="*{birthday}" placeholder="MM/dd/yyyy"/></td>
+            </tr>
+            <tr>
+                <td><label for="homePhone">Home Phone:</label></td>
+                <td><input type="text" id="homePhone" th:field="*{homePhone}"/></td>
+            </tr>
+            <tr>
+                <td><label for="mobilePhone">Mobile Phone:</label></td>
+                <td><input type="text" id="mobilePhone" th:field="*{mobilePhone}"/></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" id="email" th:field="*{email}"/></td>
+            </tr>
+        </table>
+        <br/>
+        <button type="submit">Save</button>
+    </form>
+    <br/>
+    <a th:href="@{/contacts/{id}(id=${contact.id})}">View</a>
+    <br/>
+    <a th:href="@{/contacts}">Show All Contact Items</a>
+    <br/><br/>
+    <a th:href="@{/}">Index</a>
+</body>
+</html>

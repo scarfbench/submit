@@ -1,0 +1,6 @@
+docker logs "encoder-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: encoder-spring
+make: *** [Makefile:47: logs] Error 1

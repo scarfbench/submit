@@ -1,0 +1,30 @@
+docker build -f Dockerfile -t "hello-servlet-spring:latest" .
+[INFO] Built image: hello-servlet-spring:latest
+### Run the container in detached mode
+docker run -d --name "hello-servlet-spring" "hello-servlet-spring:latest"
+50cd6aba1376f31c8b043016ad487b2d9d9d5b0813f8e053df8749978f149355
+[INFO] Started hello-servlet-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /greeting?name=… -> 200, contains 'SmokeUser'
+[PASS] GET /greeting (no name) -> 400
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__hello-servlet__quarkus__spring/run_3/output'
+docker rm -f "hello-servlet-spring"
+hello-servlet-spring
+[INFO] Container removed (if it existed)
+docker rmi "hello-servlet-spring:latest"
+Untagged: hello-servlet-spring:latest
+Deleted: sha256:f76cb62ab3e5a41af1c09f8ea26c8cba9d2fe163e6128dea92892608ef44dbe2
+docker image prune -f
+Deleted Images:
+deleted: sha256:7017e63dfdb7a959c26cd8f7ba6eb04a58d20d557033df8604a87b5257d9c1f4
+deleted: sha256:5f7987c4ed5461793503cc57ad9ebde21edb70434cfd4ac077c33df5750756ef
+deleted: sha256:eb14cb5b1934a13df6d5740b1b4a13397c520b86858a8ea63c2c625c673d5ba2
+deleted: sha256:b95909d89890d4acee94546b9c0aae70697d1e74f4b571a7cf9e24bd52967101
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__hello-servlet__quarkus__spring/run_3/output'

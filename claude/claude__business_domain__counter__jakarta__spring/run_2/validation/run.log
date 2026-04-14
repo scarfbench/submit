@@ -1,0 +1,111 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 986B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.2s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.1s done
+#3 DONE 0.1s
+
+#4 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#4 CACHED
+
+#5 [5/9] RUN playwright install --with-deps chromium
+#5 CACHED
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B 0.0s done
+#9 DONE 0.1s
+
+#10 [internal] load build context
+#10 transferring context: 164.41kB 0.0s done
+#10 DONE 0.0s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 27.1s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 1.184 [INFO] Scanning for projects...
+#13 1.400 [INFO] 
+#13 1.400 [INFO] ---------------< jakarta.examples.tutorial.ejb:counter >----------------
+#13 1.400 [INFO] Building counter 10-SNAPSHOT
+#13 1.400 [INFO]   from pom.xml
+#13 1.400 [INFO] --------------------------------[ war ]---------------------------------
+#13 1.824 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+#13 2.024 Progress (1): 0.9/65 kBProgress (1): 2.3/65 kBProgress (1): 3.6/65 kBProgress (1): 5.0/65 kBProgress (1): 6.4/65 kBProgress (1): 7.7/65 kBProgress (1): 9.1/65 kBProgress (1): 10/65 kB Progress (1): 12/65 kBProgress (1): 13/65 kBProgress (1): 15/65 kBProgress (1): 16/65 kBProgress (1): 17/65 kBProgress (1): 19/65 kBProgress (1): 20/65 kBProgress (1): 21/65 kBProgress (1): 23/65 kBProgress (1): 24/65 kBProgress (1): 26/65 kBProgress (1): 27/65 kBProgress (1): 28/65 kBProgress (1): 30/65 kBProgress (1): 31/65 kBProgress (1): 32/65 kBProgress (1): 34/65 kBProgress (1): 35/65 kBProgress (1): 36/65 kBProgress (1): 38/65 kBProgress (1): 39/65 kBProgress (1): 41/65 kBProgress (1): 42/65 kBProgress (1): 43/65 kBProgress (1): 45/65 kBProgress (1): 46/65 kBProgress (1): 47/65 kBProgress (1): 49/65 kBProgress (1): 50/65 kBProgress (1): 52/65 kBProgress (1): 53/65 kBProgress (1): 54/65 kBProgress (1): 56/65 kBProgress (1): 57/65 kBProgress (1): 62/65 kBProgress (1): 65 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar (65 kB at 310 kB/s)
+#13 2.057 [INFO] 
+#13 2.057 [INFO] --- resources:3.3.1:resources (default-resources) @ counter ---
+#13 2.174 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 2.187 [INFO] Copying 0 resource from src/main/resources to target/classes
+#13 2.187 [INFO] 
+#13 2.187 [INFO] --- compiler:3.11.0:compile (default-compile) @ counter ---
+#13 2.319 [INFO] Changes detected - recompiling the module! :source
+#13 2.322 [INFO] Compiling 3 source files with javac [debug release 17] to target/classes
+#13 2.945 [INFO] 
+#13 2.945 [INFO] --- resources:3.3.1:testResources (default-testResources) @ counter ---
+#13 2.947 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 2.947 [INFO] 
+#13 2.948 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ counter ---
+#13 2.949 [INFO] No sources to compile
+#13 2.950 [INFO] 
+#13 2.950 [INFO] --- surefire:3.1.2:test (default-test) @ counter ---
+#13 3.136 [INFO] Tests are skipped.
+#13 3.136 [INFO] 
+#13 3.136 [INFO] --- war:3.4.0:war (default-war) @ counter ---
+#13 3.421 [INFO] Packaging webapp
+#13 3.422 [INFO] Assembling webapp [counter] in [/app/target/counter]
+#13 3.424 [INFO] Processing war project
+#13 3.424 [INFO] Copying webapp resources [/app/src/main/webapp]
+#13 3.507 [INFO] Building war: /app/target/counter.war
+#13 4.081 [INFO] 
+#13 4.081 [INFO] --- spring-boot:3.2.0:repackage (repackage) @ counter ---
+#13 4.431 [INFO] Replacing main artifact /app/target/counter.war with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 4.431 [INFO] The original artifact has been renamed to /app/target/counter.war.original
+#13 4.431 [INFO] ------------------------------------------------------------------------
+#13 4.431 [INFO] BUILD SUCCESS
+#13 4.431 [INFO] ------------------------------------------------------------------------
+#13 4.434 [INFO] Total time:  3.263 s
+#13 4.434 [INFO] Finished at: 2026-03-24T03:11:39Z
+#13 4.434 [INFO] ------------------------------------------------------------------------
+#13 DONE 4.5s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 0.5s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 3.2s done
+#15 exporting manifest sha256:82dc106a9b447abe7c5760a6c85a048f27ce0326ada69a54e2949e9e61890510 0.0s done
+#15 exporting config sha256:74d2cc25cbf0b46cd15753bd741aa138561dc24a0975722000163bfebff93db7 0.0s done
+#15 exporting attestation manifest sha256:af9c3828b51daf54d6ed77c0867a6ffecf80449c217093bcc3d89e53e8810f0a 0.1s done
+#15 exporting manifest list sha256:461798bce83946705e2f1e4a066b3c06a547c25a1c1a6b02d476f143fc9e7bbe
+#15 exporting manifest list sha256:461798bce83946705e2f1e4a066b3c06a547c25a1c1a6b02d476f143fc9e7bbe 0.0s done
+#15 naming to docker.io/library/counter-spring:e71c4aa0 done
+#15 unpacking to docker.io/library/counter-spring:e71c4aa0
+#15 unpacking to docker.io/library/counter-spring:e71c4aa0 0.8s done
+#15 DONE 4.3s
+[INFO] Built image: counter-spring:e71c4aa0
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name counter-spring-c46ff0e6 counter-spring:e71c4aa0
+6a96ebd20b22175ba742325783180ad55a03f43cf49a43506da465917f1c704c
+[INFO] Started counter-spring-c46ff0e6, waiting for app to start...
+Error: Unable to access jarfile target/*.jar

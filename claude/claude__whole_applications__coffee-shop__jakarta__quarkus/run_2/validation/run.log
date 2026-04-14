@@ -1,0 +1,69 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.03kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.2s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.1s
+
+#4 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#4 CACHED
+
+#5 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#5 CACHED
+
+#6 [5/9] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B 0.0s done
+#9 DONE 0.1s
+
+#10 [internal] load build context
+#10 transferring context: 33.66MB 0.5s done
+#10 DONE 0.5s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean package -DskipTests -Dpmd.skip=true -Dspotbugs.skip=true
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:966c525dfabed6b2198cb610b3304b9ed8d5dee05d7cf176adda80911029f6ad done
+#14 exporting config sha256:770b6ca41dbabb21c704e38fe1a01480d5f367f37208b25c35f80ac9eed16e36 done
+#14 exporting attestation manifest sha256:2601d8e123c21b6fdc70c09986da9075cda588be040c3ab48f74a17387aba418 0.1s done
+#14 exporting manifest list sha256:2a391a05115c1ccb2023fe459a8279e58aea76871a4c77110e3ed48368caeaf5
+#14 exporting manifest list sha256:2a391a05115c1ccb2023fe459a8279e58aea76871a4c77110e3ed48368caeaf5 0.1s done
+#14 naming to docker.io/library/coffeeshop-quarkus:bddddca1
+#14 naming to docker.io/library/coffeeshop-quarkus:bddddca1 0.0s done
+#14 unpacking to docker.io/library/coffeeshop-quarkus:bddddca1 0.0s done
+#14 DONE 0.4s
+[INFO] Built image: coffeeshop-quarkus:bddddca1
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name coffeeshop-quarkus-648db756 \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	-e QUARKUS_PROFILE=dev \
+	-e STREAM_URL=http://localhost:8080/dashboard/stream \
+	-e STORE_ID=ATLANTA \
+	coffeeshop-quarkus:bddddca1
+b022d097b712e5894fa0f74ac37d0db87d872b2aab5fe894d9a4d040782aed8f
+[INFO] Started coffeeshop-quarkus-648db756, waiting for app to start...
+Error: Unable to access jarfile target/quarkus-app/quarkus-run.jar

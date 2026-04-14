@@ -1,0 +1,64 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 996B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#4 CACHED
+
+#5 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#5 CACHED
+
+#6 [5/9] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 9.97MB 0.6s done
+#10 DONE 0.6s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:c1e1f123b813b6c1d3240a809f52b9935b150f2bcf2819174dd4641941ad14c9 0.0s done
+#14 exporting config sha256:97b81c04f020f7b02ac036234e8d710e09486b3d365375742217899a6b4e7c52 done
+#14 exporting attestation manifest sha256:6d0597042a455695de577bed3d7d00982ee0b1f808867e5531cb2188460c1208
+#14 exporting attestation manifest sha256:6d0597042a455695de577bed3d7d00982ee0b1f808867e5531cb2188460c1208 0.1s done
+#14 exporting manifest list sha256:5a81dba1431688ad2deb0d828cdc2a72ed92dd7c3ba87d46872ee38b44d1a97e 0.1s done
+#14 naming to docker.io/library/daytrader-quarkus:0e896e9d
+#14 naming to docker.io/library/daytrader-quarkus:0e896e9d 0.0s done
+#14 unpacking to docker.io/library/daytrader-quarkus:0e896e9d 0.0s done
+#14 DONE 0.3s
+[INFO] Built image: daytrader-quarkus:0e896e9d
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name daytrader-quarkus-94ec295b daytrader-quarkus:0e896e9d
+09154cc20bebc776d92646b28414eed802475c3dc4082ffee5611ee4a1ea8698
+[INFO] Started daytrader-quarkus-94ec295b, waiting for app to start...
+Error: Unable to access jarfile target/quarkus-app/quarkus-run.jar

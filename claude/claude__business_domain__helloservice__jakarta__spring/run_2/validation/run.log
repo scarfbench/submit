@@ -1,0 +1,153 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 986B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [ 5/10] RUN playwright install --with-deps chromium
+#4 CACHED
+
+#5 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#5 CACHED
+
+#6 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [ 6/10] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 143.72kB done
+#10 DONE 0.0s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 25.1s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 1.473 [INFO] Scanning for projects...
+#13 1.693 [INFO] 
+#13 1.694 [INFO] -------------< jakarta.examples.tutorial.ejb:helloservice >-------------
+#13 1.694 [INFO] Building helloservice 10-SNAPSHOT
+#13 1.694 [INFO]   from pom.xml
+#13 1.694 [INFO] --------------------------------[ jar ]---------------------------------
+#13 2.086 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.pom
+#13 2.361 Progress (1): 806 BProgress (1): 2.4 kBProgress (1): 6.4 kBProgress (1): 9.2 kBProgress (1): 11 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.pom (11 kB at 38 kB/s)
+#13 2.380 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-runtime-parent/4.0.4/jaxb-runtime-parent-4.0.4.pom
+#13 2.453 Progress (1): 932 BProgress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-runtime-parent/4.0.4/jaxb-runtime-parent-4.0.4.pom (1.2 kB at 16 kB/s)
+#13 2.456 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/4.0.4/jaxb-parent-4.0.4.pom
+#13 2.492 Progress (1): 778 BProgress (1): 2.0 kBProgress (1): 4.0 kBProgress (1): 5.7 kBProgress (1): 8.2 kBProgress (1): 14 kB Progress (1): 18 kBProgress (1): 22 kBProgress (1): 28 kBProgress (1): 33 kBProgress (1): 35 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/4.0.4/jaxb-parent-4.0.4.pom (35 kB at 898 kB/s)
+#13 2.508 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/4.0.4/jaxb-bom-ext-4.0.4.pom
+#13 2.545 Progress (1): 863 BProgress (1): 2.6 kBProgress (1): 3.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/4.0.4/jaxb-bom-ext-4.0.4.pom (3.5 kB at 91 kB/s)
+#13 2.549 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.pom
+#13 2.581 Progress (1): 899 BProgress (1): 2.5 kBProgress (1): 3.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.pom (3.7 kB at 113 kB/s)
+#13 2.587 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.pom
+#13 2.623 Progress (1): 931 BProgress (1): 1.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.pom (1.8 kB at 50 kB/s)
+#13 2.633 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-txw-parent/4.0.4/jaxb-txw-parent-4.0.4.pom
+#13 2.681 Progress (1): 930 BProgress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-txw-parent/4.0.4/jaxb-txw-parent-4.0.4.pom (1.2 kB at 20 kB/s)
+#13 2.689 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.pom
+#13 2.733 Progress (1): 933 BProgress (1): 1.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.pom (1.6 kB at 35 kB/s)
+#13 2.737 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/4.1.2/istack-commons-4.1.2.pom
+#13 2.773 Progress (1): 794 BProgress (1): 2.1 kBProgress (1): 4.1 kBProgress (1): 10 kB Progress (1): 15 kBProgress (1): 19 kBProgress (1): 24 kBProgress (1): 26 kBProgress (1): 26 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/4.1.2/istack-commons-4.1.2.pom (26 kB at 658 kB/s)
+#13 2.812 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+#13 2.812 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.jar
+#13 2.812 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.jar
+#13 2.812 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.jar
+#13 2.812 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar
+#13 2.841 Progress (1): 0.9/920 kBProgress (1): 2.3/920 kBProgress (1): 3.6/920 kBProgress (1): 5.0/920 kBProgress (1): 6.4/920 kBProgress (1): 7.7/920 kBProgress (1): 9.1/920 kBProgress (1): 10/920 kB Progress (1): 12/920 kBProgress (1): 13/920 kBProgress (1): 15/920 kBProgress (1): 16/920 kBProgress (1): 17/920 kBProgress (1): 18/920 kBProgress (1): 23/920 kBProgress (1): 27/920 kBProgress (1): 31/920 kBProgress (1): 35/920 kBProgress (1): 40/920 kBProgress (1): 44/920 kBProgress (1): 48/920 kBProgress (1): 52/920 kBProgress (1): 56/920 kBProgress (1): 61/920 kBProgress (1): 65/920 kBProgress (1): 69/920 kBProgress (1): 73/920 kBProgress (1): 78/920 kBProgress (1): 82/920 kBProgress (1): 86/920 kBProgress (1): 90/920 kBProgress (1): 95/920 kBProgress (1): 99/920 kBProgress (1): 103/920 kBProgress (1): 107/920 kBProgress (1): 111/920 kBProgress (1): 115/920 kBProgress (1): 119/920 kBProgress (1): 123/920 kBProgress (1): 127/920 kBProgress (1): 132/920 kBProgress (1): 136/920 kBProgress (1): 140/920 kBProgress (1): 144/920 kBProgress (1): 147/920 kBProgress (1): 152/920 kBProgress (1): 156/920 kBProgress (1): 160/920 kBProgress (1): 164/920 kBProgress (1): 169/920 kBProgress (1): 173/920 kBProgress (1): 177/920 kBProgress (1): 181/920 kBProgress (1): 186/920 kBProgress (1): 202/920 kBProgress (1): 213/920 kBProgress (1): 229/920 kBProgress (1): 246/920 kBProgress (1): 262/920 kBProgress (1): 279/920 kBProgress (2): 279/920 kB | 0.9/73 kBProgress (2): 279/920 kB | 2.3/73 kBProgress (2): 279/920 kB | 3.6/73 kBProgress (2): 279/920 kB | 5.0/73 kBProgress (2): 279/920 kB | 6.4/73 kBProgress (2): 279/920 kB | 7.7/73 kBProgress (2): 279/920 kB | 9.1/73 kBProgress (2): 279/920 kB | 10/73 kB Progress (2): 279/920 kB | 12/73 kBProgress (2): 279/920 kB | 13/73 kBProgress (2): 279/920 kB | 15/73 kBProgress (2): 279/920 kB | 16/73 kBProgress (2): 279/920 kB | 17/73 kBProgress (2): 279/920 kB | 19/73 kBProgress (2): 279/920 kB | 20/73 kBProgress (2): 279/920 kB | 21/73 kBProgress (2): 279/920 kB | 23/73 kBProgress (2): 279/920 kB | 24/73 kBProgress (2): 279/920 kB | 26/73 kBProgress (2): 279/920 kB | 27/73 kBProgress (3): 279/920 kB | 27/73 kB | 0.9/139 kBProgress (3): 279/920 kB | 27/73 kB | 2.3/139 kBProgress (3): 279/920 kB | 27/73 kB | 3.6/139 kBProgress (3): 279/920 kB | 28/73 kB | 3.6/139 kBProgress (3): 279/920 kB | 28/73 kB | 5.0/139 kBProgress (3): 279/920 kB | 28/73 kB | 6.4/139 kBProgress (3): 279/920 kB | 28/73 kB | 7.7/139 kBProgress (3): 279/920 kB | 28/73 kB | 9.1/139 kBProgress (3): 279/920 kB | 30/73 kB | 9.1/139 kBProgress (3): 279/920 kB | 30/73 kB | 10/139 kB Progress (3): 279/920 kB | 30/73 kB | 12/139 kBProgress (3): 279/920 kB | 30/73 kB | 12/139 kBProgress (3): 279/920 kB | 30/73 kB | 14/139 kBProgress (3): 279/920 kB | 30/73 kB | 15/139 kBProgress (3): 279/920 kB | 31/73 kB | 15/139 kBProgress (3): 279/920 kB | 31/73 kB | 16/139 kBProgress (3): 279/920 kB | 32/73 kB | 16/139 kBProgress (3): 279/920 kB | 32/73 kB | 18/139 kBProgress (3): 279/920 kB | 32/73 kB | 19/139 kBProgress (3): 279/920 kB | 32/73 kB | 21/139 kBProgress (3): 279/920 kB | 32/73 kB | 22/139 kBProgress (3): 279/920 kB | 32/73 kB | 23/139 kBProgress (3): 279/920 kB | 32/73 kB | 25/139 kBProgress (3): 279/920 kB | 32/73 kB | 26/139 kBProgress (3): 279/920 kB | 32/73 kB | 27/139 kBProgress (3): 279/920 kB | 33/73 kB | 27/139 kBProgress (3): 279/920 kB | 33/73 kB | 29/139 kBProgress (3): 279/920 kB | 35/73 kB | 29/139 kBProgress (3): 279/920 kB | 36/73 kB | 29/139 kBProgress (3): 279/920 kB | 38/73 kB | 29/139 kBProgress (3): 279/920 kB | 39/73 kB | 29/139 kBProgress (3): 279/920 kB | 39/73 kB | 30/139 kBProgress (3): 279/920 kB | 39/73 kB | 31/139 kBProgress (3): 279/920 kB | 39/73 kB | 33/139 kBProgress (3): 279/920 kB | 39/73 kB | 34/139 kBProgress (3): 279/920 kB | 39/73 kB | 36/139 kBProgress (3): 279/920 kB | 39/73 kB | 37/139 kBProgress (3): 279/920 kB | 39/73 kB | 38/139 kBProgress (3): 279/920 kB | 39/73 kB | 40/139 kBProgress (3): 279/920 kB | 39/73 kB | 41/139 kBProgress (3): 279/920 kB | 39/73 kB | 42/139 kBProgress (3): 279/920 kB | 39/73 kB | 44/139 kBProgress (3): 279/920 kB | 39/73 kB | 45/139 kBProgress (3): 279/920 kB | 39/73 kB | 47/139 kBProgress (3): 279/920 kB | 39/73 kB | 48/139 kBProgress (3): 279/920 kB | 39/73 kB | 49/139 kBProgress (3): 279/920 kB | 39/73 kB | 51/139 kBProgress (3): 279/920 kB | 39/73 kB | 52/139 kBProgress (3): 279/920 kB | 39/73 kB | 53/139 kBProgress (3): 279/920 kB | 39/73 kB | 55/139 kBProgress (3): 279/920 kB | 39/73 kB | 59/139 kBProgress (3): 279/920 kB | 39/73 kB | 63/139 kBProgress (3): 279/920 kB | 39/73 kB | 67/139 kBProgress (3): 279/920 kB | 40/73 kB | 67/139 kBProgress (3): 279/920 kB | 42/73 kB | 67/139 kBProgress (3): 279/920 kB | 43/73 kB | 67/139 kBProgress (3): 279/920 kB | 44/73 kB | 67/139 kBProgress (3): 279/920 kB | 46/73 kB | 67/139 kBProgress (3): 279/920 kB | 47/73 kB | 67/139 kBProgress (3): 295/920 kB | 47/73 kB | 67/139 kBProgress (3): 311/920 kB | 47/73 kB | 67/139 kBProgress (3): 311/920 kB | 48/73 kB | 67/139 kBProgress (3): 328/920 kB | 48/73 kB | 67/139 kBProgress (3): 328/920 kB | 50/73 kB | 67/139 kBProgress (3): 344/920 kB | 50/73 kB | 67/139 kBProgress (3): 344/920 kB | 51/73 kB | 67/139 kBProgress (3): 344/920 kB | 53/73 kB | 67/139 kBProgress (3): 360/920 kB | 53/73 kB | 67/139 kBProgress (3): 360/920 kB | 54/73 kB | 67/139 kBProgress (3): 360/920 kB | 55/73 kB | 67/139 kBProgress (3): 377/920 kB | 55/73 kB | 67/139 kBProgress (3): 377/920 kB | 60/73 kB | 67/139 kBProgress (3): 377/920 kB | 64/73 kB | 67/139 kBProgress (3): 393/920 kB | 64/73 kB | 67/139 kBProgress (3): 410/920 kB | 64/73 kB | 67/139 kBProgress (3): 426/920 kB | 64/73 kB | 67/139 kBProgress (3): 442/920 kB | 64/73 kB | 67/139 kBProgress (3): 459/920 kB | 64/73 kB | 67/139 kBProgress (4): 459/920 kB | 64/73 kB | 67/139 kB | 0.9/26 kBProgress (4): 459/920 kB | 64/73 kB | 67/139 kB | 2.3/26 kBProgress (4): 459/920 kB | 64/73 kB | 67/139 kB | 3.6/26 kBProgress (4): 459/920 kB | 64/73 kB | 67/139 kB | 5.0/26 kBProgress (4): 459/920 kB | 64/73 kB | 67/139 kB | 6.4/26 kBProgress (4): 459/920 kB | 64/73 kB | 67/139 kB | 7.7/26 kBProgress (4): 459/920 kB | 64/73 kB | 67/139 kB | 9.1/26 kBProgress (4): 459/920 kB | 64/73 kB | 67/139 kB | 10/26 kB Progress (4): 475/920 kB | 64/73 kB | 67/139 kB | 10/26 kBProgress (4): 475/920 kB | 64/73 kB | 67/139 kB | 12/26 kBProgress (4): 475/920 kB | 64/73 kB | 67/139 kB | 13/26 kBProgress (4): 475/920 kB | 64/73 kB | 67/139 kB | 15/26 kBProgress (4): 475/920 kB | 64/73 kB | 67/139 kB | 16/26 kBProgress (4): 475/920 kB | 64/73 kB | 67/139 kB | 17/26 kBProgress (4): 475/920 kB | 64/73 kB | 72/139 kB | 17/26 kBProgress (4): 475/920 kB | 64/73 kB | 72/139 kB | 18/26 kBProgress (4): 475/920 kB | 64/73 kB | 72/139 kB | 20/26 kBProgress (4): 475/920 kB | 64/73 kB | 76/139 kB | 20/26 kBProgress (4): 475/920 kB | 64/73 kB | 76/139 kB | 21/26 kBProgress (4): 475/920 kB | 64/73 kB | 80/139 kB | 21/26 kBProgress (4): 475/920 kB | 64/73 kB | 80/139 kB | 23/26 kBProgress (4): 475/920 kB | 64/73 kB | 80/139 kB | 24/26 kBProgress (4): 475/920 kB | 64/73 kB | 80/139 kB | 25/26 kBProgress (4): 475/920 kB | 64/73 kB | 80/139 kB | 26 kB   Progress (4): 475/920 kB | 68/73 kB | 80/139 kB | 26 kBProgress (4): 475/920 kB | 72/73 kB | 80/139 kB | 26 kBProgress (4): 475/920 kB | 73 kB | 80/139 kB | 26 kB                                                       Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar (26 kB at 314 kB/s)
+#13 2.893 Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.jar (73 kB at 894 kB/s)
+#13 2.893 Progress (2): 475/920 kB | 84/139 kBProgress (2): 475/920 kB | 89/139 kBProgress (2): 475/920 kB | 93/139 kBProgress (2): 475/920 kB | 97/139 kBProgress (2): 475/920 kB | 101/139 kBProgress (2): 492/920 kB | 101/139 kBProgress (2): 492/920 kB | 105/139 kBProgress (2): 492/920 kB | 110/139 kBProgress (2): 492/920 kB | 114/139 kBProgress (2): 508/920 kB | 114/139 kBProgress (2): 524/920 kB | 114/139 kBProgress (2): 541/920 kB | 114/139 kBProgress (2): 557/920 kB | 114/139 kBProgress (2): 573/920 kB | 114/139 kBProgress (2): 590/920 kB | 114/139 kBProgress (2): 606/920 kB | 114/139 kBProgress (2): 623/920 kB | 114/139 kBProgress (2): 639/920 kB | 114/139 kBProgress (2): 655/920 kB | 114/139 kBProgress (2): 655/920 kB | 118/139 kBProgress (2): 655/920 kB | 122/139 kBProgress (2): 655/920 kB | 127/139 kBProgress (2): 655/920 kB | 131/139 kBProgress (2): 655/920 kB | 135/139 kBProgress (2): 655/920 kB | 139 kB                                     Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.jar (139 kB at 1.6 MB/s)
+#13 2.904 Progress (1): 672/920 kBProgress (2): 672/920 kB | 0.9/65 kBProgress (2): 672/920 kB | 2.3/65 kBProgress (2): 672/920 kB | 3.6/65 kBProgress (2): 672/920 kB | 5.0/65 kBProgress (2): 672/920 kB | 6.4/65 kBProgress (2): 672/920 kB | 7.7/65 kBProgress (2): 688/920 kB | 7.7/65 kBProgress (2): 688/920 kB | 9.1/65 kBProgress (2): 688/920 kB | 10/65 kB Progress (2): 688/920 kB | 12/65 kBProgress (2): 705/920 kB | 12/65 kBProgress (2): 705/920 kB | 12/65 kBProgress (2): 705/920 kB | 14/65 kBProgress (2): 721/920 kB | 14/65 kBProgress (2): 721/920 kB | 15/65 kBProgress (2): 737/920 kB | 15/65 kBProgress (2): 737/920 kB | 16/65 kBProgress (2): 737/920 kB | 18/65 kBProgress (2): 754/920 kB | 18/65 kBProgress (2): 754/920 kB | 19/65 kBProgress (2): 754/920 kB | 21/65 kBProgress (2): 754/920 kB | 22/65 kBProgress (2): 754/920 kB | 23/65 kBProgress (2): 754/920 kB | 25/65 kBProgress (2): 754/920 kB | 26/65 kBProgress (2): 754/920 kB | 27/65 kBProgress (2): 754/920 kB | 29/65 kBProgress (2): 754/920 kB | 30/65 kBProgress (2): 754/920 kB | 31/65 kBProgress (2): 754/920 kB | 33/65 kBProgress (2): 754/920 kB | 34/65 kBProgress (2): 754/920 kB | 36/65 kBProgress (2): 754/920 kB | 37/65 kBProgress (2): 754/920 kB | 38/65 kBProgress (2): 754/920 kB | 40/65 kBProgress (2): 754/920 kB | 41/65 kBProgress (2): 754/920 kB | 42/65 kBProgress (2): 754/920 kB | 44/65 kBProgress (2): 754/920 kB | 45/65 kBProgress (2): 754/920 kB | 47/65 kBProgress (2): 754/920 kB | 48/65 kBProgress (2): 754/920 kB | 49/65 kBProgress (2): 770/920 kB | 49/65 kBProgress (2): 786/920 kB | 49/65 kBProgress (2): 803/920 kB | 49/65 kBProgress (2): 819/920 kB | 49/65 kBProgress (2): 819/920 kB | 51/65 kBProgress (2): 819/920 kB | 52/65 kBProgress (2): 819/920 kB | 53/65 kBProgress (2): 819/920 kB | 55/65 kBProgress (2): 819/920 kB | 59/65 kBProgress (2): 819/920 kB | 63/65 kBProgress (2): 819/920 kB | 65 kB   Progress (2): 836/920 kB | 65 kBProgress (2): 852/920 kB | 65 kB                                Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar (65 kB at 646 kB/s)
+#13 2.912 Progress (1): 868/920 kBProgress (1): 885/920 kBProgress (1): 901/920 kBProgress (1): 918/920 kBProgress (1): 920 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.jar (920 kB at 9.3 MB/s)
+#13 2.938 [INFO] 
+#13 2.938 [INFO] --- resources:3.3.1:resources (default-resources) @ helloservice ---
+#13 3.046 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 3.054 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 3.056 [INFO] 
+#13 3.056 [INFO] --- compiler:3.11.0:compile (default-compile) @ helloservice ---
+#13 3.130 [INFO] Changes detected - recompiling the module! :source
+#13 3.131 [INFO] Compiling 2 source files with javac [debug release 17] to target/classes
+#13 3.684 [INFO] 
+#13 3.685 [INFO] --- resources:3.3.1:testResources (default-testResources) @ helloservice ---
+#13 3.705 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 3.705 [INFO] 
+#13 3.707 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ helloservice ---
+#13 3.713 [INFO] No sources to compile
+#13 3.713 [INFO] 
+#13 3.713 [INFO] --- surefire:3.1.2:test (default-test) @ helloservice ---
+#13 3.872 [INFO] Tests are skipped.
+#13 3.872 [INFO] 
+#13 3.872 [INFO] --- jar:3.3.0:jar (default-jar) @ helloservice ---
+#13 3.979 [INFO] Building jar: /app/target/helloservice.jar
+#13 3.998 [INFO] 
+#13 3.998 [INFO] --- spring-boot:3.2.0:repackage (repackage) @ helloservice ---
+#13 4.216 [INFO] Replacing main artifact /app/target/helloservice.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 4.219 [INFO] The original artifact has been renamed to /app/target/helloservice.jar.original
+#13 4.219 [INFO] ------------------------------------------------------------------------
+#13 4.219 [INFO] BUILD SUCCESS
+#13 4.219 [INFO] ------------------------------------------------------------------------
+#13 4.220 [INFO] Total time:  2.759 s
+#13 4.220 [INFO] Finished at: 2026-03-24T04:54:43Z
+#13 4.220 [INFO] ------------------------------------------------------------------------
+#13 DONE 4.3s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 1.6s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 2.4s done
+#15 exporting manifest sha256:6719a26de3608f062f6dee364348e0d332d553127f2da2fa00af669a3f67d8cc
+#15 exporting manifest sha256:6719a26de3608f062f6dee364348e0d332d553127f2da2fa00af669a3f67d8cc 0.0s done
+#15 exporting config sha256:e8229ca280eea7e5a0b11638e332130c7ebf85b1996ffc15bfc51e7f67a0ad9e 0.0s done
+#15 exporting attestation manifest sha256:b8cda20f6349c7b2b93f850a8a802560f72786a7e9ff7927e9bdd2e1a647289a 0.1s done
+#15 exporting manifest list sha256:0899ed35fb09a6f0c82b66a5848f0039e6d24fb4d73100fb6c8f0109ad1ee20f
+#15 exporting manifest list sha256:0899ed35fb09a6f0c82b66a5848f0039e6d24fb4d73100fb6c8f0109ad1ee20f 0.0s done
+#15 naming to docker.io/library/helloservice-spring:ce1a1426 done
+#15 unpacking to docker.io/library/helloservice-spring:ce1a1426
+#15 unpacking to docker.io/library/helloservice-spring:ce1a1426 1.1s done
+#15 DONE 4.5s
+[INFO] Built image: helloservice-spring:ce1a1426
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name helloservice-spring-dd69fd63 helloservice-spring:ce1a1426
+588ddfbf0becd8f6df4390e2582d017934e4adaea1d17a3099ae0a5531a19c6e
+[INFO] Started helloservice-spring-dd69fd63, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T04:54:51.920Z  INFO 19 --- [helloservice] [           main] j.tutorial.helloservice.Application      : Starting Application v10-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/helloservice.jar started by root in /app)
+2026-03-24T04:54:51.922Z  INFO 19 --- [helloservice] [           main] j.tutorial.helloservice.Application      : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T04:54:52.568Z  WARN 19 --- [helloservice] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-03-24T04:54:52.641Z  INFO 19 --- [helloservice] [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-03-24T04:54:52.774Z  INFO 19 --- [helloservice] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T04:54:52.778Z  INFO 19 --- [helloservice] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T04:54:52.779Z  INFO 19 --- [helloservice] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T04:54:52.795Z  INFO 19 --- [helloservice] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T04:54:52.796Z  INFO 19 --- [helloservice] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 788 ms
+2026-03-24T04:54:53.009Z  INFO 19 --- [helloservice] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T04:54:53.019Z  INFO 19 --- [helloservice] [           main] j.tutorial.helloservice.Application      : Started Application in 1.5 seconds (process running for 1.89)

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Order Jakarta EE Server">
+
+    <featureManager>
+        <feature>cdi-4.0</feature>
+        <feature>persistence-3.1</feature>
+        <feature>enterpriseBeans-4.0</feature>
+        <feature>restfulWS-3.1</feature>
+        <feature>faces-4.0</feature>
+        <feature>jsonb-3.0</feature>
+        <feature>jsonp-2.1</feature>
+        <feature>jndi-1.0</feature>
+        <feature>jdbc-4.3</feature>
+        <feature>beanValidation-3.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- Basic user registry for EJB -->
+    <basicRegistry id="basic" realm="BasicRealm" />
+
+    <!-- H2 JDBC Library -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/jdbc" includes="h2*.jar"/>
+    </library>
+
+    <!-- DataSource configuration -->
+    <dataSource id="orderDS" jndiName="jdbc/orderDB">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1" user="sa" password=""/>
+    </dataSource>
+
+    <!-- Application -->
+    <webApplication id="order-jakarta"
+                    location="order-jakarta.war"
+                    contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+    <!-- Logging -->
+    <logging consoleLogLevel="INFO"
+             traceSpecification="*=info:com.example.orderspring=fine"/>
+
+</server>

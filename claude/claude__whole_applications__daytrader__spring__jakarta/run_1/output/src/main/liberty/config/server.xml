@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="DayTrader Jakarta EE 10 Server">
+
+    <!-- Enable Jakarta EE 10 features -->
+    <featureManager>
+        <feature>webProfile-10.0</feature>
+        <feature>messaging-3.1</feature>
+        <feature>messagingServer-3.0</feature>
+        <feature>messagingClient-3.0</feature>
+        <feature>concurrent-3.0</feature>
+        <feature>mdb-4.0</feature>
+        <feature>localConnector-1.0</feature>
+    </featureManager>
+
+    <!-- HTTP Endpoints -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- Application configuration -->
+    <webApplication id="daytrader"
+                    location="daytrader.war"
+                    contextRoot="/daytrader">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+    <!-- H2 JDBC Library -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2-*.jar"/>
+    </library>
+
+    <!-- DataSource for H2 -->
+    <dataSource id="TradeDataSource" jndiName="jdbc/TradeDataSource" type="javax.sql.DataSource">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:file:${server.output.dir}/data/tradedb;DB_CLOSE_ON_EXIT=FALSE"
+                    user="sa" password=""/>
+        <connectionManager maxPoolSize="100" minPoolSize="10"/>
+    </dataSource>
+
+    <!-- JMS Configuration - embedded messaging -->
+    <wasJmsEndpoint wasJmsPort="7276" wasJmsSslPort="7286" />
+
+    <jmsConnectionFactory jndiName="jms/QueueConnectionFactory">
+        <properties.wasJms/>
+    </jmsConnectionFactory>
+
+    <jmsConnectionFactory jndiName="jms/TopicConnectionFactory">
+        <properties.wasJms/>
+    </jmsConnectionFactory>
+
+    <jmsQueue jndiName="jms/TradeBrokerQueue" id="TradeBrokerQueue">
+        <properties.wasJms queueName="TradeBrokerQueue"/>
+    </jmsQueue>
+
+    <jmsTopic jndiName="jms/TradeStreamerTopic" id="TradeStreamerTopic">
+        <properties.wasJms topicName="TradeStreamerTopic"/>
+    </jmsTopic>
+
+    <jmsActivationSpec id="daytrader/DTBroker3Listener">
+        <properties.wasJms destinationRef="TradeBrokerQueue"
+                          destinationType="jakarta.jms.Queue"/>
+    </jmsActivationSpec>
+
+    <jmsActivationSpec id="daytrader/DTStreamer3Listener">
+        <properties.wasJms destinationRef="TradeStreamerTopic"
+                          destinationType="jakarta.jms.Topic"/>
+    </jmsActivationSpec>
+
+    <!-- Managed Executor Service -->
+    <managedExecutorService jndiName="concurrent/ManagedExecutorService">
+        <concurrencyPolicy max="100" maxQueueSize="500"/>
+    </managedExecutorService>
+
+    <managedScheduledExecutorService jndiName="concurrent/ManagedScheduledExecutorService">
+        <concurrencyPolicy max="10"/>
+    </managedScheduledExecutorService>
+
+</server>

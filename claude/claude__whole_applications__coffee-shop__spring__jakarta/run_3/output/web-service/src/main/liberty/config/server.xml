@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Coffeeshop Web Service">
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>microProfile-6.1</feature>
+    </featureManager>
+
+    <!-- HTTP endpoint -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- Application deployment -->
+    <webApplication location="web-service.war" contextRoot="/">
+        <classloader apiTypeVisibility="spec, ibm-api, third-party" />
+    </webApplication>
+
+    <!-- Logging -->
+    <logging consoleLogLevel="INFO"
+             consoleFormat="simple" />
+
+</server>

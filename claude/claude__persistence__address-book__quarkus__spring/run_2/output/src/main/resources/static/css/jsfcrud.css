@@ -1,0 +1,96 @@
+/**
+ * Copyright (c), Eclipse Foundation, Inc. and its licensors.
+ *
+ * All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Distribution License v1.0, which is available at
+ * https://www.eclipse.org/org/documents/edl-v10.php
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+root {
+    display: block;
+}
+
+body {
+    font-family: Univers, "Univers 55", "Lucida Grande CE", lucida, Helvetica, san-serif;
+    color: black;
+    background-color: white;
+    font-size: small;
+}
+
+h1, h2, h3, h4 {
+    border-bottom: 1px solid #7F7F7F;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #d20005;
+}
+
+h1 {
+    font-size:  16px;
+}
+
+h2 {
+    font-size:  14px;
+}
+
+h3 {
+    font-size: 12px;
+}
+
+h4 {
+    font-size: 10px;
+}
+
+a:link, a:visited  {
+    color: black;
+}
+
+a:link:hover, a:visited:hover {
+    text-decoration: underline;
+    color: #d20005;
+}
+
+table {
+    empty-cells: show;
+}
+
+form.jsfcrud_list_form th, td th, .jsfcrud_list_form th {
+    font-size: x-small;
+    color: #d20005;
+    border: 1px solid #cccccc;
+    letter-spacing: 3px;
+    text-align: left;
+    padding: 6px;
+    background-color: white;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+}
+
+form.jsfcrud_list_form td, td td, .jsfcrud_list_form td {
+    border: 1px solid #cccccc;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #e5e5e5;
+    color: black;
+}
+
+tr.jsfcrud_even_row {
+    background-color: #cccccc;
+    color: black;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

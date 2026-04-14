@@ -1,0 +1,64 @@
+docker build -f Dockerfile -t "converter-spring":latest .
+[INFO] Built image: converter-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "converter-spring" "converter-spring":latest
+7c318a234056ecf04657da91ad6437e82a040962cfb86f362a13210ba03be03e
+[INFO] Started converter-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+---[ 00:37:35 - Smoke test ]---
+[PASS] Page loaded successfully and contains expected text.
+[PASS] Convertion displayed correctly.
+Summary: 2/2 tests passed.
+---[ 00:37:36 - Smoke test complete ]---
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__business_domain__converter__quarkus__spring/run_3/output'
+docker rm -f "converter-spring"
+converter-spring
+[INFO] Container removed (if it existed)
+docker rmi "converter-spring":latest
+Untagged: converter-spring:latest
+Deleted: sha256:d7c73af3c919401f5950c2395717484d204a9f95978a8e4b92160747f7bdc382
+docker image prune -f
+Deleted Images:
+deleted: sha256:ffa45621232b5113628fe82e867dc995b55320a6bb55ba3b438fdbd2f51783ce
+deleted: sha256:419698acfdd4cd5de1c3e831d17a2cf5a4741b0917457017c8067b0e4e7abaad
+deleted: sha256:f1945781bec2dd574c7a6c0b7a0d3714a91fb62b44daf35b46e3539427a7a676
+deleted: sha256:4473717fc4bf716457eefac655f24079a3ebcbba7d92a29d6bbf8fbd333ec030
+deleted: sha256:ca6069700c5e2b7fc8e9ff63ce7b7c3afc419efa1e09b6cb1ad0b1f6f19c3d76
+deleted: sha256:4e75fdbec65eadc7555786d7e56abc6d933b104bbfd4080b102b1d3b5651a373
+deleted: sha256:35b582b6267b161eabbff6197b574c45994dbd83ffa739d4665643cd88eecf15
+deleted: sha256:82977107e3f5a4486b37747d259d8c0892867340a9e757f96047173c112bfb46
+deleted: sha256:c12eb53933b11d9d40b3332a903228c3dc8bb2a3a30d56cf0bd73263b6d9a429
+deleted: sha256:69708f9954876ede7e3c935619c14bc31c33d52ff81a27fce1f4db9670139cfd
+deleted: sha256:278d720a9ca67d8c78d2e1084242c243cce0a9fd6b6b3aa82205361973ff3925
+deleted: sha256:ddb2063ce172e1f766f9d8bceb0a2712da1fb3e743549cba8f376317517d266e
+deleted: sha256:3b578a25e289e66735a5166f58fe85b58f890c00aa0d2b805a6462dfc4f2e65f
+deleted: sha256:a6c14263e210397818d723adcbaf3e3b3c5959a0faafa77be8fa5b6ef83acc9b
+deleted: sha256:7432d004e02a766a76a2b5b4ee30a05d2d7a81cef4ab16218778fe6d313ebf0e
+deleted: sha256:c97a429107f1660803c2aeafe72eff9250795675d30b02d88ed5e929cb943d76
+deleted: sha256:f7a7154437749ad20bd68f22714ada4023d60f59b4c983bde2a01ff2ad5e82d6
+deleted: sha256:e8e6f2f63131294d7f5bdf042353a845489eff4c64414949c53e0909a842c85a
+deleted: sha256:05cbc212821a60b9403ecc3721660494c5888523d30346c133fb1632598c232f
+deleted: sha256:77e48f8914f22367ea0df13a36672e63b072715fea22f60f4f9256f9764cdf75
+deleted: sha256:c5755b578983613eb6fe85c3601cfb71a425c1dde799a4746b74ec09b28b1438
+deleted: sha256:20be3477c1748fd069e3d336bbfa5b92b3bd484d4e5531d0cf695147d734ddc6
+deleted: sha256:a6f8a90d1af5c42b6695c57703dbc365df0afc3ec4f05395fe820a4d257f5697
+deleted: sha256:8c83aa1c2451093b6c99e8c9aad0eb57df731952261caa1c7a3b94d1ed67acbd
+deleted: sha256:e5d5c1c8fda10c55ea9c03e43075467129e6601745c17d6437d7ab35a1cfe340
+deleted: sha256:477cf727f8cf7f459935209118759330609058bbcf6b9661dc8ce30f1bd9fe4a
+deleted: sha256:e7474ed83a99f56a4cd1a0abb8fa4894afb164ee4660d878e81b9115ad880c85
+deleted: sha256:519d5f417c101218c33af6bce576a17e37e9d313c03ff27415e4b17d96773fd2
+deleted: sha256:06d7cb24d0d944e2f67a71a7c83ef6fbcfdabdf4a5a0bfd7efc3b8a6ec32e8a4
+deleted: sha256:7f5aae98a80c48cec72368f46d6fc679b79368065b6e2b8d911a66261040fcfd
+deleted: sha256:153358f4577ac2a3bfbb72cfb1b0ce3c0b53c9ac7a5ddabb1ccdb2a90da08db2
+deleted: sha256:08ad604f391d7f7055606bdc5af5c4ec3869117e9a7583414067d4ea607f0f96
+deleted: sha256:5fddc19a98352d8132f67dad642ee01dd1f5a15c0f618c5432c4ae0574da00b1
+deleted: sha256:7b4050b5a017e1c0bd0898cb532f4a60ce68fb4f2e1ec3ab18e91a30514f9a2f
+deleted: sha256:39f3eb8abcfdef9b3cd0d45aba4f2c9c0ddd767417a7d9d1319ccc45f95d8aab
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__business_domain__converter__quarkus__spring/run_3/output'

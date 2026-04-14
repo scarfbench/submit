@@ -1,0 +1,6 @@
+docker logs "converter-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: converter-spring
+make: *** [Makefile:59: logs] Error 1

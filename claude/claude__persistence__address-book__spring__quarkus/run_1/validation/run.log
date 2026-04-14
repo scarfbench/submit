@@ -1,0 +1,301 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 996B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 442B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 74.34kB 0.0s done
+#5 DONE 0.0s
+
+#6 [6/9] WORKDIR /app
+#6 CACHED
+
+#7 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [5/9] RUN playwright install --with-deps chromium
+#8 CACHED
+
+#9 [7/9] COPY . .
+#9 CACHED
+
+#10 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#10 CACHED
+
+#11 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#11 CACHED
+
+#12 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:b3caf4fa6de37417f185198a3c495810608c0165a68197a2e669fdfca0c0cca8 0.0s done
+#14 exporting config sha256:75d2785839d217481d6e2e819db8e333749c8b4b2faec73201252ceb92eb60d6 done
+#14 exporting attestation manifest sha256:d2a2409ea0a89b82a1df7669b40166403418259a58bf21b0bbdf284bc04f5d05 0.1s done
+#14 exporting manifest list sha256:9e553b9dfaa64d9cb5efbc0c3e443ea82cd8ebaa1a3f133ddabf3263caa530d9
+#14 exporting manifest list sha256:9e553b9dfaa64d9cb5efbc0c3e443ea82cd8ebaa1a3f133ddabf3263caa530d9 0.0s done
+#14 naming to docker.io/library/address-book-quarkus:c4c96357 done
+#14 unpacking to docker.io/library/address-book-quarkus:c4c96357 done
+#14 DONE 0.2s
+[INFO] Built image: address-book-quarkus:c4c96357
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name address-book-quarkus-b811702a address-book-quarkus:c4c96357
+27e3333d2c7d772753712b90bb76a0192700cedb727a5b5e3591e805744aeef4
+[INFO] Started address-book-quarkus-b811702a, waiting for app to start...
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:32:25,851 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.myfaces.project-stage" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2026-03-24 05:32:25,851 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.jackson.date-format" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m Contact [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m Contact (
+        birthday [34mdate[0m,
+        id [34mbigint[0m generated [34mby[0m [34mdefault[0m [34mas[0m [34midentity[0m,
+        email [34mvarchar[0m(255),
+        firstName [34mvarchar[0m(255),
+        homePhone [34mvarchar[0m(255),
+        lastName [34mvarchar[0m(255),
+        mobilePhone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (id)
+    )
+2026-03-24 05:32:27,177 INFO  [io.quarkus] (main) Address Book (Quarkus + JSF) 0.0.1-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 1.588s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:32:27,178 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 05:32:27,178 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-h2, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+[INFO] Quarkus application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:32:25,851 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.myfaces.project-stage" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2026-03-24 05:32:25,851 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.jackson.date-format" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m Contact [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m Contact (
+        birthday [34mdate[0m,
+        id [34mbigint[0m generated [34mby[0m [34mdefault[0m [34mas[0m [34midentity[0m,
+        email [34mvarchar[0m(255),
+        firstName [34mvarchar[0m(255),
+        homePhone [34mvarchar[0m(255),
+        lastName [34mvarchar[0m(255),
+        mobilePhone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (id)
+    )
+2026-03-24 05:32:27,177 INFO  [io.quarkus] (main) Address Book (Quarkus + JSF) 0.0.1-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 1.588s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:32:27,178 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 05:32:27,178 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-h2, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 10 items
+
+smoke.py::test_index_page FAILED                                         [ 10%]
+smoke.py::test_list_page_accessible FAILED                               [ 20%]
+smoke.py::test_create_page_accessible FAILED                             [ 30%]
+smoke.py::test_contact_form_ui FAILED                                    [ 40%]
+smoke.py::test_contact_list_ui PASSED                                    [ 50%]
+smoke.py::test_contact_edit_ui FAILED                                    [ 60%]
+smoke.py::test_contact_view_ui FAILED                                    [ 70%]
+smoke.py::test_form_validation FAILED                                    [ 80%]
+smoke.py::test_navigation_links PASSED                                   [ 90%]
+smoke.py::test_contact_deletion_ui FAILED                                [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_index_page ________________________________
+
+    def test_index_page():
+        """Index page should load with Address Book content."""
+>       body = must_get_ok("/index.xhtml", 2)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:924: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/index.xhtml', fail_code = 2
+
+    def must_get_ok(path: str, fail_code: int):
+        url = join(BASE, path)
+        vprint("GET", url)
+        resp, err = http_request("GET", url)
+        if err:
+            pytest.fail(f"[FAIL] {path} -> {err}")
+        if resp[0] != 200:
+            print(f"[FAIL] GET {path} -> {resp[0]}", file=sys.stderr)
+>           pytest.fail("smoke check failed")
+E           Failed: smoke check failed
+
+smoke.py:101: Failed
+----------------------------- Captured stderr call -----------------------------
+[FAIL] GET /index.xhtml -> 404
+__________________________ test_list_page_accessible ___________________________
+
+    def test_list_page_accessible():
+        """Contact list page should be accessible."""
+        url = join(BASE, "/contact/List.xhtml")
+        resp, err = http_request("GET", url)
+        assert err is None, f"List page not accessible: {err}"
+>       assert resp[0] == 200, f"List page returned {resp[0]}"
+E       AssertionError: List page returned 404
+E       assert 404 == 200
+
+smoke.py:933: AssertionError
+_________________________ test_create_page_accessible __________________________
+
+    def test_create_page_accessible():
+        """Contact creation page should be accessible."""
+        url = join(BASE, "/contact/Create.xhtml")
+        resp, err = http_request("GET", url)
+        assert err is None, f"Create page not accessible: {err}"
+>       assert resp[0] == 200, f"Create page returned {resp[0]}"
+E       AssertionError: Create page returned 404
+E       assert 404 == 200
+
+smoke.py:941: AssertionError
+_____________________________ test_contact_form_ui _____________________________
+
+page = <Page url='http://localhost:8080/contact/Create.xhtml'>
+
+    def test_contact_form_ui(page):
+        """Contact form should load and accept input."""
+>       assert _check_contact_form_ui(page), "Contact form UI check failed"
+E       AssertionError: Contact form UI check failed
+E       assert False
+E        +  where False = _check_contact_form_ui(<Page url='http://localhost:8080/contact/Create.xhtml'>)
+
+smoke.py:946: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing contact form UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Timeout waiting for form elements
+_____________________________ test_contact_edit_ui _____________________________
+
+page = <Page url='http://localhost:8080/contact/List.xhtml'>
+
+    def test_contact_edit_ui(page):
+        """Contact edit page should be navigable from list."""
+>       assert _check_contact_edit_ui(page), "Contact edit UI check failed"
+E       AssertionError: Contact edit UI check failed
+E       assert False
+E        +  where False = _check_contact_edit_ui(<Page url='http://localhost:8080/contact/List.xhtml'>)
+
+smoke.py:956: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing contact edit UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Timeout waiting for edit page
+_____________________________ test_contact_view_ui _____________________________
+
+page = <Page url='http://localhost:8080/contact/List.xhtml'>
+
+    def test_contact_view_ui(page):
+        """Contact view page should display contact details."""
+>       assert _check_contact_view_ui(page), "Contact view UI check failed"
+E       AssertionError: Contact view UI check failed
+E       assert False
+E        +  where False = _check_contact_view_ui(<Page url='http://localhost:8080/contact/List.xhtml'>)
+
+smoke.py:961: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing contact view UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Timeout waiting for view page
+_____________________________ test_form_validation _____________________________
+
+page = <Page url='http://localhost:8080/contact/Create.xhtml'>
+
+    def test_form_validation(page):
+        """Form validation should catch invalid input."""
+>       assert _check_form_validation(page), "Form validation check failed"
+E       AssertionError: Form validation check failed
+E       assert False
+E        +  where False = _check_form_validation(<Page url='http://localhost:8080/contact/Create.xhtml'>)
+
+smoke.py:966: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing form validation...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Form validation test failed: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+waiting for locator("form") to be visible
+
+___________________________ test_contact_deletion_ui ___________________________
+
+page = <Page url='http://localhost:8080/contact/List.xhtml'>
+
+    def test_contact_deletion_ui(page):
+        """Contact deletion should work from list page."""
+>       assert _check_contact_deletion_ui(page), "Contact deletion UI check failed"
+E       AssertionError: Contact deletion UI check failed
+E       assert False
+E        +  where False = _check_contact_deletion_ui(<Page url='http://localhost:8080/contact/List.xhtml'>)
+
+smoke.py:976: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing contact deletion UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Timeout waiting for deletion page
+=========================== short test summary info ============================
+FAILED smoke.py::test_index_page - Failed: smoke check failed
+FAILED smoke.py::test_list_page_accessible - AssertionError: List page return...
+FAILED smoke.py::test_create_page_accessible - AssertionError: Create page re...
+FAILED smoke.py::test_contact_form_ui - AssertionError: Contact form UI check...
+FAILED smoke.py::test_contact_edit_ui - AssertionError: Contact edit UI check...
+FAILED smoke.py::test_contact_view_ui - AssertionError: Contact view UI check...
+FAILED smoke.py::test_form_validation - AssertionError: Form validation check...
+FAILED smoke.py::test_contact_deletion_ui - AssertionError: Contact deletion ...
+==================== 8 failed, 2 passed in 92.70s (0:01:32) ====================
+=== TEST FAIL ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:32:25,851 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.myfaces.project-stage" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2026-03-24 05:32:25,851 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.jackson.date-format" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m Contact [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m Contact (
+        birthday [34mdate[0m,
+        id [34mbigint[0m generated [34mby[0m [34mdefault[0m [34mas[0m [34midentity[0m,
+        email [34mvarchar[0m(255),
+        firstName [34mvarchar[0m(255),
+        homePhone [34mvarchar[0m(255),
+        lastName [34mvarchar[0m(255),
+        mobilePhone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (id)
+    )
+2026-03-24 05:32:27,177 INFO  [io.quarkus] (main) Address Book (Quarkus + JSF) 0.0.1-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 1.588s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:32:27,178 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 05:32:27,178 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-h2, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+make: *** [Makefile:52: test] Error 1

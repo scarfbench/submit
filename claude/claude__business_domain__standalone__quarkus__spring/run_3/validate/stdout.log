@@ -1,0 +1,3 @@
+docker build -f Dockerfile -t "standalone-spring":latest .
+[INFO] Built image: standalone-spring:latest
+[INFO] Removing existing container

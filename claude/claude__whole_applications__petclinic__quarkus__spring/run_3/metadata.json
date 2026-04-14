@@ -1,0 +1,15 @@
+{
+  "status": "CONVERTED",
+  "agent": "claude",
+  "app": "petclinic",
+  "layer": "whole_applications",
+  "repeat": 3,
+  "source_framework": "quarkus",
+  "target_framework": "spring",
+  "num_smoke_tests": 13,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 13,
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

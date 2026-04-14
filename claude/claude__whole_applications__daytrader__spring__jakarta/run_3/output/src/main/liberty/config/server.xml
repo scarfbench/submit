@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="DayTrader on Open Liberty">
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>localConnector-1.0</feature>
+        <feature>mpConfig-3.1</feature>
+    </featureManager>
+
+    <!-- HTTP endpoints -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- Application configuration -->
+    <webApplication id="daytrader" location="daytrader.war" contextRoot="/daytrader">
+        <classloader commonLibraryRef="h2Lib" apiTypeVisibility="spec,ibm-api,third-party"/>
+    </webApplication>
+
+    <!-- H2 shared library -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="*.jar"/>
+    </library>
+
+    <!-- H2 DataSource using generic properties -->
+    <dataSource id="TradeDataSource" jndiName="jdbc/TradeDataSource" type="javax.sql.DataSource">
+        <jdbcDriver libraryRef="h2Lib"
+                    javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"/>
+        <properties URL="jdbc:h2:file:/app/data/tradedb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE"
+                    user="sa"
+                    password=""/>
+        <connectionManager maxPoolSize="100" minPoolSize="10"/>
+    </dataSource>
+
+    <!-- Default DataSource for JPA -->
+    <dataSource id="DefaultDataSource" jndiName="jdbc/defaultDataSource" type="javax.sql.DataSource">
+        <jdbcDriver libraryRef="h2Lib"
+                    javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"/>
+        <properties URL="jdbc:h2:file:/app/data/tradedb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE"
+                    user="sa"
+                    password=""/>
+        <connectionManager maxPoolSize="100" minPoolSize="10"/>
+    </dataSource>
+
+    <!-- JMS Configuration with embedded messaging -->
+    <wasJmsEndpoint id="InboundJmsEndpoint" wasJmsPort="7276" />
+
+    <jmsActivationSpec id="daytrader/DTBroker3MDB">
+        <properties.wasJms destinationRef="TradeBrokerQueue" destinationType="jakarta.jms.Queue"/>
+    </jmsActivationSpec>
+
+    <jmsActivationSpec id="daytrader/DTStreamer3MDB">
+        <properties.wasJms destinationRef="TradeStreamerTopic" destinationType="jakarta.jms.Topic"/>
+    </jmsActivationSpec>
+
+    <jmsQueue id="TradeBrokerQueue" jndiName="jms/TradeBrokerQueue">
+        <properties.wasJms queueName="TradeBrokerQueue"/>
+    </jmsQueue>
+
+    <jmsTopic id="TradeStreamerTopic" jndiName="jms/TradeStreamerTopic">
+        <properties.wasJms topicName="TradeStreamerTopic"/>
+    </jmsTopic>
+
+    <jmsConnectionFactory id="TradeBrokerQCF" jndiName="jms/TradeBrokerQCF">
+        <properties.wasJms/>
+    </jmsConnectionFactory>
+
+    <jmsConnectionFactory id="TradeStreamerTCF" jndiName="jms/TradeStreamerTCF">
+        <properties.wasJms/>
+    </jmsConnectionFactory>
+
+    <!-- ManagedExecutorService -->
+    <managedExecutorService jndiName="concurrent/ManagedExecutorService">
+        <concurrencyPolicy max="10"/>
+    </managedExecutorService>
+
+    <managedScheduledExecutorService jndiName="concurrent/ManagedScheduledExecutorService">
+        <concurrencyPolicy max="5"/>
+    </managedScheduledExecutorService>
+
+    <managedThreadFactory jndiName="concurrent/ManagedThreadFactory"/>
+
+    <!-- Logging -->
+    <logging traceSpecification="com.ibm.websphere.samples.daytrader.*=fine"/>
+
+</server>

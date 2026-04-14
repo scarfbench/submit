@@ -1,0 +1,32 @@
+<server description="Roster Jakarta EE Application">
+    <featureManager>
+        <feature>restfulWS-3.1</feature>
+        <feature>jsonb-3.0</feature>
+        <feature>cdi-4.0</feature>
+        <feature>persistence-3.1</feature>
+        <feature>jdbc-4.2</feature>
+        <feature>servlet-6.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  host="*"
+                  httpPort="8080"
+                  httpsPort="-1" />
+
+    <!-- H2 Database as a datasource -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2*.jar"/>
+    </library>
+
+    <dataSource id="rosterDS" jndiName="jdbc/rosterDS">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:mem:roster;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+                    user="sa"
+                    password=""/>
+    </dataSource>
+
+    <webApplication location="roster.war" contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+</server>

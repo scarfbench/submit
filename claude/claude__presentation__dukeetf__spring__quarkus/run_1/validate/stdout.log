@@ -1,0 +1,12 @@
+docker build -f Dockerfile -t "dukeetf-quarkus:latest" .
+[INFO] Built image: dukeetf-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "dukeetf-quarkus" "dukeetf-quarkus:latest"
+43c63504213b24635ca00acc08039cb68db6b87b985e51edcf5824b8e890092c
+[INFO] Started dukeetf-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.
+[PASS] GET /main.xhtml -> 200
+[PASS] GET /resources/css/default.css -> 200

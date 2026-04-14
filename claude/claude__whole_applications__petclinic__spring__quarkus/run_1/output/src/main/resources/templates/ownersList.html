@@ -1,0 +1,50 @@
+{#include layout.html}
+{#body}
+  <h2>Owners</h2>
+
+  <table id="owners" class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Name</th>
+        <th style="width: 200px;">Address</th>
+        <th>City</th>
+        <th style="width: 120px">Telephone</th>
+        <th>Pets</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#for owner in listOwners}
+      <tr>
+        <td>
+          <a href="/owners/{owner.id}">{owner.firstName} {owner.lastName}</a>
+        </td>
+        <td>{owner.address}</td>
+        <td>{owner.city}</td>
+        <td>{owner.telephone}</td>
+        <td>
+          {#for pet in owner.pets}
+            {pet.name}{#if pet_hasNext}, {/if}
+          {/for}
+        </td>
+      </tr>
+      {/for}
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li class="page-item {#if currentPage == 1}disabled{/if}">
+        <a class="page-link" href="/owners?page={currentPage - 1}&lastName=">Previous</a>
+      </li>
+      {#for i in totalPages}
+      <li class="page-item {#if currentPage == i}active{/if}">
+        <a class="page-link" href="/owners?page={i}&lastName=">{i}</a>
+      </li>
+      {/for}
+      <li class="page-item {#if currentPage == totalPages}disabled{/if}">
+        <a class="page-link" href="/owners?page={currentPage + 1}&lastName=">Next</a>
+      </li>
+    </ul>
+  </nav>
+{/body}
+{/include}

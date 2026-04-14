@@ -1,0 +1,185 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 986B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.1s done
+#3 DONE 0.1s
+
+#4 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 185.97kB 0.0s done
+#5 DONE 0.1s
+
+#6 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#8 CACHED
+
+#9 [ 5/10] RUN playwright install --with-deps chromium
+#9 CACHED
+
+#10 [ 6/10] WORKDIR /app
+#10 CACHED
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.2s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 24.2s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 1.514 [INFO] Scanning for projects...
+#13 1.710 [INFO] 
+#13 1.710 [INFO] ----------------< quarkus.examples.tutorial:standalone >----------------
+#13 1.711 [INFO] Building standalone 1.0.0-SNAPSHOT
+#13 1.712 [INFO]   from pom.xml
+#13 1.712 [INFO] --------------------------------[ jar ]---------------------------------
+#13 2.037 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.pom
+#13 2.243 Progress (1): 973 BProgress (1): 2.8 kBProgress (1): 5.9 kBProgress (1): 13 kB Progress (1): 16 kBProgress (1): 16 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.pom (16 kB at 75 kB/s)
+#13 2.255 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.10/byte-buddy-parent-1.14.10.pom
+#13 2.291 Progress (1): 836 BProgress (1): 1.7 kBProgress (1): 3.2 kBProgress (1): 5.5 kBProgress (1): 7.0 kBProgress (1): 8.9 kBProgress (1): 12 kB Progress (1): 13 kBProgress (1): 17 kBProgress (1): 22 kBProgress (1): 24 kBProgress (1): 31 kBProgress (1): 45 kBProgress (1): 48 kBProgress (1): 53 kBProgress (1): 57 kBProgress (1): 62 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.10/byte-buddy-parent-1.14.10.pom (62 kB at 1.5 MB/s)
+#13 2.312 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.pom
+#13 2.346 Progress (1): 1.2 kBProgress (1): 3.1 kBProgress (1): 5.3 kBProgress (1): 8.8 kBProgress (1): 10 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.pom (10 kB at 283 kB/s)
+#13 2.406 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+#13 2.406 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar
+#13 2.406 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar
+#13 2.454 Progress (1): 0.9/65 kBProgress (1): 2.3/65 kBProgress (1): 3.6/65 kBProgress (1): 5.0/65 kBProgress (1): 6.4/65 kBProgress (1): 7.7/65 kBProgress (1): 9.1/65 kBProgress (1): 10/65 kB Progress (1): 12/65 kBProgress (1): 13/65 kBProgress (1): 15/65 kBProgress (1): 16/65 kBProgress (1): 17/65 kBProgress (1): 19/65 kBProgress (1): 20/65 kBProgress (1): 21/65 kBProgress (1): 23/65 kBProgress (1): 24/65 kBProgress (1): 26/65 kBProgress (1): 27/65 kBProgress (1): 28/65 kBProgress (1): 30/65 kBProgress (1): 31/65 kBProgress (1): 32/65 kBProgress (1): 33/65 kBProgress (1): 35/65 kBProgress (1): 36/65 kBProgress (1): 40/65 kBProgress (1): 45/65 kBProgress (1): 49/65 kBProgress (1): 53/65 kBProgress (1): 57/65 kBProgress (1): 62/65 kBProgress (1): 65 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar (65 kB at 1.2 MB/s)
+#13 2.461 Progress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (2): 0.1/4.2 MB | 0.9/257 kBProgress (2): 0.1/4.2 MB | 2.3/257 kBProgress (2): 0.1/4.2 MB | 3.6/257 kBProgress (2): 0.1/4.2 MB | 5.0/257 kBProgress (2): 0.1/4.2 MB | 6.4/257 kBProgress (2): 0.1/4.2 MB | 7.7/257 kBProgress (2): 0.1/4.2 MB | 9.1/257 kBProgress (2): 0.1/4.2 MB | 10/257 kB Progress (2): 0.1/4.2 MB | 12/257 kBProgress (2): 0.1/4.2 MB | 13/257 kBProgress (2): 0.1/4.2 MB | 15/257 kBProgress (2): 0.1/4.2 MB | 16/257 kBProgress (2): 0.1/4.2 MB | 17/257 kBProgress (2): 0.1/4.2 MB | 19/257 kBProgress (2): 0.1/4.2 MB | 20/257 kBProgress (2): 0.1/4.2 MB | 21/257 kBProgress (2): 0.1/4.2 MB | 23/257 kBProgress (2): 0.1/4.2 MB | 24/257 kBProgress (2): 0.1/4.2 MB | 26/257 kBProgress (2): 0.1/4.2 MB | 27/257 kBProgress (2): 0.1/4.2 MB | 28/257 kBProgress (2): 0.1/4.2 MB | 30/257 kBProgress (2): 0.1/4.2 MB | 31/257 kBProgress (2): 0.1/4.2 MB | 32/257 kBProgress (2): 0.1/4.2 MB | 33/257 kBProgress (2): 0.1/4.2 MB | 35/257 kBProgress (2): 0.1/4.2 MB | 36/257 kBProgress (2): 0.1/4.2 MB | 38/257 kBProgress (2): 0.1/4.2 MB | 39/257 kBProgress (2): 0.1/4.2 MB | 40/257 kBProgress (2): 0.1/4.2 MB | 42/257 kBProgress (2): 0.1/4.2 MB | 43/257 kBProgress (2): 0.1/4.2 MB | 44/257 kBProgress (2): 0.1/4.2 MB | 46/257 kBProgress (2): 0.1/4.2 MB | 47/257 kBProgress (2): 0.1/4.2 MB | 48/257 kBProgress (2): 0.1/4.2 MB | 50/257 kBProgress (2): 0.1/4.2 MB | 51/257 kBProgress (2): 0.1/4.2 MB | 53/257 kBProgress (2): 0.1/4.2 MB | 54/257 kBProgress (2): 0.1/4.2 MB | 55/257 kBProgress (2): 0.1/4.2 MB | 60/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 64/257 kBProgress (2): 0.1/4.2 MB | 68/257 kBProgress (2): 0.1/4.2 MB | 72/257 kBProgress (2): 0.1/4.2 MB | 76/257 kBProgress (2): 0.1/4.2 MB | 81/257 kBProgress (2): 0.1/4.2 MB | 85/257 kBProgress (2): 0.1/4.2 MB | 89/257 kBProgress (2): 0.1/4.2 MB | 93/257 kBProgress (2): 0.1/4.2 MB | 98/257 kBProgress (2): 0.1/4.2 MB | 102/257 kBProgress (2): 0.1/4.2 MB | 106/257 kBProgress (2): 0.1/4.2 MB | 110/257 kBProgress (2): 0.1/4.2 MB | 115/257 kBProgress (2): 0.1/4.2 MB | 115/257 kBProgress (2): 0.1/4.2 MB | 115/257 kBProgress (2): 0.1/4.2 MB | 115/257 kBProgress (2): 0.1/4.2 MB | 115/257 kBProgress (2): 0.1/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 115/257 kBProgress (2): 0.2/4.2 MB | 119/257 kBProgress (2): 0.2/4.2 MB | 123/257 kBProgress (2): 0.2/4.2 MB | 127/257 kBProgress (2): 0.2/4.2 MB | 131/257 kBProgress (2): 0.2/4.2 MB | 136/257 kBProgress (2): 0.2/4.2 MB | 140/257 kBProgress (2): 0.2/4.2 MB | 144/257 kBProgress (2): 0.2/4.2 MB | 148/257 kBProgress (2): 0.2/4.2 MB | 153/257 kBProgress (2): 0.2/4.2 MB | 153/257 kBProgress (2): 0.2/4.2 MB | 153/257 kBProgress (2): 0.2/4.2 MB | 153/257 kBProgress (2): 0.2/4.2 MB | 153/257 kBProgress (2): 0.2/4.2 MB | 157/257 kBProgress (2): 0.2/4.2 MB | 161/257 kBProgress (2): 0.2/4.2 MB | 163/257 kBProgress (2): 0.2/4.2 MB | 167/257 kBProgress (2): 0.2/4.2 MB | 172/257 kBProgress (2): 0.2/4.2 MB | 176/257 kBProgress (2): 0.2/4.2 MB | 180/257 kBProgress (2): 0.2/4.2 MB | 184/257 kBProgress (2): 0.2/4.2 MB | 188/257 kBProgress (2): 0.2/4.2 MB | 193/257 kBProgress (2): 0.2/4.2 MB | 197/257 kBProgress (2): 0.2/4.2 MB | 201/257 kBProgress (2): 0.2/4.2 MB | 201/257 kBProgress (2): 0.2/4.2 MB | 201/257 kBProgress (2): 0.3/4.2 MB | 201/257 kBProgress (2): 0.3/4.2 MB | 201/257 kBProgress (2): 0.3/4.2 MB | 201/257 kBProgress (2): 0.3/4.2 MB | 201/257 kBProgress (2): 0.3/4.2 MB | 201/257 kBProgress (2): 0.3/4.2 MB | 201/257 kBProgress (2): 0.3/4.2 MB | 201/257 kBProgress (2): 0.3/4.2 MB | 205/257 kBProgress (2): 0.3/4.2 MB | 210/257 kBProgress (2): 0.3/4.2 MB | 214/257 kBProgress (2): 0.3/4.2 MB | 218/257 kBProgress (2): 0.3/4.2 MB | 222/257 kBProgress (2): 0.3/4.2 MB | 239/257 kBProgress (2): 0.3/4.2 MB | 255/257 kBProgress (2): 0.3/4.2 MB | 257 kB                                     Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar (257 kB at 2.5 MB/s)
+#13 2.510 Progress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar (4.2 MB at 20 MB/s)
+#13 2.628 [INFO] 
+#13 2.628 [INFO] --- resources:3.3.1:resources (default-resources) @ standalone ---
+#13 2.700 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 2.707 [INFO] Copying 0 resource from src/main/resources to target/classes
+#13 2.710 [INFO] 
+#13 2.711 [INFO] --- compiler:3.11.0:compile (default-compile) @ standalone ---
+#13 2.809 [INFO] Changes detected - recompiling the module! :source
+#13 2.810 [INFO] Compiling 3 source files with javac [debug release 17] to target/classes
+#13 3.385 [INFO] -------------------------------------------------------------
+#13 3.385 [ERROR] COMPILATION ERROR : 
+#13 3.385 [INFO] -------------------------------------------------------------
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[5,34] package jakarta.enterprise.context does not exist
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[6,22] package jakarta.inject does not exist
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[7,21] package jakarta.ws.rs does not exist
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[8,21] package jakarta.ws.rs does not exist
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[9,21] package jakarta.ws.rs does not exist
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[10,21] package jakarta.ws.rs does not exist
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[11,26] package jakarta.ws.rs.core does not exist
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[12,26] package jakarta.ws.rs.core does not exist
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[14,2] cannot find symbol
+#13 3.385   symbol: class Path
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[15,2] cannot find symbol
+#13 3.385   symbol: class ApplicationScoped
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[16,2] cannot find symbol
+#13 3.385   symbol: class Produces
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[17,2] cannot find symbol
+#13 3.385   symbol: class Consumes
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[25,12] cannot find symbol
+#13 3.385   symbol:   class Response
+#13 3.385   location: class quarkus.examples.tutorial.GreetResource
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[16,11] cannot find symbol
+#13 3.385   symbol: variable MediaType
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[17,11] cannot find symbol
+#13 3.385   symbol: variable MediaType
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[20,6] cannot find symbol
+#13 3.385   symbol:   class Inject
+#13 3.385   location: class quarkus.examples.tutorial.GreetResource
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[23,6] cannot find symbol
+#13 3.385   symbol:   class GET
+#13 3.385   location: class quarkus.examples.tutorial.GreetResource
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[24,6] cannot find symbol
+#13 3.385   symbol:   class Path
+#13 3.385   location: class quarkus.examples.tutorial.GreetResource
+#13 3.385 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[26,16] cannot find symbol
+#13 3.385   symbol:   variable Response
+#13 3.385   location: class quarkus.examples.tutorial.GreetResource
+#13 3.385 [INFO] 19 errors 
+#13 3.385 [INFO] -------------------------------------------------------------
+#13 3.387 [INFO] ------------------------------------------------------------------------
+#13 3.387 [INFO] BUILD FAILURE
+#13 3.387 [INFO] ------------------------------------------------------------------------
+#13 3.391 [INFO] Total time:  1.895 s
+#13 3.391 [INFO] Finished at: 2026-03-24T06:48:34Z
+#13 3.391 [INFO] ------------------------------------------------------------------------
+#13 3.393 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project standalone: Compilation failure: Compilation failure: 
+#13 3.393 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[5,34] package jakarta.enterprise.context does not exist
+#13 3.393 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[6,22] package jakarta.inject does not exist
+#13 3.393 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[7,21] package jakarta.ws.rs does not exist
+#13 3.393 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[8,21] package jakarta.ws.rs does not exist
+#13 3.393 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[9,21] package jakarta.ws.rs does not exist
+#13 3.393 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[10,21] package jakarta.ws.rs does not exist
+#13 3.393 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[11,26] package jakarta.ws.rs.core does not exist
+#13 3.393 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[12,26] package jakarta.ws.rs.core does not exist
+#13 3.394 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[14,2] cannot find symbol
+#13 3.394 [ERROR]   symbol: class Path
+#13 3.394 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[15,2] cannot find symbol
+#13 3.394 [ERROR]   symbol: class ApplicationScoped
+#13 3.394 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[16,2] cannot find symbol
+#13 3.394 [ERROR]   symbol: class Produces
+#13 3.394 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[17,2] cannot find symbol
+#13 3.394 [ERROR]   symbol: class Consumes
+#13 3.394 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[25,12] cannot find symbol
+#13 3.394 [ERROR]   symbol:   class Response
+#13 3.394 [ERROR]   location: class quarkus.examples.tutorial.GreetResource
+#13 3.394 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[16,11] cannot find symbol
+#13 3.394 [ERROR]   symbol: variable MediaType
+#13 3.394 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[17,11] cannot find symbol
+#13 3.394 [ERROR]   symbol: variable MediaType
+#13 3.394 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[20,6] cannot find symbol
+#13 3.394 [ERROR]   symbol:   class Inject
+#13 3.394 [ERROR]   location: class quarkus.examples.tutorial.GreetResource
+#13 3.395 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[23,6] cannot find symbol
+#13 3.395 [ERROR]   symbol:   class GET
+#13 3.395 [ERROR]   location: class quarkus.examples.tutorial.GreetResource
+#13 3.395 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[24,6] cannot find symbol
+#13 3.395 [ERROR]   symbol:   class Path
+#13 3.395 [ERROR]   location: class quarkus.examples.tutorial.GreetResource
+#13 3.395 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[26,16] cannot find symbol
+#13 3.395 [ERROR]   symbol:   variable Response
+#13 3.395 [ERROR]   location: class quarkus.examples.tutorial.GreetResource
+#13 3.395 [ERROR] -> [Help 1]
+#13 3.395 [ERROR] 
+#13 3.395 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#13 3.395 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#13 3.395 [ERROR] 
+#13 3.395 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#13 3.396 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+#13 ERROR: process "/bin/sh -c mvn package -DskipTests" did not complete successfully: exit code: 1
+------
+ > [ 9/10] RUN mvn package -DskipTests:
+3.395 [ERROR] /app/src/main/java/quarkus/examples/tutorial/GreetResource.java:[26,16] cannot find symbol
+3.395 [ERROR]   symbol:   variable Response
+3.395 [ERROR]   location: class quarkus.examples.tutorial.GreetResource
+3.395 [ERROR] -> [Help 1]
+3.395 [ERROR] 
+3.395 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+3.395 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+3.395 [ERROR] 
+3.395 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+3.396 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+------
+Dockerfile:28
+--------------------
+  26 |     
+  27 |     # Build application
+  28 | >>> RUN mvn package -DskipTests
+  29 |     
+  30 |     RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn package -DskipTests" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: standalone-spring-c712218d
+make: *** [Makefile:20: compile] Error 1

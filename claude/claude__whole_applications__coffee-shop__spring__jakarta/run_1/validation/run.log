@@ -1,0 +1,195 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.00kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 442B 0.0s done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#5 CACHED
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#7 CACHED
+
+#8 [5/9] RUN playwright install --with-deps chromium
+#8 CACHED
+
+#9 [6/9] WORKDIR /app
+#9 CACHED
+
+#10 [internal] load build context
+#10 transferring context: 33.71MB 0.7s done
+#10 DONE 0.7s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn -pl orders-service -am clean install -DskipTests
+#13 1.421 [INFO] Scanning for projects...
+#13 1.643 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/3.3.5/spring-boot-starter-parent-3.3.5.pom
+#13 1.894 Progress (1): 1.1 kBProgress (1): 2.6 kBProgress (1): 6.5 kBProgress (1): 11 kB Progress (1): 13 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/3.3.5/spring-boot-starter-parent-3.3.5.pom (13 kB at 52 kB/s)
+#13 1.904 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-dependencies/3.3.5/spring-boot-dependencies-3.3.5.pom
+#13 1.931 Progress (1): 1.0 kBProgress (1): 2.3 kBProgress (1): 4.3 kBProgress (1): 6.5 kBProgress (1): 8.2 kBProgress (1): 10 kB Progress (1): 14 kBProgress (1): 20 kBProgress (1): 29 kBProgress (1): 37 kBProgress (1): 41 kBProgress (1): 50 kBProgress (1): 60 kBProgress (1): 68 kBProgress (1): 79 kBProgress (1): 85 kBProgress (1): 90 kBProgress (1): 97 kBProgress (1): 100 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-dependencies/3.3.5/spring-boot-dependencies-3.3.5.pom (100 kB at 2.9 MB/s)
+#13 2.045 Downloading from central: https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers-bom/1.20.3/testcontainers-bom-1.20.3.pom
+#13 2.077 Progress (1): 1.2 kBProgress (1): 8.9 kBProgress (1): 11 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers-bom/1.20.3/testcontainers-bom-1.20.3.pom (11 kB at 312 kB/s)
+#13 2.082 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-bom/6.1.3/activemq-bom-6.1.3.pom
+#13 2.113 Progress (1): 799 BProgress (1): 1.9 kBProgress (1): 7.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-bom/6.1.3/activemq-bom-6.1.3.pom (7.9 kB at 188 kB/s)
+#13 2.130 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-bom/2.33.0/artemis-bom-2.33.0.pom
+#13 2.152 Progress (1): 799 BProgress (1): 3.2 kBProgress (1): 9.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-bom/2.33.0/artemis-bom-2.33.0.pom (9.6 kB at 371 kB/s)
+#13 2.155 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-project/2.33.0/artemis-project-2.33.0.pom
+#13 2.180 Progress (1): 713 BProgress (1): 2.0 kBProgress (1): 4.2 kBProgress (1): 6.0 kBProgress (1): 7.4 kBProgress (1): 9.6 kBProgress (1): 12 kB Progress (1): 12 kBProgress (1): 14 kBProgress (1): 16 kBProgress (1): 17 kBProgress (1): 24 kBProgress (1): 27 kBProgress (1): 29 kBProgress (1): 32 kBProgress (1): 38 kBProgress (1): 42 kBProgress (1): 46 kBProgress (1): 49 kBProgress (1): 51 kBProgress (1): 55 kBProgress (1): 60 kBProgress (1): 63 kBProgress (1): 64 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-project/2.33.0/artemis-project-2.33.0.pom (64 kB at 2.2 MB/s)
+#13 2.188 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom
+#13 2.212 Progress (1): 739 BProgress (1): 1.6 kBProgress (1): 3.4 kBProgress (1): 5.3 kBProgress (1): 7.4 kBProgress (1): 13 kB Progress (1): 18 kBProgress (1): 20 kBProgress (1): 22 kBProgress (1): 24 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom (24 kB at 941 kB/s)
+#13 2.221 Downloading from central: https://repo.maven.apache.org/maven2/org/assertj/assertj-bom/3.25.3/assertj-bom-3.25.3.pom
+#13 2.246 Progress (1): 1.0 kBProgress (1): 3.0 kBProgress (1): 3.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/assertj/assertj-bom/3.25.3/assertj-bom-3.25.3.pom (3.7 kB at 142 kB/s)
+#13 2.252 Downloading from central: https://repo.maven.apache.org/maven2/io/zipkin/reporter2/zipkin-reporter-bom/3.4.2/zipkin-reporter-bom-3.4.2.pom
+#13 2.282 Progress (1): 755 BProgress (1): 1.7 kBProgress (1): 5.2 kBProgress (1): 6.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/zipkin/reporter2/zipkin-reporter-bom/3.4.2/zipkin-reporter-bom-3.4.2.pom (6.4 kB at 246 kB/s)
+#13 2.282 Downloading from central: https://repo.maven.apache.org/maven2/io/zipkin/brave/brave-bom/6.0.3/brave-bom-6.0.3.pom
+#13 2.304 Progress (1): 1.1 kBProgress (1): 4.8 kBProgress (1): 11 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/zipkin/brave/brave-bom/6.0.3/brave-bom-6.0.3.pom (11 kB at 422 kB/s)
+#13 2.310 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/cassandra/java-driver-bom/4.18.1/java-driver-bom-4.18.1.pom
+#13 2.334 Progress (1): 817 BProgress (1): 2.0 kBProgress (1): 5.1 kBProgress (1): 5.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/cassandra/java-driver-bom/4.18.1/java-driver-bom-4.18.1.pom (5.5 kB at 210 kB/s)
+#13 2.340 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-bom/4.0.5/jaxb-bom-4.0.5.pom
+#13 2.365 Progress (1): 849 BProgress (1): 6.0 kBProgress (1): 12 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-bom/4.0.5/jaxb-bom-4.0.5.pom (12 kB at 448 kB/s)
+#13 2.367 Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.9/project-1.0.9.pom
+#13 2.390 Progress (1): 876 BProgress (1): 2.5 kBProgress (1): 5.0 kBProgress (1): 8.5 kBProgress (1): 12 kB Progress (1): 16 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.9/project-1.0.9.pom (16 kB at 672 kB/s)
+#13 2.393 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/groovy/groovy-bom/4.0.23/groovy-bom-4.0.23.pom
+#13 2.416 Progress (1): 863 BProgress (1): 3.6 kBProgress (1): 7.0 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 18 kBProgress (1): 22 kBProgress (1): 23 kBProgress (1): 27 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/groovy/groovy-bom/4.0.23/groovy-bom-4.0.23.pom (27 kB at 1.2 MB/s)
+#13 2.421 Downloading from central: https://repo.maven.apache.org/maven2/org/infinispan/infinispan-bom/15.0.10.Final/infinispan-bom-15.0.10.Final.pom
+#13 2.445 Progress (1): 1.1 kBProgress (1): 6.8 kBProgress (1): 18 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/infinispan/infinispan-bom/15.0.10.Final/infinispan-bom-15.0.10.Final.pom (18 kB at 758 kB/s)
+#13 2.447 Downloading from central: https://repo.maven.apache.org/maven2/org/infinispan/infinispan-build-configuration-parent/15.0.10.Final/infinispan-build-configuration-parent-15.0.10.Final.pom
+#13 2.472 Progress (1): 1.0 kBProgress (1): 3.2 kBProgress (1): 5.5 kBProgress (1): 7.5 kBProgress (1): 9.7 kBProgress (1): 12 kB Progress (1): 14 kBProgress (1): 15 kBProgress (1): 19 kBProgress (1): 19 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/infinispan/infinispan-build-configuration-parent/15.0.10.Final/infinispan-build-configuration-parent-15.0.10.Final.pom (19 kB at 806 kB/s)
+#13 2.475 Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/43/jboss-parent-43.pom
+#13 2.498 Progress (1): 701 BProgress (1): 2.0 kBProgress (1): 4.5 kBProgress (1): 7.0 kBProgress (1): 9.2 kBProgress (1): 12 kB Progress (1): 19 kBProgress (1): 22 kBProgress (1): 29 kBProgress (1): 32 kBProgress (1): 35 kBProgress (1): 38 kBProgress (1): 47 kBProgress (1): 66 kBProgress (1): 75 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/43/jboss-parent-43.pom (75 kB at 3.0 MB/s)
+#13 2.511 Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.17.2/jackson-bom-2.17.2.pom
+#13 2.536 Progress (1): 924 BProgress (1): 2.7 kBProgress (1): 8.1 kBProgress (1): 17 kB Progress (1): 19 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.17.2/jackson-bom-2.17.2.pom (19 kB at 719 kB/s)
+#13 2.540 Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.17/jackson-parent-2.17.pom
+#13 2.564 Progress (1): 1.1 kBProgress (1): 2.5 kBProgress (1): 4.0 kBProgress (1): 6.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.17/jackson-parent-2.17.pom (6.5 kB at 261 kB/s)
+#13 2.566 Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/58/oss-parent-58.pom
+#13 2.589 Progress (1): 950 BProgress (1): 2.6 kBProgress (1): 4.0 kBProgress (1): 6.0 kBProgress (1): 9.7 kBProgress (1): 12 kB Progress (1): 15 kBProgress (1): 15 kBProgress (1): 19 kBProgress (1): 23 kBProgress (1): 24 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/58/oss-parent-58.pom (24 kB at 986 kB/s)
+#13 2.594 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jersey/jersey-bom/3.1.9/jersey-bom-3.1.9.pom
+#13 2.616 Progress (1): 842 BProgress (1): 8.7 kBProgress (1): 20 kB Progress (1): 21 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jersey/jersey-bom/3.1.9/jersey-bom-3.1.9.pom (21 kB at 904 kB/s)
+#13 2.622 Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/jetty/ee10/jetty-ee10-bom/12.0.14/jetty-ee10-bom-12.0.14.pom
+#13 2.646 Progress (1): 1.1 kBProgress (1): 4.6 kBProgress (1): 9.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/jetty/ee10/jetty-ee10-bom/12.0.14/jetty-ee10-bom-12.0.14.pom (9.6 kB at 367 kB/s)
+#13 2.651 Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-bom/12.0.14/jetty-bom-12.0.14.pom
+#13 2.678 Progress (1): 1.1 kBProgress (1): 4.6 kBProgress (1): 14 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-bom/12.0.14/jetty-bom-12.0.14.pom (14 kB at 498 kB/s)
+#13 2.681 Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.5/junit-bom-5.10.5.pom
+#13 2.707 Progress (1): 908 BProgress (1): 4.1 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.5/junit-bom-5.10.5.pom (5.6 kB at 209 kB/s)
+#13 2.716 Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-bom/1.9.25/kotlin-bom-1.9.25.pom
+#13 2.740 Progress (1): 908 BProgress (1): 5.3 kBProgress (1): 9.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-bom/1.9.25/kotlin-bom-1.9.25.pom (9.1 kB at 351 kB/s)
+#13 2.751 Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-bom/1.8.1/kotlinx-coroutines-bom-1.8.1.pom
+#13 2.775 Progress (1): 1.2 kBProgress (1): 4.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-bom/1.8.1/kotlinx-coroutines-bom-1.8.1.pom (4.3 kB at 165 kB/s)
+#13 2.778 Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-bom/1.6.3/kotlinx-serialization-bom-1.6.3.pom
+#13 2.800 Progress (1): 1.2 kBProgress (1): 3.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-bom/1.6.3/kotlinx-serialization-bom-1.6.3.pom (3.7 kB at 159 kB/s)
+#13 2.803 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.23.1/log4j-bom-2.23.1.pom
+#13 2.830 Progress (1): 792 BProgress (1): 2.2 kBProgress (1): 5.7 kBProgress (1): 12 kB Progress (1): 12 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.23.1/log4j-bom-2.23.1.pom (12 kB at 444 kB/s)
+#13 2.833 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/10.6.0/logging-parent-10.6.0.pom
+#13 2.856 Progress (1): 739 BProgress (1): 2.2 kBProgress (1): 4.7 kBProgress (1): 6.5 kBProgress (1): 8.4 kBProgress (1): 11 kB Progress (1): 15 kBProgress (1): 18 kBProgress (1): 20 kBProgress (1): 24 kBProgress (1): 30 kBProgress (1): 32 kBProgress (1): 33 kBProgress (1): 35 kBProgress (1): 39 kBProgress (1): 39 kBProgress (1): 42 kBProgress (1): 44 kBProgress (1): 47 kBProgress (1): 51 kBProgress (1): 54 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/10.6.0/logging-parent-10.6.0.pom (54 kB at 2.1 MB/s)
+#13 2.868 Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-bom/1.13.6/micrometer-bom-1.13.6.pom
+#13 2.888 Progress (1): 1.0 kBProgress (1): 7.6 kBProgress (1): 8.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-bom/1.13.6/micrometer-bom-1.13.6.pom (8.4 kB at 382 kB/s)
+#13 2.891 Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-tracing-bom/1.3.5/micrometer-tracing-bom-1.3.5.pom
+#13 2.915 Progress (1): 1.0 kBProgress (1): 3.9 kBProgress (1): 4.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-tracing-bom/1.3.5/micrometer-tracing-bom-1.3.5.pom (4.5 kB at 188 kB/s)
+#13 2.918 Downloading from central: https://repo.maven.apache.org/maven2/org/mockito/mockito-bom/5.11.0/mockito-bom-5.11.0.pom
+#13 2.942 Progress (1): 1.5 kBProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mockito/mockito-bom/5.11.0/mockito-bom-5.11.0.pom (3.0 kB at 110 kB/s)
+#13 2.947 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-bom/4.1.114.Final/netty-bom-4.1.114.Final.pom
+#13 2.973 Progress (1): 786 BProgress (1): 2.4 kBProgress (1): 12 kB Progress (1): 14 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-bom/4.1.114.Final/netty-bom-4.1.114.Final.pom (14 kB at 458 kB/s)
+#13 2.981 Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+#13 3.006 Progress (1): 848 BProgress (1): 2.5 kBProgress (1): 4.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom (4.8 kB at 179 kB/s)
+#13 3.015 Downloading from central: https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp-bom/4.12.0/okhttp-bom-4.12.0.pom
+#13 3.034 Progress (1): 931 BProgress (1): 3.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp-bom/4.12.0/okhttp-bom-4.12.0.pom (3.1 kB at 127 kB/s)
+#13 3.038 Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-bom/1.37.0/opentelemetry-bom-1.37.0.pom
+#13 3.059 Progress (1): 956 BProgress (1): 5.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-bom/1.37.0/opentelemetry-bom-1.37.0.pom (5.7 kB at 247 kB/s)
+#13 3.065 Downloading from central: https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-bom/1.2.1/prometheus-metrics-bom-1.2.1.pom
+#13 3.088 Progress (1): 1.3 kBProgress (1): 6.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-bom/1.2.1/prometheus-metrics-bom-1.2.1.pom (6.1 kB at 253 kB/s)
+#13 3.090 Downloading from central: https://repo.maven.apache.org/maven2/io/prometheus/client_java/1.2.1/client_java-1.2.1.pom
+#13 3.112 Progress (1): 1.0 kBProgress (1): 3.4 kBProgress (1): 7.5 kBProgress (1): 10 kB Progress (1): 13 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/io/prometheus/client_java/1.2.1/client_java-1.2.1.pom (13 kB at 577 kB/s)
+#13 3.116 Downloading from central: https://repo.maven.apache.org/maven2/io/prometheus/simpleclient_bom/0.16.0/simpleclient_bom-0.16.0.pom
+#13 3.140 Progress (1): 1.9 kBProgress (1): 6.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/prometheus/simpleclient_bom/0.16.0/simpleclient_bom-0.16.0.pom (6.0 kB at 241 kB/s)
+#13 3.142 Downloading from central: https://repo.maven.apache.org/maven2/io/prometheus/parent/0.16.0/parent-0.16.0.pom
+#13 3.164 Progress (1): 1.1 kBProgress (1): 3.4 kBProgress (1): 7.9 kBProgress (1): 13 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/prometheus/parent/0.16.0/parent-0.16.0.pom (13 kB at 501 kB/s)
+#13 3.169 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/pulsar/pulsar-bom/3.2.4/pulsar-bom-3.2.4.pom
+#13 3.199 Progress (1): 794 BProgress (1): 2.4 kBProgress (1): 4.5 kBProgress (1): 14 kB Progress (1): 26 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/pulsar/pulsar-bom/3.2.4/pulsar-bom-3.2.4.pom (26 kB at 837 kB/s)
+#13 3.202 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/29/apache-29.pom
+#13 3.225 Progress (1): 741 BProgress (1): 2.1 kBProgress (1): 3.9 kBProgress (1): 6.9 kBProgress (1): 12 kB Progress (1): 16 kBProgress (1): 19 kBProgress (1): 21 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/29/apache-29.pom (21 kB at 863 kB/s)
+#13 3.232 Downloading from central: https://repo.maven.apache.org/maven2/com/querydsl/querydsl-bom/5.1.0/querydsl-bom-5.1.0.pom
+#13 3.256 Progress (1): 1.2 kBProgress (1): 6.7 kBProgress (1): 7.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/querydsl/querydsl-bom/5.1.0/querydsl-bom-5.1.0.pom (7.2 kB at 298 kB/s)
+#13 3.259 Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-bom/2023.0.11/reactor-bom-2023.0.11.pom
+#13 3.281 Progress (1): 908 BProgress (1): 4.3 kBProgress (1): 4.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-bom/2023.0.11/reactor-bom-2023.0.11.pom (4.8 kB at 208 kB/s)
+#13 3.285 Downloading from central: https://repo.maven.apache.org/maven2/io/rest-assured/rest-assured-bom/5.4.0/rest-assured-bom-5.4.0.pom
+#13 3.313 Progress (1): 1.2 kBProgress (1): 4.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/rest-assured/rest-assured-bom/5.4.0/rest-assured-bom-5.4.0.pom (4.5 kB at 166 kB/s)
+#13 3.316 Downloading from central: https://repo.maven.apache.org/maven2/io/rsocket/rsocket-bom/1.1.3/rsocket-bom-1.1.3.pom
+#13 3.339 Progress (1): 1.2 kBProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/rsocket/rsocket-bom/1.1.3/rsocket-bom-1.1.3.pom (2.6 kB at 105 kB/s)
+#13 3.344 Downloading from central: https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-bom/4.19.1/selenium-bom-4.19.1.pom
+#13 3.368 Progress (1): 1.1 kBProgress (1): 6.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-bom/4.19.1/selenium-bom-4.19.1.pom (6.0 kB at 232 kB/s)
+#13 3.372 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-amqp-bom/3.1.7/spring-amqp-bom-3.1.7.pom
+#13 3.398 Progress (1): 963 BProgress (1): 3.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-amqp-bom/3.1.7/spring-amqp-bom-3.1.7.pom (3.9 kB at 138 kB/s)
+#13 3.403 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/batch/spring-batch-bom/5.1.2/spring-batch-bom-5.1.2.pom
+#13 3.426 Progress (1): 1.2 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/batch/spring-batch-bom/5.1.2/spring-batch-bom-5.1.2.pom (3.2 kB at 130 kB/s)
+#13 3.430 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-bom/2024.0.5/spring-data-bom-2024.0.5.pom
+#13 3.452 Progress (1): 963 BProgress (1): 2.5 kBProgress (1): 5.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-bom/2024.0.5/spring-data-bom-2024.0.5.pom (5.5 kB at 229 kB/s)
+#13 3.455 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/6.1.14/spring-framework-bom-6.1.14.pom
+#13 3.483 Progress (1): 975 BProgress (1): 5.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/6.1.14/spring-framework-bom-6.1.14.pom (5.8 kB at 234 kB/s)
+#13 3.483 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/integration/spring-integration-bom/6.3.5/spring-integration-bom-6.3.5.pom
+#13 3.507 Progress (1): 961 BProgress (1): 6.7 kBProgress (1): 10 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/integration/spring-integration-bom/6.3.5/spring-integration-bom-6.3.5.pom (10 kB at 411 kB/s)
+#13 3.511 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/pulsar/spring-pulsar-bom/1.1.5/spring-pulsar-bom-1.1.5.pom
+#13 3.537 Progress (1): 958 BProgress (1): 2.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/pulsar/spring-pulsar-bom/1.1.5/spring-pulsar-bom-1.1.5.pom (2.9 kB at 108 kB/s)
+#13 3.541 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/restdocs/spring-restdocs-bom/3.0.2/spring-restdocs-bom-3.0.2.pom
+#13 3.565 Progress (1): 1.1 kBProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/restdocs/spring-restdocs-bom/3.0.2/spring-restdocs-bom-3.0.2.pom (2.6 kB at 103 kB/s)
+#13 3.568 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-bom/6.3.4/spring-security-bom-6.3.4.pom
+#13 3.590 Progress (1): 973 BProgress (1): 5.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-bom/6.3.4/spring-security-bom-6.3.4.pom (5.3 kB at 222 kB/s)
+#13 3.595 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/session/spring-session-bom/3.3.3/spring-session-bom-3.3.3.pom
+#13 3.616 Progress (1): 1.0 kBProgress (1): 2.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/session/spring-session-bom/3.3.3/spring-session-bom-3.3.3.pom (2.9 kB at 131 kB/s)
+#13 3.619 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/ws/spring-ws-bom/4.0.11/spring-ws-bom-4.0.11.pom
+#13 3.641 Progress (1): 1.0 kBProgress (1): 2.7 kBProgress (1): 3.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/ws/spring-ws-bom/4.0.11/spring-ws-bom-4.0.11.pom (3.5 kB at 146 kB/s)
+#13 3.654 Downloading from central: https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers-bom/1.19.8/testcontainers-bom-1.19.8.pom
+#13 3.680 Progress (1): 1.2 kBProgress (1): 10 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers-bom/1.19.8/testcontainers-bom-1.19.8.pom (10 kB at 401 kB/s)
+#13 3.704 [ERROR] [ERROR] Could not find the selected project in the reactor: orders-service @ 
+#13 3.704 [ERROR] Could not find the selected project in the reactor: orders-service -> [Help 1]
+#13 3.704 [ERROR] 
+#13 3.705 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#13 3.705 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#13 3.705 [ERROR] 
+#13 3.705 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#13 3.705 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MavenExecutionException
+#13 ERROR: process "/bin/sh -c mvn -pl orders-service -am clean install -DskipTests" did not complete successfully: exit code: 1
+------
+ > [9/9] RUN mvn -pl orders-service -am clean install -DskipTests:
+3.654 Downloading from central: https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers-bom/1.19.8/testcontainers-bom-1.19.8.pom
+3.680 Progress (1): 1.2 kBProgress (1): 10 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers-bom/1.19.8/testcontainers-bom-1.19.8.pom (10 kB at 401 kB/s)
+3.704 [ERROR] [ERROR] Could not find the selected project in the reactor: orders-service @ 
+3.704 [ERROR] Could not find the selected project in the reactor: orders-service -> [Help 1]
+3.704 [ERROR] 
+3.705 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+3.705 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+3.705 [ERROR] 
+3.705 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+3.705 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MavenExecutionException
+------
+Dockerfile:27
+--------------------
+  25 |     RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+  26 |     # Build application at image build time
+  27 | >>> RUN mvn -pl orders-service -am clean install -DskipTests
+  28 |     
+  29 |     CMD ["mvn", "-pl", "orders-service", "liberty:run"]
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn -pl orders-service -am clean install -DskipTests" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: coffeeshop-jakarta-710054f5
+make: *** [Makefile:10: compile] Error 1

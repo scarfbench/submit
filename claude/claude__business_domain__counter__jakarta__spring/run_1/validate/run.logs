@@ -1,0 +1,6 @@
+docker logs "counter-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: counter-spring
+make: *** [Makefile:58: logs] Error 1

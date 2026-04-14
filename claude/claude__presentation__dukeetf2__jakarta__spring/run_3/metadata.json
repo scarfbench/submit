@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "dukeetf2",
+  "layer": "presentation",
+  "repeat": 3,
+  "source_framework": "jakarta",
+  "target_framework": "spring",
+  "num_smoke_tests": 11,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 11,
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

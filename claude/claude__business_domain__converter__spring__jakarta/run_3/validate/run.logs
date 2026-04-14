@@ -1,0 +1,6 @@
+docker logs "converter-liberty"
+
+
+--- stderr ---
+Error response from daemon: No such container: converter-liberty
+make: *** [Makefile:42: logs] Error 1

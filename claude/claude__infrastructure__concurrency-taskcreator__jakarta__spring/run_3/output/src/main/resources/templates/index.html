@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The Task Creator Concurrency Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            margin: 20px 0;
+        }
+        td {
+            padding: 5px;
+        }
+        textarea {
+            font-family: monospace;
+        }
+        button {
+            padding: 5px 15px;
+            margin: 5px;
+        }
+        .errorstyle {
+            color: red;
+        }
+        .tasklist {
+            width: 200px;
+        }
+    </style>
+    <script type="text/javascript">
+        var wsocket;
+        function connect() {
+            var base = (location.origin.replace(/^http/, 'ws'));
+            wsocket = new WebSocket(base + "/wsinfo");
+            wsocket.onmessage = onMessage;
+        }
+        function onMessage(evt) {
+            if (evt.data === "infobox") {
+                refreshInfo();
+            } else if (evt.data === "tasklist") {
+                refreshList();
+            }
+        }
+        function refreshInfo() {
+            fetch('/taskMessages')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('infolog').value = data;
+                });
+        }
+        function refreshList() {
+            fetch('/periodicTasks')
+                .then(response => response.json())
+                .then(data => {
+                    var select = document.getElementById('periodicTaskSelect');
+                    select.innerHTML = '';
+                    data.forEach(task => {
+                        var option = document.createElement('option');
+                        option.value = task;
+                        option.text = task;
+                        select.appendChild(option);
+                    });
+                });
+        }
+        function submitTask() {
+            var taskType = document.getElementById('tasktype').value;
+            var taskName = document.getElementById('taskname').value;
+            if (taskName.length < 3) {
+                alert('Task name must be at least 3 characters');
+                return;
+            }
+            fetch('/submitTask', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'taskType=' + encodeURIComponent(taskType) + '&taskName=' + encodeURIComponent(taskName)
+            }).then(() => {
+                document.getElementById('taskname').value = '';
+                document.getElementById('tasktype').value = 'IMMEDIATE';
+            });
+        }
+        function cancelTask() {
+            var periodicTask = document.getElementById('periodicTaskSelect').value;
+            if (!periodicTask) return;
+            fetch('/cancelTask', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'periodicTask=' + encodeURIComponent(periodicTask)
+            }).then(() => refreshList());
+        }
+        function clearLog() {
+            fetch('/clearLog', {
+                method: 'POST'
+            }).then(() => refreshInfo());
+        }
+        window.addEventListener("load", function() {
+            connect();
+            refreshInfo();
+            refreshList();
+        }, false);
+    </script>
+</head>
+<body>
+    <h1>The Task Creator Concurrency Example</h1>
+    <p>
+        Submit tasks that will be executed by the
+        managed executor service.
+    </p>
+    <table>
+        <tr>
+            <td>Task Type</td>
+            <td>
+                <select id="tasktype">
+                    <option value="IMMEDIATE">Immediate</option>
+                    <option value="PERIODIC">Periodic (8 sec)</option>
+                    <option value="DELAYED">Delayed (3 sec)</option>
+                </select>
+            </td>
+            <td>Task Name</td>
+            <td>
+                <input type="text" id="taskname" />
+            </td>
+            <td>
+                <button onclick="submitTask()">Submit</button>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <div>
+        <h3>Task Execution Log</h3>
+        <textarea id="infolog" rows="12" cols="65" readonly></textarea>
+        <br />
+        <button onclick="clearLog()">Clean Log</button>
+    </div>
+    <br />
+    <div>
+        <h3>Cancel periodic task(s):</h3>
+        <select id="periodicTaskSelect" size="5" class="tasklist">
+        </select>
+        <br />
+        <button onclick="cancelTask()">Cancel Task</button>
+    </div>
+</body>
+</html>

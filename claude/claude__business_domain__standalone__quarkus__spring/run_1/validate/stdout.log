@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "standalone-spring":latest .
+[INFO] Built image: standalone-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "standalone-spring" "standalone-spring":latest
+2d1989dcfda71f767ecc0424b6fccdf9a9940c19525f7e6f95c6a90056bd1271
+[INFO] Started standalone-spring, waiting for app to start...
+### Check for build failure
+[ERROR] Container exited before success:
+Error response from daemon: No such container: standalone-spring

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>String Encoder</title>
+    <link rel="stylesheet" th:href="@{/css/default.css}"/>
+</head>
+<body>
+    <h2>String Encoder</h2>
+    <p>Select Test or Shift, enter a string and an integer, then click Encode.</p>
+    <p>If you select Test, the TestCoderImpl bean will display the argument values.</p>
+    <p>If you select Shift, the CoderImpl bean will return a string that
+        shifts the letters in the original string by the value you specify.
+        The value must be between 0 and 26.</p>
+
+    <form th:action="@{/encode}" th:object="${coderBean}" method="post">
+        <div>
+            <input type="radio" id="coderType1" th:field="*{coderType}" value="1"/>
+            <label for="coderType1">Test</label>
+            <input type="radio" id="coderType2" th:field="*{coderType}" value="2"/>
+            <label for="coderType2">Shift Letters</label>
+        </div>
+
+        <p>
+            <label for="inputString">Enter a string: </label>
+            <input type="text" id="inputString" th:field="*{inputString}"/>
+            <span th:if="${#fields.hasErrors('inputString')}" th:errors="*{inputString}" style="color: #d20005"></span>
+        </p>
+
+        <p>
+            <label for="transVal">Enter the number of letters to shift by: </label>
+            <input type="text" id="transVal" th:field="*{transVal}"/>
+            <span th:if="${#fields.hasErrors('transVal')}" th:errors="*{transVal}" style="color: #d20005"></span>
+        </p>
+
+        <p>
+            <button type="submit">Encode</button>
+        </p>
+
+        <p>
+            <label>Result: </label>
+            <span th:text="${coderBean.codedString}" style="color:blue"></span>
+        </p>
+    </form>
+
+    <form th:action="@{/reset}" method="post">
+        <button type="submit">Reset</button>
+    </form>
+</body>
+</html>

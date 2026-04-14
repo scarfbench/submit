@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create To Do List</title>
+    <link rel="stylesheet" th:href="@{/css/default.css}">
+</head>
+<body>
+    <h2>Create To Do List</h2>
+    <p>Enter a task to be completed.</p>
+
+    <div th:if="${message}" class="messagecolor" style="color: blue;">
+        <p th:text="${message}">Success message</p>
+    </div>
+
+    <form id="todolist" method="post" th:action="@{/createTask}">
+        <p>
+            <label for="inputString">Enter a string: </label>
+            <input type="text" id="inputString" name="inputString" required />
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+
+    <p>
+        <a th:href="@{/todolist}">
+            <button type="button">Show Items</button>
+        </a>
+    </p>
+</body>
+</html>

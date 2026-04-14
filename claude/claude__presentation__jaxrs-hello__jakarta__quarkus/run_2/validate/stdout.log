@@ -1,0 +1,27 @@
+docker build -f Dockerfile -t "jaxrs-hello-quarkus:latest" .
+[INFO] Built image: jaxrs-hello-quarkus:latest
+### Run the container in detached mode
+docker run -d --name "jaxrs-hello-quarkus" "jaxrs-hello-quarkus:latest"
+d54ef62535ef079394c92d6f80ea8e93b1446704be5d67adb2a434898976c39d
+[INFO] Started jaxrs-hello-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.
+[INFO] BASE = http://localhost:8080
+[PASS] GET /helloworld -> 200 text/html
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__jaxrs-hello__jakarta__quarkus/run_2/output'
+docker rm -f "jaxrs-hello-quarkus"
+jaxrs-hello-quarkus
+[INFO] Container removed (if it existed)
+docker rmi "jaxrs-hello-quarkus:latest"
+Untagged: jaxrs-hello-quarkus:latest
+Deleted: sha256:1d331d00f00c0ce3e990948a7f14560fb60b8790f892a3ffa9fe1c6f0f75bd9b
+docker image prune -f
+Deleted Images:
+deleted: sha256:4c212f3771f97f217c15947fddaa3fc8d4cecab021b7d5c6cef81c231a50fb38
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__jaxrs-hello__jakarta__quarkus/run_2/output'

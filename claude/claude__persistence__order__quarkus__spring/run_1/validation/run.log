@@ -1,0 +1,541 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.1s done
+#3 DONE 0.1s
+
+#4 [ 5/10] RUN playwright install --with-deps chromium
+#4 CACHED
+
+#5 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#5 CACHED
+
+#6 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#7 CACHED
+
+#8 [ 6/10] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B 0.0s done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 111.73kB 0.0s done
+#10 DONE 0.0s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:f30f87718d4e66414314b6535340945b16cae8f09b2648f95a584c38616bf52e done
+#14 exporting config sha256:dbf3eacc1633d6983823d5aabe01401a25e470f70986006eda12ae2b363fa37f done
+#14 exporting attestation manifest sha256:409b919d6c38989c1756966fb9d58c8e0200efee0e9c76465d2f1f1f38b8c6f8 0.1s done
+#14 exporting manifest list sha256:bf8df905de1ffe402b3400f87d604934378d48609d2696517e107845e99d89b3
+#14 exporting manifest list sha256:bf8df905de1ffe402b3400f87d604934378d48609d2696517e107845e99d89b3 0.0s done
+#14 naming to docker.io/library/order-spring:a576b219 done
+#14 unpacking to docker.io/library/order-spring:a576b219 done
+#14 DONE 0.2s
+[INFO] Built image: order-spring:a576b219
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name order-spring-a4f82d87 order-spring:a576b219
+58fe692c4a1f69f1bbeecfb97c984117e04a30db55357f0dac13defef7153df7
+[INFO] Started order-spring-a4f82d87, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T06:49:22.907Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : Starting OrderApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/order-spring-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T06:49:22.940Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T06:49:23.759Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T06:49:23.777Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2026-03-24T06:49:24.164Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T06:49:24.175Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T06:49:24.175Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T06:49:24.190Z  INFO 19 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T06:49:24.191Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1159 ms
+2026-03-24T06:49:24.326Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T06:49:24.369Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T06:49:24.393Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T06:49:24.521Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T06:49:24.539Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T06:49:24.675Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:order user=SA
+2026-03-24T06:49:24.676Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T06:49:24.691Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T06:49:25.464Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table persistence_order_customerorder (order_id integer not null, discount integer not null, last_update timestamp(6), shipment_info varchar(255), status char(1) not null, primary key (order_id))
+Hibernate: create table persistence_order_lineitem (orderid integer not null, item_id integer not null, quantity integer not null, vendorpartnumber bigint, primary key (orderid, item_id))
+Hibernate: create table persistence_order_part (part_number varchar(255) not null, revision integer not null, description varchar(255), revision_date timestamp(6), bompartnumber varchar(255), bomrevision integer, primary key (part_number, revision))
+Hibernate: create table persistence_order_part_detail (drawing blob, specification clob, partnumber varchar(255) not null, revision integer not null, primary key (partnumber, revision))
+Hibernate: create table persistence_order_sequence_generator (GEN_KEY varchar(255) not null, GEN_VALUE bigint, primary key (GEN_KEY))
+Hibernate: insert into persistence_order_sequence_generator(GEN_KEY, GEN_VALUE) values ('VENDOR_PART_ID',0)
+Hibernate: create table persistence_order_vendor (vendor_id integer not null, address varchar(255), contact varchar(255), vendorname varchar(255), phone varchar(255), primary key (vendor_id))
+Hibernate: create table persistence_order_vendor_part (vendor_part_number bigint not null, description varchar(255), price float(53) not null, partnumber varchar(255), partrevision integer, vendorid integer, primary key (vendor_part_number))
+Hibernate: alter table if exists persistence_order_vendor_part drop constraint if exists UKjsy4eyh1uv7ugrqek1x2nqmhh
+Hibernate: alter table if exists persistence_order_vendor_part add constraint UKjsy4eyh1uv7ugrqek1x2nqmhh unique (partnumber, partrevision)
+Hibernate: alter table if exists persistence_order_lineitem add constraint FK60w8vsxtbdoayqnck62w85qsa foreign key (orderid) references persistence_order_customerorder
+Hibernate: alter table if exists persistence_order_lineitem add constraint FKqc5qf65d2aaieimp02b69h77p foreign key (vendorpartnumber) references persistence_order_vendor_part
+Hibernate: alter table if exists persistence_order_part add constraint FKn5nq0r8okdxqyv2cvwy01bejl foreign key (bompartnumber, bomrevision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_part_detail add constraint FK7gxhq2lne16nutjea32dd10rq foreign key (partnumber, revision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_vendor_part add constraint FKgpj3gnol36j527imphep4b42r foreign key (partnumber, partrevision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_vendor_part add constraint FKiy1m325kcj85vkc2nf2q1l52v foreign key (vendorid) references persistence_order_vendor
+2026-03-24T06:49:25.866Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T06:49:26.026Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T06:49:26.316Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T06:49:26.329Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : Started OrderApplication in 3.709 seconds (process running for 4.129)
+2026-03-24T06:49:26.331Z  INFO 19 --- [           main] s.tutorial.order.web.StartupInitializer  : Manually triggering dataset initialization
+2026-03-24T06:49:26.352Z  INFO 19 --- [           main] s.t.order.service.OrderConfigService     : Starting dataset initialization
+2026-03-24T06:49:26.366Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 1234-5678-01-1
+2026-03-24T06:49:26.366Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 9876-4321-02-2
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 5456-6789-03-3
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part ABCD-XYZW-FF-5
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part SDFG-ERTY-BN-7
+2026-03-24T06:49:26.371Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 1234-5678-01 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.371Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 9876-4321-02 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.372Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 5456-6789-03 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.372Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part ABCD-XYZW-FF to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.373Z  INFO 19 --- [           main] s.t.order.repository.VendorRepository    : Created vendor ID 100
+2026-03-24T06:49:26.373Z  INFO 19 --- [           main] s.t.order.repository.VendorRepository    : Created vendor ID 200
+Hibernate: select tbl.GEN_VALUE from persistence_order_sequence_generator tbl where tbl.GEN_KEY=? for update
+Hibernate: update persistence_order_sequence_generator set GEN_VALUE=?  where GEN_VALUE=? and GEN_KEY=?
+2026-03-24T06:49:26.388Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 1234-5678-01-1
+Hibernate: select tbl.GEN_VALUE from persistence_order_sequence_generator tbl where tbl.GEN_KEY=? for update
+Hibernate: update persistence_order_sequence_generator set GEN_VALUE=?  where GEN_VALUE=? and GEN_KEY=?
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 9876-4321-02-2
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 5456-6789-03-3
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part ABCD-XYZW-FF-5
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part SDFG-ERTY-BN-7
+2026-03-24T06:49:26.390Z  INFO 19 --- [           main] s.t.o.r.CustomerOrderRepository          : Created order ID 1111
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part 1234-5678-01
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part 9876-4321-02
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part ABCD-XYZW-FF
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.o.r.CustomerOrderRepository          : Created order ID 4312
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part SDFG-ERTY-BN
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part ABCD-XYZW-FF
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part 1234-5678-01
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.service.OrderConfigService     : Order data initialization completed successfully
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_vendor (address,contact,vendorname,phone,vendor_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor (address,contact,vendorname,phone,vendor_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_customerorder (discount,last_update,shipment_info,status,order_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_customerorder (discount,last_update,shipment_info,status,order_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+2026-03-24T06:49:26.418Z  INFO 19 --- [           main] s.tutorial.order.web.StartupInitializer  : Manual dataset initialization completed
+[INFO] Spring Boot application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T06:49:22.907Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : Starting OrderApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/order-spring-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T06:49:22.940Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T06:49:23.759Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T06:49:23.777Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2026-03-24T06:49:24.164Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T06:49:24.175Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T06:49:24.175Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T06:49:24.190Z  INFO 19 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T06:49:24.191Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1159 ms
+2026-03-24T06:49:24.326Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T06:49:24.369Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T06:49:24.393Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T06:49:24.521Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T06:49:24.539Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T06:49:24.675Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:order user=SA
+2026-03-24T06:49:24.676Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T06:49:24.691Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T06:49:25.464Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table persistence_order_customerorder (order_id integer not null, discount integer not null, last_update timestamp(6), shipment_info varchar(255), status char(1) not null, primary key (order_id))
+Hibernate: create table persistence_order_lineitem (orderid integer not null, item_id integer not null, quantity integer not null, vendorpartnumber bigint, primary key (orderid, item_id))
+Hibernate: create table persistence_order_part (part_number varchar(255) not null, revision integer not null, description varchar(255), revision_date timestamp(6), bompartnumber varchar(255), bomrevision integer, primary key (part_number, revision))
+Hibernate: create table persistence_order_part_detail (drawing blob, specification clob, partnumber varchar(255) not null, revision integer not null, primary key (partnumber, revision))
+Hibernate: create table persistence_order_sequence_generator (GEN_KEY varchar(255) not null, GEN_VALUE bigint, primary key (GEN_KEY))
+Hibernate: insert into persistence_order_sequence_generator(GEN_KEY, GEN_VALUE) values ('VENDOR_PART_ID',0)
+Hibernate: create table persistence_order_vendor (vendor_id integer not null, address varchar(255), contact varchar(255), vendorname varchar(255), phone varchar(255), primary key (vendor_id))
+Hibernate: create table persistence_order_vendor_part (vendor_part_number bigint not null, description varchar(255), price float(53) not null, partnumber varchar(255), partrevision integer, vendorid integer, primary key (vendor_part_number))
+Hibernate: alter table if exists persistence_order_vendor_part drop constraint if exists UKjsy4eyh1uv7ugrqek1x2nqmhh
+Hibernate: alter table if exists persistence_order_vendor_part add constraint UKjsy4eyh1uv7ugrqek1x2nqmhh unique (partnumber, partrevision)
+Hibernate: alter table if exists persistence_order_lineitem add constraint FK60w8vsxtbdoayqnck62w85qsa foreign key (orderid) references persistence_order_customerorder
+Hibernate: alter table if exists persistence_order_lineitem add constraint FKqc5qf65d2aaieimp02b69h77p foreign key (vendorpartnumber) references persistence_order_vendor_part
+Hibernate: alter table if exists persistence_order_part add constraint FKn5nq0r8okdxqyv2cvwy01bejl foreign key (bompartnumber, bomrevision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_part_detail add constraint FK7gxhq2lne16nutjea32dd10rq foreign key (partnumber, revision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_vendor_part add constraint FKgpj3gnol36j527imphep4b42r foreign key (partnumber, partrevision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_vendor_part add constraint FKiy1m325kcj85vkc2nf2q1l52v foreign key (vendorid) references persistence_order_vendor
+2026-03-24T06:49:25.866Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T06:49:26.026Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T06:49:26.316Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T06:49:26.329Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : Started OrderApplication in 3.709 seconds (process running for 4.129)
+2026-03-24T06:49:26.331Z  INFO 19 --- [           main] s.tutorial.order.web.StartupInitializer  : Manually triggering dataset initialization
+2026-03-24T06:49:26.352Z  INFO 19 --- [           main] s.t.order.service.OrderConfigService     : Starting dataset initialization
+2026-03-24T06:49:26.366Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 1234-5678-01-1
+2026-03-24T06:49:26.366Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 9876-4321-02-2
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 5456-6789-03-3
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part ABCD-XYZW-FF-5
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part SDFG-ERTY-BN-7
+2026-03-24T06:49:26.371Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 1234-5678-01 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.371Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 9876-4321-02 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.372Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 5456-6789-03 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.372Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part ABCD-XYZW-FF to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.373Z  INFO 19 --- [           main] s.t.order.repository.VendorRepository    : Created vendor ID 100
+2026-03-24T06:49:26.373Z  INFO 19 --- [           main] s.t.order.repository.VendorRepository    : Created vendor ID 200
+Hibernate: select tbl.GEN_VALUE from persistence_order_sequence_generator tbl where tbl.GEN_KEY=? for update
+Hibernate: update persistence_order_sequence_generator set GEN_VALUE=?  where GEN_VALUE=? and GEN_KEY=?
+2026-03-24T06:49:26.388Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 1234-5678-01-1
+Hibernate: select tbl.GEN_VALUE from persistence_order_sequence_generator tbl where tbl.GEN_KEY=? for update
+Hibernate: update persistence_order_sequence_generator set GEN_VALUE=?  where GEN_VALUE=? and GEN_KEY=?
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 9876-4321-02-2
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 5456-6789-03-3
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part ABCD-XYZW-FF-5
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part SDFG-ERTY-BN-7
+2026-03-24T06:49:26.390Z  INFO 19 --- [           main] s.t.o.r.CustomerOrderRepository          : Created order ID 1111
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part 1234-5678-01
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part 9876-4321-02
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part ABCD-XYZW-FF
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.o.r.CustomerOrderRepository          : Created order ID 4312
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part SDFG-ERTY-BN
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part ABCD-XYZW-FF
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part 1234-5678-01
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.service.OrderConfigService     : Order data initialization completed successfully
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_vendor (address,contact,vendorname,phone,vendor_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor (address,contact,vendorname,phone,vendor_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_customerorder (discount,last_update,shipment_info,status,order_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_customerorder (discount,last_update,shipment_info,status,order_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+2026-03-24T06:49:26.418Z  INFO 19 --- [           main] s.tutorial.order.web.StartupInitializer  : Manual dataset initialization completed
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 11 items
+
+smoke.py::test_order_page_loads FAILED                                   [  9%]
+smoke.py::test_css_resource_accessible FAILED                            [ 18%]
+smoke.py::test_orders_table_ui FAILED                                    [ 27%]
+smoke.py::test_order_form_ui FAILED                                      [ 36%]
+smoke.py::test_line_item_ui FAILED                                       [ 45%]
+smoke.py::test_form_validation FAILED                                    [ 54%]
+smoke.py::test_order_deletion PASSED                                     [ 63%]
+smoke.py::test_vendor_search PASSED                                      [ 72%]
+smoke.py::test_vendor_search_no_results PASSED                           [ 81%]
+smoke.py::test_add_line_item PASSED                                      [ 90%]
+smoke.py::test_parts_listed PASSED                                       [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_order_page_loads _____________________________
+
+    def test_order_page_loads():
+        """Order page should load with expected content."""
+>       body = must_get_ok("/order.xhtml", 2)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:963: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/order.xhtml', fail_code = 2
+
+    def must_get_ok(path: str, fail_code: int):
+        url = join(BASE, path)
+        vprint("GET", url)
+        resp, err = http_request("GET", url)
+        if err:
+>           pytest.fail(f"[FAIL] {path} -> {err}")
+E           Failed: [FAIL] /order.xhtml -> NETWORK-ERROR: <urlopen error [Errno 111] Connection refused>
+
+smoke.py:88: Failed
+_________________________ test_css_resource_accessible _________________________
+
+    def test_css_resource_accessible():
+        """CSS resource should be accessible."""
+        # Try multiple URL patterns: direct static path and JSF resource handler URLs
+        css_urls = [
+            "/resources/css/default.css",
+            "/jakarta.faces.resource/default.css.xhtml?ln=css",
+            "/jakarta.faces.resource/default.css?ln=css",
+        ]
+        for path in css_urls:
+            url = join(BASE, path)
+            resp, err = http_request("GET", url)
+            if err is None and resp[0] == 200:
+                print(f"[PASS] CSS accessible at {path}")
+                return
+>       pytest.fail(f"CSS not accessible at any of: {css_urls}")
+E       Failed: CSS not accessible at any of: ['/resources/css/default.css', '/jakarta.faces.resource/default.css.xhtml?ln=css', '/jakarta.faces.resource/default.css?ln=css']
+
+smoke.py:981: Failed
+_____________________________ test_orders_table_ui _____________________________
+
+page = <Page url='about:blank'>
+
+    def test_orders_table_ui(page):
+        """Orders table should display with headers and data."""
+>       assert _check_orders_table_ui(page), "Orders table UI check failed"
+E       AssertionError: Orders table UI check failed
+E       assert False
+E        +  where False = _check_orders_table_ui(<Page url='about:blank'>)
+
+smoke.py:986: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing orders table UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Orders table UI test failed: Page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8081/order.xhtml
+Call log:
+navigating to "http://localhost:8081/order.xhtml", waiting until "load"
+
+______________________________ test_order_form_ui ______________________________
+
+page = <Page url='chrome-error://chromewebdata/'>
+
+    def test_order_form_ui(page):
+        """Order form should load and accept input."""
+>       assert _check_order_form_ui(page), "Order form UI check failed"
+E       AssertionError: Order form UI check failed
+E       assert False
+E        +  where False = _check_order_form_ui(<Page url='chrome-error://chromewebdata/'>)
+
+smoke.py:991: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing order form UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Form UI test failed: Page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8081/order.xhtml
+Call log:
+navigating to "http://localhost:8081/order.xhtml", waiting until "load"
+
+______________________________ test_line_item_ui _______________________________
+
+page = <Page url='chrome-error://chromewebdata/'>
+
+    def test_line_item_ui(page):
+        """Line item page should be navigable from orders."""
+>       assert _check_line_item_ui(page), "Line item UI check failed"
+E       AssertionError: Line item UI check failed
+E       assert False
+E        +  where False = _check_line_item_ui(<Page url='chrome-error://chromewebdata/'>)
+
+smoke.py:996: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing line item UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Line item UI test failed: Page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8081/order.xhtml
+Call log:
+navigating to "http://localhost:8081/order.xhtml", waiting until "load"
+
+_____________________________ test_form_validation _____________________________
+
+page = <Page url='chrome-error://chromewebdata/'>
+
+    def test_form_validation(page):
+        """Form validation should handle empty submission."""
+>       assert _check_form_validation(page), "Form validation check failed"
+E       AssertionError: Form validation check failed
+E       assert False
+E        +  where False = _check_form_validation(<Page url='chrome-error://chromewebdata/'>)
+
+smoke.py:1001: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+[INFO] Testing form validation...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Form validation test failed: Page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8081/order.xhtml
+Call log:
+navigating to "http://localhost:8081/order.xhtml", waiting until "load"
+
+=========================== short test summary info ============================
+FAILED smoke.py::test_order_page_loads - Failed: [FAIL] /order.xhtml -> NETWO...
+FAILED smoke.py::test_css_resource_accessible - Failed: CSS not accessible at...
+FAILED smoke.py::test_orders_table_ui - AssertionError: Orders table UI check...
+FAILED smoke.py::test_order_form_ui - AssertionError: Order form UI check failed
+FAILED smoke.py::test_line_item_ui - AssertionError: Line item UI check failed
+FAILED smoke.py::test_form_validation - AssertionError: Form validation check...
+========================= 6 failed, 5 passed in 0.49s ==========================
+=== TEST FAIL ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T06:49:22.907Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : Starting OrderApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/order-spring-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T06:49:22.940Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T06:49:23.759Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T06:49:23.777Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2026-03-24T06:49:24.164Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T06:49:24.175Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T06:49:24.175Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T06:49:24.190Z  INFO 19 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T06:49:24.191Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1159 ms
+2026-03-24T06:49:24.326Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T06:49:24.369Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T06:49:24.393Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T06:49:24.521Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T06:49:24.539Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T06:49:24.675Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:order user=SA
+2026-03-24T06:49:24.676Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T06:49:24.691Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T06:49:25.464Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table persistence_order_customerorder (order_id integer not null, discount integer not null, last_update timestamp(6), shipment_info varchar(255), status char(1) not null, primary key (order_id))
+Hibernate: create table persistence_order_lineitem (orderid integer not null, item_id integer not null, quantity integer not null, vendorpartnumber bigint, primary key (orderid, item_id))
+Hibernate: create table persistence_order_part (part_number varchar(255) not null, revision integer not null, description varchar(255), revision_date timestamp(6), bompartnumber varchar(255), bomrevision integer, primary key (part_number, revision))
+Hibernate: create table persistence_order_part_detail (drawing blob, specification clob, partnumber varchar(255) not null, revision integer not null, primary key (partnumber, revision))
+Hibernate: create table persistence_order_sequence_generator (GEN_KEY varchar(255) not null, GEN_VALUE bigint, primary key (GEN_KEY))
+Hibernate: insert into persistence_order_sequence_generator(GEN_KEY, GEN_VALUE) values ('VENDOR_PART_ID',0)
+Hibernate: create table persistence_order_vendor (vendor_id integer not null, address varchar(255), contact varchar(255), vendorname varchar(255), phone varchar(255), primary key (vendor_id))
+Hibernate: create table persistence_order_vendor_part (vendor_part_number bigint not null, description varchar(255), price float(53) not null, partnumber varchar(255), partrevision integer, vendorid integer, primary key (vendor_part_number))
+Hibernate: alter table if exists persistence_order_vendor_part drop constraint if exists UKjsy4eyh1uv7ugrqek1x2nqmhh
+Hibernate: alter table if exists persistence_order_vendor_part add constraint UKjsy4eyh1uv7ugrqek1x2nqmhh unique (partnumber, partrevision)
+Hibernate: alter table if exists persistence_order_lineitem add constraint FK60w8vsxtbdoayqnck62w85qsa foreign key (orderid) references persistence_order_customerorder
+Hibernate: alter table if exists persistence_order_lineitem add constraint FKqc5qf65d2aaieimp02b69h77p foreign key (vendorpartnumber) references persistence_order_vendor_part
+Hibernate: alter table if exists persistence_order_part add constraint FKn5nq0r8okdxqyv2cvwy01bejl foreign key (bompartnumber, bomrevision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_part_detail add constraint FK7gxhq2lne16nutjea32dd10rq foreign key (partnumber, revision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_vendor_part add constraint FKgpj3gnol36j527imphep4b42r foreign key (partnumber, partrevision) references persistence_order_part
+Hibernate: alter table if exists persistence_order_vendor_part add constraint FKiy1m325kcj85vkc2nf2q1l52v foreign key (vendorid) references persistence_order_vendor
+2026-03-24T06:49:25.866Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T06:49:26.026Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T06:49:26.316Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T06:49:26.329Z  INFO 19 --- [           main] spring.tutorial.order.OrderApplication   : Started OrderApplication in 3.709 seconds (process running for 4.129)
+2026-03-24T06:49:26.331Z  INFO 19 --- [           main] s.tutorial.order.web.StartupInitializer  : Manually triggering dataset initialization
+2026-03-24T06:49:26.352Z  INFO 19 --- [           main] s.t.order.service.OrderConfigService     : Starting dataset initialization
+2026-03-24T06:49:26.366Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 1234-5678-01-1
+2026-03-24T06:49:26.366Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 9876-4321-02-2
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part 5456-6789-03-3
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part ABCD-XYZW-FF-5
+2026-03-24T06:49:26.367Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Created part SDFG-ERTY-BN-7
+2026-03-24T06:49:26.371Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 1234-5678-01 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.371Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 9876-4321-02 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.372Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part 5456-6789-03 to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.372Z  INFO 19 --- [           main] s.t.order.repository.PartRepository      : Added part ABCD-XYZW-FF to BOM SDFG-ERTY-BN
+2026-03-24T06:49:26.373Z  INFO 19 --- [           main] s.t.order.repository.VendorRepository    : Created vendor ID 100
+2026-03-24T06:49:26.373Z  INFO 19 --- [           main] s.t.order.repository.VendorRepository    : Created vendor ID 200
+Hibernate: select tbl.GEN_VALUE from persistence_order_sequence_generator tbl where tbl.GEN_KEY=? for update
+Hibernate: update persistence_order_sequence_generator set GEN_VALUE=?  where GEN_VALUE=? and GEN_KEY=?
+2026-03-24T06:49:26.388Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 1234-5678-01-1
+Hibernate: select tbl.GEN_VALUE from persistence_order_sequence_generator tbl where tbl.GEN_KEY=? for update
+Hibernate: update persistence_order_sequence_generator set GEN_VALUE=?  where GEN_VALUE=? and GEN_KEY=?
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 9876-4321-02-2
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part 5456-6789-03-3
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part ABCD-XYZW-FF-5
+2026-03-24T06:49:26.389Z  INFO 19 --- [           main] s.t.o.repository.VendorPartRepository    : Created vendor part for part SDFG-ERTY-BN-7
+2026-03-24T06:49:26.390Z  INFO 19 --- [           main] s.t.o.r.CustomerOrderRepository          : Created order ID 1111
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part 1234-5678-01
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part 9876-4321-02
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 1111, part ABCD-XYZW-FF
+2026-03-24T06:49:26.391Z  INFO 19 --- [           main] s.t.o.r.CustomerOrderRepository          : Created order ID 4312
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part SDFG-ERTY-BN
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part ABCD-XYZW-FF
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.repository.LineItemRepository  : Added line item for order ID 4312, part 1234-5678-01
+2026-03-24T06:49:26.392Z  INFO 19 --- [           main] s.t.order.service.OrderConfigService     : Order data initialization completed successfully
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_part (bompartnumber,bomrevision,description,revision_date,part_number,revision) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_part_detail (drawing,specification,partnumber,revision) values (?,?,?,?)
+Hibernate: insert into persistence_order_vendor (address,contact,vendorname,phone,vendor_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor (address,contact,vendorname,phone,vendor_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_vendor_part (description,partnumber,partrevision,price,vendorid,vendor_part_number) values (?,?,?,?,?,?)
+Hibernate: insert into persistence_order_customerorder (discount,last_update,shipment_info,status,order_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_customerorder (discount,last_update,shipment_info,status,order_id) values (?,?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: insert into persistence_order_lineitem (quantity,vendorpartnumber,orderid,item_id) values (?,?,?,?)
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+Hibernate: update persistence_order_part set bompartnumber=?,bomrevision=?,description=?,revision_date=? where part_number=? and revision=?
+2026-03-24T06:49:26.418Z  INFO 19 --- [           main] s.tutorial.order.web.StartupInitializer  : Manual dataset initialization completed
+make: *** [Makefile:52: test] Error 1

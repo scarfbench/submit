@@ -1,0 +1,6 @@
+docker logs "jaxrs-customer-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: jaxrs-customer-spring
+make: *** [Makefile:32: logs] Error 1

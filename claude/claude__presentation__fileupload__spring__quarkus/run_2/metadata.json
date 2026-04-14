@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "fileupload",
+  "layer": "presentation",
+  "repeat": 2,
+  "source_framework": "spring",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 6,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 5,
+  "failure_reason": "1 failed, 0 errors, 5 passed out of 6 tests",
+  "failure_category": "test_failures",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

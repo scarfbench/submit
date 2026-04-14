@@ -1,0 +1,89 @@
+/*
+ * Copyright (c), Eclipse Foundation, Inc. and its licensors.
+ *
+ * All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Distribution License v1.0, which is available at
+ * https://www.eclipse.org/org/documents/edl-v10.php
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+package jakarta.tutorial.taskcreator;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.logging.Logger;
+
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.MediaType;
+
+/* The tasks just notify the JAX-RS web service in the service */
+public class Task implements Runnable {
+
+    private static final Logger log = Logger.getLogger("Task");
+    /*
+     * Updated: Spring Boot default port is 8080. Allow override via
+     * TASKCREATOR_BASE_URL env.
+     */
+    private static final String WS_URL_BASE = System.getenv().getOrDefault("TASKCREATOR_BASE_URL",
+            "http://localhost:8080");
+    private static final String WS_URL = WS_URL_BASE + "/api/taskinfo";
+
+    private final String name;
+    private final String type;
+    private final DateFormat dateFormat;
+    private final Client client;
+    private int counter;
+
+    public Task(String n, String t) {
+        name = n;
+        type = t;
+        counter = 1;
+        dateFormat = new SimpleDateFormat("HH:mm:ss");
+        client = ClientBuilder.newClient();
+        /*
+         * For delayed tasks, send
+         * /* Send: 14:15:45 - DELAYED Task ABCDE submitted
+         */
+        if (type.compareTo("DELAYED") == 0)
+            sendToWebService("submitted");
+    }
+
+    @Override
+    public void run() {
+        /* Send: 14:15:45 - TASKTYPE Task ABCDE started */
+        if (type.compareTo("PERIODIC") == 0)
+            sendToWebService("started run #" + counter);
+        else
+            sendToWebService("started");
+
+        try {
+            Thread.sleep(1500);
+        } catch (Exception e) {
+        }
+
+        /* Send: 14:15:47 - TASKTYPE Task ABCDE finished */
+        if (type.compareTo("PERIODIC") == 0)
+            sendToWebService("finished run #" + (counter++));
+        else
+            sendToWebService("finished");
+    }
+
+    /* Send: 14:15:47 - TASKTYPE Task ABCDE [details] */
+    private void sendToWebService(String details) {
+        String time = dateFormat.format(Calendar.getInstance().getTime());
+        String msg = time + " - " + type + " Task " + name + " " + details;
+        client.target(WS_URL)
+                .request(MediaType.TEXT_PLAIN)
+                .post(Entity.html(msg));
+    }
+
+    public String getName() {
+        return name;
+    }
+
+}

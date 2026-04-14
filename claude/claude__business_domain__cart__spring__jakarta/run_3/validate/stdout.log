@@ -1,0 +1,31 @@
+docker build -f Dockerfile -t "cart-liberty:latest" .
+[INFO] Built image: cart-liberty:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "cart-liberty" "cart-liberty:latest"
+4c48a6ad26d112bbc43cfd33eeb389e1c145758ba1749ff0108fe0443c99616c
+[INFO] Started cart-liberty, waiting for app to start...
+### Check for build failure
+[ERROR] Build failed in container:
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jersey/jersey-bom/3.1.5/jersey-bom-3.1.5.pom
+Progress (1): 843 BProgress (1): 6.0 kBProgress (1): 19 kB Progress (1): 21 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jersey/jersey-bom/3.1.5/jersey-bom-3.1.5.pom (21 kB at 102 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.8/project-1.0.8.pom
+Progress (1): 873 BProgress (1): 1.9 kBProgress (1): 4.7 kBProgress (1): 7.4 kBProgress (1): 9.4 kBProgress (1): 15 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.8/project-1.0.8.pom (15 kB at 470 kB/s)
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[ERROR] 'dependencies.dependency.version' for org.junit.jupiter:junit-jupiter:jar is missing. @ line 51, column 21
+[ERROR] 'dependencies.dependency.version' for org.junit.jupiter:junit-jupiter:jar is missing. @ line 41, column 21
+ @ 
+[ERROR] The build could not read 2 projects -> [Help 1]
+[ERROR]   
+[ERROR]   The project jakarta.examples.tutorial.cart:cart-app:1.0.0-SNAPSHOT (/app/cart-app/pom.xml) has 1 error
+[ERROR]     'dependencies.dependency.version' for org.junit.jupiter:junit-jupiter:jar is missing. @ line 51, column 21
+[ERROR]   
+[ERROR]   The project jakarta.examples.tutorial.cart:cart-appclient:1.0.0-SNAPSHOT (/app/cart-appclient/pom.xml) has 1 error
+[ERROR]     'dependencies.dependency.version' for org.junit.jupiter:junit-jupiter:jar is missing. @ line 41, column 21
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException

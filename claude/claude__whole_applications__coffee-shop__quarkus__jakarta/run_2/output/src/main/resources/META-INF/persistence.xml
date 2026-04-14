@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="coffeeshop" transaction-type="JTA">
+        <jta-data-source>jdbc/coffeeshop</jta-data-source>
+        <class>io.quarkuscoffeeshop.coffeeshop.domain.Order</class>
+        <class>io.quarkuscoffeeshop.coffeeshop.domain.LineItem</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="barista" transaction-type="JTA">
+        <jta-data-source>jdbc/barista</jta-data-source>
+        <class>io.quarkuscoffeeshop.coffeeshop.barista.domain.BaristaItem</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="kitchen" transaction-type="JTA">
+        <jta-data-source>jdbc/kitchen</jta-data-source>
+        <class>io.quarkuscoffeeshop.coffeeshop.kitchen.domain.KitchenOrder</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
+</persistence>

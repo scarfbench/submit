@@ -1,0 +1,11 @@
+*
+!src/**
+!pom.xml
+!.mvn/**
+!mvnw
+!mvnw.cmd
+!smoke.py
+!target/*-runner
+!target/*-runner.jar
+!target/lib/*
+!target/quarkus-app/*

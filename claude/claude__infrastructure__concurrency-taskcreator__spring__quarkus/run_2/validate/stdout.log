@@ -1,0 +1,55 @@
+docker build -f Dockerfile -t "taskcreator-quarkus:latest" .
+[INFO] Built image: taskcreator-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "taskcreator-quarkus" "taskcreator-quarkus:latest"
+409597b1773e166cc4d978f266e9613a46528fbf1ddfe3d899c1f0d604547381
+[INFO] Started taskcreator-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.
+POST http://localhost:9080/taskcreator/taskinfo :: 00:38:30 - Smoke test
+RESP 204
+
+[PASS] POST /taskinfo -> 204
+Using base URL: http://localhost:9080/taskcreator
+POST http://localhost:9080/taskcreator/taskinfo :: 00:38:30 - Smoke test
+RESP 204
+
+[PASS] POST /taskinfo -> 204
+GET http://localhost:9080/taskcreator/taskinfo
+RESP 405
+
+[PASS] GET /taskinfo -> 405 (Method Not Allowed)
+[PASS] Smoke tests complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__infrastructure__concurrency-taskcreator__spring__quarkus/run_2/output'
+docker rm -f "taskcreator-quarkus"
+taskcreator-quarkus
+[INFO] Container removed (if it existed)
+docker rmi "taskcreator-quarkus:latest"
+Untagged: taskcreator-quarkus:latest
+Deleted: sha256:182f519e937e8bcaa7c96e9dc0cfe793f44aa8437785048848f039f6dd7ab4f6
+docker image prune -f
+Deleted Images:
+deleted: sha256:63bd557241cde776d9c14a1658a994e8e2d0e1c6965da03748a486a53ab8317b
+deleted: sha256:f7afc81718d3ec48ae5b4fe17ae60f1b68793b23175cf280fa2d715a02ea2857
+deleted: sha256:a84aefebbe5b374e6e486124dd236cb5e9f56e8e7e682ec507fdb0a5f3627f39
+deleted: sha256:87549b0bde4876641fe12b23ae36344ec63a26c90a04f2e695de028fe3ee76a4
+deleted: sha256:8750209156fdf965a1db302af0c4fb9f873d8a3bda53c58e4956bbb955145be8
+deleted: sha256:e4b1f79e671ef38ff0baa1a9f8841be5a6fa21fa441246f913e683f48cced6f2
+deleted: sha256:4d1c2aa0faadcda5b6db16d8b8e0d66081252173a46b7462ef444f39be08e48c
+deleted: sha256:e94446cbc1af752be10db7c91b2961b5a613f42ff15c50e739a2faacd1e48817
+deleted: sha256:85a1e4c1fefbcbc77c13d4eadff588987a31935ac89fc8e83794f7e2341bc62e
+deleted: sha256:2c8a520224ebc9a7403e0b27c02cf4bf2110374c0a5fc1cb5d1f487bce8f6f30
+deleted: sha256:fb5db55fc905f9bc2356a91112638fe44810d3ac7fd406947a27e2b66fddf1ed
+deleted: sha256:4c9af22b7aee84d297fb04083e32110e951a12c21ed3dbf5fba2d8e93b85dcef
+deleted: sha256:918cc9a4873c9ddac35fc42efa42bf0a75a45362b5a2e820fcdecb311286ff65
+deleted: sha256:3d46a848fdadf4d01ff4ab6bcebbac561237532158d8365021e8230df70989b0
+deleted: sha256:32cd4038c8dc54395db53e7ffe5c07b467e4e93e06bc606e9cbbacdc31eb7901
+deleted: sha256:0c9565dfbafea47cd831a6e2e5dcc7cbbfa6de8bf37c090a66c7e21c5b3c5169
+deleted: sha256:465ec4eb7c7f1b8614516bcb445ef3b091eba9f0c07f4d55f80c8c445fcd3f0a
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__infrastructure__concurrency-taskcreator__spring__quarkus/run_2/output'

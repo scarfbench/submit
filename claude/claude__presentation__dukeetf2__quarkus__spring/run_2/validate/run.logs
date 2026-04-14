@@ -1,0 +1,6 @@
+docker logs "dukeetf2-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: dukeetf2-spring
+make: *** [Makefile:32: logs] Error 1

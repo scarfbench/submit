@@ -1,0 +1,17 @@
+{
+  "status": "CONVERTED",
+  "agent": "claude",
+  "app": "address-book",
+  "layer": "persistence",
+  "repeat": 2,
+  "source_framework": "jakarta",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 10,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 2,
+  "failure_reason": "8 failed, 0 errors, 2 passed out of 10 tests",
+  "failure_category": "test_failures",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

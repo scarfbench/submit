@@ -1,0 +1,6 @@
+docker logs "jaxrs-rsvp-quarkus"
+
+
+--- stderr ---
+Error response from daemon: can not get logs from container which is dead or marked for removal
+make: *** [Makefile:32: logs] Error 1

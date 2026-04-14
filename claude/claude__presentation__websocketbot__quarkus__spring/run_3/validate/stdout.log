@@ -1,0 +1,78 @@
+docker build -f Dockerfile -t "websocketbot-spring:latest" .
+[INFO] Built image: websocketbot-spring:latest
+### Run the container in detached mode
+docker run -d --name "websocketbot-spring" "websocketbot-spring:latest"
+85afce7fa81edadfefc9f5f4e3e4b9f6670b419973ea5c1690144ff350f8a0fa
+[INFO] Started websocketbot-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /index.html -> 200
+[PASS] HTML content valid
+[PASS] Join message successful
+[PASS] Duke greeting: Hi there!!
+
+--- Testing: 'How are you?' ---
+[PASS] Duke responded: I'm doing great, thank you!
+[PASS] Response contains expected content: 'great'
+
+--- Testing: 'How old are you?' ---
+[PASS] Duke responded: I'm 31 years old.
+[PASS] Response contains expected content: 'years old'
+
+--- Testing: 'When is your birthday?' ---
+[PASS] Duke responded: My birthday is on May 23rd. Thanks for asking!
+[PASS] Response contains expected content: 'May 23rd'
+
+--- Testing: 'What is your favorite color?' ---
+[PASS] Duke responded: My favorite color is blue. What's yours?
+[PASS] Response contains expected content: 'blue'
+
+--- Testing: 'What is your name?' ---
+[PASS] Duke responded: Sorry, I did not understand what you said. You can ask me how I'm doing today; how old I am; or what my favorite color is.
+[PASS] Response contains expected content: 'Sorry, I did not understand'
+
+--- Testing non-targeted message ---
+[PASS] No response to non-targeted message (as expected)
+
+[PASS] All bot functionality tests passed!
+[PASS] WebSocket functionality working
+
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__websocketbot__quarkus__spring/run_3/output'
+docker rm -f "websocketbot-spring"
+websocketbot-spring
+[INFO] Container removed (if it existed)
+docker rmi "websocketbot-spring:latest"
+Untagged: websocketbot-spring:latest
+Deleted: sha256:83c1085f6102a9fd7bb67e50332b8faa927b3756152d8a3c4e0f66c11a89b5ff
+docker image prune -f
+Deleted Images:
+deleted: sha256:4068044b8f28517cb5227c4355715068296a53711596b248acff9be7984def94
+deleted: sha256:162e1ca5c4d7ceb0c8aa6db882986fea8c0c9e466b269274bf18ebc6784bf847
+deleted: sha256:e61b15d8d142017404a91075caa860fdc7e49f943aefc3dd09ff9cf549e7b3e3
+deleted: sha256:edd052d46e2f846237e9d1c4e0bae06828cf5ecfa96de1cbb08b53dacc1cecbe
+deleted: sha256:ef3fba38893df9e42be305312eca6d62445a5062b02d38db31f28b5e43e80e07
+deleted: sha256:6594fa0fb7eea9a6f84d53e9b91f31ada62aee7adbbcaaef9f5990d6ac07f310
+deleted: sha256:0be274bd118d5b7e497a6e7f5f7c4f74c83c82ee6410bc5e93daddadab3d5a69
+deleted: sha256:0ec7ceff90b5265a855e6b86974a57e7faaf9cc9ea8fea1fd5c0ed0ba7525c84
+deleted: sha256:e41472854488db8d19c1fb5d498b48a117968c26ed24fef9384f42aeb90b8159
+deleted: sha256:76ee87400e26653f07bc8119e4c98abb17fcd14ba1e0aac3a8f7aa7a7abb4dcf
+deleted: sha256:0ad1c4c30e2fb34cc19caf97b7244f659c7ad8e547bcc998d29f6dec45c58632
+deleted: sha256:3bb935e19609f16f167fef9e85554cd38bdcf50f16aaa5ad8bcb68fab385ae1d
+deleted: sha256:338ea07f57cfa270d52e71247857d6113b61fb4888fed719dc21e454a23f8d20
+deleted: sha256:a4f924094a7142dfbd90bddfc53a7a76e49adceeb13bd84c43d46d0fe148749d
+deleted: sha256:2a27ee20643fbbd90fdb17282d1e4386e4c834b03ffcc8ed47144e2bc71b4e2d
+deleted: sha256:5102a8ea138bd520cf1ba2706e20b7eddb7810be67f9bf123335cd4e041937fc
+deleted: sha256:e221708e93d42cdb07f95c20ee28964d712af6b79dd3a24125d040fe6c65e64a
+deleted: sha256:ed1d80e4c21b08b8b9ee575153c61e4491e9ac1e403c22ac40f50968027e15c1
+deleted: sha256:d3587bd59df500866bd1e5026e3394c5cabb49d8d0b6cd828d3f630d92890d69
+deleted: sha256:61497b5077287f0eb2eb0ee597efa49d36b9b99bbcf0cea1484a0397659a542d
+deleted: sha256:da3547fb3d771eed0e969b927008eedb4bed4bcd65dc448d595c9609dcde21f3
+deleted: sha256:e2dfb5f3a63877c74af9b010b62b3f234f3a3fd488924e057963df04f88d4280
+deleted: sha256:3cf75abffc8b06ab2d5798a3f4e607b1f5c89b577628dd85bc6878d1477a97af
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__websocketbot__quarkus__spring/run_3/output'

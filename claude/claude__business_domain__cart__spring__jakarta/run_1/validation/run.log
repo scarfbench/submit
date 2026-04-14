@@ -1,0 +1,92 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.06kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 356.04kB 0.0s done
+#5 DONE 0.0s
+
+#6 [ 2/13] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [ 3/13] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [ 4/13] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#8 CACHED
+
+#9 [ 5/13] RUN playwright install --with-deps chromium
+#9 CACHED
+
+#10 [ 6/13] WORKDIR /app
+#10 CACHED
+
+#11 [ 7/13] COPY pom.xml .
+#11 DONE 0.1s
+
+#12 [ 8/13] COPY cart-ejb/pom.xml cart-ejb/
+#12 DONE 0.1s
+
+#13 [ 9/13] COPY cart-web/pom.xml cart-web/
+#13 DONE 0.1s
+
+#14 [10/13] RUN mvn dependency:go-offline -q
+#14 1.706 [ERROR] [ERROR] Some problems were encountered while processing the POMs:
+#14 1.706 [ERROR] Child module /app/cart-common of /app/pom.xml does not exist @ 
+#14 1.706 [ERROR] Child module /app/cart-service of /app/pom.xml does not exist @ 
+#14 1.706 [ERROR] Child module /app/cart-appclient of /app/pom.xml does not exist @ 
+#14 1.706 [ERROR] Child module /app/cart-app of /app/pom.xml does not exist @ 
+#14 1.706  @ 
+#14 1.706 [ERROR] The build could not read 1 project -> [Help 1]
+#14 1.706 [ERROR]   
+#14 1.706 [ERROR]   The project spring.examples.tutorial.cart:parent:0.0.1-SNAPSHOT (/app/pom.xml) has 4 errors
+#14 1.706 [ERROR]     Child module /app/cart-common of /app/pom.xml does not exist
+#14 1.707 [ERROR]     Child module /app/cart-service of /app/pom.xml does not exist
+#14 1.707 [ERROR]     Child module /app/cart-appclient of /app/pom.xml does not exist
+#14 1.707 [ERROR]     Child module /app/cart-app of /app/pom.xml does not exist
+#14 1.707 [ERROR] 
+#14 1.707 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#14 1.707 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#14 1.707 [ERROR] 
+#14 1.707 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#14 1.707 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+#14 ERROR: process "/bin/sh -c mvn dependency:go-offline -q" did not complete successfully: exit code: 1
+------
+ > [10/13] RUN mvn dependency:go-offline -q:
+1.706 [ERROR]     Child module /app/cart-common of /app/pom.xml does not exist
+1.707 [ERROR]     Child module /app/cart-service of /app/pom.xml does not exist
+1.707 [ERROR]     Child module /app/cart-appclient of /app/pom.xml does not exist
+1.707 [ERROR]     Child module /app/cart-app of /app/pom.xml does not exist
+1.707 [ERROR] 
+1.707 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+1.707 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+1.707 [ERROR] 
+1.707 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+1.707 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+------
+Dockerfile:27
+--------------------
+  25 |     COPY cart-ejb/pom.xml cart-ejb/
+  26 |     COPY cart-web/pom.xml cart-web/
+  27 | >>> RUN mvn dependency:go-offline -q
+  28 |     
+  29 |     # Build application
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn dependency:go-offline -q" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: cart-liberty-42beb76d
+make: *** [Makefile:10: compile] Error 1

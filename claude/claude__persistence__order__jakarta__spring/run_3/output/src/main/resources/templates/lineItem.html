@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Line Items for Order</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-size: 12px;
+            font-family: Verdana, "Verdana CE", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+            color: #000000;
+            margin: 10px;
+        }
+        h1 {
+            font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+            border-bottom: 1px solid #AFAFAF;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0px;
+            padding: 0px;
+            color: #D20005;
+        }
+        a:link, a:visited { color: #045491; font-weight: bold; text-decoration: none; }
+        a:link:hover, a:visited:hover { color: #045491; font-weight: bold; text-decoration: underline; }
+        th { font-weight: bold; text-align: center; }
+        td { text-align: center; }
+        table { border-collapse: collapse; }
+        table, th, td { border: 1px solid black; padding: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Line Items for Order <span th:text="${currentOrder}">ID</span></h1>
+
+    <table>
+        <tr>
+            <th>Item ID</th>
+            <th>Quantity</th>
+            <th>Vendor Part Number</th>
+        </tr>
+        <tr th:each="lineItem : ${lineItems}">
+            <td th:text="${lineItem.itemId}">Item ID</td>
+            <td th:text="${lineItem.quantity}">Quantity</td>
+            <td th:text="${lineItem.vendorPart.vendorPartNumber}">VPN</td>
+        </tr>
+    </table>
+    <br/>
+
+    <h2>Available Parts</h2>
+    <table>
+        <tr>
+            <th>Part Number</th>
+            <th>Revision</th>
+            <th>Vendor Part Number</th>
+            <th>Add To Order</th>
+        </tr>
+        <tr th:each="part : ${parts}">
+            <td th:text="${part.partNumber}">PN</td>
+            <td th:text="${part.revision}">Rev</td>
+            <td th:text="${part.vendorPart?.vendorPartNumber}">VPN</td>
+            <td>
+                <form th:action="@{/addLineItem}" method="post" style="display:inline;">
+                    <input type="hidden" name="orderId" th:value="${currentOrder}"/>
+                    <input type="hidden" name="partNumber" th:value="${part.partNumber}"/>
+                    <input type="hidden" name="revision" th:value="${part.revision}"/>
+                    <input type="submit" value="Add"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br/>
+
+    <a th:href="@{/}">Back To Orders</a>
+</body>
+</html>

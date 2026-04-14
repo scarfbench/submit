@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "converter-quarkus":latest .
+[INFO] Built image: converter-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "converter-quarkus" "converter-quarkus":latest
+c9c34dc77db754c75ad62a46cd811c502e386dee702dfbabc74c7b74889a9cbf
+[INFO] Started converter-quarkus, waiting for app to start...
+### Check for startup failure or success
+[INFO] Quarkus application started and ready.
+---[ 00:39:14 - Smoke test ]---

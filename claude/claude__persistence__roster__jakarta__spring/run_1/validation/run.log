@@ -1,0 +1,65 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 983B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#4 CACHED
+
+#5 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#5 CACHED
+
+#6 [5/9] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 174.87kB 0.0s done
+#10 DONE 0.0s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:cb714e0728e9954b9db81a0eba03c548fdddd7578aea45970478ad8fddf8695f done
+#14 exporting config sha256:9fdf31c0ae8c6fff51d61a40a34a631872b3e50cd63b93667cc4ac2b754f6102 done
+#14 exporting attestation manifest sha256:ebb8dc548106ab986203107c4aead1ff381da0f1b3cf35be15d41b883ddb4b24
+#14 exporting attestation manifest sha256:ebb8dc548106ab986203107c4aead1ff381da0f1b3cf35be15d41b883ddb4b24 0.2s done
+#14 exporting manifest list sha256:911d6dd5ff98b46cac214604dbf456da4ca8460b970d0f7ba2f9c61e3bddf7ec
+#14 exporting manifest list sha256:911d6dd5ff98b46cac214604dbf456da4ca8460b970d0f7ba2f9c61e3bddf7ec 0.0s done
+#14 naming to docker.io/library/roster-spring:5833d5f3 done
+#14 unpacking to docker.io/library/roster-spring:5833d5f3 done
+#14 DONE 0.3s
+[INFO] Built image: roster-spring:5833d5f3
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name roster-spring-53539126 roster-spring:5833d5f3
+77e899494c8a72660821580eb3dfc3855a26ae31567fcc417ef1f395df2f1121
+[INFO] Started roster-spring-53539126, waiting for app to start...
+Error: Unable to access jarfile roster-boot/target/*.jar

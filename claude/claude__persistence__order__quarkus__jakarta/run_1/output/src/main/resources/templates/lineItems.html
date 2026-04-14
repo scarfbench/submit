@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Line Items for Order ' + ${currentOrder}">Line Items for Order</title>
+    <link rel="stylesheet" href="/css/default.css"/>
+</head>
+<body>
+    <h1>Line Items for Order <span th:text="${currentOrder}"></span></h1>
+
+    <form method="post">
+        <table rules="all" cellpadding="5">
+            <tr>
+                <th>Item ID</th>
+                <th>Quantity</th>
+                <th>Vendor Part Number</th>
+            </tr>
+            <tr th:each="lineItem : ${lineItems}">
+                <td th:text="${lineItem.itemId}"></td>
+                <td th:text="${lineItem.quantity}"></td>
+                <td th:text="${lineItem.vendorPartNumber}"></td>
+            </tr>
+        </table>
+        <br/>
+        <table id="orderPartsTable" rules="all" cellpadding="5">
+            <tr>
+                <th>Part Number</th>
+                <th>Revision</th>
+                <th>Vendor Part Number</th>
+                <th>Add To Order</th>
+            </tr>
+            <tr th:each="part : ${newOrderParts}">
+                <td th:text="${part.partNumber}"></td>
+                <td th:text="${part.revision}"></td>
+                <td th:text="${part.vendorPartNumber}"></td>
+                <td>
+                    <form method="post" action="/addLineItem">
+                        <input type="hidden" name="currentOrder" th:value="${currentOrder}"/>
+                        <input type="hidden" name="selectedPartNumber" th:value="${part.partNumber}"/>
+                        <input type="hidden" name="selectedPartRevision" th:value="${part.revision}"/>
+                        <button type="submit">Add</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <a href="/orders">Back to Orders</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+docker build -f Dockerfile -t "fileupload-spring:latest" .
+[INFO] Built image: fileupload-spring:latest
+### Run the container in detached mode
+docker run -d --name "fileupload-spring" "fileupload-spring:latest"
+265088c93b4ba5c736fa4cc2062701d192655f9a93cbdbfecf8cf60705b1f883
+[INFO] Started fileupload-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /index.html -> 200
+[PASS] GET /upload -> 200
+[PASS] POST /upload -> 200
+[PASS] POST /upload -> 200

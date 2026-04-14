@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{:: #body-content})}">
+<body>
+<div id="body-content">
+<h2>Owner</h2>
+<form class="form-horizontal" id="add-owner-form" method="post">
+    <div class="form-group has-feedback">
+        <div class="form-group" th:classappend="${errors != null and errors.containsKey('firstName')} ? 'has-error' : ''">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <div>
+                    <input class="form-control" type="text" id="firstName" name="firstName"
+                           th:value="${owner != null ? owner.firstName : ''}" />
+                </div>
+                <span th:if="${errors != null and errors.containsKey('firstName')}"
+                      class="help-inline" th:text="${errors.get('firstName')}"></span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${errors != null and errors.containsKey('lastName')} ? 'has-error' : ''">
+            <label class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-10">
+                <div>
+                    <input class="form-control" type="text" id="lastName" name="lastName"
+                           th:value="${owner != null ? owner.lastName : ''}" />
+                </div>
+                <span th:if="${errors != null and errors.containsKey('lastName')}"
+                      class="help-inline" th:text="${errors.get('lastName')}"></span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${errors != null and errors.containsKey('address')} ? 'has-error' : ''">
+            <label class="col-sm-2 control-label">Address</label>
+            <div class="col-sm-10">
+                <div>
+                    <input class="form-control" type="text" id="address" name="address"
+                           th:value="${owner != null ? owner.address : ''}" />
+                </div>
+                <span th:if="${errors != null and errors.containsKey('address')}"
+                      class="help-inline" th:text="${errors.get('address')}"></span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${errors != null and errors.containsKey('city')} ? 'has-error' : ''">
+            <label class="col-sm-2 control-label">City</label>
+            <div class="col-sm-10">
+                <div>
+                    <input class="form-control" type="text" id="city" name="city"
+                           th:value="${owner != null ? owner.city : ''}" />
+                </div>
+                <span th:if="${errors != null and errors.containsKey('city')}"
+                      class="help-inline" th:text="${errors.get('city')}"></span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${errors != null and errors.containsKey('telephone')} ? 'has-error' : ''">
+            <label class="col-sm-2 control-label">Telephone</label>
+            <div class="col-sm-10">
+                <div>
+                    <input class="form-control" type="text" id="telephone" name="telephone"
+                           th:value="${owner != null ? owner.telephone : ''}" />
+                </div>
+                <span th:if="${errors != null and errors.containsKey('telephone')}"
+                      class="help-inline" th:text="${errors.get('telephone')}"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" type="submit">
+                <span th:if="${owner != null and owner.id != null}">Edit Owner</span>
+                <span th:unless="${owner != null and owner.id != null}">Add Owner</span>
+            </button>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="DayTrader Jakarta EE Server">
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+    </featureManager>
+
+    <!-- HTTP Endpoint -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443" />
+
+    <!-- Basic user registry for EJB support -->
+    <basicRegistry id="basic" realm="BasicRealm" />
+
+    <!-- Application -->
+    <webApplication id="daytrader" location="daytrader.war" contextRoot="/">
+        <classloader apiTypeVisibility="+third-party"/>
+    </webApplication>
+
+    <!-- In-memory H2 database -->
+    <dataSource id="DefaultDataSource" jndiName="jdbc/TradeDataSource" transactional="true">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:mem:tradedb;DB_CLOSE_DELAY=-1" user="sa" password=""/>
+    </dataSource>
+
+    <library id="h2Lib">
+        <fileset dir="${shared.resource.dir}/h2" includes="*.jar"/>
+    </library>
+
+    <!-- Logging -->
+    <logging consoleLogLevel="INFO" />
+
+</server>

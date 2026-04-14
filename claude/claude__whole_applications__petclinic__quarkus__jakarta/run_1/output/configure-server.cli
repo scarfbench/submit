@@ -1,0 +1,9 @@
+# Configure the H2 datasource for development
+# The h2-default-datasource layer already provides ExampleDS
+# We just need to adjust some settings
+
+# Enable JPA SQL logging
+/subsystem=jpa:write-attribute(name=default-extended-persistence-inheritance,value=DEEP)
+
+# Set the context root to /
+/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=default-web-module,value=ROOT.war)

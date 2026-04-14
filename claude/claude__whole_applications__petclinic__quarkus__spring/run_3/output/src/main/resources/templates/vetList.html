@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{:: #body-content})}">
+<body>
+<div id="body-content">
+<h2>Veterinarians</h2>
+<table id="vets" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Specialties</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="vet : ${vets}">
+            <td th:text="${vet.firstName + ' ' + vet.lastName}">Name</td>
+            <td>
+                <span th:each="s : ${vet.specialties}">
+                    <span th:text="${s.name}">Specialty</span>&nbsp;
+                </span>
+                <span th:if="${vet.nrOfSpecialties == 0}">none</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,1267 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.01kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 171.86kB 0.0s done
+#5 DONE 0.0s
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#7 CACHED
+
+#8 [5/9] RUN playwright install --with-deps chromium
+#8 CACHED
+
+#9 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#9 CACHED
+
+#10 [6/9] WORKDIR /app
+#10 CACHED
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 26.6s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 1.411 [INFO] Scanning for projects...
+#13 2.283 [INFO] 
+#13 2.283 [INFO] --------------< jakarta.examples.tutorial.ejb:converter >---------------
+#13 2.284 [INFO] Building converter 10-SNAPSHOT
+#13 2.284 [INFO]   from pom.xml
+#13 2.284 [INFO] --------------------------------[ jar ]---------------------------------
+#13 2.642 [INFO] 
+#13 2.642 [INFO] --- resources:3.3.1:resources (default-resources) @ converter ---
+#13 2.711 [INFO] Copying 2 resources from src/main/resources to target/classes
+#13 2.713 [INFO] 
+#13 2.713 [INFO] --- quarkus:3.6.4:generate-code (default) @ converter ---
+#13 3.032 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-deployment/3.6.4/quarkus-resteasy-reactive-deployment-3.6.4.pom
+#13 3.261 Progress (1): 3.0 kBProgress (1): 5.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-deployment/3.6.4/quarkus-resteasy-reactive-deployment-3.6.4.pom (5.4 kB at 23 kB/s)
+#13 3.274 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.6.4/resteasy-reactive-processor-3.6.4.pom
+#13 3.313 Progress (1): 2.0 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.6.4/resteasy-reactive-processor-3.6.4.pom (2.8 kB at 67 kB/s)
+#13 3.319 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.6.4/resteasy-reactive-common-processor-3.6.4.pom
+#13 3.351 Progress (1): 2.0 kBProgress (1): 2.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.6.4/resteasy-reactive-common-processor-3.6.4.pom (2.1 kB at 73 kB/s)
+#13 3.358 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.6.4/quarkus-vertx-http-deployment-3.6.4.pom
+#13 3.379 Progress (1): 2.3 kBProgress (1): 5.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.6.4/quarkus-vertx-http-deployment-3.6.4.pom (5.1 kB at 177 kB/s)
+#13 3.384 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.6.4/quarkus-vertx-deployment-3.6.4.pom
+#13 3.412 Progress (1): 2.4 kBProgress (1): 2.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.6.4/quarkus-vertx-deployment-3.6.4.pom (2.9 kB at 105 kB/s)
+#13 3.423 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.6.4/quarkus-arc-deployment-3.6.4.pom
+#13 3.448 Progress (1): 2.0 kBProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.6.4/quarkus-arc-deployment-3.6.4.pom (2.5 kB at 98 kB/s)
+#13 3.454 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.6.4/quarkus-smallrye-context-propagation-spi-3.6.4.pom
+#13 3.490 Progress (1): 1.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.6.4/quarkus-smallrye-context-propagation-spi-3.6.4.pom (1.0 kB at 37 kB/s)
+#13 3.490 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.6.4/quarkus-vertx-http-dev-ui-spi-3.6.4.pom
+#13 3.517 Progress (1): 804 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.6.4/quarkus-vertx-http-dev-ui-spi-3.6.4.pom (804 B at 29 kB/s)
+#13 3.525 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.6.4/arc-processor-3.6.4.pom
+#13 3.559 Progress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.6.4/arc-processor-3.6.4.pom (1.9 kB at 53 kB/s)
+#13 3.564 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.6.4/quarkus-netty-deployment-3.6.4.pom
+#13 3.600 Progress (1): 1.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.6.4/quarkus-netty-deployment-3.6.4.pom (1.6 kB at 54 kB/s)
+#13 3.606 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.6.4/quarkus-virtual-threads-deployment-3.6.4.pom
+#13 3.633 Progress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.6.4/quarkus-virtual-threads-deployment-3.6.4.pom (1.7 kB at 66 kB/s)
+#13 3.637 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.6.4/quarkus-mutiny-deployment-3.6.4.pom
+#13 3.665 Progress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.6.4/quarkus-mutiny-deployment-3.6.4.pom (2.0 kB at 68 kB/s)
+#13 3.673 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.6.4/quarkus-smallrye-context-propagation-deployment-3.6.4.pom
+#13 3.699 Progress (1): 2.0 kBProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.6.4/quarkus-smallrye-context-propagation-deployment-3.6.4.pom (2.0 kB at 76 kB/s)
+#13 3.709 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.6.4/quarkus-vertx-http-deployment-spi-3.6.4.pom
+#13 3.734 Progress (1): 825 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.6.4/quarkus-vertx-http-deployment-spi-3.6.4.pom (825 B at 28 kB/s)
+#13 3.747 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.6.4/quarkus-kubernetes-spi-3.6.4.pom
+#13 3.775 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.6.4/quarkus-kubernetes-spi-3.6.4.pom (1.2 kB at 41 kB/s)
+#13 3.776 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-parent/3.6.4/quarkus-kubernetes-parent-3.6.4.pom
+#13 3.803 Progress (1): 833 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-parent/3.6.4/quarkus-kubernetes-parent-3.6.4.pom (833 B at 30 kB/s)
+#13 3.816 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.6.4/quarkus-vertx-http-dev-ui-resources-3.6.4.pom
+#13 3.843 Progress (1): 2.1 kBProgress (1): 4.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.6.4/quarkus-vertx-http-dev-ui-resources-3.6.4.pom (4.0 kB at 150 kB/s)
+#13 3.849 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.pom
+#13 3.882 Progress (1): 1.4 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.pom (2.7 kB at 79 kB/s)
+#13 3.886 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.pom
+#13 3.911 Progress (1): 1.4 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.pom (3.2 kB at 120 kB/s)
+#13 3.914 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.6/vaadin-development-mode-detector-2.0.6.pom
+#13 3.939 Progress (1): 1.5 kBProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.6/vaadin-development-mode-detector-2.0.6.pom (2.6 kB at 104 kB/s)
+#13 3.941 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.pom
+#13 3.971 Progress (1): 1.6 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.pom (1.7 kB at 55 kB/s)
+#13 3.974 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.1.10/vaadin-webcomponents-24.1.10.pom
+#13 3.998 Progress (1): 1.6 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.1.10/vaadin-webcomponents-24.1.10.pom (3.2 kB at 128 kB/s)
+#13 4.001 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.pom
+#13 4.029 Progress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.pom (1.5 kB at 51 kB/s)
+#13 4.031 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/2.8.0/lit-2.8.0.pom
+#13 4.057 Progress (1): 1.5 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/2.8.0/lit-2.8.0.pom (2.8 kB at 100 kB/s)
+#13 4.060 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/1.6.3/reactive-element-1.6.3.pom
+#13 4.088 Progress (1): 1.4 kBProgress (1): 2.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/1.6.3/reactive-element-1.6.3.pom (2.4 kB at 79 kB/s)
+#13 4.095 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.1.1/ssr-dom-shim-1.1.1.pom
+#13 4.122 Progress (1): 1.4 kBProgress (1): 2.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.1.1/ssr-dom-shim-1.1.1.pom (2.3 kB at 84 kB/s)
+#13 4.126 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/3.3.3/lit-element-3.3.3.pom
+#13 4.153 Progress (1): 1.4 kBProgress (1): 3.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/3.3.3/lit-element-3.3.3.pom (3.4 kB at 121 kB/s)
+#13 4.156 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/2.8.0/lit-html-2.8.0.pom
+#13 4.189 Progress (1): 1.6 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/2.8.0/lit-html-2.8.0.pom (2.8 kB at 83 kB/s)
+#13 4.193 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.4/trusted-types-2.0.4.pom
+#13 4.228 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.4/trusted-types-2.0.4.pom (1.3 kB at 36 kB/s)
+#13 4.230 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.pom
+#13 4.256 Progress (1): 1.0 kBProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.pom (2.5 kB at 91 kB/s)
+#13 4.259 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.pom
+#13 4.287 Progress (1): 1.5 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.pom (1.7 kB at 60 kB/s)
+#13 4.292 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.pom
+#13 4.313 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.pom (1.2 kB at 50 kB/s)
+#13 4.316 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.4.3/echarts-5.4.3.pom
+#13 4.341 Progress (1): 1.4 kBProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.4.3/echarts-5.4.3.pom (2.5 kB at 94 kB/s)
+#13 4.346 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.pom
+#13 4.372 Progress (1): 1.5 kBProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.pom (2.0 kB at 75 kB/s)
+#13 4.377 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.4.4/zrender-5.4.4.pom
+#13 4.399 Progress (1): 1.5 kBProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.4.4/zrender-5.4.4.pom (3.0 kB at 125 kB/s)
+#13 4.404 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vanillawc/wc-codemirror/2.1.0/wc-codemirror-2.1.0.pom
+#13 4.429 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vanillawc/wc-codemirror/2.1.0/wc-codemirror-2.1.0.pom (1.3 kB at 45 kB/s)
+#13 4.431 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.8.1/es-module-shims-1.8.1.pom
+#13 4.681 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.8.1/es-module-shims-1.8.1.pom (1.3 kB at 5.1 kB/s)
+#13 4.703 Downloading from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.10/importmap-1.0.10.pom
+#13 4.728 Progress (1): 1.4 kBProgress (1): 3.6 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.10/importmap-1.0.10.pom (5.6 kB at 217 kB/s)
+#13 4.730 Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.15.2/jackson-bom-2.15.2.pom
+#13 4.782 Progress (1): 931 BProgress (1): 2.7 kBProgress (1): 8.1 kBProgress (1): 17 kB Progress (1): 18 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.15.2/jackson-bom-2.15.2.pom (18 kB at 333 kB/s)
+#13 4.788 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-server-spi-deployment/3.6.4/quarkus-resteasy-reactive-server-spi-deployment-3.6.4.pom
+#13 4.815 Progress (1): 1.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-server-spi-deployment/3.6.4/quarkus-resteasy-reactive-server-spi-deployment-3.6.4.pom (1.0 kB at 37 kB/s)
+#13 4.831 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-spi-deployment/3.6.4/quarkus-resteasy-reactive-spi-deployment-3.6.4.pom
+#13 4.859 Progress (1): 934 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-spi-deployment/3.6.4/quarkus-resteasy-reactive-spi-deployment-3.6.4.pom (934 B at 32 kB/s)
+#13 4.863 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.6.4/quarkus-jaxrs-spi-deployment-3.6.4.pom
+#13 4.888 Progress (1): 773 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.6.4/quarkus-jaxrs-spi-deployment-3.6.4.pom (773 B at 31 kB/s)
+#13 4.890 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-parent/3.6.4/quarkus-jaxrs-spi-parent-3.6.4.pom
+#13 4.913 Progress (1): 717 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-parent/3.6.4/quarkus-jaxrs-spi-parent-3.6.4.pom (717 B at 30 kB/s)
+#13 4.918 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.6.4/quarkus-security-spi-3.6.4.pom
+#13 4.940 Progress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.6.4/quarkus-security-spi-3.6.4.pom (1.5 kB at 62 kB/s)
+#13 4.946 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.6.4/quarkus-jsonp-deployment-3.6.4.pom
+#13 4.969 Progress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.6.4/quarkus-jsonp-deployment-3.6.4.pom (1.5 kB at 59 kB/s)
+#13 4.977 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-common-deployment/3.6.4/quarkus-resteasy-reactive-common-deployment-3.6.4.pom
+#13 5.001 Progress (1): 2.3 kBProgress (1): 3.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-common-deployment/3.6.4/quarkus-resteasy-reactive-common-deployment-3.6.4.pom (3.8 kB at 151 kB/s)
+#13 5.034 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jackson-deployment/3.6.4/quarkus-resteasy-reactive-jackson-deployment-3.6.4.pom
+#13 5.069 Progress (1): 2.4 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jackson-deployment/3.6.4/quarkus-resteasy-reactive-jackson-deployment-3.6.4.pom (2.8 kB at 79 kB/s)
+#13 5.090 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jackson-common-deployment/3.6.4/quarkus-resteasy-reactive-jackson-common-deployment-3.6.4.pom
+#13 5.117 Progress (1): 1.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jackson-common-deployment/3.6.4/quarkus-resteasy-reactive-jackson-common-deployment-3.6.4.pom (1.8 kB at 63 kB/s)
+#13 5.122 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-deployment/3.6.4/quarkus-jackson-deployment-3.6.4.pom
+#13 5.151 Progress (1): 2.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-deployment/3.6.4/quarkus-jackson-deployment-3.6.4.pom (2.1 kB at 76 kB/s)
+#13 5.164 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-spi/3.6.4/quarkus-jackson-spi-3.6.4.pom
+#13 5.190 Progress (1): 829 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-spi/3.6.4/quarkus-jackson-spi-3.6.4.pom (829 B at 32 kB/s)
+#13 5.209 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.6.4/resteasy-reactive-common-processor-3.6.4.jar
+#13 5.235 Progress (1): 7.7/126 kBProgress (1): 16/126 kB Progress (1): 32/126 kBProgress (1): 49/126 kBProgress (1): 61/126 kBProgress (1): 78/126 kBProgress (1): 94/126 kBProgress (1): 111/126 kBProgress (1): 126 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.6.4/resteasy-reactive-common-processor-3.6.4.jar (126 kB at 3.1 MB/s)
+#13 5.251 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.6.4/resteasy-reactive-processor-3.6.4.jar
+#13 5.275 Progress (1): 7.7/145 kBProgress (1): 16/145 kB Progress (1): 32/145 kBProgress (1): 48/145 kBProgress (1): 49/145 kBProgress (1): 66/145 kBProgress (1): 82/145 kBProgress (1): 98/145 kBProgress (1): 115/145 kBProgress (1): 131/145 kBProgress (1): 145 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.6.4/resteasy-reactive-processor-3.6.4.jar (145 kB at 3.7 MB/s)
+#13 5.292 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.6.4/quarkus-netty-deployment-3.6.4.jar
+#13 5.321 Progress (1): 7.7/16 kBProgress (1): 12/16 kB Progress (1): 16 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.6.4/quarkus-netty-deployment-3.6.4.jar (16 kB at 513 kB/s)
+#13 5.324 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.6.4/quarkus-vertx-deployment-3.6.4.jar
+#13 5.346 Progress (1): 7.7/46 kBProgress (1): 16/46 kB Progress (1): 32/46 kBProgress (1): 46 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.6.4/quarkus-vertx-deployment-3.6.4.jar (46 kB at 2.0 MB/s)
+#13 5.348 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.6.4/quarkus-vertx-http-deployment-spi-3.6.4.jar
+#13 5.371 Progress (1): 6.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.6.4/quarkus-vertx-http-deployment-spi-3.6.4.jar (6.5 kB at 272 kB/s)
+#13 5.373 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.6.4/quarkus-smallrye-context-propagation-deployment-3.6.4.jar
+#13 5.398 Progress (1): 7.7/17 kBProgress (1): 12/17 kB Progress (1): 17 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.6.4/quarkus-smallrye-context-propagation-deployment-3.6.4.jar (17 kB at 615 kB/s)
+#13 5.402 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.6.4/quarkus-mutiny-deployment-3.6.4.jar
+#13 5.427 Progress (1): 4.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.6.4/quarkus-mutiny-deployment-3.6.4.jar (4.3 kB at 179 kB/s)
+#13 5.429 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.6.4/quarkus-kubernetes-spi-3.6.4.jar
+#13 5.453 Progress (1): 7.7/35 kBProgress (1): 8.2/35 kBProgress (1): 25/35 kB Progress (1): 35 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.6.4/quarkus-kubernetes-spi-3.6.4.jar (35 kB at 1.4 MB/s)
+#13 5.454 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.jar
+#13 5.492 Progress (1): 7.7/248 kBProgress (1): 16/248 kB Progress (1): 32/248 kBProgress (1): 48/248 kBProgress (1): 65/248 kBProgress (1): 81/248 kBProgress (1): 98/248 kBProgress (1): 114/248 kBProgress (1): 130/248 kBProgress (1): 147/248 kBProgress (1): 163/248 kBProgress (1): 179/248 kBProgress (1): 196/248 kBProgress (1): 212/248 kBProgress (1): 229/248 kBProgress (1): 245/248 kBProgress (1): 248 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.jar (248 kB at 7.8 MB/s)
+#13 5.492 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.jar
+#13 5.512 Progress (1): 5.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.jar (5.2 kB at 216 kB/s)
+#13 5.513 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.1.10/vaadin-webcomponents-24.1.10.jar
+#13 5.540 Progress (1): 0/2.2 MBProgress (1): 0/2.2 MBProgress (1): 0/2.2 MBProgress (1): 0/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.1.10/vaadin-webcomponents-24.1.10.jar (2.2 MB at 30 MB/s)
+#13 5.589 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.jar
+#13 5.614 Progress (1): 7.7/11 kBProgress (1): 11 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.jar (11 kB at 456 kB/s)
+#13 5.616 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.6/vaadin-development-mode-detector-2.0.6.jar
+#13 5.637 Progress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.6/vaadin-development-mode-detector-2.0.6.jar (2.8 kB at 124 kB/s)
+#13 5.640 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.jar
+#13 5.665 Progress (1): 8.2/198 kBProgress (1): 25/198 kB Progress (1): 41/198 kBProgress (1): 57/198 kBProgress (1): 66/198 kBProgress (1): 82/198 kBProgress (1): 98/198 kBProgress (1): 115/198 kBProgress (1): 131/198 kBProgress (1): 147/198 kBProgress (1): 164/198 kBProgress (1): 180/198 kBProgress (1): 197/198 kBProgress (1): 198 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.jar (198 kB at 7.3 MB/s)
+#13 5.668 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.jar
+#13 5.691 Progress (1): 7.7/151 kBProgress (1): 12/151 kB Progress (1): 28/151 kBProgress (1): 44/151 kBProgress (1): 61/151 kBProgress (1): 77/151 kBProgress (1): 93/151 kBProgress (1): 110/151 kBProgress (1): 126/151 kBProgress (1): 143/151 kBProgress (1): 151 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.jar (151 kB at 5.8 MB/s)
+#13 5.694 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.jar
+#13 5.718 Progress (1): 3.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.jar (3.6 kB at 149 kB/s)
+#13 5.719 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/2.8.0/lit-2.8.0.jar
+#13 5.742 Progress (1): 7.7/70 kBProgress (1): 16/70 kB Progress (1): 29/70 kBProgress (1): 45/70 kBProgress (1): 61/70 kBProgress (1): 70 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/2.8.0/lit-2.8.0.jar (70 kB at 2.9 MB/s)
+#13 5.744 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/1.6.3/reactive-element-1.6.3.jar
+#13 5.768 Progress (1): 7.7/254 kBProgress (1): 16/254 kB Progress (1): 32/254 kBProgress (1): 48/254 kBProgress (1): 65/254 kBProgress (1): 81/254 kBProgress (1): 98/254 kBProgress (1): 114/254 kBProgress (1): 130/254 kBProgress (1): 147/254 kBProgress (1): 163/254 kBProgress (1): 179/254 kBProgress (1): 196/254 kBProgress (1): 212/254 kBProgress (1): 229/254 kBProgress (1): 245/254 kBProgress (1): 254 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/1.6.3/reactive-element-1.6.3.jar (254 kB at 9.4 MB/s)
+#13 5.771 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/3.3.3/lit-element-3.3.3.jar
+#13 5.795 Progress (1): 7.7/60 kBProgress (1): 16/60 kB Progress (1): 32/60 kBProgress (1): 48/60 kBProgress (1): 60 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/3.3.3/lit-element-3.3.3.jar (60 kB at 2.4 MB/s)
+#13 5.797 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/2.8.0/lit-html-2.8.0.jar
+#13 5.823 Progress (1): 7.7/594 kBProgress (1): 12/594 kB Progress (1): 29/594 kBProgress (1): 45/594 kBProgress (1): 61/594 kBProgress (1): 78/594 kBProgress (1): 94/594 kBProgress (1): 111/594 kBProgress (1): 127/594 kBProgress (1): 143/594 kBProgress (1): 147/594 kBProgress (1): 164/594 kBProgress (1): 180/594 kBProgress (1): 197/594 kBProgress (1): 213/594 kBProgress (1): 229/594 kBProgress (1): 246/594 kBProgress (1): 262/594 kBProgress (1): 279/594 kBProgress (1): 295/594 kBProgress (1): 311/594 kBProgress (1): 328/594 kBProgress (1): 344/594 kBProgress (1): 360/594 kBProgress (1): 377/594 kBProgress (1): 393/594 kBProgress (1): 410/594 kBProgress (1): 426/594 kBProgress (1): 442/594 kBProgress (1): 459/594 kBProgress (1): 475/594 kBProgress (1): 492/594 kBProgress (1): 508/594 kBProgress (1): 524/594 kBProgress (1): 541/594 kBProgress (1): 557/594 kBProgress (1): 573/594 kBProgress (1): 590/594 kBProgress (1): 594 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/2.8.0/lit-html-2.8.0.jar (594 kB at 17 MB/s)
+#13 5.832 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.1.1/ssr-dom-shim-1.1.1.jar
+#13 5.856 Progress (1): 7.7/11 kBProgress (1): 11 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.1.1/ssr-dom-shim-1.1.1.jar (11 kB at 453 kB/s)
+#13 5.858 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.4/trusted-types-2.0.4.jar
+#13 5.881 Progress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.4/trusted-types-2.0.4.jar (3.2 kB at 134 kB/s)
+#13 5.883 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.jar
+#13 5.906 Progress (1): 4.1/6.1 kBProgress (1): 6.1 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.jar (6.1 kB at 253 kB/s)
+#13 5.907 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.jar
+#13 5.931 Progress (1): 3.4/12 kBProgress (1): 12 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.jar (12 kB at 481 kB/s)
+#13 5.933 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.4.4/zrender-5.4.4.jar
+#13 5.957 Progress (1): 8.2/676 kBProgress (1): 25/676 kB Progress (1): 41/676 kBProgress (1): 57/676 kBProgress (1): 66/676 kBProgress (1): 82/676 kBProgress (1): 98/676 kBProgress (1): 115/676 kBProgress (1): 131/676 kBProgress (1): 147/676 kBProgress (1): 164/676 kBProgress (1): 180/676 kBProgress (1): 197/676 kBProgress (1): 213/676 kBProgress (1): 229/676 kBProgress (1): 246/676 kBProgress (1): 262/676 kBProgress (1): 279/676 kBProgress (1): 295/676 kBProgress (1): 311/676 kBProgress (1): 328/676 kBProgress (1): 344/676 kBProgress (1): 360/676 kBProgress (1): 377/676 kBProgress (1): 393/676 kBProgress (1): 410/676 kBProgress (1): 426/676 kBProgress (1): 442/676 kBProgress (1): 459/676 kBProgress (1): 475/676 kBProgress (1): 492/676 kBProgress (1): 508/676 kBProgress (1): 524/676 kBProgress (1): 541/676 kBProgress (1): 557/676 kBProgress (1): 573/676 kBProgress (1): 590/676 kBProgress (1): 606/676 kBProgress (1): 623/676 kBProgress (1): 639/676 kBProgress (1): 655/676 kBProgress (1): 672/676 kBProgress (1): 676 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.4.4/zrender-5.4.4.jar (676 kB at 22 MB/s)
+#13 5.966 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.4.3/echarts-5.4.3.jar
+#13 5.992 Progress (1): 0/8.6 MBProgress (1): 0/8.6 MBProgress (1): 0/8.6 MBProgress (1): 0/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.6/8.6 MBProgress (1): 8.6/8.6 MBProgress (1): 8.6 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.4.3/echarts-5.4.3.jar (8.6 MB at 58 MB/s)
+#13 6.117 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vanillawc/wc-codemirror/2.1.0/wc-codemirror-2.1.0.jar
+#13 6.139 Progress (1): 7.7/586 kBProgress (1): 16/586 kB Progress (1): 32/586 kBProgress (1): 49/586 kBProgress (1): 65/586 kBProgress (1): 81/586 kBProgress (1): 98/586 kBProgress (1): 114/586 kBProgress (1): 130/586 kBProgress (1): 147/586 kBProgress (1): 163/586 kBProgress (1): 179/586 kBProgress (1): 196/586 kBProgress (1): 212/586 kBProgress (1): 229/586 kBProgress (1): 245/586 kBProgress (1): 246/586 kBProgress (1): 262/586 kBProgress (1): 279/586 kBProgress (1): 295/586 kBProgress (1): 311/586 kBProgress (1): 328/586 kBProgress (1): 344/586 kBProgress (1): 360/586 kBProgress (1): 377/586 kBProgress (1): 393/586 kBProgress (1): 410/586 kBProgress (1): 426/586 kBProgress (1): 442/586 kBProgress (1): 459/586 kBProgress (1): 475/586 kBProgress (1): 492/586 kBProgress (1): 508/586 kBProgress (1): 524/586 kBProgress (1): 541/586 kBProgress (1): 557/586 kBProgress (1): 573/586 kBProgress (1): 586 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vanillawc/wc-codemirror/2.1.0/wc-codemirror-2.1.0.jar (586 kB at 18 MB/s)
+#13 6.148 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.8.1/es-module-shims-1.8.1.jar
+#13 6.179 Progress (1): 7.7/54 kBProgress (1): 16/54 kB Progress (1): 29/54 kBProgress (1): 45/54 kBProgress (1): 54 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.8.1/es-module-shims-1.8.1.jar (54 kB at 1.7 MB/s)
+#13 6.181 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.6.4/quarkus-vertx-http-dev-ui-resources-3.6.4.jar
+#13 6.216 Progress (1): 7.7/704 kBProgress (1): 12/704 kB Progress (1): 29/704 kBProgress (1): 45/704 kBProgress (1): 61/704 kBProgress (1): 78/704 kBProgress (1): 94/704 kBProgress (1): 111/704 kBProgress (1): 115/704 kBProgress (1): 131/704 kBProgress (1): 147/704 kBProgress (1): 164/704 kBProgress (1): 180/704 kBProgress (1): 197/704 kBProgress (1): 213/704 kBProgress (1): 229/704 kBProgress (1): 246/704 kBProgress (1): 262/704 kBProgress (1): 279/704 kBProgress (1): 295/704 kBProgress (1): 311/704 kBProgress (1): 328/704 kBProgress (1): 344/704 kBProgress (1): 360/704 kBProgress (1): 377/704 kBProgress (1): 393/704 kBProgress (1): 410/704 kBProgress (1): 426/704 kBProgress (1): 442/704 kBProgress (1): 459/704 kBProgress (1): 475/704 kBProgress (1): 492/704 kBProgress (1): 508/704 kBProgress (1): 524/704 kBProgress (1): 541/704 kBProgress (1): 557/704 kBProgress (1): 573/704 kBProgress (1): 590/704 kBProgress (1): 606/704 kBProgress (1): 623/704 kBProgress (1): 639/704 kBProgress (1): 655/704 kBProgress (1): 672/704 kBProgress (1): 688/704 kBProgress (1): 704 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.6.4/quarkus-vertx-http-dev-ui-resources-3.6.4.jar (704 kB at 15 MB/s)
+#13 6.229 Downloading from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.10/importmap-1.0.10.jar
+#13 6.250 Progress (1): 7.7/8.0 kBProgress (1): 8.0 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.10/importmap-1.0.10.jar (8.0 kB at 348 kB/s)
+#13 6.261 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.6.4/quarkus-vertx-http-deployment-3.6.4.jar
+#13 6.287 Progress (1): 7.7/179 kBProgress (1): 7.7/179 kBProgress (1): 24/179 kB Progress (1): 40/179 kBProgress (1): 57/179 kBProgress (1): 73/179 kBProgress (1): 90/179 kBProgress (1): 106/179 kBProgress (1): 122/179 kBProgress (1): 139/179 kBProgress (1): 155/179 kBProgress (1): 172/179 kBProgress (1): 179 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.6.4/quarkus-vertx-http-deployment-3.6.4.jar (179 kB at 6.0 MB/s)
+#13 6.292 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-spi-deployment/3.6.4/quarkus-resteasy-reactive-spi-deployment-3.6.4.jar
+#13 6.313 Progress (1): 7.7/28 kBProgress (1): 16/28 kB Progress (1): 28 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-spi-deployment/3.6.4/quarkus-resteasy-reactive-spi-deployment-3.6.4.jar (28 kB at 1.3 MB/s)
+#13 6.317 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-server-spi-deployment/3.6.4/quarkus-resteasy-reactive-server-spi-deployment-3.6.4.jar
+#13 6.341 Progress (1): 7.7/8.5 kBProgress (1): 8.5 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-server-spi-deployment/3.6.4/quarkus-resteasy-reactive-server-spi-deployment-3.6.4.jar (8.5 kB at 355 kB/s)
+#13 6.344 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.6.4/quarkus-jaxrs-spi-deployment-3.6.4.jar
+#13 6.372 Progress (1): 3.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.6.4/quarkus-jaxrs-spi-deployment-3.6.4.jar (3.3 kB at 125 kB/s)
+#13 6.372 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.6.4/quarkus-security-spi-3.6.4.jar
+#13 6.395 Progress (1): 6.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.6.4/quarkus-security-spi-3.6.4.jar (6.3 kB at 242 kB/s)
+#13 6.397 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.6.4/quarkus-jsonp-deployment-3.6.4.jar
+#13 6.421 Progress (1): 3.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.6.4/quarkus-jsonp-deployment-3.6.4.jar (3.8 kB at 157 kB/s)
+#13 6.423 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-common-deployment/3.6.4/quarkus-resteasy-reactive-common-deployment-3.6.4.jar
+#13 6.449 Progress (1): 7.7/34 kBProgress (1): 16/34 kB Progress (1): 29/34 kBProgress (1): 34 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-common-deployment/3.6.4/quarkus-resteasy-reactive-common-deployment-3.6.4.jar (34 kB at 1.3 MB/s)
+#13 6.451 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.6.4/quarkus-virtual-threads-deployment-3.6.4.jar
+#13 6.473 Progress (1): 4.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.6.4/quarkus-virtual-threads-deployment-3.6.4.jar (4.5 kB at 195 kB/s)
+#13 6.475 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-deployment/3.6.4/quarkus-resteasy-reactive-deployment-3.6.4.jar
+#13 6.498 Progress (1): 7.7/131 kBProgress (1): 16/131 kB Progress (1): 25/131 kBProgress (1): 41/131 kBProgress (1): 57/131 kBProgress (1): 74/131 kBProgress (1): 90/131 kBProgress (1): 106/131 kBProgress (1): 123/131 kBProgress (1): 131 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-deployment/3.6.4/quarkus-resteasy-reactive-deployment-3.6.4.jar (131 kB at 5.2 MB/s)
+#13 6.507 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.6.4/quarkus-smallrye-context-propagation-spi-3.6.4.jar
+#13 6.527 Progress (1): 3.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.6.4/quarkus-smallrye-context-propagation-spi-3.6.4.jar (3.6 kB at 144 kB/s)
+#13 6.529 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.6.4/quarkus-vertx-http-dev-ui-spi-3.6.4.jar
+#13 6.552 Progress (1): 3.4/26 kBProgress (1): 20/26 kB Progress (1): 26 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.6.4/quarkus-vertx-http-dev-ui-spi-3.6.4.jar (26 kB at 1.0 MB/s)
+#13 6.554 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.6.4/arc-processor-3.6.4.jar
+#13 6.577 Progress (1): 16/656 kBProgress (1): 25/656 kBProgress (1): 41/656 kBProgress (1): 57/656 kBProgress (1): 74/656 kBProgress (1): 90/656 kBProgress (1): 106/656 kBProgress (1): 123/656 kBProgress (1): 139/656 kBProgress (1): 147/656 kBProgress (1): 164/656 kBProgress (1): 180/656 kBProgress (1): 197/656 kBProgress (1): 213/656 kBProgress (1): 229/656 kBProgress (1): 246/656 kBProgress (1): 262/656 kBProgress (1): 279/656 kBProgress (1): 295/656 kBProgress (1): 311/656 kBProgress (1): 328/656 kBProgress (1): 344/656 kBProgress (1): 360/656 kBProgress (1): 377/656 kBProgress (1): 393/656 kBProgress (1): 410/656 kBProgress (1): 426/656 kBProgress (1): 442/656 kBProgress (1): 459/656 kBProgress (1): 475/656 kBProgress (1): 492/656 kBProgress (1): 508/656 kBProgress (1): 524/656 kBProgress (1): 541/656 kBProgress (1): 557/656 kBProgress (1): 573/656 kBProgress (1): 590/656 kBProgress (1): 606/656 kBProgress (1): 623/656 kBProgress (1): 639/656 kBProgress (1): 655/656 kBProgress (1): 656 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.6.4/arc-processor-3.6.4.jar (656 kB at 20 MB/s)
+#13 6.587 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.6.4/quarkus-arc-deployment-3.6.4.jar
+#13 6.613 Progress (1): 7.7/266 kBProgress (1): 16/266 kB Progress (1): 32/266 kBProgress (1): 48/266 kBProgress (1): 65/266 kBProgress (1): 81/266 kBProgress (1): 98/266 kBProgress (1): 114/266 kBProgress (1): 130/266 kBProgress (1): 147/266 kBProgress (1): 163/266 kBProgress (1): 179/266 kBProgress (1): 196/266 kBProgress (1): 212/266 kBProgress (1): 229/266 kBProgress (1): 245/266 kBProgress (1): 261/266 kBProgress (1): 266 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.6.4/quarkus-arc-deployment-3.6.4.jar (266 kB at 9.5 MB/s)
+#13 6.617 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-spi/3.6.4/quarkus-jackson-spi-3.6.4.jar
+#13 6.643 Progress (1): 5.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-spi/3.6.4/quarkus-jackson-spi-3.6.4.jar (5.9 kB at 225 kB/s)
+#13 6.644 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-deployment/3.6.4/quarkus-jackson-deployment-3.6.4.jar
+#13 6.668 Progress (1): 7.7/14 kBProgress (1): 14 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-deployment/3.6.4/quarkus-jackson-deployment-3.6.4.jar (14 kB at 567 kB/s)
+#13 6.671 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jackson-common-deployment/3.6.4/quarkus-resteasy-reactive-jackson-common-deployment-3.6.4.jar
+#13 6.695 Progress (1): 3.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jackson-common-deployment/3.6.4/quarkus-resteasy-reactive-jackson-common-deployment-3.6.4.jar (3.9 kB at 150 kB/s)
+#13 6.699 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jackson-deployment/3.6.4/quarkus-resteasy-reactive-jackson-deployment-3.6.4.jar
+#13 6.722 Progress (1): 7.5/17 kBProgress (1): 17 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jackson-deployment/3.6.4/quarkus-resteasy-reactive-jackson-deployment-3.6.4.jar (17 kB at 712 kB/s)
+#13 6.725 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/3.6.4/quarkus-bom-quarkus-platform-properties-3.6.4.properties
+#13 6.757 Progress (1): 731 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/3.6.4/quarkus-bom-quarkus-platform-properties-3.6.4.properties (731 B at 23 kB/s)
+#13 6.907 [INFO] 
+#13 6.907 [INFO] --- compiler:3.11.0:compile (default-compile) @ converter ---
+#13 6.990 [INFO] Changes detected - recompiling the module! :source
+#13 6.990 [INFO] Compiling 2 source files with javac [debug target 11] to target/classes
+#13 7.518 [WARNING] system modules path not set in conjunction with -source 11
+#13 7.518 [INFO] 
+#13 7.518 [INFO] --- quarkus:3.6.4:generate-code-tests (default) @ converter ---
+#13 8.232 [INFO] 
+#13 8.232 [INFO] --- resources:3.3.1:testResources (default-testResources) @ converter ---
+#13 8.234 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 8.234 [INFO] 
+#13 8.234 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ converter ---
+#13 8.236 [INFO] No sources to compile
+#13 8.236 [INFO] 
+#13 8.236 [INFO] --- surefire:3.0.0:test (default-test) @ converter ---
+#13 8.323 [INFO] Tests are skipped.
+#13 8.324 [INFO] 
+#13 8.324 [INFO] --- jar:3.4.1:jar (default-jar) @ converter ---
+#13 8.450 [INFO] Building jar: /app/target/converter.jar
+#13 8.465 [INFO] 
+#13 8.465 [INFO] --- quarkus:3.6.4:build (default) @ converter ---
+#13 9.862 [INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 1386ms
+#13 9.862 [INFO] ------------------------------------------------------------------------
+#13 9.862 [INFO] BUILD SUCCESS
+#13 9.862 [INFO] ------------------------------------------------------------------------
+#13 9.862 [INFO] Total time:  8.463 s
+#13 9.862 [INFO] Finished at: 2026-03-24T04:06:33Z
+#13 9.862 [INFO] ------------------------------------------------------------------------
+#13 DONE 10.0s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 0.3s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 2.5s done
+#15 exporting manifest sha256:5da0a7415d558dfc90c3578050c79215d7b22eccddca0d7bf695a7d4315c43cc 0.0s done
+#15 exporting config sha256:1ee6b4f79e301be6267744563d3abf00dfd105624b00aea7ea54fb601aaba82e 0.0s done
+#15 exporting attestation manifest sha256:b9cb8489e2d5522aae10b770b787379227bb337056018f4d1d096375a9ff2081 0.1s done
+#15 exporting manifest list sha256:27a99816bb475809e749e327cedd4fa2b0085a8022f5c30cc61cbe161ddb2e58
+#15 exporting manifest list sha256:27a99816bb475809e749e327cedd4fa2b0085a8022f5c30cc61cbe161ddb2e58 0.0s done
+#15 naming to docker.io/library/converter-quarkus:0af7d835 done
+#15 unpacking to docker.io/library/converter-quarkus:0af7d835
+#15 unpacking to docker.io/library/converter-quarkus:0af7d835 0.7s done
+#15 DONE 3.4s
+[INFO] Built image: converter-quarkus:0af7d835
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name converter-quarkus-4c80451a converter-quarkus:0af7d835
+e288b2e9cfe0a40e4aa6715879643f265866d3b9904ccf8eb954fa0b4cb7fb1b
+[INFO] Started converter-quarkus-4c80451a, waiting for app to start...
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 04:06:38,009 INFO  [io.quarkus] (main) converter 10-SNAPSHOT on JVM (powered by Quarkus 3.6.4) started in 0.466s. Listening on: http://0.0.0.0:8080
+2026-03-24 04:06:38,013 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 04:06:38,013 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, vertx]
+[INFO] Quarkus application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 04:06:38,009 INFO  [io.quarkus] (main) converter 10-SNAPSHOT on JVM (powered by Quarkus 3.6.4) started in 0.466s. Listening on: http://0.0.0.0:8080
+2026-03-24 04:06:38,013 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 04:06:38,013 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, vertx]
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 21 items
+
+smoke.py::test_page_has_expected_label FAILED                            [  4%]
+smoke.py::test_form_has_amount_input FAILED                              [  9%]
+smoke.py::test_form_has_submit_button FAILED                             [ 14%]
+smoke.py::test_page_title_is_non_empty FAILED                            [ 19%]
+smoke.py::test_expected_conversions[1-104.34 yen-0.74 Euro] FAILED       [ 23%]
+smoke.py::test_expected_conversions[5-521.70 yen-3.66 Euro] FAILED       [ 28%]
+smoke.py::test_expected_conversions[10-1043.40 yen-7.31 Euro] FAILED     [ 33%]
+smoke.py::test_expected_conversions[50-5217.00 yen-36.52 Euro] FAILED    [ 38%]
+smoke.py::test_expected_conversions[100-10434.00 yen-73.04 Euro] FAILED  [ 42%]
+smoke.py::test_outline_yen_conversions[1-104.34] FAILED                  [ 47%]
+smoke.py::test_outline_yen_conversions[5-521.70] FAILED                  [ 52%]
+smoke.py::test_outline_yen_conversions[10-1043.40] FAILED                [ 57%]
+smoke.py::test_result_echoes_input_amount FAILED                         [ 61%]
+smoke.py::test_no_stack_trace_in_result FAILED                           [ 66%]
+smoke.py::test_page_title_is_non_empty_after_conversion FAILED           [ 71%]
+smoke.py::test_can_convert_twice_in_a_row FAILED                         [ 76%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[0] FAILED        [ 80%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[1000000] FAILED  [ 85%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[2.5] FAILED      [ 90%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[-1] FAILED       [ 95%]
+smoke.py::test_empty_submission_does_not_show_server_errors FAILED       [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_page_has_expected_label _________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_page_has_expected_label(page: Page):
+>       assert "Enter a dollar amount to convert:" in page.content()
+E       AssertionError: assert 'Enter a dollar amount to convert:' in '<html><head></head><body></body></html>'
+E        +  where '<html><head></head><body></body></html>' = content()
+E        +    where content = <Page url='http://localhost:8080/converter'>.content
+
+smoke.py:52: AssertionError
+__________________________ test_form_has_amount_input __________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_form_has_amount_input(page: Page):
+>       assert page.get_by_title("Amount").is_visible()
+E       assert False
+E        +  where False = is_visible()
+E        +    where is_visible = <Locator frame=<Frame name= url='http://localhost:8080/converter'> selector='internal:attr=[title="Amount"i]'>.is_visible
+E        +      where <Locator frame=<Frame name= url='http://localhost:8080/converter'> selector='internal:attr=[title="Amount"i]'> = get_by_title('Amount')
+E        +        where get_by_title = <Page url='http://localhost:8080/converter'>.get_by_title
+
+smoke.py:56: AssertionError
+_________________________ test_form_has_submit_button __________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_form_has_submit_button(page: Page):
+>       assert page.get_by_role("button", name="Submit").is_visible()
+E       assert False
+E        +  where False = is_visible()
+E        +    where is_visible = <Locator frame=<Frame name= url='http://localhost:8080/converter'> selector='internal:role=button[name="Submit"i]'>.is_visible
+E        +      where <Locator frame=<Frame name= url='http://localhost:8080/converter'> selector='internal:role=button[name="Submit"i]'> = get_by_role('button', name='Submit')
+E        +        where get_by_role = <Page url='http://localhost:8080/converter'>.get_by_role
+
+smoke.py:60: AssertionError
+_________________________ test_page_title_is_non_empty _________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_page_title_is_non_empty(page: Page):
+>       assert page.title() != ""
+E       AssertionError: assert '' != ''
+E        +  where '' = title()
+E        +    where title = <Page url='http://localhost:8080/converter'>.title
+
+smoke.py:64: AssertionError
+______________ test_expected_conversions[1-104.34 yen-0.74 Euro] _______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '1'
+yen_text = '104.34 yen', euro_text = '0.74 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0db418a40>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+______________ test_expected_conversions[5-521.70 yen-3.66 Euro] _______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '5'
+yen_text = '521.70 yen', euro_text = '3.66 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b5800>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_____________ test_expected_conversions[10-1043.40 yen-7.31 Euro] ______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '10'
+yen_text = '1043.40 yen', euro_text = '7.31 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b5ee0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_____________ test_expected_conversions[50-5217.00 yen-36.52 Euro] _____________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '50'
+yen_text = '5217.00 yen', euro_text = '36.52 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b6020>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+____________ test_expected_conversions[100-10434.00 yen-73.04 Euro] ____________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '100'
+yen_text = '10434.00 yen', euro_text = '73.04 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b6e80>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+____________________ test_outline_yen_conversions[1-104.34] ____________________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '1'
+yen_text = '104.34'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text"),
+        [("1", "104.34"), ("5", "521.70"), ("10", "1043.40")],
+    )
+    def test_outline_yen_conversions(page: Page, amount: str, yen_text: str):
+>       assert f"{yen_text} yen" in _submit(page, amount)
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b65c0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+____________________ test_outline_yen_conversions[5-521.70] ____________________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '5'
+yen_text = '521.70'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text"),
+        [("1", "104.34"), ("5", "521.70"), ("10", "1043.40")],
+    )
+    def test_outline_yen_conversions(page: Page, amount: str, yen_text: str):
+>       assert f"{yen_text} yen" in _submit(page, amount)
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b6520>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+___________________ test_outline_yen_conversions[10-1043.40] ___________________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '10'
+yen_text = '1043.40'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text"),
+        [("1", "104.34"), ("5", "521.70"), ("10", "1043.40")],
+    )
+    def test_outline_yen_conversions(page: Page, amount: str, yen_text: str):
+>       assert f"{yen_text} yen" in _submit(page, amount)
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b7060>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_______________________ test_result_echoes_input_amount ________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_result_echoes_input_amount(page: Page):
+>       assert "5" in _submit(page, "5")
+                      ^^^^^^^^^^^^^^^^^^
+
+smoke.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b6f20>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+________________________ test_no_stack_trace_in_result _________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_no_stack_trace_in_result(page: Page):
+>       content = _submit(page, "5")
+                  ^^^^^^^^^^^^^^^^^^
+
+smoke.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b4cc0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+________________ test_page_title_is_non_empty_after_conversion _________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_page_title_is_non_empty_after_conversion(page: Page):
+>       _submit(page, "5")
+
+smoke.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b6fc0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_______________________ test_can_convert_twice_in_a_row ________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_can_convert_twice_in_a_row(page: Page):
+>       _submit(page, "5")
+
+smoke.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b6020>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_______________ test_problem_inputs_do_not_show_server_errors[0] _______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '0'
+
+    @pytest.mark.parametrize("amount", ["0", "1000000", "2.5", "-1"])
+    def test_problem_inputs_do_not_show_server_errors(page: Page, amount: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da6284a0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+____________ test_problem_inputs_do_not_show_server_errors[1000000] ____________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '1000000'
+
+    @pytest.mark.parametrize("amount", ["0", "1000000", "2.5", "-1"])
+    def test_problem_inputs_do_not_show_server_errors(page: Page, amount: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da7b6020>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+______________ test_problem_inputs_do_not_show_server_errors[2.5] ______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '2.5'
+
+    @pytest.mark.parametrize("amount", ["0", "1000000", "2.5", "-1"])
+    def test_problem_inputs_do_not_show_server_errors(page: Page, amount: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da628d60>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+______________ test_problem_inputs_do_not_show_server_errors[-1] _______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '-1'
+
+    @pytest.mark.parametrize("amount", ["0", "1000000", "2.5", "-1"])
+    def test_problem_inputs_do_not_show_server_errors(page: Page, amount: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0db3ae340>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+______________ test_empty_submission_does_not_show_server_errors _______________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_empty_submission_does_not_show_server_errors(page: Page):
+>       content = _submit_empty(page)
+                  ^^^^^^^^^^^^^^^^^^^
+
+smoke.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:45: in _submit_empty
+    page.get_by_title("Amount").fill("")
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x71e0db49d370>
+cb = <function Channel.send.<locals>.<lambda> at 0x71e0da6296c0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+=========================== short test summary info ============================
+FAILED smoke.py::test_page_has_expected_label - AssertionError: assert 'Enter...
+FAILED smoke.py::test_form_has_amount_input - assert False
+FAILED smoke.py::test_form_has_submit_button - assert False
+FAILED smoke.py::test_page_title_is_non_empty - AssertionError: assert '' != ''
+FAILED smoke.py::test_expected_conversions[1-104.34 yen-0.74 Euro] - playwrig...
+FAILED smoke.py::test_expected_conversions[5-521.70 yen-3.66 Euro] - playwrig...
+FAILED smoke.py::test_expected_conversions[10-1043.40 yen-7.31 Euro] - playwr...
+FAILED smoke.py::test_expected_conversions[50-5217.00 yen-36.52 Euro] - playw...
+FAILED smoke.py::test_expected_conversions[100-10434.00 yen-73.04 Euro] - pla...
+FAILED smoke.py::test_outline_yen_conversions[1-104.34] - playwright._impl._e...
+FAILED smoke.py::test_outline_yen_conversions[5-521.70] - playwright._impl._e...
+FAILED smoke.py::test_outline_yen_conversions[10-1043.40] - playwright._impl....
+FAILED smoke.py::test_result_echoes_input_amount - playwright._impl._errors.T...
+FAILED smoke.py::test_no_stack_trace_in_result - playwright._impl._errors.Tim...
+FAILED smoke.py::test_page_title_is_non_empty_after_conversion - playwright._...
+FAILED smoke.py::test_can_convert_twice_in_a_row - playwright._impl._errors.T...
+FAILED smoke.py::test_problem_inputs_do_not_show_server_errors[0] - playwrigh...
+FAILED smoke.py::test_problem_inputs_do_not_show_server_errors[1000000] - pla...
+FAILED smoke.py::test_problem_inputs_do_not_show_server_errors[2.5] - playwri...
+FAILED smoke.py::test_problem_inputs_do_not_show_server_errors[-1] - playwrig...
+FAILED smoke.py::test_empty_submission_does_not_show_server_errors - playwrig...
+======================== 21 failed in 512.42s (0:08:32) ========================
+=== TEST FAIL ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 04:06:38,009 INFO  [io.quarkus] (main) converter 10-SNAPSHOT on JVM (powered by Quarkus 3.6.4) started in 0.466s. Listening on: http://0.0.0.0:8080
+2026-03-24 04:06:38,013 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 04:06:38,013 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, vertx]
+make: *** [Makefile:68: test] Error 1

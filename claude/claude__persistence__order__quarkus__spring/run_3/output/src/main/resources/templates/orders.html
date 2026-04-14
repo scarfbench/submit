@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Java Persistence Example</title>
+    <link rel="stylesheet" href="/css/default.css"/>
+</head>
+<body>
+    <h1>Order Java Persistence Example</h1>
+
+    <h2>View All Orders</h2>
+    <table rules="all" cellpadding="5">
+        <tr>
+            <th>Order ID</th>
+            <th>Shipment Info</th>
+            <th>Status</th>
+            <th>Last Updated</th>
+            <th>Discount</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="order : ${orders}">
+            <td>
+                <a th:href="@{/lineItems(orderId=${order.orderId})}" th:text="${order.orderId}"></a>
+            </td>
+            <td th:text="${order.shipmentInfo}"></td>
+            <td th:text="${order.status}"></td>
+            <td th:text="${order.lastUpdate}"></td>
+            <td th:text="${order.discount} + '%'"></td>
+            <td>
+                <form method="post" action="/removeOrder">
+                    <input type="hidden" name="orderId" th:value="${order.orderId}"/>
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Create New Order</h2>
+    <form method="post" action="/submitOrder">
+        <label for="orderIdInputText">Order ID: </label>
+        <input type="number" id="orderIdInputText" name="newOrderId" required/><br/>
+        <label for="shipmentInfoInputText">Shipment Info: </label>
+        <input type="text" id="shipmentInfoInputText" name="newOrderShippingInfo" required/><br/>
+        <label for="statusMenu">Status: </label>
+        <select id="statusMenu" name="newOrderStatus" required>
+            <option value="Y">Complete</option>
+            <option value="N">Pending</option>
+        </select><br/>
+        <label for="discountMenu">Discount: </label>
+        <select id="discountMenu" name="newOrderDiscount" required>
+            <option value="0">0 %</option>
+            <option value="5">5 %</option>
+            <option value="10">10 %</option>
+            <option value="15">15 %</option>
+            <option value="20">20 %</option>
+            <option value="25">25 %</option>
+            <option value="30">30 %</option>
+            <option value="35">35 %</option>
+            <option value="40">40 %</option>
+        </select><br/>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Find Vendors</h2>
+    <form method="post" action="/findVendor">
+        <label for="findVendorInputText">Search for Vendors: </label>
+        <input type="text" id="findVendorInputText" name="vendorName" th:value="${vendorName != null ? vendorName : ''}" required/>
+        <button type="submit" id="findVendorButton">Find Vendor</button>
+    </form>
+
+    <div th:if="${findVendorTableDisabled}">
+        <table rules="all" cellpadding="5">
+            <tr><th>Vendor</th></tr>
+            <tr th:each="vendor : ${vendorSearchResults}">
+                <td th:text="${vendor}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

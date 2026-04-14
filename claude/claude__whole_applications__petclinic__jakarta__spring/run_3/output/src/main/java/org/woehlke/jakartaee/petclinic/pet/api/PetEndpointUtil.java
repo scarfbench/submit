@@ -1,0 +1,52 @@
+package org.woehlke.jakartaee.petclinic.pet.api;
+
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
+import org.woehlke.jakartaee.petclinic.pet.db.PetService;
+import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeEndpointUtil;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
+import org.woehlke.jakartaee.petclinic.visit.api.VisitEndpointUtil;
+import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Log
+@Component
+public class PetEndpointUtil {
+
+    private final PetTypeEndpointUtil petTypeEndpointUtil;
+    private final VisitEndpointUtil visitEndpointUtil;
+    private final PetService petService;
+
+    @Autowired
+    public PetEndpointUtil(PetTypeEndpointUtil petTypeEndpointUtil, VisitEndpointUtil visitEndpointUtil, PetService petService) {
+        this.petTypeEndpointUtil = petTypeEndpointUtil;
+        this.visitEndpointUtil = visitEndpointUtil;
+        this.petService = petService;
+    }
+
+    public PetDto dtoFactory(Pet pet) {
+        PetDto dto = new PetDto();
+        dto.setId(pet.getId());
+        dto.setUuid(pet.getUuid());
+        dto.setBirthDate(pet.getBirthDate());
+        dto.setName(pet.getName());
+        dto.setPetType(this.petTypeEndpointUtil.dtoFactory(pet.getType()));
+        List<Visit> visitList = petService.getVisits(pet);
+        VisitListDto oVisitListDto = this.visitEndpointUtil.dtoListFactory(visitList);
+        dto.setVisitList(oVisitListDto);
+        return dto;
+    }
+
+    public PetListDto dtoListFactory(List<Pet> petList) {
+        List<PetDto> dtoList = new ArrayList<>();
+        for (Pet pet : petList) {
+            PetDto dto = this.dtoFactory(pet);
+            dtoList.add(dto);
+        }
+        return new PetListDto(dtoList);
+    }
+}

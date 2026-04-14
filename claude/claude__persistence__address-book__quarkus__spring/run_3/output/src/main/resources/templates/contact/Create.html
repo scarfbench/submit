@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Create New Contact</title>
+    <link rel="stylesheet" th:href="@{/css/jsfcrud.css}"/>
+</head>
+<body>
+    <h1>Create New Contact</h1>
+    <p>
+        <form th:action="@{/contact/Create}" method="post">
+            <table role="presentation">
+                <tr>
+                    <td><label for="firstName">First Name:</label></td>
+                    <td><input type="text" id="firstName" name="firstName" th:value="${contact.firstName}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="lastName">Last Name:</label></td>
+                    <td><input type="text" id="lastName" name="lastName" th:value="${contact.lastName}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="birthday">Birthday:</label></td>
+                    <td><input type="text" id="birthday" name="birthdayStr" placeholder="MM/dd/yyyy"
+                               th:value="${contact.birthday != null ? #dates.format(contact.birthday, 'MM/dd/yyyy') : ''}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="homePhone">Home Phone:</label></td>
+                    <td><input type="text" id="homePhone" name="homePhone" th:value="${contact.homePhone}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="mobilePhone">Mobile Phone:</label></td>
+                    <td><input type="text" id="mobilePhone" name="mobilePhone" th:value="${contact.mobilePhone}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="text" id="email" name="email" th:value="${contact.email}"/></td>
+                </tr>
+            </table>
+            <br/>
+            <button type="submit">Save</button>
+        </form>
+        <br/>
+        <a th:href="@{/contact/List}">Show All Contact Items</a>
+        <br/><br/>
+        <a th:href="@{/}">Index</a>
+
+        <div class="messagecolor">
+            <div th:if="${successMessage}" style="color: green;" th:text="${successMessage}"></div>
+            <div th:if="${errorMessage}" style="color: #d20005;" th:text="${errorMessage}"></div>
+        </div>
+    </p>
+</body>
+</html>

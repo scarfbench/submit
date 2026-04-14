@@ -1,0 +1,6 @@
+docker logs "guessnumber-cdi-quarkus"
+
+
+--- stderr ---
+Error response from daemon: No such container: guessnumber-cdi-quarkus
+make: *** [Makefile:47: logs] Error 1

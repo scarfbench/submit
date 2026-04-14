@@ -1,0 +1,6 @@
+docker logs "taskcreator-quarkus"
+
+
+--- stderr ---
+Error response from daemon: No such container: taskcreator-quarkus
+make: *** [Makefile:44: logs] Error 1

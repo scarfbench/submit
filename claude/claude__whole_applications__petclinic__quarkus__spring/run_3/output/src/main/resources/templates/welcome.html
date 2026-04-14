@@ -1,0 +1,13 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{:: #body-content})}">
+<body>
+<div id="body-content">
+  <h2>Welcome</h2>
+  <div class="row">
+      <div class="col-md-12">
+        <img class="img-responsive" th:src="@{/images/pets.png}"/>
+      </div>
+  </div>
+</div>
+</body>
+</html>

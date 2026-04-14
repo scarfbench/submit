@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorated String Encoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        label {
+            display: inline-block;
+            margin: 10px 0 5px 0;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin: 5px 0 10px 0;
+            width: 300px;
+        }
+        input[type="submit"] {
+            padding: 8px 20px;
+            margin: 10px 5px 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .reset-button {
+            background-color: #f44336;
+        }
+        .reset-button:hover {
+            background-color: #da190b;
+        }
+        .result {
+            color: blue;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .errors {
+            color: #d20005;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Decorated String Encoder</h2>
+    <p>Enter a string and an integer, then click Encode.</p>
+    <p>The coder bean will return a string that
+        shifts the letters in the original string by the value you specify.
+        The value must be between 0 and 26.</p>
+
+    <!-- Error messages -->
+    <div class="errors" th:if="${#fields.hasErrors('coderBean.*')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('coderBean.*')}" th:text="${err}"></li>
+        </ul>
+    </div>
+
+    <!-- Main form -->
+    <form th:action="@{/encode}" th:object="${coderBean}" method="post">
+        <div>
+            <label for="inputString">Enter a string:</label><br/>
+            <input type="text" id="inputString" th:field="*{inputString}" />
+        </div>
+        <div>
+            <label for="transVal">Enter the number of letters to shift by:</label><br/>
+            <input type="text" id="transVal" th:field="*{transVal}" />
+        </div>
+        <div>
+            <input type="submit" value="Encode" />
+        </div>
+    </form>
+
+    <!-- Reset form -->
+    <form th:action="@{/reset}" method="post" style="display: inline;">
+        <input type="submit" value="Reset" class="reset-button" />
+    </form>
+
+    <!-- Result display -->
+    <div th:if="${coderBean.codedString != null and coderBean.codedString != ''}">
+        <p>
+            <label>Result: </label>
+            <span class="result" th:text="${coderBean.codedString}"></span>
+        </p>
+    </div>
+</body>
+</html>

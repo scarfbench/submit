@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="CoffeeShop Jakarta EE Server">
+
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- H2 JDBC Library -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2*.jar"/>
+    </library>
+
+    <!-- Default DataSource for coffeeshop -->
+    <dataSource id="DefaultDataSource" jndiName="jdbc/coffeeshop">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:mem:coffeeshop;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/>
+    </dataSource>
+
+    <!-- Web Application -->
+    <webApplication id="coffeeshop" location="coffeeshop.war" contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+    <!-- Logging -->
+    <logging consoleLogLevel="INFO" consoleFormat="simple"/>
+
+</server>

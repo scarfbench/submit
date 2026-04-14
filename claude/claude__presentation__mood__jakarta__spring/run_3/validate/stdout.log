@@ -1,0 +1,45 @@
+docker build -f Dockerfile -t "mood-spring:latest" .
+[INFO] Built image: mood-spring:latest
+### Run the container in detached mode
+docker run -d --name "mood-spring" "mood-spring:latest"
+8a7f2c5f7bb537dfa90e15246aa2a17ad9cbea6c7f1d1e5eb29b0283a23f8aa2
+[INFO] Started mood-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /report -> 200
+[PASS] Mood displayed: awake
+[PASS] Duke image displayed: Duke with thumbs-up gesture
+[PASS] Valid HTML structure
+[PASS] Servlet title found
+
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__mood__jakarta__spring/run_3/output'
+docker rm -f "mood-spring"
+mood-spring
+[INFO] Container removed (if it existed)
+docker rmi "mood-spring:latest"
+Untagged: mood-spring:latest
+Deleted: sha256:b9d5c60ae24cac2811bca5819d6a755db99357f9f67b46a97d84e8972f2dbdf7
+docker image prune -f
+Deleted Images:
+deleted: sha256:1e882780015854c61a40f18e4b6e5d2faa04dbafeb4609c27c88b58f6c1bffb5
+deleted: sha256:9c578c1107c23c20e584f9f9206e057a7a4b54719175cee20e26e5612f149181
+deleted: sha256:cafdfdd1b1d1dd775924019132dbdb35944d83c816cdb5d811d8a20d4323b473
+deleted: sha256:fd8ab93d7dc03e9eac868f74c532ff63fb11590d087ac9d5a4e129b2a7c86499
+deleted: sha256:cfe6e0e62a739953ac2ffad85fa9cf01f3b950dbe29a07fb890ef7ee63580812
+deleted: sha256:b96c65246dea6dd03ca95e50ef25cfb01352bed811fc7e0d6ffbf48190a7563f
+deleted: sha256:3efb0268850cea96d0b982b9e7df18ab94b215b9005e40c85d0632f65b620db5
+deleted: sha256:30d548c76dced364c9d1b4db5b5cbb2c6c2a55be0d0ce9f35b328fece42d5a67
+deleted: sha256:929c2c3802a42a743c1606db892de1d105f485e6e85b9782f8f6f21e2d17e21c
+deleted: sha256:8c93efe939ae82091319672585dea9b072ef897ebd3d4220c52612e7483dc87c
+deleted: sha256:da75764474acf378982b7ed0347e2ee13473dce96c2fbcf799bc99f9a18d01fb
+deleted: sha256:a31924e78d6dae66f6a7a438e58ea93c14af6b81c4bf97b92bf5a90b3dd0a58a
+deleted: sha256:553c833cdc305c65a5847eb2a4660a4e446bc09f8b76eb5d11d1225f92aa7109
+deleted: sha256:8c10ff249e8318d4a7ff7a735e5d152b9978783472ec27e5ad53e854a4b39a25
+deleted: sha256:73283ea35a33b240a3e4ea306b6cd4f87c6815f42bdcd0f409715a41666f25f0
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__mood__jakarta__spring/run_3/output'

@@ -1,0 +1,6 @@
+docker logs "standalone-quarkus"
+
+
+--- stderr ---
+Error response from daemon: No such container: standalone-quarkus
+make: *** [Makefile:54: logs] Error 1

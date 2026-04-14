@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}"></head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<div class="container">
+    <h1>Pet Types</h1>
+    <form th:action="@{/petTypes}" method="get" class="mb-3">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search pet types..." th:value="${search}"/>
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <a th:href="@{/petTypes}" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </form>
+    <table class="table table-striped">
+        <thead><tr><th>Name</th></tr></thead>
+        <tbody>
+        <tr th:each="petType : ${petTypes}">
+            <td><a th:href="@{/petTypes/{id}(id=${petType.id})}" th:text="${petType.name}"></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <p th:if="${#lists.isEmpty(petTypes)}">No pet types found.</p>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "dukeetf",
+  "layer": "presentation",
+  "repeat": 1,
+  "source_framework": "quarkus",
+  "target_framework": "spring",
+  "num_smoke_tests": 4,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 4,
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

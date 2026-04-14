@@ -1,0 +1,65 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 996B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.2s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 49.18kB done
+#5 DONE 0.0s
+
+#6 [5/9] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#7 CACHED
+
+#8 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#8 CACHED
+
+#9 [6/9] WORKDIR /app
+#9 CACHED
+
+#10 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#10 CACHED
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:2324f5b6cf1ef588dc78c958ef2936829f7daf23ea4e0e92e635cadf0c4d6ef1 done
+#14 exporting config sha256:5713a552b4e73c5aba3d8810c3b4dafea1ceffe788e27cd8ad1da313d35c420b done
+#14 exporting attestation manifest sha256:531df0f2a0a1b2c152e5ec81035cadc3572884cad21eff7b93d4296d6f869c29
+#14 exporting attestation manifest sha256:531df0f2a0a1b2c152e5ec81035cadc3572884cad21eff7b93d4296d6f869c29 0.1s done
+#14 exporting manifest list sha256:8f64d66f8ca77b45342379883880b601c874a9a7e0d74da4fa716a4f2158fb35 0.0s done
+#14 naming to docker.io/library/producerfields-quarkus:6d22cce0
+#14 naming to docker.io/library/producerfields-quarkus:6d22cce0 done
+#14 unpacking to docker.io/library/producerfields-quarkus:6d22cce0 0.0s done
+#14 DONE 0.2s
+[INFO] Built image: producerfields-quarkus:6d22cce0
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name producerfields-quarkus-42c6d4e3 producerfields-quarkus:6d22cce0
+f576305043019c5cc6ed59fcaf6b3571d594bd69c4ea3026c27d876cbb80e5c9
+[INFO] Started producerfields-quarkus-42c6d4e3, waiting for app to start...
+Error: Unable to access jarfile target/quarkus-app/quarkus-run.jar

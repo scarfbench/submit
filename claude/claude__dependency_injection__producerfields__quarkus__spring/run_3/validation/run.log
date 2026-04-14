@@ -1,0 +1,68 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#5 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#5 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 73.37kB 0.0s done
+#4 DONE 0.0s
+
+#6 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [7/9] COPY . .
+#7 CACHED
+
+#8 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#8 CACHED
+
+#9 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#9 CACHED
+
+#10 [5/9] RUN playwright install --with-deps chromium
+#10 CACHED
+
+#11 [6/9] WORKDIR /app
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:6687d6c601f9b5741ea2d7ecbab55c57fed3a71a922d504cff45856981264621 done
+#14 exporting config sha256:4f0995c3a2f95c11bd8f2e88d21ff4d194c36013a848653681a5e7cbbaa61cc3 done
+#14 exporting attestation manifest sha256:c54807cdd463fbdf23296d3a52ee9f04fcfe34664c52ffb03b9edeac92953536
+#14 exporting attestation manifest sha256:c54807cdd463fbdf23296d3a52ee9f04fcfe34664c52ffb03b9edeac92953536 0.1s done
+#14 exporting manifest list sha256:9ea19ab1a8e7ce7cc75205376ccf405b2aeaa1525b2d674d1ce94b4201107af5 0.1s done
+#14 naming to docker.io/library/producerfields-spring:3df668ec
+#14 naming to docker.io/library/producerfields-spring:3df668ec 0.0s done
+#14 unpacking to docker.io/library/producerfields-spring:3df668ec 0.0s done
+#14 DONE 0.3s
+[INFO] Built image: producerfields-spring:3df668ec
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name producerfields-spring-6efce602 producerfields-spring:3df668ec
+12539c825e363c2ee7e587edd7082cf174d1ffd27f1d685867f0d89f965b2b7b
+[INFO] Started producerfields-spring-6efce602, waiting for app to start...
+no main manifest attribute, in target/producerfields-1.0.0-SNAPSHOT.jar

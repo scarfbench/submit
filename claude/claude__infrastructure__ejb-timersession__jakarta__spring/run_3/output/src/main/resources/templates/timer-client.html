@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Timer - An EJB timer service session bean example.</title>
+</head>
+<body>
+    <h1>Timer page</h1>
+
+    <p th:text="'The last programmatic timeout was: ' + ${lastProgrammaticTimeout}">The last programmatic timeout was: never.</p>
+
+    <p th:text="'The last automatic timeout was: ' + ${lastAutomaticTimeout}">The last automatic timeout was: never</p>
+
+    <p>Set a programmatic timer here.</p>
+
+    <form action="/setTimer" method="post">
+        <button type="submit">Set Timer</button>
+    </form>
+
+    <form action="/timer-client" method="get">
+        <button type="submit">Refresh</button>
+    </form>
+</body>
+</html>

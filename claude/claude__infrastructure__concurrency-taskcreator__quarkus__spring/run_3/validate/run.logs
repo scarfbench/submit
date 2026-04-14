@@ -1,0 +1,6 @@
+docker logs "taskcreator-springboot"
+
+
+--- stderr ---
+Error response from daemon: No such container: taskcreator-springboot
+make: *** [Makefile:44: logs] Error 1

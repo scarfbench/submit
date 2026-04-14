@@ -1,0 +1,9 @@
+docker build -f Dockerfile -t "interceptor-spring:latest" .
+[INFO] Built image: interceptor-spring:latest
+### Run the container in detached mode
+docker run -d --name "interceptor-spring" "interceptor-spring:latest"
+022ec44b22b58697e460a4732a74e9ebc67971f4aa125615918c30266d92c2a2
+[INFO] Started interceptor-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.

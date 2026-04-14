@@ -1,0 +1,17 @@
+{
+  "status": "CONVERTED",
+  "agent": "claude",
+  "app": "realworld",
+  "layer": "whole_applications",
+  "repeat": 3,
+  "source_framework": "jakarta",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 62,
+  "compile_ok": "TRUE",
+  "deploy_ok": "UNK",
+  "tests_passed": null,
+  "failure_reason": "Compiled successfully but no deploy outcome found",
+  "failure_category": "unknown",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

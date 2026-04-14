@@ -1,0 +1,37 @@
+docker build -f Dockerfile -t "jaxrs-hello-quarkus:latest" .
+[INFO] Built image: jaxrs-hello-quarkus:latest
+### Run the container in detached mode
+docker run -d --name "jaxrs-hello-quarkus" "jaxrs-hello-quarkus:latest"
+baee7ce50a50d7d1f2087de2c0a3f7ff91a6258ff241f535f29fe5e21d4c3a2d
+[INFO] Started jaxrs-hello-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.
+[INFO] BASE = http://localhost:8080
+[PASS] GET /helloworld -> 200 text/html
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__jaxrs-hello__spring__quarkus/run_3/output'
+docker rm -f "jaxrs-hello-quarkus"
+jaxrs-hello-quarkus
+[INFO] Container removed (if it existed)
+docker rmi "jaxrs-hello-quarkus:latest"
+Untagged: jaxrs-hello-quarkus:latest
+Deleted: sha256:ae2d1cd27cb7ad13fe3ad91a1c05a354f60bb9ead28c4aef968f2b772996ef62
+docker image prune -f
+Deleted Images:
+deleted: sha256:291ad33cd6944ab8d3b848d3599eec1c5ddb68376c8d7723440d9c54e732ae32
+deleted: sha256:bfa4db468bf27e5c78ad81620e1a134a5d1ede19bc48c62e7b01800516e483a5
+deleted: sha256:86ff0296561ed7c3a189442773da2b2bd46c6e521b6589c21e8d90b74840a228
+deleted: sha256:4959c490d97fa5d7447e218a824bd839f8a3a0195696a755b1679bc1ec0033f5
+deleted: sha256:5621ccda6d1736ba2e16b184e422ac6ae353b68e307a69f9db869567c605f016
+deleted: sha256:9b214f7271db06b8927efece6c9a5b7b458ab4de36905d10506ae63ead46c80c
+deleted: sha256:70117a0e16dc30632041c1aedaede9d18ea5750002b0d6eaade23142b99f7913
+deleted: sha256:e59319d21d737a1a0e095c3c37e9d9d5b8c1525362576633c6b9990241aba4de
+deleted: sha256:9301ff1d100e302b660198e69397c260193fcaa5366426f5d22782db284d3e08
+deleted: sha256:8e19af38a556a109e0cfe9699b14519a3a51932178b0b9fbf4d637b46570d35b
+deleted: sha256:ab053f7e8e234a8e87010c900cf6310640447d94510cab1b3048df34aaf7d792
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__jaxrs-hello__spring__quarkus/run_3/output'

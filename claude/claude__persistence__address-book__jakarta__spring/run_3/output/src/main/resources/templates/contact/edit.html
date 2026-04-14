@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Contact</title>
+    <link rel="stylesheet" th:href="@{/css/jsfcrud.css}"/>
+</head>
+<body>
+    <h1>Edit Contact</h1>
+
+    <form th:action="@{/contact/edit/{id}(id=${contact.id})}" th:object="${contact}" method="post">
+        <table role="presentation">
+            <tr>
+                <td><label for="firstName">First Name:</label></td>
+                <td><input type="text" id="firstName" th:field="*{firstName}"/></td>
+                <td th:if="${#fields.hasErrors('firstName')}" style="color:red;" th:errors="*{firstName}"></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last Name:</label></td>
+                <td><input type="text" id="lastName" th:field="*{lastName}"/></td>
+                <td th:if="${#fields.hasErrors('lastName')}" style="color:red;" th:errors="*{lastName}"></td>
+            </tr>
+            <tr>
+                <td><label for="birthday">Birthday:</label></td>
+                <td><input type="text" id="birthday" th:field="*{birthday}" placeholder="MM/dd/yyyy"/></td>
+                <td th:if="${#fields.hasErrors('birthday')}" style="color:red;" th:errors="*{birthday}"></td>
+            </tr>
+            <tr>
+                <td><label for="homePhone">Home Phone:</label></td>
+                <td><input type="text" id="homePhone" th:field="*{homePhone}"/></td>
+                <td th:if="${#fields.hasErrors('homePhone')}" style="color:red;" th:errors="*{homePhone}"></td>
+            </tr>
+            <tr>
+                <td><label for="mobilePhone">Mobile Phone:</label></td>
+                <td><input type="text" id="mobilePhone" th:field="*{mobilePhone}"/></td>
+                <td th:if="${#fields.hasErrors('mobilePhone')}" style="color:red;" th:errors="*{mobilePhone}"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" id="email" th:field="*{email}"/></td>
+                <td th:if="${#fields.hasErrors('email')}" style="color:red;" th:errors="*{email}"></td>
+            </tr>
+        </table>
+        <button type="submit">Save</button>
+    </form>
+    <br/>
+    <a th:href="@{/contact/view/{id}(id=${contact.id})}">View</a>
+    <br/>
+    <a th:href="@{/contact/list}">Show All Contact Items</a>
+    <br/><br/>
+    <a th:href="@{/}">Index</a>
+</body>
+</html>

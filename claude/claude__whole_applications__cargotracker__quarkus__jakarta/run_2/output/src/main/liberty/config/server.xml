@@ -1,0 +1,72 @@
+<server description="Cargo Tracker Jakarta EE Server">
+
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>localConnector-1.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- H2 Database -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2*.jar"/>
+    </library>
+
+    <dataSource id="CargoTrackerDatabase" jndiName="jdbc/CargoTrackerDatabase">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:mem:cargo-tracker-database;DB_CLOSE_DELAY=-1"
+            user="sa"
+            password=""/>
+    </dataSource>
+
+    <!-- JMS Configuration using Liberty built-in messaging -->
+    <wasJmsEndpoint id="InboundJmsEndpoint" wasJmsPort="7276" />
+
+    <jmsQueue id="CargoHandledQueue" jndiName="jms/CargoHandledQueue">
+        <properties.wasJms queueName="CargoHandledQueue"/>
+    </jmsQueue>
+    <jmsQueue id="MisdirectedCargoQueue" jndiName="jms/MisdirectedCargoQueue">
+        <properties.wasJms queueName="MisdirectedCargoQueue"/>
+    </jmsQueue>
+    <jmsQueue id="DeliveredCargoQueue" jndiName="jms/DeliveredCargoQueue">
+        <properties.wasJms queueName="DeliveredCargoQueue"/>
+    </jmsQueue>
+    <jmsQueue id="HandlingEventRegistrationAttemptQueue" jndiName="jms/HandlingEventRegistrationAttemptQueue">
+        <properties.wasJms queueName="HandlingEventRegistrationAttemptQueue"/>
+    </jmsQueue>
+    <jmsQueue id="RejectedRegistrationAttemptsQueue" jndiName="jms/RejectedRegistrationAttemptsQueue">
+        <properties.wasJms queueName="RejectedRegistrationAttemptsQueue"/>
+    </jmsQueue>
+
+    <jmsConnectionFactory id="jms/DefaultConnectionFactory" jndiName="jms/DefaultConnectionFactory">
+        <properties.wasJms/>
+    </jmsConnectionFactory>
+
+    <jmsActivationSpec id="cargo-tracker/CargoHandledConsumer">
+        <properties.wasJms destinationRef="CargoHandledQueue" destinationType="jakarta.jms.Queue"/>
+    </jmsActivationSpec>
+    <jmsActivationSpec id="cargo-tracker/HandlingEventRegistrationAttemptConsumer">
+        <properties.wasJms destinationRef="HandlingEventRegistrationAttemptQueue" destinationType="jakarta.jms.Queue"/>
+    </jmsActivationSpec>
+    <jmsActivationSpec id="cargo-tracker/DeliveredCargoConsumer">
+        <properties.wasJms destinationRef="DeliveredCargoQueue" destinationType="jakarta.jms.Queue"/>
+    </jmsActivationSpec>
+    <jmsActivationSpec id="cargo-tracker/MisdirectedCargoConsumer">
+        <properties.wasJms destinationRef="MisdirectedCargoQueue" destinationType="jakarta.jms.Queue"/>
+    </jmsActivationSpec>
+    <jmsActivationSpec id="cargo-tracker/RejectedRegistrationAttemptsConsumer">
+        <properties.wasJms destinationRef="RejectedRegistrationAttemptsQueue" destinationType="jakarta.jms.Queue"/>
+    </jmsActivationSpec>
+
+    <!-- Application configuration -->
+    <webApplication id="cargo-tracker" location="cargo-tracker.war" contextRoot="/cargo-tracker">
+        <classloader apiTypeVisibility="+third-party"/>
+    </webApplication>
+
+    <!-- System property for graph traversal URL -->
+    <jndiEntry jndiName="app/configuration/GraphTraversalUrl"
+               value="http://localhost:8080/cargo-tracker/rest/graph-traversal/shortest-path"/>
+</server>

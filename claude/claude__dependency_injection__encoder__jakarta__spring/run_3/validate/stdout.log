@@ -1,0 +1,12 @@
+docker build -f Dockerfile -t "encoder-spring:latest" .
+[INFO] Built image: encoder-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "encoder-spring" "encoder-spring:latest"
+9200fadb69163138815841febd6c00f64babd81e1ff63575e5b6979f402bd817
+[INFO] Started encoder-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+### Confirm the HTTP endpoint is reachable from inside the container
+[INFO] Spring Boot application started and ready.
+---[ 01:09:57 - Smoke test ]---

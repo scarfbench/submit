@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "jaxrs-hello",
+  "layer": "presentation",
+  "repeat": 1,
+  "source_framework": "jakarta",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 8,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 8,
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

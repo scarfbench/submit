@@ -1,0 +1,1410 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 996B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#4 CACHED
+
+#5 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#5 CACHED
+
+#6 [5/9] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 71.55kB done
+#10 DONE 0.0s
+
+#11 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#11 CACHED
+
+#12 [7/9] COPY . .
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:b027925dbfc0d378412223cc92bfe01b2554ddcc329673d0f0c7f80b59064ba4 done
+#14 exporting config sha256:820f947047a6edcc398f908afa29013b5bc7c53799f85bd7e1c1c07f8f13986f done
+#14 exporting attestation manifest sha256:6e8f499d57e235315d72a82aa85c96c29e46397eb5a4767c0a94d5cef67c10fc 0.1s done
+#14 exporting manifest list sha256:0edb197fe8ca52548aa45802c54739cccc7baa8635073a239bdd90196e15f0a7
+#14 exporting manifest list sha256:0edb197fe8ca52548aa45802c54739cccc7baa8635073a239bdd90196e15f0a7 0.0s done
+#14 naming to docker.io/library/roster-quarkus:2764251e done
+#14 unpacking to docker.io/library/roster-quarkus:2764251e done
+#14 DONE 0.1s
+[INFO] Built image: roster-quarkus:2764251e
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name roster-quarkus-ddaf64d0 roster-quarkus:2764251e
+dbce432eced941903e00e54eedd04b2b61eabcf65bde4721a9a5d966bc587805
+[INFO] Started roster-quarkus-ddaf64d0, waiting for app to start...
+Hibernate: 
+    create table PERSISTENCE_ROSTER_LEAGUE (
+        DTYPE varchar(31) not null,
+        id varchar(255) not null,
+        name varchar(255),
+        sport varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_PLAYER (
+        id varchar(255) not null,
+        name varchar(255),
+        position varchar(255),
+        salary float(53) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_TEAM (
+        id varchar(255) not null,
+        city varchar(255),
+        name varchar(255),
+        league_id varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_TEAM_PLAYER (
+        TEAM_ID varchar(255) not null,
+        PLAYER_ID varchar(255) not null
+    )
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM 
+       add constraint FK37k2bil05ombgad258iq4wtdj 
+       foreign key (league_id) 
+       references PERSISTENCE_ROSTER_LEAGUE
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM_PLAYER 
+       add constraint FKfihi62aahkohrqjleo9ymehgd 
+       foreign key (PLAYER_ID) 
+       references PERSISTENCE_ROSTER_PLAYER
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM_PLAYER 
+       add constraint FK92m7ldq2196fnc8tnduyxib42 
+       foreign key (TEAM_ID) 
+       references PERSISTENCE_ROSTER_TEAM
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) roster 1.0.0 on JVM (powered by Quarkus 3.8.4) started in 1.388s. Listening on: http://0.0.0.0:8080
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, jdbc-h2, narayana-jta, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, spring-data-jpa, spring-di, vertx]
+[INFO] Quarkus application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+Hibernate: 
+    create table PERSISTENCE_ROSTER_LEAGUE (
+        DTYPE varchar(31) not null,
+        id varchar(255) not null,
+        name varchar(255),
+        sport varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_PLAYER (
+        id varchar(255) not null,
+        name varchar(255),
+        position varchar(255),
+        salary float(53) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_TEAM (
+        id varchar(255) not null,
+        city varchar(255),
+        name varchar(255),
+        league_id varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_TEAM_PLAYER (
+        TEAM_ID varchar(255) not null,
+        PLAYER_ID varchar(255) not null
+    )
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM 
+       add constraint FK37k2bil05ombgad258iq4wtdj 
+       foreign key (league_id) 
+       references PERSISTENCE_ROSTER_LEAGUE
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM_PLAYER 
+       add constraint FKfihi62aahkohrqjleo9ymehgd 
+       foreign key (PLAYER_ID) 
+       references PERSISTENCE_ROSTER_PLAYER
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM_PLAYER 
+       add constraint FK92m7ldq2196fnc8tnduyxib42 
+       foreign key (TEAM_ID) 
+       references PERSISTENCE_ROSTER_TEAM
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) roster 1.0.0 on JVM (powered by Quarkus 3.8.4) started in 1.388s. Listening on: http://0.0.0.0:8080
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, jdbc-h2, narayana-jta, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, spring-data-jpa, spring-di, vertx]
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 25 items
+
+smoke.py::test_application_is_running PASSED                             [  4%]
+smoke.py::test_canonical_leagues_seeded PASSED                           [  8%]
+smoke.py::test_create_summer_league PASSED                               [ 12%]
+smoke.py::test_create_winter_league PASSED                               [ 16%]
+smoke.py::test_invalid_sport_rejected PASSED                             [ 20%]
+smoke.py::test_remove_league PASSED                                      [ 24%]
+smoke.py::test_create_team_in_league PASSED                              [ 28%]
+smoke.py::test_get_team_details PASSED                                   [ 32%]
+smoke.py::test_get_teams_of_league PASSED                                [ 36%]
+smoke.py::test_remove_team PASSED                                        [ 40%]
+smoke.py::test_create_player FAILED                                      [ 44%]
+smoke.py::test_add_player_to_team FAILED                                 [ 48%]
+smoke.py::test_drop_player_from_team PASSED                              [ 52%]
+smoke.py::test_remove_player PASSED                                      [ 56%]
+smoke.py::test_players_by_position FAILED                                [ 60%]
+smoke.py::test_players_salary_higher_than FAILED                         [ 64%]
+smoke.py::test_players_by_salary_range FAILED                            [ 68%]
+smoke.py::test_players_by_league FAILED                                  [ 72%]
+smoke.py::test_players_by_sport FAILED                                   [ 76%]
+smoke.py::test_players_by_city FAILED                                    [ 80%]
+smoke.py::test_players_not_on_team FAILED                                [ 84%]
+smoke.py::test_leagues_of_player FAILED                                  [ 88%]
+smoke.py::test_sports_of_player FAILED                                   [ 92%]
+smoke.py::test_health_live PASSED                                        [ 96%]
+smoke.py::test_health_ready PASSED                                       [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_create_player ______________________________
+
+    def test_create_player():
+        """Scenario: Create a new player."""
+>       data = json_get("/player/P1")
+               ^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:251: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/player/P1', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /player/P1 returned 404: 
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+___________________________ test_add_player_to_team ____________________________
+
+    def test_add_player_to_team():
+        """Scenario: Add a player to a team."""
+        players = json_get("/team/T1/players")
+        player_ids = [p["id"] for p in players]
+>       assert "P1" in player_ids
+E       AssertionError: assert 'P1' in []
+
+smoke.py:263: AssertionError
+___________________________ test_players_by_position ___________________________
+
+    def test_players_by_position():
+        """Scenario: Get players by position."""
+        players = json_get("/players/position/forward")
+>       assert len(players) > 0
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+smoke.py:307: AssertionError
+_______________________ test_players_salary_higher_than ________________________
+
+    def test_players_salary_higher_than():
+        """Scenario: Get players with salary higher than a named player."""
+        players = json_get("/players/salary/higher/Alice")
+>       assert len(players) > 0
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+smoke.py:321: AssertionError
+_________________________ test_players_by_salary_range _________________________
+
+    def test_players_by_salary_range():
+        """Scenario: Get players by salary range."""
+        players = json_get("/players/salary/range", query={"low": "40000", "high": "60000"})
+>       assert len(players) > 0
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+smoke.py:331: AssertionError
+____________________________ test_players_by_league ____________________________
+
+    def test_players_by_league():
+        """Scenario: Get players by league ID."""
+        players = json_get("/players/league/L1")
+>       assert len(players) > 0
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+smoke.py:345: AssertionError
+____________________________ test_players_by_sport _____________________________
+
+    def test_players_by_sport():
+        """Scenario: Get players by sport."""
+        players = json_get("/players/sport/Soccer")
+>       assert len(players) > 0
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+smoke.py:354: AssertionError
+_____________________________ test_players_by_city _____________________________
+
+    def test_players_by_city():
+        """Scenario: Get players by city."""
+        players = json_get("/players/city/Visalia")
+>       assert len(players) > 0
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+smoke.py:366: AssertionError
+___________________________ test_players_not_on_team ___________________________
+
+    def test_players_not_on_team():
+        """Scenario: Get players not on any team."""
+        players = json_get("/players/not-on-team")
+>       assert len(players) > 0
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+smoke.py:373: AssertionError
+____________________________ test_leagues_of_player ____________________________
+
+    def test_leagues_of_player():
+        """Scenario: Get leagues of a specific player."""
+        leagues = json_get("/player/P1/leagues")
+        assert leagues is not None
+        league_ids = [lg["id"] for lg in leagues]
+        # P1 is on T1 (L1) and T3 (L2)
+>       assert "L1" in league_ids
+E       AssertionError: assert 'L1' in []
+
+smoke.py:390: AssertionError
+____________________________ test_sports_of_player _____________________________
+
+    def test_sports_of_player():
+        """Scenario: Get sports of a specific player."""
+        sports = json_get("/player/P1/sports")
+>       assert "Soccer" in sports
+E       AssertionError: assert 'Soccer' in []
+
+smoke.py:398: AssertionError
+=========================== short test summary info ============================
+FAILED smoke.py::test_create_player - AssertionError: GET /player/P1 returned...
+FAILED smoke.py::test_add_player_to_team - AssertionError: assert 'P1' in []
+FAILED smoke.py::test_players_by_position - assert 0 > 0
+FAILED smoke.py::test_players_salary_higher_than - assert 0 > 0
+FAILED smoke.py::test_players_by_salary_range - assert 0 > 0
+FAILED smoke.py::test_players_by_league - assert 0 > 0
+FAILED smoke.py::test_players_by_sport - assert 0 > 0
+FAILED smoke.py::test_players_by_city - assert 0 > 0
+FAILED smoke.py::test_players_not_on_team - assert 0 > 0
+FAILED smoke.py::test_leagues_of_player - AssertionError: assert 'L1' in []
+FAILED smoke.py::test_sports_of_player - AssertionError: assert 'Soccer' in []
+======================== 11 failed, 14 passed in 0.65s =========================
+=== TEST FAIL ===
+Hibernate: 
+    create table PERSISTENCE_ROSTER_LEAGUE (
+        DTYPE varchar(31) not null,
+        id varchar(255) not null,
+        name varchar(255),
+        sport varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_PLAYER (
+        id varchar(255) not null,
+        name varchar(255),
+        position varchar(255),
+        salary float(53) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_TEAM (
+        id varchar(255) not null,
+        city varchar(255),
+        name varchar(255),
+        league_id varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    create table PERSISTENCE_ROSTER_TEAM_PLAYER (
+        TEAM_ID varchar(255) not null,
+        PLAYER_ID varchar(255) not null
+    )
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM 
+       add constraint FK37k2bil05ombgad258iq4wtdj 
+       foreign key (league_id) 
+       references PERSISTENCE_ROSTER_LEAGUE
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM_PLAYER 
+       add constraint FKfihi62aahkohrqjleo9ymehgd 
+       foreign key (PLAYER_ID) 
+       references PERSISTENCE_ROSTER_PLAYER
+Hibernate: 
+    alter table if exists PERSISTENCE_ROSTER_TEAM_PLAYER 
+       add constraint FK92m7ldq2196fnc8tnduyxib42 
+       foreign key (TEAM_ID) 
+       references PERSISTENCE_ROSTER_TEAM
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) roster 1.0.0 on JVM (powered by Quarkus 3.8.4) started in 1.388s. Listening on: http://0.0.0.0:8080
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 02:48:49,938 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, jdbc-h2, narayana-jta, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, spring-data-jpa, spring-di, vertx]
+Hibernate: 
+    select
+        sl1_0.id,
+        sl1_0.name,
+        sl1_0.sport,
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_LEAGUE sl1_0 
+    left join
+        PERSISTENCE_ROSTER_TEAM t1_0 
+            on sl1_0.id=t1_0.league_id 
+    where
+        sl1_0.DTYPE='SummerLeague' 
+        and sl1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_LEAGUE
+        (name, sport, DTYPE, id) 
+    values
+        (?, ?, 'SummerLeague', ?)
+Hibernate: 
+    select
+        sl1_0.id,
+        sl1_0.name,
+        sl1_0.sport,
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_LEAGUE sl1_0 
+    left join
+        PERSISTENCE_ROSTER_TEAM t1_0 
+            on sl1_0.id=t1_0.league_id 
+    where
+        sl1_0.DTYPE='SummerLeague' 
+        and sl1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_LEAGUE
+        (name, sport, DTYPE, id) 
+    values
+        (?, ?, 'SummerLeague', ?)
+Hibernate: 
+    select
+        sl1_0.id,
+        sl1_0.name,
+        sl1_0.sport,
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_LEAGUE sl1_0 
+    left join
+        PERSISTENCE_ROSTER_TEAM t1_0 
+            on sl1_0.id=t1_0.league_id 
+    where
+        sl1_0.DTYPE='SummerLeague' 
+        and sl1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_LEAGUE
+        (name, sport, DTYPE, id) 
+    values
+        (?, ?, 'SummerLeague', ?)
+Hibernate: 
+    select
+        wl1_0.id,
+        wl1_0.name,
+        wl1_0.sport,
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_LEAGUE wl1_0 
+    left join
+        PERSISTENCE_ROSTER_TEAM t1_0 
+            on wl1_0.id=t1_0.league_id 
+    where
+        wl1_0.DTYPE='WinterLeague' 
+        and wl1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_LEAGUE
+        (name, sport, DTYPE, id) 
+    values
+        (?, ?, 'WinterLeague', ?)
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_TEAM
+        (city, league_id, name, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_TEAM
+        (city, league_id, name, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_TEAM
+        (city, league_id, name, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_TEAM
+        (city, league_id, name, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        sl1_0.id,
+        sl1_0.name,
+        sl1_0.sport,
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_LEAGUE sl1_0 
+    left join
+        PERSISTENCE_ROSTER_TEAM t1_0 
+            on sl1_0.id=t1_0.league_id 
+    where
+        sl1_0.DTYPE='SummerLeague' 
+        and sl1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_LEAGUE
+        (name, sport, DTYPE, id) 
+    values
+        (?, ?, 'SummerLeague', ?)
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        wl1_0.id,
+        wl1_0.name,
+        wl1_0.sport,
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_LEAGUE wl1_0 
+    left join
+        PERSISTENCE_ROSTER_TEAM t1_0 
+            on wl1_0.id=t1_0.league_id 
+    where
+        wl1_0.DTYPE='WinterLeague' 
+        and wl1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_LEAGUE
+        (name, sport, DTYPE, id) 
+    values
+        (?, ?, 'WinterLeague', ?)
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        sl1_0.id,
+        sl1_0.name,
+        sl1_0.sport,
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_LEAGUE sl1_0 
+    left join
+        PERSISTENCE_ROSTER_TEAM t1_0 
+            on sl1_0.id=t1_0.league_id 
+    where
+        sl1_0.DTYPE='SummerLeague' 
+        and sl1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_LEAGUE
+        (name, sport, DTYPE, id) 
+    values
+        (?, ?, 'SummerLeague', ?)
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    where
+        t1_0.league_id=?
+Hibernate: 
+    delete 
+    from
+        PERSISTENCE_ROSTER_LEAGUE 
+    where
+        id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_TEAM
+        (city, league_id, name, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        t1_0.league_id,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    where
+        t1_0.league_id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport 
+    from
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ROSTER_TEAM
+        (city, league_id, name, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.TEAM_ID,
+        p1_1.id,
+        p1_1.name,
+        p1_1.position,
+        p1_1.salary 
+    from
+        PERSISTENCE_ROSTER_TEAM_PLAYER p1_0 
+    join
+        PERSISTENCE_ROSTER_PLAYER p1_1 
+            on p1_1.id=p1_0.PLAYER_ID 
+    where
+        p1_0.TEAM_ID=?
+Hibernate: 
+    select
+        t1_0.league_id,
+        t1_0.id,
+        t1_0.city,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    where
+        t1_0.league_id=?
+Hibernate: 
+    update
+        PERSISTENCE_ROSTER_TEAM 
+    set
+        city=?,
+        league_id=?,
+        name=? 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        PERSISTENCE_ROSTER_TEAM 
+    where
+        id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    join
+        PERSISTENCE_ROSTER_TEAM_PLAYER t1_0 
+            on p1_0.id=t1_0.PLAYER_ID 
+    where
+        t1_0.TEAM_ID=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    join
+        PERSISTENCE_ROSTER_TEAM_PLAYER t1_0 
+            on p1_0.id=t1_0.PLAYER_ID 
+    where
+        t1_0.TEAM_ID=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.city,
+        l1_0.id,
+        l1_0.DTYPE,
+        l1_0.name,
+        l1_0.sport,
+        t1_0.name 
+    from
+        PERSISTENCE_ROSTER_TEAM t1_0 
+    left join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_0.league_id 
+    where
+        t1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.position=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.name=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.salary between ? and ?
+Hibernate: 
+    select
+        distinct p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    join
+        PERSISTENCE_ROSTER_TEAM_PLAYER t1_0 
+            on p1_0.id=t1_0.PLAYER_ID 
+    join
+        PERSISTENCE_ROSTER_TEAM t1_1 
+            on t1_1.id=t1_0.TEAM_ID 
+    where
+        t1_1.league_id=?
+Hibernate: 
+    select
+        distinct p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    join
+        PERSISTENCE_ROSTER_TEAM_PLAYER t1_0 
+            on p1_0.id=t1_0.PLAYER_ID 
+    join
+        PERSISTENCE_ROSTER_TEAM t1_1 
+            on t1_1.id=t1_0.TEAM_ID 
+    join
+        PERSISTENCE_ROSTER_LEAGUE l1_0 
+            on l1_0.id=t1_1.league_id 
+    where
+        l1_0.sport=?
+Hibernate: 
+    select
+        distinct p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    join
+        PERSISTENCE_ROSTER_TEAM_PLAYER t1_0 
+            on p1_0.id=t1_0.PLAYER_ID 
+    join
+        PERSISTENCE_ROSTER_TEAM t1_1 
+            on t1_1.id=t1_0.TEAM_ID 
+    where
+        t1_1.city=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        not exists(select
+            1 
+        from
+            PERSISTENCE_ROSTER_TEAM_PLAYER t1_0 
+        where
+            p1_0.id=t1_0.PLAYER_ID)
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.position,
+        p1_0.salary 
+    from
+        PERSISTENCE_ROSTER_PLAYER p1_0 
+    where
+        p1_0.id=?
+make: *** [Makefile:52: test] Error 1

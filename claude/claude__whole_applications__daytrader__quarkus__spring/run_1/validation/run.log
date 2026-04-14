@@ -1,0 +1,940 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#4 CACHED
+
+#5 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#5 CACHED
+
+#6 [5/9] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B 0.0s done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 843.88kB 0.1s done
+#10 DONE 0.2s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:18748d5587d5357be204309ab2874d87478f749da0d36c4eb61f97474f37ae4f done
+#14 exporting config sha256:de855330ba1110abe58c43be3a06b46598f45f6284fec65dd014e0bd0c9d7d13 done
+#14 exporting attestation manifest sha256:136bbae7826d1767a804b387c913b2230651079ce9635e43aee401c316df8196 0.1s done
+#14 exporting manifest list sha256:f049c30c67ee20667ce8b351fedf337f105fd446af23c89e9d10867bc8b98ca7
+#14 exporting manifest list sha256:f049c30c67ee20667ce8b351fedf337f105fd446af23c89e9d10867bc8b98ca7 0.0s done
+#14 naming to docker.io/library/daytrader-spring:8e19fa0f done
+#14 unpacking to docker.io/library/daytrader-spring:8e19fa0f done
+#14 DONE 0.2s
+[INFO] Built image: daytrader-spring:8e19fa0f
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name daytrader-spring-b1210b42 daytrader-spring:8e19fa0f
+bc84390a52675865c7e363da061147302335b4faa9f2116846f9ca7cd72b027e
+[INFO] Started daytrader-spring-b1210b42, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T04:50:02.844Z  INFO 19 --- [daytrader] [           main] c.i.w.s.daytrader.DayTraderApplication   : Starting DayTraderApplication v1.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/daytrader-spring-1.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T04:50:02.848Z  INFO 19 --- [daytrader] [           main] c.i.w.s.daytrader.DayTraderApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T04:50:03.920Z  INFO 19 --- [daytrader] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T04:50:03.934Z  INFO 19 --- [daytrader] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2026-03-24T04:50:04.580Z  INFO 19 --- [daytrader] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-03-24T04:50:04.588Z  INFO 19 --- [daytrader] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T04:50:04.589Z  INFO 19 --- [daytrader] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T04:50:04.620Z  INFO 19 --- [daytrader] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T04:50:04.621Z  INFO 19 --- [daytrader] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1610 ms
+2026-03-24T04:50:04.966Z  INFO 19 --- [daytrader] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T04:50:05.012Z  INFO 19 --- [daytrader] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T04:50:05.040Z  INFO 19 --- [daytrader] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T04:50:05.164Z  INFO 19 --- [daytrader] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T04:50:05.178Z  INFO 19 --- [daytrader] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T04:50:05.367Z  INFO 19 --- [daytrader] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:tradedb user=SA
+2026-03-24T04:50:05.368Z  INFO 19 --- [daytrader] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T04:50:05.383Z  WARN 19 --- [daytrader] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T04:50:06.230Z  INFO 19 --- [daytrader] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-24T04:50:06.462Z  INFO 19 --- [daytrader] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T04:50:06.750Z  INFO 19 --- [daytrader] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [META-INF/resources/index.html]
+2026-03-24T04:50:07.423Z  INFO 19 --- [daytrader] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-03-24T04:50:07.474Z  INFO 19 --- [daytrader] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path ''
+2026-03-24T04:50:07.488Z  INFO 19 --- [daytrader] [           main] c.i.w.s.daytrader.DayTraderApplication   : Started DayTraderApplication in 5.006 seconds (process running for 5.51)
+2026-03-24T04:50:07.592Z  INFO 19 --- [daytrader] [           main] daytrader                                : TradeBuildDB: Populating DayTrader Database on startup...
+2026-03-24T04:50:07.592Z  INFO 19 --- [daytrader] [           main] daytrader                                : TradeBuildDB: Creating 100 Quotes...
+2026-03-24T04:50:07.612Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:0
+2026-03-24T04:50:07.613Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:10
+2026-03-24T04:50:07.613Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:20
+2026-03-24T04:50:07.613Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:30
+2026-03-24T04:50:07.614Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:40
+2026-03-24T04:50:07.615Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:50
+2026-03-24T04:50:07.616Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:60
+2026-03-24T04:50:07.617Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:70
+2026-03-24T04:50:07.618Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:80
+2026-03-24T04:50:07.618Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:90
+2026-03-24T04:50:07.672Z  INFO 19 --- [daytrader] [           main] daytrader                                : TradeBuildDB: Registering 50 Users...
+2026-03-24T04:50:07.709Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:0 with balance: 1000000
+2026-03-24T04:50:07.715Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:10 with balance: 291511
+2026-03-24T04:50:07.725Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:20 with balance: 290387
+2026-03-24T04:50:07.735Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:30 with balance: 286460
+2026-03-24T04:50:07.750Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:40 with balance: 295218
+2026-03-24T04:50:07.763Z  INFO 19 --- [daytrader] [           main] daytrader                                : TradeBuildDB: Database population complete!
+[INFO] Application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T04:50:02.844Z  INFO 19 --- [daytrader] [           main] c.i.w.s.daytrader.DayTraderApplication   : Starting DayTraderApplication v1.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/daytrader-spring-1.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T04:50:02.848Z  INFO 19 --- [daytrader] [           main] c.i.w.s.daytrader.DayTraderApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T04:50:03.920Z  INFO 19 --- [daytrader] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T04:50:03.934Z  INFO 19 --- [daytrader] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2026-03-24T04:50:04.580Z  INFO 19 --- [daytrader] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-03-24T04:50:04.588Z  INFO 19 --- [daytrader] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T04:50:04.589Z  INFO 19 --- [daytrader] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T04:50:04.620Z  INFO 19 --- [daytrader] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T04:50:04.621Z  INFO 19 --- [daytrader] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1610 ms
+2026-03-24T04:50:04.966Z  INFO 19 --- [daytrader] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T04:50:05.012Z  INFO 19 --- [daytrader] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T04:50:05.040Z  INFO 19 --- [daytrader] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T04:50:05.164Z  INFO 19 --- [daytrader] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T04:50:05.178Z  INFO 19 --- [daytrader] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T04:50:05.367Z  INFO 19 --- [daytrader] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:tradedb user=SA
+2026-03-24T04:50:05.368Z  INFO 19 --- [daytrader] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T04:50:05.383Z  WARN 19 --- [daytrader] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T04:50:06.230Z  INFO 19 --- [daytrader] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-24T04:50:06.462Z  INFO 19 --- [daytrader] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T04:50:06.750Z  INFO 19 --- [daytrader] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [META-INF/resources/index.html]
+2026-03-24T04:50:07.423Z  INFO 19 --- [daytrader] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-03-24T04:50:07.474Z  INFO 19 --- [daytrader] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path ''
+2026-03-24T04:50:07.488Z  INFO 19 --- [daytrader] [           main] c.i.w.s.daytrader.DayTraderApplication   : Started DayTraderApplication in 5.006 seconds (process running for 5.51)
+2026-03-24T04:50:07.592Z  INFO 19 --- [daytrader] [           main] daytrader                                : TradeBuildDB: Populating DayTrader Database on startup...
+2026-03-24T04:50:07.592Z  INFO 19 --- [daytrader] [           main] daytrader                                : TradeBuildDB: Creating 100 Quotes...
+2026-03-24T04:50:07.612Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:0
+2026-03-24T04:50:07.613Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:10
+2026-03-24T04:50:07.613Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:20
+2026-03-24T04:50:07.613Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:30
+2026-03-24T04:50:07.614Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:40
+2026-03-24T04:50:07.615Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:50
+2026-03-24T04:50:07.616Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:60
+2026-03-24T04:50:07.617Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:70
+2026-03-24T04:50:07.618Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:80
+2026-03-24T04:50:07.618Z  INFO 19 --- [daytrader] [           main] daytrader                                : Created quote: s:90
+2026-03-24T04:50:07.672Z  INFO 19 --- [daytrader] [           main] daytrader                                : TradeBuildDB: Registering 50 Users...
+2026-03-24T04:50:07.709Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:0 with balance: 1000000
+2026-03-24T04:50:07.715Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:10 with balance: 291511
+2026-03-24T04:50:07.725Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:20 with balance: 290387
+2026-03-24T04:50:07.735Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:30 with balance: 286460
+2026-03-24T04:50:07.750Z  INFO 19 --- [daytrader] [           main] daytrader                                : Registered user: uid:40 with balance: 295218
+2026-03-24T04:50:07.763Z  INFO 19 --- [daytrader] [           main] daytrader                                : TradeBuildDB: Database population complete!
+[INFO] Running smoke tests inside container daytrader-spring-b1210b42...
+Downloading cpython-3.14.3-linux-x86_64-gnu (download) (34.4MiB)
+ Downloaded cpython-3.14.3-linux-x86_64-gnu (download)
+Using CPython 3.14.3
+Creating virtual environment at: .venv
+Resolved 20 packages in 0.50ms
+Downloading pygments (1.2MiB)
+Downloading playwright (44.1MiB)
+ Downloaded pygments
+ Downloaded playwright
+Prepared 18 packages in 1.01s
+Installed 18 packages in 9ms
+ + certifi==2025.11.12
+ + charset-normalizer==3.4.4
+ + greenlet==3.2.4
+ + idna==3.11
+ + iniconfig==2.3.0
+ + packaging==25.0
+ + playwright==1.56.0
+ + pluggy==1.6.0
+ + pyee==13.0.0
+ + pygments==2.19.2
+ + pytest==8.4.2
+ + pytest-base-url==2.1.0
+ + pytest-playwright==0.7.1
+ + python-slugify==8.0.4
+ + requests==2.32.5
+ + text-unidecode==1.3
+ + typing-extensions==4.15.0
+ + urllib3==2.5.0
+Downloading Chromium 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-linux.zip
+|                                                                                |   0% of 173.9 MiB
+|■■■■■■■■                                                                        |  10% of 173.9 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 173.9 MiB
+Chromium 141.0.7390.37 (playwright build v1194) downloaded to /ms-playwright/chromium-1194
+Downloading FFMPEG playwright build v1011 from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+|                                                                                |   0% of 2.3 MiB
+|■■■■■■■■                                                                        |  10% of 2.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+FFMPEG playwright build v1011 downloaded to /ms-playwright/ffmpeg-1011
+Downloading Chromium Headless Shell 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-headless-shell-linux.zip
+|                                                                                |   0% of 104.3 MiB
+|■■■■■■■■                                                                        |  10% of 104.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 104.3 MiB
+Chromium Headless Shell 141.0.7390.37 (playwright build v1194) downloaded to /ms-playwright/chromium_headless_shell-1194
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0 -- /app/smoke/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app/smoke
+configfile: pytest.ini
+plugins: base-url-2.1.0, playwright-0.7.1
+collecting ... collected 20 items
+
+smoke.py::test_global_navigation_and_health[chromium] FAILED             [  5%]
+smoke.py::test_render_login_page[chromium] FAILED                        [ 10%]
+smoke.py::test_logged_in_nav_links[chromium] FAILED                      [ 15%]
+smoke.py::test_register_new_user[chromium] FAILED                        [ 20%]
+smoke.py::test_login_with_invalid_credentials[chromium] FAILED           [ 25%]
+smoke.py::test_logout_invalidates_session[chromium] FAILED               [ 30%]
+smoke.py::test_home_page_account_summary[chromium] FAILED                [ 35%]
+smoke.py::test_view_portfolio[chromium] FAILED                           [ 40%]
+smoke.py::test_buy_shares[chromium] FAILED                               [ 45%]
+smoke.py::test_sell_holding[chromium] FAILED                             [ 50%]
+smoke.py::test_view_single_quote[chromium] FAILED                        [ 55%]
+smoke.py::test_view_multiple_quotes[chromium] FAILED                     [ 60%]
+smoke.py::test_quote_buy_form[chromium] FAILED                           [ 65%]
+smoke.py::test_market_summary[chromium] FAILED                           [ 70%]
+smoke.py::test_view_account_and_orders[chromium] FAILED                  [ 75%]
+smoke.py::test_update_profile[chromium] FAILED                           [ 80%]
+smoke.py::test_config_page_displays_settings[chromium] FAILED            [ 85%]
+smoke.py::test_rest_get_quotes[chromium] FAILED                          [ 90%]
+smoke.py::test_rest_post_quotes[chromium] FAILED                         [ 95%]
+smoke.py::test_scenario_servlet[chromium] FAILED                         [100%]
+
+=================================== FAILURES ===================================
+_________________ test_global_navigation_and_health[chromium] __________________
+
+page = <Page url='http://localhost:9080/daytrader/'>
+
+    @pytest.mark.smoke
+    def test_global_navigation_and_health(page: Page) -> None:
+        # Home / welcome page
+        page.goto(f"{BASE_URL}/", wait_until="domcontentloaded")
+        # Title should contain "Daytrader" (case-insensitive)
+>       expect(page).to_have_title(re.compile(r"daytrader", re.IGNORECASE))
+E       AssertionError: Page title expected to be 're.compile('daytrader', re.IGNORECASE)'
+E       Actual value:  
+E       Call log:
+E         - Expect "to_have_title" with timeout 5000ms
+E           9 × unexpected value ""
+
+smoke.py:37: AssertionError
+_______________________ test_render_login_page[chromium] _______________________
+
+page = <Page url='http://localhost:9080/daytrader/header.html'>
+
+    @pytest.mark.smoke
+    def test_render_login_page(page: Page) -> None:
+        """Render login page: username/password fields, submit, and nav links."""
+        # Try frameset root first; fall back to non-frames layout if needed.
+        page.goto(f"{BASE_URL}/index.html", wait_until="domcontentloaded")
+    
+        header_frame = page.frame(name="TradeFrameTop")
+        content_scope: Page | Page.Frame = page
+        header_scope: Page | Page.Frame = page
+    
+        if header_frame is not None:
+            header_scope = header_frame
+            trade_tab = header_scope.locator("a[href='app']")
+            assert trade_tab.count() > 0, (
+                "Trading/Portfolios header link not found in frame"
+            )
+            trade_tab.first.click()
+    
+            content_frame = page.frame(name="TradeMainContent")
+            if content_frame is not None:
+                content_scope = content_frame
+        else:
+            # Fallback: load header.html directly and click the app link, then
+            # rely on welcome.jsp as the login landing page.
+            page.goto(f"{BASE_URL}/header.html", wait_until="domcontentloaded")
+            header_scope = page
+            trade_tab = header_scope.locator("a[href='app']")
+>           assert trade_tab.count() > 0, (
+                "Trading/Portfolios header link not found in header.html"
+            )
+E           AssertionError: Trading/Portfolios header link not found in header.html
+E           assert 0 > 0
+E            +  where 0 = count()
+E            +    where count = <Locator frame=<Frame name= url='http://localhost:9080/daytrader/header.html'> selector="a[href='app']">.count
+
+smoke.py:146: AssertionError
+______________________ test_logged_in_nav_links[chromium] ______________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_logged_in_nav_links(page: Page) -> None:
+        """After login, verify all main account navigation links work."""
+>       populate_database(page)
+
+smoke.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 04:50:26 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 04:50:26 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+_______________________ test_register_new_user[chromium] _______________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_register_new_user(page: Page) -> None:
+        """Register a new user with $10,000 and verify account summary."""
+>       populate_database(page)
+
+smoke.py:234: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 04:53:26 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 04:53:26 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+________________ test_login_with_invalid_credentials[chromium] _________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_login_with_invalid_credentials(page: Page) -> None:
+        """Login with invalid password should show error or stay on login page."""
+>       populate_database(page)
+
+smoke.py:284: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 04:56:26 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 04:56:26 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+__________________ test_logout_invalidates_session[chromium] ___________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_logout_invalidates_session(page: Page) -> None:
+        """Logout should invalidate session and redirect to welcome/login page."""
+>       populate_database(page)
+
+smoke.py:300: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 04:59:26 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 04:59:26 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+___________________ test_home_page_account_summary[chromium] ___________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_home_page_account_summary(page: Page) -> None:
+        """Home page should display account summary after login."""
+>       populate_database(page)
+
+smoke.py:328: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:02:26 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:02:26 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+________________________ test_view_portfolio[chromium] _________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_view_portfolio(page: Page) -> None:
+        """Portfolio page should show holdings table."""
+>       populate_database(page)
+
+smoke.py:350: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:05:26 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:05:26 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+__________________________ test_buy_shares[chromium] ___________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_buy_shares(page: Page) -> None:
+        """Buy shares of a stock and verify order confirmation."""
+>       populate_database(page)
+
+smoke.py:369: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:08:26 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:08:26 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+_________________________ test_sell_holding[chromium] __________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_sell_holding(page: Page) -> None:
+        """Sell a holding from the portfolio page."""
+>       populate_database(page)
+
+smoke.py:397: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:11:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:11:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+_______________________ test_view_single_quote[chromium] _______________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_view_single_quote(page: Page) -> None:
+        """Look up a single stock quote and verify quote data is shown."""
+>       populate_database(page)
+
+smoke.py:432: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:14:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:14:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+_____________________ test_view_multiple_quotes[chromium] ______________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_view_multiple_quotes(page: Page) -> None:
+        """Look up multiple stock quotes and verify multiple rows are shown."""
+>       populate_database(page)
+
+smoke.py:453: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:17:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:17:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+________________________ test_quote_buy_form[chromium] _________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_quote_buy_form(page: Page) -> None:
+        """Quote page should show a buy form with quantity input and Buy button."""
+>       populate_database(page)
+
+smoke.py:474: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:20:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:20:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+________________________ test_market_summary[chromium] _________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_market_summary(page: Page) -> None:
+        """Market summary should show TSIA, volume, gainers and losers."""
+>       populate_database(page)
+
+smoke.py:498: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:23:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:23:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+____________________ test_view_account_and_orders[chromium] ____________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_view_account_and_orders(page: Page) -> None:
+        """Account page should show profile info and recent orders."""
+>       populate_database(page)
+
+smoke.py:519: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:26:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:26:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+________________________ test_update_profile[chromium] _________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_update_profile(page: Page) -> None:
+        """Update profile information and verify it is saved."""
+>       populate_database(page)
+
+smoke.py:539: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:29:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:29:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+_________________ test_config_page_displays_settings[chromium] _________________
+
+page = <Page url='http://localhost:9080/daytrader/config'>
+
+    @pytest.mark.smoke
+    def test_config_page_displays_settings(page: Page) -> None:
+        """Config page should display current DayTrader configuration."""
+        page.goto(f"{BASE_URL}/config", wait_until="domcontentloaded")
+        content = page.content().lower()
+    
+>       assert "configuration" in content or "config" in content or "daytrader" in content, \
+            "Config page did not load"
+E       AssertionError: Config page did not load
+E       assert ('configuration' in '<html><head></head><body><h1>whitelabel error page</h1><p>this application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id="created">tue mar 24 05:32:27 utc 2026</div><div>there was an unexpected error (type=not found, status=404).</div></body></html>' or 'config' in '<html><head></head><body><h1>whitelabel error page</h1><p>this application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id="created">tue mar 24 05:32:27 utc 2026</div><div>there was an unexpected error (type=not found, status=404).</div></body></html>' or 'daytrader' in '<html><head></head><body><h1>whitelabel error page</h1><p>this application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id="created">tue mar 24 05:32:27 utc 2026</div><div>there was an unexpected error (type=not found, status=404).</div></body></html>')
+
+smoke.py:571: AssertionError
+________________________ test_rest_get_quotes[chromium] ________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_rest_get_quotes(page: Page) -> None:
+        """REST GET /rest/quotes/{symbols} should return JSON with quote data."""
+>       populate_database(page)
+
+smoke.py:585: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:32:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:32:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+_______________________ test_rest_post_quotes[chromium] ________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_rest_post_quotes(page: Page) -> None:
+        """REST POST /rest/quotes should return quotes for form-encoded symbols."""
+>       populate_database(page)
+
+smoke.py:599: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:35:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:35:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+_______________________ test_scenario_servlet[chromium] ________________________
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    @pytest.mark.smoke
+    def test_scenario_servlet(page: Page) -> None:
+        """Scenario servlet should execute trading operations without error."""
+>       populate_database(page)
+
+smoke.py:615: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+page = <Page url='http://localhost:9080/daytrader/config?action=buildDB'>
+
+    def populate_database(page: Page) -> None:
+        """Best-effort DB population via the config 'buildDB' action."""
+        page.goto(f"{BASE_URL}/config?action=buildDB", wait_until="domcontentloaded")
+    
+        # Wait until the build has progressed far enough that login as uid:0 works.
+        # The buildDB servlet prints an "Account# ... userID=uid:0" line once the
+        # first demo user is registered.
+        body = page.locator("body")
+>       expect(body).to_contain_text(
+            re.compile(r"TradeBuildDB", re.IGNORECASE), timeout=BUILD_DB_TIMEOUT_MS
+        )
+E       AssertionError: Locator expected to contain text 're.compile('TradeBuildDB', re.IGNORECASE)'
+E       Actual value: Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:38:27 UTC 2026There was an unexpected error (type=Not Found, status=404). 
+E       Call log:
+E         - Expect "to_contain_text" with timeout 180000ms
+E         - waiting for locator("body")
+E           183 × locator resolved to <body>…</body>
+E               - unexpected value "Whitelabel Error PageThis application has no explicit mapping for /error, so you are seeing this as a fallback.Tue Mar 24 05:38:27 UTC 2026There was an unexpected error (type=Not Found, status=404)."
+
+smoke.py:23: AssertionError
+=========================== short test summary info ============================
+FAILED smoke.py::test_global_navigation_and_health[chromium] - AssertionError...
+FAILED smoke.py::test_render_login_page[chromium] - AssertionError: Trading/P...
+FAILED smoke.py::test_logged_in_nav_links[chromium] - AssertionError: Locator...
+FAILED smoke.py::test_register_new_user[chromium] - AssertionError: Locator e...
+FAILED smoke.py::test_login_with_invalid_credentials[chromium] - AssertionErr...
+FAILED smoke.py::test_logout_invalidates_session[chromium] - AssertionError: ...
+FAILED smoke.py::test_home_page_account_summary[chromium] - AssertionError: L...
+FAILED smoke.py::test_view_portfolio[chromium] - AssertionError: Locator expe...
+FAILED smoke.py::test_buy_shares[chromium] - AssertionError: Locator expected...
+FAILED smoke.py::test_sell_holding[chromium] - AssertionError: Locator expect...
+FAILED smoke.py::test_view_single_quote[chromium] - AssertionError: Locator e...
+FAILED smoke.py::test_view_multiple_quotes[chromium] - AssertionError: Locato...
+FAILED smoke.py::test_quote_buy_form[chromium] - AssertionError: Locator expe...
+FAILED smoke.py::test_market_summary[chromium] - AssertionError: Locator expe...
+FAILED smoke.py::test_view_account_and_orders[chromium] - AssertionError: Loc...
+FAILED smoke.py::test_update_profile[chromium] - AssertionError: Locator expe...
+FAILED smoke.py::test_config_page_displays_settings[chromium] - AssertionErro...
+FAILED smoke.py::test_rest_get_quotes[chromium] - AssertionError: Locator exp...
+FAILED smoke.py::test_rest_post_quotes[chromium] - AssertionError: Locator ex...
+FAILED smoke.py::test_scenario_servlet[chromium] - AssertionError: Locator ex...
+======================= 20 failed in 3067.38s (0:51:07) ========================
