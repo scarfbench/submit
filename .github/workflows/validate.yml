@@ -201,11 +201,20 @@ jobs:
           path: submissions/*/*__*.json
           if-no-files-found: warn
 
+      - name: Read PR metadata
+        id: prmeta
+        run: |
+          set -euo pipefail
+          number=$(cat submissions/pr-meta/number)
+          sha=$(cat submissions/pr-meta/sha)
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+          echo "sha=$sha"       >> "$GITHUB_OUTPUT"
+
       - name: Publish leaderboard to site
         env:
           SITE_TOKEN: ${{ secrets.SITE_TOKEN }}
-          PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
-          PR_SHA: ${{ github.event.workflow_run.head_sha }}
+          PR_NUMBER: ${{ steps.prmeta.outputs.number }}
+          PR_SHA: ${{ steps.prmeta.outputs.sha }}
         run: |
           set -euo pipefail
           git clone --depth 1 \
@@ -221,13 +230,13 @@ jobs:
             echo "No leaderboard changes to publish."
             exit 0
           fi
-          git commit -m "Update leaderboard from scarfbench-submit#${PR_NUMBER:-unknown} (${PR_SHA:0:7})"
+          git commit -m "Update leaderboard from scarfbench-submit#${PR_NUMBER} (${PR_SHA:0:7})"
           git push origin HEAD:master
 
       - name: Forward PR metadata
         run: |
           mkdir -p pr-meta
-          cp submissions/.pr-meta/number pr-meta/number
+          cp submissions/pr-meta/number pr-meta/number
 
       - uses: actions/upload-artifact@v4
         with:
