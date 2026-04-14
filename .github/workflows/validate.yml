@@ -170,7 +170,7 @@ jobs:
       - name: Overlay shard run.log files onto tree
         run: |
           if [ -d shard-out ]; then
-            rsync -a shard-out/ submissions/
+            rsync -a shard-out/ ./
           fi
 
       - name: Install scarfbench-cli
