@@ -1,88 +1,67 @@
-# ScarfBench Solution Submission Guidelines
+# Scarfbench Submissions
 
-This page demonstrates how you package the results of a ScarfBench evaluation and submit them as a pull request to the repository `github.com/scarfbench/submit.git`.
+This repository is the submission intake for [Scarfbench](https://scarfbench.info), a benchmark for evaluating automated code-conversion systems across Java application frameworks. Contributors submit evaluation artifacts by opening a pull request; a continuous integration workflow validates the submission and records its result on the leaderboard.
 
-We assume you have the `scarf` CLI installed (see [Setup](/scarfbench/installing/)) and that you've run an evaluation producing an `--eval-out` directory containing the conversion results.
+## Prerequisites
 
-### Overview
+Contributors are expected to have produced evaluation artifacts locally using the `scarf` command-line tool, following the procedure described at [https://scarfbench.info/quickstart/](https://scarfbench.info/quickstart/). Each submission comprises a set of conversion directories, where every directory corresponds to a single benchmark 3-tuple (layer, source framework, target framework) and contains one or more `run_N` subdirectories. 
 
-- Prepare the conversion artifacts from your evaluation output.
-- Create a dedicated branch, add the conversion files and metadata.
-- Push the branch to `github.com/scarfbench/submit.git` and open a pull request.
+If run correctly, each run directory would contain a `metadata.json` file. Ensure the folder structure matches [https://scarfbench.info/quickstart/#after-the-run](https://scarfbench.info/quickstart/#after-the-run)
 
-### Prepare the artifacts (all eval runs)
+Note: The validation workflow discovers conversion roots by locating every ancestor directory containing one or more `run_*/metadata.json` descendants, and is therefore agnostic to the surrounding structure.
 
-If you want to submit the entire evaluation output tree (for example `/tmp/eval_out`) as-is, copy the whole `eval_out` directory into your submission payload. This is the simplest approach when you want to preserve every run and its context.
+## Submission Procedure
 
-```bash
-# Root containing one or more agent eval directories (each may contain run_* subdirs)
-EVAL_ROOT=/tmp/eval_out
-PAYLOAD=/tmp/submit-payload
-mkdir -p "$PAYLOAD"
+The following steps describe the end-to-end process for submitting an evaluation to Scarfbench.
 
-# Copy the whole eval_out tree into the payload
-cp -a "$EVAL_ROOT" "$PAYLOAD/eval_out"
-```
+### 1. Fork the Repository
 
-This places the full `eval_out` hierarchy under `/tmp/submit-payload/eval_out`. Verify the payload contains only evaluation artifacts and no secrets or files external to the eval output.
+Create a personal fork of [`scarfbench/submit`](https://github.com/scarfbench/submit). The fork will inherit the default branch `main`, which contains the workflow definitions and documentation only.
 
-### Create a branch and commit
+### 2. Add Conversion Artifacts
+
+Clone the fork locally and add the conversion directories to the working tree. Contributors are encouraged to commit directly to the fork's `main` branch, though any branch may be used. The commit need not preserve any particular top-level layout, provided that each conversion root contains the expected `run_*/metadata.json` and `run_*/validation/run.log` files.
 
 ```bash
-cd /tmp/submit-payload
-git init
-git remote add origin https://github.com/scarfbench/submit.git
-git checkout -b submit/$(date +%Y%m%d)-all-evals
+git clone https://github.com/<your-username>/submit.git
+cd submit
+# Copy conversion artifacts into the working tree, then:
 git add .
-git commit -m "Submit: full eval_out submission ($(date +%Y%m%d))"
+git commit -m "Add submission: <brief descriptor>"
+git push origin main
 ```
 
-If you have a fork or push privileges, push the branch. If not, fork the repo on GitHub and change the `origin` remote to your fork URL before pushing.
+### 3. Open a Pull Request against the `submission` Branch
 
-```bash
-git push origin HEAD
-```
+The critical requirement is that the pull request **target** the upstream `submission` branch, not `main`. GitHub's pull-request creation interface defaults the base branch to the upstream default (`main`); contributors must manually change the base branch selector to `submission` before submitting. Failure to do so will result in the validation workflow not being triggered.
 
-### Open the pull request
-
-Open a pull request on GitHub against `github.com/scarfbench/submit.git` with a descriptive title and body. For multi-run submissions, include:
-
-- Which conversion pairs are included (list or summarize).
-- Which agents produced the conversions (agent names from `agent.toml`).
-- Paths to the eval runs (examples under `/tmp/eval_out/.../run_*`).
-- Any validation results or notes (attach `validation.log` files or paste relevant excerpts).
-
-Suggested PR title and body for a full `eval_out` submission:
+A pre-filled comparison URL of the following form may be used to reach the pull-request creation interface with the correct base branch already selected:
 
 ```
-Title: Submit conversions: full eval_out submission (agents: codex-cli, ...)
-
-Body:
-- Agents included: codex-cli, <other-agents>
-- Eval root: `eval_out/` (full evaluation output included under `eval_out/`)
-- Contents: complete evaluation outputs including per-run `input/`, `output/`, `validation/`, and `metadata.json`
-- Validation: see `validation/*.run.log` files inside the `eval_out` tree
-
-Notes:
-- This submission contains the entire `eval_out` directory produced by `scarf eval run`. Reviewers can inspect individual runs under `eval_out/<agent>/<run_*>`.
+https://github.com/scarfbench/submit/compare/submission...<your-username>:submit:main?expand=1
 ```
 
-### Verify submission locally
+The pull request description should identify the agent, model, and any relevant variant or configuration details that are not already encoded in the submission's metadata.
 
-Before opening the PR, you can run local validation steps to sanity-check the submission. For example, validate each run's conversions (replace paths accordingly):
+### 4. Await Validation
 
-```bash
-# Validate each run directory found in the payload
-scarf validate -vv --conversions-dir /tmp/submit-payload/eval_out --benchmark-dir /path/to/benchmark 
-```
+Upon pull-request opening, the continuous integration workflow executes automatically. First-time contributors to the repository are subject to GitHub's standard approval gate; subsequent submissions from the same contributor proceed without manual intervention. The workflow performs the following operations:
 
-### What to include and what to avoid
+1. Enumerates all conversion roots in the submission.
+2. Distributes the roots across parallel validation shards, each of which invokes `scarf validate` on its assigned subset.
+3. Aggregates the per-shard results into one or more leaderboard JSON files conforming to the Scarfbench leaderboard schema.
+4. Posts a confirmation comment on the pull request and closes it upon successful completion.
 
-- Include: `conversions/` tree, `metadata.json`, `validation.log`, and a short README describing how the conversion was produced.
-- Avoid: any secrets, API keys, or large binaries. Only include what is necessary for reviewers to validate the conversion.
+Validation outputs — including per-run logs, updated metadata, and the generated leaderboard JSON — are retained as workflow artifacts attached to the pull request's check run. These artifacts may be downloaded from the GitHub Actions interface for inspection.
 
-### Review checklist for maintainers
+Should validation fail, the pull request is left open and a diagnostic comment is posted. The contributor may then push corrective commits to the source branch; each push re-triggers the workflow.
 
-- [ ] Confirm agent metadata (`metadata.json`) identifies the agent and run.
-- [ ] Confirm conversion tree builds or runs basic tests (where possible).
-- [ ] Check `validation.log` for failing tests or obvious errors.
+## Disposition of Submissions
+
+Pull requests are closed rather than merged. The submission's content is preserved in the closed pull request's diff, which remains accessible indefinitely through the GitHub web interface. The `submission` branch is not mutated by the acceptance process and serves solely as a routing target for the workflow's branch filter.
+
+The leaderboard JSON produced by a successful validation is the canonical record of the submission's outcome. Publication of these results to [scarfbench.info](https://scarfbench.info) is performed out-of-band by the maintainers.
+
+## Contact
+
+For questions regarding the submission process or the benchmark methodology, please open an issue in this repository or consult the project homepage at [scarfbench.info](https://scarfbench.info).

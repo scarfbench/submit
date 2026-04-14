@@ -2,6 +2,7 @@ name: Scarf Validate
 
 on:
   pull_request:
+    branches: [submission]
     paths:
       - '**/run_*/**'
       - '**/metadata.json'
@@ -12,7 +13,6 @@ permissions:
 
 jobs:
   discover:
-    if: startsWith(github.head_ref, 'submission-')
     name: Discover Conversion Roots
     runs-on: ubuntu-latest
     outputs:
