@@ -1,0 +1,798 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.03kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.1s
+
+#4 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#4 CACHED
+
+#5 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#5 CACHED
+
+#6 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#6 CACHED
+
+#7 [5/9] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 67.27MB 1.6s done
+#10 DONE 1.6s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean package -DskipTests -Dpmd.skip=true -Dspotbugs.skip=true
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:2cc68b8dc068639008109c0e94f7191d5a44aa62ffd705da740ee9860b19c704 0.0s done
+#14 exporting config sha256:2efba4cac57f5782f1620e423033c9f14f7e22098a7eacb3f8fbb8a2c0616955 0.0s done
+#14 exporting attestation manifest sha256:1c6567234fdfabb64c1ecf30adb392bece45b1362e03059821e0f52e50c48e56 0.1s done
+#14 exporting manifest list sha256:2e8f5dcf0407a87c79a1d9409019d05e50a245ef39d5e5e49425e5810462be26
+#14 exporting manifest list sha256:2e8f5dcf0407a87c79a1d9409019d05e50a245ef39d5e5e49425e5810462be26 0.0s done
+#14 naming to docker.io/library/coffeeshop-quarkus:4402b618 done
+#14 unpacking to docker.io/library/coffeeshop-quarkus:4402b618
+#14 unpacking to docker.io/library/coffeeshop-quarkus:4402b618 1.5s done
+#14 DONE 1.7s
+[INFO] Built image: coffeeshop-quarkus:4402b618
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name coffeeshop-quarkus-917930a5 \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	-e QUARKUS_PROFILE=dev \
+	-e STREAM_URL=http://localhost:8080/dashboard/stream \
+	-e STORE_ID=ATLANTA \
+	coffeeshop-quarkus:4402b618
+a3c7de2cf30a2e19c24c6eafd31335b28f51d87edbc443d622c6ed89a451abd0
+[INFO] Started coffeeshop-quarkus-917930a5, waiting for app to start...
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:21:02,177 WARN  [io.agr.pool] (agroal-11) Datasource '<default>': Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2026-03-24 05:21:02,179 WARN  [org.hib.eng.jdb.spi.SqlExceptionHelper] (JPA Startup Thread) SQL Error: 0, SQLState: 08001
+2026-03-24 05:21:02,179 ERROR [org.hib.eng.jdb.spi.SqlExceptionHelper] (JPA Startup Thread) Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2026-03-24 05:21:02,179 WARN  [org.hib.eng.jdb.env.int.JdbcEnvironmentInitiator] (JPA Startup Thread) HHH000342: Could not obtain connection to query metadata: org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.doTheWork(JtaIsolationDelegate.java:206)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.lambda$delegateWork$3(JtaIsolationDelegate.java:91)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.doInSuspendedTransaction(JtaIsolationDelegate.java:125)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.delegateWork(JtaIsolationDelegate.java:88)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.service.ServiceRegistry.requireService(ServiceRegistry.java:68)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:52)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:136)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:247)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.service.ServiceRegistry.requireService(ServiceRegistry.java:68)
+	at org.hibernate.boot.internal.SessionFactoryOptionsBuilder.<init>(SessionFactoryOptionsBuilder.java:290)
+	at io.quarkus.hibernate.orm.runtime.recording.PrevalidatedQuarkusMetadata.buildSessionFactoryOptionsBuilder(PrevalidatedQuarkusMetadata.java:72)
+	at io.quarkus.hibernate.orm.runtime.boot.FastBootEntityManagerFactoryBuilder.build(FastBootEntityManagerFactoryBuilder.java:84)
+	at io.quarkus.hibernate.orm.runtime.FastBootHibernatePersistenceProvider.createEntityManagerFactory(FastBootHibernatePersistenceProvider.java:72)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$LazyPersistenceUnit.get(JPAConfig.java:154)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$1.run(JPAConfig.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1595)
+Caused by: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:352)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:225)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:580)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:561)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	... 1 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:694)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:260)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:121)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:140)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:268)
+	... 12 more
+
+2026-03-24 05:21:02,479 WARN  [io.qua.hib.orm.run.ser.QuarkusRuntimeInitDialectFactory] (JPA Startup Thread) Persistence unit <default>: Could not retrieve the database version to check it is at least 12.0.0
+2026-03-24 05:21:02,546 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'kitchen-in': [kitchen-commands]
+2026-03-24 05:21:02,564 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,785 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'barista-in': [barista-commands]
+2026-03-24 05:21:02,789 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,833 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'order-updates': [order-updates]
+2026-03-24 05:21:02,838 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,892 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-0) SRMSG18258: Kafka producer kafka-producer-kitchen-order-updates, connected to Kafka brokers 'localhost:9092', is configured to write records to 'order-updates'
+2026-03-24 05:21:02,951 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-1) SRMSG18258: Kafka producer kafka-producer-barista-order-updates, connected to Kafka brokers 'localhost:9092', is configured to write records to 'order-updates'
+2026-03-24 05:21:02,959 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-2) SRMSG18258: Kafka producer kafka-producer-barista, connected to Kafka brokers 'localhost:9092', is configured to write records to 'barista-commands'
+2026-03-24 05:21:02,978 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-3) SRMSG18258: Kafka producer kafka-producer-kitchen, connected to Kafka brokers 'localhost:9092', is configured to write records to 'kitchen-commands'
+2026-03-24 05:21:03,088 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-2) SRMSG18257: Kafka consumer kafka-consumer-order-updates, connected to Kafka brokers 'localhost:9092', belongs to the 'orders-service' consumer group and is configured to poll records from [order-updates]
+2026-03-24 05:21:03,094 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-0) SRMSG18257: Kafka consumer kafka-consumer-kitchen-in, connected to Kafka brokers 'localhost:9092', belongs to the 'kitchen-service' consumer group and is configured to poll records from [kitchen-commands]
+2026-03-24 05:21:03,099 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-1) SRMSG18257: Kafka consumer kafka-consumer-barista-in, connected to Kafka brokers 'localhost:9092', belongs to the 'barista-service-dev' consumer group and is configured to poll records from [barista-commands]
+2026-03-24 05:21:03,188 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,188 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) coffeeshop-quarkus 0.2.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 2.256s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) Profile dev activated. 
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-validator, jdbc-postgresql, kafka-client, messaging, messaging-kafka, narayana-jta, rest, rest-jackson, smallrye-context-propagation, smallrye-health, vertx]
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,242 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,242 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,299 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,300 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,303 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,303 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,308 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,308 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,348 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,348 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,349 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,349 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,393 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,393 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,394 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,394 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,401 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,401 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,404 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,404 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,409 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,409 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,550 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,550 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,565 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,565 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,610 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,611 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,616 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,616 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,619 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,619 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,633 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,633 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,645 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,645 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,917 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,918 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,931 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,931 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,968 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,968 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,984 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,985 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+[INFO] Application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:21:02,177 WARN  [io.agr.pool] (agroal-11) Datasource '<default>': Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2026-03-24 05:21:02,179 WARN  [org.hib.eng.jdb.spi.SqlExceptionHelper] (JPA Startup Thread) SQL Error: 0, SQLState: 08001
+2026-03-24 05:21:02,179 ERROR [org.hib.eng.jdb.spi.SqlExceptionHelper] (JPA Startup Thread) Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2026-03-24 05:21:02,179 WARN  [org.hib.eng.jdb.env.int.JdbcEnvironmentInitiator] (JPA Startup Thread) HHH000342: Could not obtain connection to query metadata: org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.doTheWork(JtaIsolationDelegate.java:206)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.lambda$delegateWork$3(JtaIsolationDelegate.java:91)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.doInSuspendedTransaction(JtaIsolationDelegate.java:125)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.delegateWork(JtaIsolationDelegate.java:88)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.service.ServiceRegistry.requireService(ServiceRegistry.java:68)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:52)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:136)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:247)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.service.ServiceRegistry.requireService(ServiceRegistry.java:68)
+	at org.hibernate.boot.internal.SessionFactoryOptionsBuilder.<init>(SessionFactoryOptionsBuilder.java:290)
+	at io.quarkus.hibernate.orm.runtime.recording.PrevalidatedQuarkusMetadata.buildSessionFactoryOptionsBuilder(PrevalidatedQuarkusMetadata.java:72)
+	at io.quarkus.hibernate.orm.runtime.boot.FastBootEntityManagerFactoryBuilder.build(FastBootEntityManagerFactoryBuilder.java:84)
+	at io.quarkus.hibernate.orm.runtime.FastBootHibernatePersistenceProvider.createEntityManagerFactory(FastBootHibernatePersistenceProvider.java:72)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$LazyPersistenceUnit.get(JPAConfig.java:154)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$1.run(JPAConfig.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1595)
+Caused by: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:352)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:225)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:580)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:561)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	... 1 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:694)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:260)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:121)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:140)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:268)
+	... 12 more
+
+2026-03-24 05:21:02,479 WARN  [io.qua.hib.orm.run.ser.QuarkusRuntimeInitDialectFactory] (JPA Startup Thread) Persistence unit <default>: Could not retrieve the database version to check it is at least 12.0.0
+2026-03-24 05:21:02,546 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'kitchen-in': [kitchen-commands]
+2026-03-24 05:21:02,564 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,785 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'barista-in': [barista-commands]
+2026-03-24 05:21:02,789 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,833 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'order-updates': [order-updates]
+2026-03-24 05:21:02,838 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,892 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-0) SRMSG18258: Kafka producer kafka-producer-kitchen-order-updates, connected to Kafka brokers 'localhost:9092', is configured to write records to 'order-updates'
+2026-03-24 05:21:02,951 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-1) SRMSG18258: Kafka producer kafka-producer-barista-order-updates, connected to Kafka brokers 'localhost:9092', is configured to write records to 'order-updates'
+2026-03-24 05:21:02,959 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-2) SRMSG18258: Kafka producer kafka-producer-barista, connected to Kafka brokers 'localhost:9092', is configured to write records to 'barista-commands'
+2026-03-24 05:21:02,978 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-3) SRMSG18258: Kafka producer kafka-producer-kitchen, connected to Kafka brokers 'localhost:9092', is configured to write records to 'kitchen-commands'
+2026-03-24 05:21:03,088 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-2) SRMSG18257: Kafka consumer kafka-consumer-order-updates, connected to Kafka brokers 'localhost:9092', belongs to the 'orders-service' consumer group and is configured to poll records from [order-updates]
+2026-03-24 05:21:03,094 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-0) SRMSG18257: Kafka consumer kafka-consumer-kitchen-in, connected to Kafka brokers 'localhost:9092', belongs to the 'kitchen-service' consumer group and is configured to poll records from [kitchen-commands]
+2026-03-24 05:21:03,099 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-1) SRMSG18257: Kafka consumer kafka-consumer-barista-in, connected to Kafka brokers 'localhost:9092', belongs to the 'barista-service-dev' consumer group and is configured to poll records from [barista-commands]
+2026-03-24 05:21:03,188 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,188 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) coffeeshop-quarkus 0.2.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 2.256s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) Profile dev activated. 
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-validator, jdbc-postgresql, kafka-client, messaging, messaging-kafka, narayana-jta, rest, rest-jackson, smallrye-context-propagation, smallrye-health, vertx]
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,242 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,242 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,299 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,300 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,303 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,303 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,308 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,308 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,348 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,348 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,349 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,349 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,393 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,393 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,394 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,394 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,401 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,401 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,404 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,404 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,409 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,409 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,550 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,550 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,565 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,565 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,610 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,611 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,616 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,616 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,619 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,619 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,633 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,633 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,645 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,645 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,917 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,918 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,931 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,931 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,968 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,968 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,984 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,985 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,064 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,065 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,097 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,097 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,121 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,121 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+[INFO] Running smoke tests inside container coffeeshop-quarkus-917930a5...
+Downloading cpython-3.14.3-linux-x86_64-gnu (download) (34.4MiB)
+ Downloaded cpython-3.14.3-linux-x86_64-gnu (download)
+Using CPython 3.14.3
+Creating virtual environment at: .venv
+Resolved 20 packages in 210ms
+Downloading pygments (1.2MiB)
+Downloading playwright (44.1MiB)
+ Downloaded pygments
+ Downloaded playwright
+Prepared 18 packages in 1.44s
+Installed 18 packages in 10ms
+ + certifi==2026.2.25
+ + charset-normalizer==3.4.6
+ + greenlet==3.3.2
+ + idna==3.11
+ + iniconfig==2.3.0
+ + packaging==26.0
+ + playwright==1.58.0
+ + pluggy==1.6.0
+ + pyee==13.0.1
+ + pygments==2.19.2
+ + pytest==8.4.2
+ + pytest-base-url==2.1.0
+ + pytest-playwright==0.7.2
+ + python-slugify==8.0.4
+ + requests==2.32.5
+ + text-unidecode==1.3
+ + typing-extensions==4.15.0
+ + urllib3==2.6.3
+Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/chrome-for-testing-public/145.0.7632.6/linux64/chrome-linux64.zip
+(node:146) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 167.3 MiB
+|■■■■■■■■                                                                        |  10% of 167.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 167.3 MiB
+Chrome for Testing 145.0.7632.6 (playwright chromium v1208) downloaded to /ms-playwright/chromium-1208
+Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+(node:157) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 2.3 MiB
+|■■■■■■■■                                                                        |  10% of 2.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+FFmpeg (playwright ffmpeg v1011) downloaded to /ms-playwright/ffmpeg-1011
+Downloading Chrome Headless Shell 145.0.7632.6 (playwright chromium-headless-shell v1208) from https://cdn.playwright.dev/chrome-for-testing-public/145.0.7632.6/linux64/chrome-headless-shell-linux64.zip
+(node:168) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 110.9 MiB
+|■■■■■■■■                                                                        |  10% of 110.9 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 110.9 MiB
+Chrome Headless Shell 145.0.7632.6 (playwright chromium-headless-shell v1208) downloaded to /ms-playwright/chromium_headless_shell-1208
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0 -- /app/smoke/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app/smoke
+configfile: pyproject.toml
+plugins: base-url-2.1.0, playwright-0.7.2
+collecting ... collected 9 items
+
+smoke.py::test_place_drink_order FAILED                                  [ 11%]
+smoke.py::test_place_food_order FAILED                                   [ 22%]
+smoke.py::test_place_mixed_order FAILED                                  [ 33%]
+smoke.py::test_message_endpoint FAILED                                   [ 44%]
+smoke.py::test_dashboard_stream_endpoint FAILED                          [ 55%]
+smoke.py::test_coffeeshop_homepage[chromium] FAILED                      [ 66%]
+smoke.py::test_about_link_exists[chromium] PASSED                        [ 77%]
+smoke.py::test_menu_link_exists[chromium] PASSED                         [ 88%]
+smoke.py::test_navigation_menu_persistence[chromium] PASSED              [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_place_drink_order ____________________________
+
+    def test_place_drink_order():
+        payload = build_order_command(
+            barista_items=[{"item": "LATTE", "name": "Duke", "price": 4.50}],
+            kitchen_items=[],
+        )
+        r = requests.post(f"{BASE_URL}/api/order", json=payload)
+>       assert r.status_code == 202
+E       assert 404 == 202
+E        +  where 404 = <Response [404]>.status_code
+
+smoke.py:40: AssertionError
+____________________________ test_place_food_order _____________________________
+
+    def test_place_food_order():
+        payload = build_order_command(
+            barista_items=[],
+            kitchen_items=[{"item": "CROISSANT", "name": "Alice", "price": 3.25}],
+        )
+        r = requests.post(f"{BASE_URL}/api/order", json=payload)
+>       assert r.status_code == 202
+E       assert 404 == 202
+E        +  where 404 = <Response [404]>.status_code
+
+smoke.py:49: AssertionError
+____________________________ test_place_mixed_order ____________________________
+
+    def test_place_mixed_order():
+        payload = build_order_command(
+            barista_items=[{"item": "CAPPUCCINO", "name": "Raju", "price": 4.50}],
+            kitchen_items=[{"item": "MUFFIN", "name": "Raju", "price": 3.00}],
+        )
+        r = requests.post(f"{BASE_URL}/api/order", json=payload)
+>       assert r.status_code == 202
+E       assert 404 == 202
+E        +  where 404 = <Response [404]>.status_code
+
+smoke.py:58: AssertionError
+____________________________ test_message_endpoint _____________________________
+
+    def test_message_endpoint():
+        r = requests.post(
+            f"{BASE_URL}/api/message",
+            json="test-message",
+            headers={"Content-Type": "application/json"},
+        )
+>       assert r.status_code in (200, 202, 204)
+E       assert 404 in (200, 202, 204)
+E        +  where 404 = <Response [404]>.status_code
+
+smoke.py:71: AssertionError
+________________________ test_dashboard_stream_endpoint ________________________
+
+    def test_dashboard_stream_endpoint():
+        r = requests.get(f"{BASE_URL}/dashboard/stream", stream=True, timeout=5)
+>       assert r.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404]>.status_code
+
+smoke.py:80: AssertionError
+______________________ test_coffeeshop_homepage[chromium] ______________________
+
+page = <Page url='http://localhost:8080/'>
+
+    def test_coffeeshop_homepage(page: Page):
+        page.goto(f"{BASE_URL}/")
+>       title = page.title()
+                ^^^^^^^^^^^^
+
+smoke.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:9848: in title
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.title()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_page.py:824: in title
+    return await self._main_frame.title()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:882: in title
+    return await self._channel.send("title", None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x75b696de02f0>
+cb = <function Channel.send.<locals>.<lambda> at 0x75b69625e090>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: Page.title: Execution context was destroyed, most likely because of a navigation
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: Error
+=========================== short test summary info ============================
+FAILED smoke.py::test_place_drink_order - assert 404 == 202
+FAILED smoke.py::test_place_food_order - assert 404 == 202
+FAILED smoke.py::test_place_mixed_order - assert 404 == 202
+FAILED smoke.py::test_message_endpoint - assert 404 in (200, 202, 204)
+FAILED smoke.py::test_dashboard_stream_endpoint - assert 404 == 200
+FAILED smoke.py::test_coffeeshop_homepage[chromium] - playwright._impl._error...
+========================= 6 failed, 3 passed in 1.85s ==========================
+=== TEST OK ===
+[INFO] === Container logs after test ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:21:02,177 WARN  [io.agr.pool] (agroal-11) Datasource '<default>': Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2026-03-24 05:21:02,179 WARN  [org.hib.eng.jdb.spi.SqlExceptionHelper] (JPA Startup Thread) SQL Error: 0, SQLState: 08001
+2026-03-24 05:21:02,179 ERROR [org.hib.eng.jdb.spi.SqlExceptionHelper] (JPA Startup Thread) Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2026-03-24 05:21:02,179 WARN  [org.hib.eng.jdb.env.int.JdbcEnvironmentInitiator] (JPA Startup Thread) HHH000342: Could not obtain connection to query metadata: org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.doTheWork(JtaIsolationDelegate.java:206)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.lambda$delegateWork$3(JtaIsolationDelegate.java:91)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.doInSuspendedTransaction(JtaIsolationDelegate.java:125)
+	at org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate.delegateWork(JtaIsolationDelegate.java:88)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.service.ServiceRegistry.requireService(ServiceRegistry.java:68)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:52)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:136)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:247)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.service.ServiceRegistry.requireService(ServiceRegistry.java:68)
+	at org.hibernate.boot.internal.SessionFactoryOptionsBuilder.<init>(SessionFactoryOptionsBuilder.java:290)
+	at io.quarkus.hibernate.orm.runtime.recording.PrevalidatedQuarkusMetadata.buildSessionFactoryOptionsBuilder(PrevalidatedQuarkusMetadata.java:72)
+	at io.quarkus.hibernate.orm.runtime.boot.FastBootEntityManagerFactoryBuilder.build(FastBootEntityManagerFactoryBuilder.java:84)
+	at io.quarkus.hibernate.orm.runtime.FastBootHibernatePersistenceProvider.createEntityManagerFactory(FastBootHibernatePersistenceProvider.java:72)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$LazyPersistenceUnit.get(JPAConfig.java:154)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$1.run(JPAConfig.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1595)
+Caused by: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:352)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:225)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:580)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:561)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	... 1 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:694)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:260)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:121)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:140)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:268)
+	... 12 more
+
+2026-03-24 05:21:02,479 WARN  [io.qua.hib.orm.run.ser.QuarkusRuntimeInitDialectFactory] (JPA Startup Thread) Persistence unit <default>: Could not retrieve the database version to check it is at least 12.0.0
+2026-03-24 05:21:02,546 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'kitchen-in': [kitchen-commands]
+2026-03-24 05:21:02,564 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,785 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'barista-in': [barista-commands]
+2026-03-24 05:21:02,789 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,833 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18229: Configured topics for channel 'order-updates': [order-updates]
+2026-03-24 05:21:02,838 INFO  [io.sma.rea.mes.kafka] (main) SRMSG18214: Key deserializer omitted, using String as default
+2026-03-24 05:21:02,892 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-0) SRMSG18258: Kafka producer kafka-producer-kitchen-order-updates, connected to Kafka brokers 'localhost:9092', is configured to write records to 'order-updates'
+2026-03-24 05:21:02,951 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-1) SRMSG18258: Kafka producer kafka-producer-barista-order-updates, connected to Kafka brokers 'localhost:9092', is configured to write records to 'order-updates'
+2026-03-24 05:21:02,959 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-2) SRMSG18258: Kafka producer kafka-producer-barista, connected to Kafka brokers 'localhost:9092', is configured to write records to 'barista-commands'
+2026-03-24 05:21:02,978 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-producer-thread-3) SRMSG18258: Kafka producer kafka-producer-kitchen, connected to Kafka brokers 'localhost:9092', is configured to write records to 'kitchen-commands'
+2026-03-24 05:21:03,088 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-2) SRMSG18257: Kafka consumer kafka-consumer-order-updates, connected to Kafka brokers 'localhost:9092', belongs to the 'orders-service' consumer group and is configured to poll records from [order-updates]
+2026-03-24 05:21:03,094 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-0) SRMSG18257: Kafka consumer kafka-consumer-kitchen-in, connected to Kafka brokers 'localhost:9092', belongs to the 'kitchen-service' consumer group and is configured to poll records from [kitchen-commands]
+2026-03-24 05:21:03,099 INFO  [io.sma.rea.mes.kafka] (smallrye-kafka-consumer-thread-1) SRMSG18257: Kafka consumer kafka-consumer-barista-in, connected to Kafka brokers 'localhost:9092', belongs to the 'barista-service-dev' consumer group and is configured to poll records from [barista-commands]
+2026-03-24 05:21:03,188 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,188 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,190 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,191 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) coffeeshop-quarkus 0.2.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 2.256s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) Profile dev activated. 
+2026-03-24 05:21:03,211 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-validator, jdbc-postgresql, kafka-client, messaging, messaging-kafka, narayana-jta, rest, rest-jackson, smallrye-context-propagation, smallrye-health, vertx]
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,241 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,242 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,242 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,299 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,300 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,303 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,303 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,308 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,308 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,348 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,348 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,349 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,349 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,393 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,393 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,394 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,394 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,401 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,401 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,404 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,404 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,409 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,409 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,550 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,550 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,565 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,565 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,610 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,611 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,616 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,616 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,619 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,619 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,633 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,633 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,645 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,645 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,917 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,918 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,931 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,931 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,968 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,968 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:03,984 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:03,985 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,064 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,065 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,097 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,097 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,121 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,121 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,636 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,637 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,694 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,694 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,777 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,778 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,807 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,807 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,815 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,816 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:04,879 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:04,879 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:05,028 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:05,028 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:06,083 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:06,084 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:06,125 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:06,126 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:06,479 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:06,479 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:06,506 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:06,506 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:06,577 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:06,577 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:06,606 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:06,606 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:06,742 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:06,743 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:09,024 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:09,024 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:09,301 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:09,301 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:09,587 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:09,587 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:09,686 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:09,686 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:09,727 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:09,728 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:09,843 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:09,843 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:09,999 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:09,999 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:15,316 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:15,316 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-0) [Consumer clientId=kafka-consumer-kitchen-in, groupId=kitchen-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:15,407 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:15,408 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista-order-updates) [Producer clientId=kafka-producer-barista-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:15,931 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:15,932 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-barista) [Producer clientId=kafka-producer-barista] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:16,116 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:16,116 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen) [Producer clientId=kafka-producer-kitchen] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:16,296 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:16,296 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-1) [Consumer clientId=kafka-consumer-barista-in, groupId=barista-service-dev] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:17,230 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:17,230 WARN  [org.apa.kaf.cli.NetworkClient] (kafka-producer-network-thread | kafka-producer-kitchen-order-updates) [Producer clientId=kafka-producer-kitchen-order-updates] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-03-24 05:21:17,380 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2026-03-24 05:21:17,381 WARN  [org.apa.kaf.cli.NetworkClient] (smallrye-kafka-consumer-thread-2) [Consumer clientId=kafka-consumer-order-updates, groupId=orders-service] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+docker rm -f coffeeshop-quarkus-917930a5 >/dev/null 2>&1 || true
+docker rmi $(docker images -q coffeeshop-quarkus) 2>/dev/null
+Untagged: coffeeshop-quarkus:4402b618
+Deleted: sha256:2e8f5dcf0407a87c79a1d9409019d05e50a245ef39d5e5e49425e5810462be26
+make: [Makefile:64: test] Error 1 (ignored)
+docker image prune -f
+Total reclaimed space: 0B
+[INFO] Cleaned up container and image

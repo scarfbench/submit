@@ -1,0 +1,64 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 983B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 520B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 83.92kB done
+#5 DONE 0.0s
+
+#6 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#6 CACHED
+
+#7 [5/9] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [7/9] COPY . .
+#8 CACHED
+
+#9 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#9 CACHED
+
+#10 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#10 CACHED
+
+#11 [6/9] WORKDIR /app
+#11 CACHED
+
+#12 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:248488e4892d11eee80773d768ae6dca89452bc7a2c28e76ca6f25491cb226c7 done
+#14 exporting config sha256:765a9bd318f023ec4f4903d4b70b3488d5ee42e48e8c546fbc94281f0608d69e done
+#14 exporting attestation manifest sha256:38dce4aaf14e9d547c1dc059202b8570d573f2a8e72fd0d66eb121bcde214b87 0.1s done
+#14 exporting manifest list sha256:543378e924baf3b4a3029cd04fe71903e1ab3abd6ca6ad425edb30296bbd9d2d
+#14 exporting manifest list sha256:543378e924baf3b4a3029cd04fe71903e1ab3abd6ca6ad425edb30296bbd9d2d 0.0s done
+#14 naming to docker.io/library/roster-spring:6f73bb7a done
+#14 unpacking to docker.io/library/roster-spring:6f73bb7a done
+#14 DONE 0.2s
+[INFO] Built image: roster-spring:6f73bb7a
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name roster-spring-110c803f roster-spring:6f73bb7a
+dad8cb0b8550eadbc690de39eb37adda465f635a0812df8696bdbfc93e76ce99
+[INFO] Started roster-spring-110c803f, waiting for app to start...
+Error: Unable to access jarfile roster-boot/target/*.jar

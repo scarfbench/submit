@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+
+    Copyright (c), Eclipse Foundation, Inc. and its licensors.
+
+    All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v1.0, which is available at
+    https://www.eclipse.org/org/documents/edl-v10.php
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Tutorial: REST Customer example</title>
+    <meta charset="UTF-8"/>
+    <style>
+        table { border-collapse: collapse; border: 1px solid #ccc; }
+        td, th { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Customer List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${customers.empty}">
+                <td colspan="4">No customers found</td>
+            </tr>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.firstname + ' ' + customer.lastname}">Customer Name</td>
+                <td>
+                    <span th:text="${customer.address.street}">Street</span><br/>
+                    <span th:text="${customer.address.city + ', ' + customer.address.province + ' ' + customer.address.zip}">City, State Zip</span><br/>
+                    <span th:text="${customer.address.country}">Country</span>
+                </td>
+                <td th:text="${customer.email}">Email</td>
+                <td th:text="${customer.phone}">Phone</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <a href="/">Create new Customer</a>
+</body>
+</html>

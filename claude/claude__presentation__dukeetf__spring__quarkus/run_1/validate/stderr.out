@@ -1,0 +1,48 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 872B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/8] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:63b453701d8e0a4c14dc138efa7d46d3235a156fb80fd16342bb554b00b456db
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 184.30kB done
+#5 DONE 0.0s
+
+#6 [2/8] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [3/8] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [4/8] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#8 CACHED
+
+#9 [5/8] RUN playwright install --with-deps chromium
+#9 CACHED
+
+#10 [6/8] WORKDIR /app
+#10 CACHED
+
+#11 [7/8] COPY . .
+#11 DONE 0.1s
+
+#12 [8/8] RUN if [ -f smoke.py ]; then chmod +x smoke.py; fi
+#12 DONE 0.4s
+
+#13 exporting to image
+#13 exporting layers 0.1s done
+#13 writing image sha256:c018cb3fd48179bef55efadf8073733748e45b9a4a5c0218b4a6295d513fa797 done
+#13 naming to docker.io/library/dukeetf-quarkus:latest 0.0s done
+#13 DONE 0.2s
+[FAIL] Long-poll endpoint did not respond with 200 + non-empty body within timeout.
+make: *** [Makefile:45: test] Error 4

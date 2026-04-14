@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>jakarta.examples.tutorial.web.servlet</groupId>
+  <artifactId>dukeetf2</artifactId>
+  <version>1.0.0-Jakarta</version>
+  <packaging>war</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <jakarta.ee.version>10.0.0</jakarta.ee.version>
+    <weld.version>5.1.2.Final</weld.version>
+    <tyrus.version>2.1.5</tyrus.version>
+  </properties>
+
+  <dependencies>
+    <!-- Jakarta EE API -->
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <version>${jakarta.ee.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- CDI Implementation (Weld) for standalone/servlet container -->
+    <dependency>
+      <groupId>org.jboss.weld.servlet</groupId>
+      <artifactId>weld-servlet-core</artifactId>
+      <version>${weld.version}</version>
+    </dependency>
+
+    <!-- WebSocket Implementation (Tyrus) -->
+    <dependency>
+      <groupId>org.glassfish.tyrus</groupId>
+      <artifactId>tyrus-server</artifactId>
+      <version>${tyrus.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.tyrus</groupId>
+      <artifactId>tyrus-container-servlet</artifactId>
+      <version>${tyrus.version}</version>
+    </dependency>
+
+    <!-- Servlet API -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>6.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- MyFaces JSF Implementation -->
+    <dependency>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-impl</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-api</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+
+    <!-- Scheduler Implementation - using EJB Timer or alternative -->
+    <!-- For Jakarta EE servers, use built-in scheduling -->
+    <dependency>
+      <groupId>jakarta.ejb</groupId>
+      <artifactId>jakarta.ejb-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Test dependencies -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>5.3.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>dukeetf2</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

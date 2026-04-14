@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Coffee Shop Jakarta EE Server">
+
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>microProfile-6.1</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- Default datasource using H2 in-memory -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2*.jar"/>
+    </library>
+
+    <dataSource id="DefaultDataSource" jndiName="jdbc/coffeeshop">
+        <jdbcDriver libraryRef="h2Lib" javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"/>
+        <properties URL="jdbc:h2:mem:coffeeshop;DB_CLOSE_DELAY=-1"/>
+    </dataSource>
+
+    <dataSource id="BaristaDataSource" jndiName="jdbc/barista">
+        <jdbcDriver libraryRef="h2Lib" javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"/>
+        <properties URL="jdbc:h2:mem:barista;DB_CLOSE_DELAY=-1"/>
+    </dataSource>
+
+    <dataSource id="KitchenDataSource" jndiName="jdbc/kitchen">
+        <jdbcDriver libraryRef="h2Lib" javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"/>
+        <properties URL="jdbc:h2:mem:kitchen;DB_CLOSE_DELAY=-1"/>
+    </dataSource>
+
+    <webApplication location="coffeeshop.war" contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+    <logging consoleLogLevel="INFO" />
+</server>

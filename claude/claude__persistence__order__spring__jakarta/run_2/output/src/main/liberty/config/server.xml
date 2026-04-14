@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Order Jakarta EE Application">
+
+    <featureManager>
+        <feature>webProfile-10.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- H2 Database Library -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2-*.jar"/>
+    </library>
+
+    <!-- DataSource definition at the server level -->
+    <dataSource id="orderDS" jndiName="jdbc/orderDS" type="javax.sql.DataSource">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties.h2.embedded databaseName="mem:testdb" createDatabase="create" user="sa" password="sa"/>
+    </dataSource>
+
+    <!-- Application -->
+    <webApplication id="order-jakarta" location="order-jakarta.war" contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+    <!-- Logging -->
+    <logging traceSpecification="*=info:com.example.orderspring.*=fine"/>
+</server>

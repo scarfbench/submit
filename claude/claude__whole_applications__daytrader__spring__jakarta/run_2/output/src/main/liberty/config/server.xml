@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="DayTrader Jakarta EE Server">
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>webProfile-10.0</feature>
+        <feature>pages-3.1</feature>
+        <feature>persistence-3.1</feature>
+        <feature>enterpriseBeansLite-4.0</feature>
+        <feature>concurrent-3.0</feature>
+        <feature>websocket-2.1</feature>
+        <feature>restfulWS-3.1</feature>
+        <feature>messaging-3.1</feature>
+        <feature>messagingClient-3.0</feature>
+        <feature>messagingServer-3.0</feature>
+        <feature>mdb-4.0</feature>
+        <feature>connectors-2.1</feature>
+        <feature>localConnector-1.0</feature>
+    </featureManager>
+
+    <!-- HTTP endpoints -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- Application -->
+    <webApplication id="daytrader"
+                    location="daytrader.war"
+                    contextRoot="/daytrader">
+        <classloader apiTypeVisibility="spec,ibm-api,api,stable,third-party"
+                     commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+    <!-- H2 JDBC Driver -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/resources" includes="h2.jar"/>
+    </library>
+
+    <!-- DataSource -->
+    <dataSource id="TradeDataSource" jndiName="jdbc/TradeDataSource">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:file:/app/data/tradedb;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM '/app/src/main/resources/schema-h2.sql'"
+            user="sa"
+            password=""/>
+        <connectionManager maxPoolSize="100" minPoolSize="10"/>
+    </dataSource>
+
+    <!-- JMS Configuration using embedded messaging -->
+    <wasJmsEndpoint id="InboundJmsEndpoint"
+                    wasJmsPort="7276"
+                    wasJmsSslPort="7286"
+                    host="*" />
+
+    <messagingEngine>
+        <queue id="TradeBrokerQueue" />
+        <topicSpace id="TradeTopicSpace" />
+    </messagingEngine>
+
+    <!-- JMS Queue -->
+    <jmsQueue id="TradeBrokerQueue" jndiName="jms/TradeBrokerQueue">
+        <properties.wasJms queueName="TradeBrokerQueue" />
+    </jmsQueue>
+
+    <!-- JMS Topic -->
+    <jmsTopic id="TradeStreamerTopic" jndiName="jms/TradeStreamerTopic">
+        <properties.wasJms topicSpace="TradeTopicSpace" topicName="TradeStreamerTopic"/>
+    </jmsTopic>
+
+    <!-- JMS Queue Connection Factory -->
+    <jmsQueueConnectionFactory id="QueueConnectionFactory" jndiName="jms/QueueConnectionFactory">
+        <properties.wasJms />
+    </jmsQueueConnectionFactory>
+
+    <!-- JMS Topic Connection Factory -->
+    <jmsTopicConnectionFactory id="TopicConnectionFactory" jndiName="jms/TopicConnectionFactory">
+        <properties.wasJms />
+    </jmsTopicConnectionFactory>
+
+    <!-- Additional JMS Connection Factories for MDB usage -->
+    <jmsConnectionFactory id="TradeStreamerTCF" jndiName="jms/TradeStreamerTCF">
+        <properties.wasJms />
+    </jmsConnectionFactory>
+
+    <jmsQueueConnectionFactory id="TradeBrokerQCF" jndiName="jms/TradeBrokerQCF">
+        <properties.wasJms />
+    </jmsQueueConnectionFactory>
+
+    <!-- JMS Activation Specs for MDBs -->
+    <jmsActivationSpec id="daytrader/DTBroker3Listener">
+        <properties.wasJms destinationRef="TradeBrokerQueue"
+                           destinationType="jakarta.jms.Queue"/>
+    </jmsActivationSpec>
+
+    <jmsActivationSpec id="daytrader/DTStreamer3Listener">
+        <properties.wasJms destinationRef="TradeStreamerTopic"
+                           destinationType="jakarta.jms.Topic"/>
+    </jmsActivationSpec>
+
+    <!-- SSL/Keystore Configuration -->
+    <keyStore id="defaultKeyStore"
+              location="keystore.p12"
+              password="yourPassword" />
+
+    <!-- Logging -->
+    <logging consoleLogLevel="INFO"
+             traceSpecification="com.ibm.websphere.samples.daytrader.*=fine"/>
+
+</server>

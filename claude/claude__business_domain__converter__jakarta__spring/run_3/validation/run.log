@@ -1,0 +1,111 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 987B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.2s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.1s done
+#3 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#5 CACHED
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#7 CACHED
+
+#8 [5/9] RUN playwright install --with-deps chromium
+#8 CACHED
+
+#9 [6/9] WORKDIR /app
+#9 CACHED
+
+#10 [internal] load build context
+#10 transferring context: 178.49kB 0.1s done
+#10 DONE 0.2s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.2s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 23.1s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 1.524 [INFO] Scanning for projects...
+#13 1.750 [INFO] 
+#13 1.750 [INFO] --------------< jakarta.examples.tutorial.ejb:converter >---------------
+#13 1.750 [INFO] Building converter 10-SNAPSHOT
+#13 1.750 [INFO]   from pom.xml
+#13 1.750 [INFO] --------------------------------[ war ]---------------------------------
+#13 2.161 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+#13 2.415 Progress (1): 0.9/65 kBProgress (1): 2.3/65 kBProgress (1): 3.6/65 kBProgress (1): 5.0/65 kBProgress (1): 6.4/65 kBProgress (1): 7.7/65 kBProgress (1): 9.1/65 kBProgress (1): 10/65 kB Progress (1): 12/65 kBProgress (1): 13/65 kBProgress (1): 15/65 kBProgress (1): 16/65 kBProgress (1): 17/65 kBProgress (1): 19/65 kBProgress (1): 20/65 kBProgress (1): 21/65 kBProgress (1): 23/65 kBProgress (1): 24/65 kBProgress (1): 26/65 kBProgress (1): 27/65 kBProgress (1): 28/65 kBProgress (1): 29/65 kBProgress (1): 30/65 kBProgress (1): 31/65 kBProgress (1): 33/65 kBProgress (1): 34/65 kBProgress (1): 36/65 kBProgress (1): 37/65 kBProgress (1): 38/65 kBProgress (1): 40/65 kBProgress (1): 41/65 kBProgress (1): 42/65 kBProgress (1): 44/65 kBProgress (1): 45/65 kBProgress (1): 46/65 kBProgress (1): 48/65 kBProgress (1): 49/65 kBProgress (1): 51/65 kBProgress (1): 52/65 kBProgress (1): 53/65 kBProgress (1): 55/65 kBProgress (1): 59/65 kBProgress (1): 63/65 kBProgress (1): 65 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar (65 kB at 244 kB/s)
+#13 2.441 [INFO] 
+#13 2.441 [INFO] --- resources:3.3.1:resources (default-resources) @ converter ---
+#13 2.586 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 2.597 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 2.599 [INFO] 
+#13 2.599 [INFO] --- compiler:3.11.0:compile (default-compile) @ converter ---
+#13 2.686 [INFO] Changes detected - recompiling the module! :source
+#13 2.687 [INFO] Compiling 3 source files with javac [debug release 17] to target/classes
+#13 3.239 [INFO] 
+#13 3.239 [INFO] --- resources:3.3.1:testResources (default-testResources) @ converter ---
+#13 3.245 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 3.245 [INFO] 
+#13 3.245 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ converter ---
+#13 3.250 [INFO] No sources to compile
+#13 3.251 [INFO] 
+#13 3.251 [INFO] --- surefire:3.1.2:test (default-test) @ converter ---
+#13 3.403 [INFO] Tests are skipped.
+#13 3.404 [INFO] 
+#13 3.404 [INFO] --- war:3.4.0:war (default-war) @ converter ---
+#13 3.637 [INFO] Packaging webapp
+#13 3.638 [INFO] Assembling webapp [converter] in [/app/target/converter]
+#13 3.647 [INFO] Processing war project
+#13 3.647 [INFO] Copying webapp resources [/app/src/main/webapp]
+#13 3.704 [INFO] Building war: /app/target/converter.war
+#13 4.174 [INFO] 
+#13 4.174 [INFO] --- spring-boot:3.2.0:repackage (repackage) @ converter ---
+#13 4.463 [INFO] Replacing main artifact /app/target/converter.war with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 4.464 [INFO] The original artifact has been renamed to /app/target/converter.war.original
+#13 4.464 [INFO] ------------------------------------------------------------------------
+#13 4.464 [INFO] BUILD SUCCESS
+#13 4.464 [INFO] ------------------------------------------------------------------------
+#13 4.464 [INFO] Total time:  2.949 s
+#13 4.465 [INFO] Finished at: 2026-03-24T05:11:56Z
+#13 4.465 [INFO] ------------------------------------------------------------------------
+#13 DONE 4.6s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 0.8s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 2.7s done
+#15 exporting manifest sha256:fa2c1e228f179b3563a163f025b28bc38c4a46037757665ece9246cd1d68c697 0.1s done
+#15 exporting config sha256:3b2d240092f6839b3de7a57bc855e26d6600ea85d5299563d8e1e2d5fc2141f5 0.1s done
+#15 exporting attestation manifest sha256:fc206907433f610c524b29e273dd2f09e3fef3c4ac6ce3a2fff969a33cc2830b 0.1s done
+#15 exporting manifest list sha256:d90c9602a79855b609ba05205ee2e367b271ca7e9abb4dcf32d79e56940929ab
+#15 exporting manifest list sha256:d90c9602a79855b609ba05205ee2e367b271ca7e9abb4dcf32d79e56940929ab 0.1s done
+#15 naming to docker.io/library/converter-spring:0b54ceb1 done
+#15 unpacking to docker.io/library/converter-spring:0b54ceb1
+#15 unpacking to docker.io/library/converter-spring:0b54ceb1 0.8s done
+#15 DONE 3.9s
+[INFO] Built image: converter-spring:0b54ceb1
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name converter-spring-393269af converter-spring:0b54ceb1
+8579826ae7e669b375ced42afb561646583c060839a7cff4a74bb853ce66e78b
+[INFO] Started converter-spring-393269af, waiting for app to start...
+Error: Unable to access jarfile target/*.jar

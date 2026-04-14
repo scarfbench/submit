@@ -1,0 +1,63 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 983B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#4 CACHED
+
+#5 [5/9] RUN playwright install --with-deps chromium
+#5 CACHED
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 69.38kB done
+#10 DONE 0.0s
+
+#11 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#11 CACHED
+
+#12 [7/9] COPY . .
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:91eb8aad9fa825ae536d03f05c9599d66bb67e56d02e8dc30d8379abd6c67cfb done
+#14 exporting config sha256:aa3a13bf9c34281b0db09e2e608cf6090ccfc6128c367554c4ad79736c4e77a2 done
+#14 exporting attestation manifest sha256:f589be22cc9b0dabe2e8b56fdbb99c06c68db4ab34778ab88f43b55ca5f47d65 0.1s done
+#14 exporting manifest list sha256:586a26b2a83ac9eb64fa539a9263335345285bdafd6fa45b1bfe6b0c55ae8a8b 0.0s done
+#14 naming to docker.io/library/roster-spring:5ffebabc done
+#14 unpacking to docker.io/library/roster-spring:5ffebabc done
+#14 DONE 0.2s
+[INFO] Built image: roster-spring:5ffebabc
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name roster-spring-4a860df9 roster-spring:5ffebabc
+32f17bf99b018f9444a338c5f71d70fa28e31b8aa9d6a4c7695ac0acb4d5915d
+[INFO] Started roster-spring-4a860df9, waiting for app to start...
+Error: Unable to access jarfile roster-boot/target/*.jar

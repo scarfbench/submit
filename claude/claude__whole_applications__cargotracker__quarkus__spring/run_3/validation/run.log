@@ -1,0 +1,2013 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.1s
+
+#4 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#4 CACHED
+
+#5 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#5 CACHED
+
+#6 [5/9] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 4.29MB 0.0s done
+#10 DONE 0.1s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:961c3a1afc10db0334d3d522207b84972bb654769275a75c2156d3d4e8df2024 done
+#14 exporting config sha256:93e98c13a576b9018c416596fccb0ea825a836bb1ed55d104bb8ab409e34d4c7 done
+#14 exporting attestation manifest sha256:adf4744ea7f20418ef968a548f94d97322edf671c3e8692da808d1fef1b6793a 0.1s done
+#14 exporting manifest list sha256:1f9d39aaf6b3dfd778131b7cf58dd91fee12ca5226a31344afa0dce3b57e3109
+#14 exporting manifest list sha256:1f9d39aaf6b3dfd778131b7cf58dd91fee12ca5226a31344afa0dce3b57e3109 0.0s done
+#14 naming to docker.io/library/cargo-tracker-spring:292dbe08 done
+#14 unpacking to docker.io/library/cargo-tracker-spring:292dbe08 done
+#14 DONE 0.2s
+[INFO] Built image: cargo-tracker-spring:292dbe08
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name cargo-tracker-spring-f9fd3cc2 cargo-tracker-spring:292dbe08
+7891e830e69622f63d1c72178bac3334c5a044b9f6b9f934a7e9e04e12dfce57
+[INFO] Started cargo-tracker-spring-f9fd3cc2, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T02:51:28.546Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : Starting CargoTrackerApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/cargo-tracker-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T02:51:28.553Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T02:51:29.256Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T02:51:29.271Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2026-03-24T02:51:29.598Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T02:51:29.607Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T02:51:29.608Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T02:51:29.640Z  INFO 19 --- [           main] o.a.c.c.C.[.[.[/cargo-tracker]           : Initializing Spring embedded WebApplicationContext
+2026-03-24T02:51:29.640Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 987 ms
+2026-03-24T02:51:29.662Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T02:51:29.810Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:cargotracker user=SA
+2026-03-24T02:51:29.811Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T02:51:29.816Z  INFO 19 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:cargotracker'
+2026-03-24T02:51:29.878Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T02:51:29.924Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T02:51:29.940Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T02:51:30.081Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T02:51:30.120Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T02:51:30.823Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists application_settings cascade 
+Hibernate: drop table if exists cargo cascade 
+Hibernate: drop table if exists carrier_movement cascade 
+Hibernate: drop table if exists handling_event cascade 
+Hibernate: drop table if exists leg cascade 
+Hibernate: drop table if exists location cascade 
+Hibernate: drop table if exists voyage cascade 
+Hibernate: drop sequence if exists cargo_seq
+Hibernate: drop sequence if exists carrier_movement_seq
+Hibernate: drop sequence if exists handling_event_seq
+Hibernate: drop sequence if exists leg_seq
+Hibernate: drop sequence if exists location_seq
+Hibernate: drop sequence if exists voyage_seq
+Hibernate: create sequence cargo_seq start with 1 increment by 50
+Hibernate: create sequence carrier_movement_seq start with 1 increment by 50
+Hibernate: create sequence handling_event_seq start with 1 increment by 50
+Hibernate: create sequence leg_seq start with 1 increment by 50
+Hibernate: create sequence location_seq start with 1 increment by 50
+Hibernate: create sequence voyage_seq start with 1 increment by 50
+Hibernate: create table application_settings (sample_loaded boolean not null, id bigint not null, primary key (id))
+Hibernate: create table cargo (misdirected boolean, spec_arrival_deadline date, unloaded_at_dest boolean, calculated_at timestamp(6), current_voyage_id bigint, eta timestamp(6), id bigint not null, last_event_id bigint, last_known_location_id bigint, next_expected_location_id bigint, next_expected_voyage_id bigint, origin_id bigint not null, spec_destination_id bigint, spec_origin_id bigint, next_expected_handling_event_type varchar(255) check (next_expected_handling_event_type in ('LOAD','UNLOAD','RECEIVE','CLAIM','CUSTOMS')), routing_status varchar(255) check (routing_status in ('NOT_ROUTED','ROUTED','MISROUTED')), tracking_id varchar(255) unique, transport_status varchar(255) check (transport_status in ('NOT_RECEIVED','IN_PORT','ONBOARD_CARRIER','CLAIMED','UNKNOWN')), primary key (id))
+Hibernate: create table carrier_movement (movement_order integer, arrival_location_id bigint not null, arrival_time timestamp(6) not null, departure_location_id bigint not null, departure_time timestamp(6) not null, id bigint not null, voyage_id bigint, primary key (id))
+Hibernate: create table handling_event (cargo_id bigint not null, completion_time timestamp(6) not null, id bigint not null, location_id bigint not null, registration timestamp(6) not null, voyage_id bigint, type varchar(255) not null check (type in ('LOAD','UNLOAD','RECEIVE','CLAIM','CUSTOMS')), primary key (id))
+Hibernate: create table leg (leg_order integer, cargo_id bigint, id bigint not null, load_location_id bigint not null, load_time timestamp(6) not null, unload_location_id bigint not null, unload_time timestamp(6) not null, voyage_id bigint not null, primary key (id))
+Hibernate: create table location (id bigint not null, name varchar(255), unlocode varchar(255), primary key (id))
+Hibernate: create table voyage (id bigint not null, voyage_number varchar(255), primary key (id))
+Hibernate: alter table if exists cargo add constraint FKjg7tqvng4lrroi3x7k2pgcg8s foreign key (current_voyage_id) references voyage
+Hibernate: alter table if exists cargo add constraint FK9lgjt11lhhs90je4ts8vdps3h foreign key (last_event_id) references handling_event
+Hibernate: alter table if exists cargo add constraint FKlevr3jshtdpkr0b0cs3x2xai8 foreign key (last_known_location_id) references location
+Hibernate: alter table if exists cargo add constraint FK8j6s79x483hpgpow41m2jr8al foreign key (next_expected_location_id) references location
+Hibernate: alter table if exists cargo add constraint FKfllsyoa5okq5wj3xso3fl5bds foreign key (next_expected_voyage_id) references voyage
+Hibernate: alter table if exists cargo add constraint FKsh6x4pwr7fh8essy98rdttn3m foreign key (origin_id) references location
+Hibernate: alter table if exists cargo add constraint FKt96v2sqou50rrb83xb94rraih foreign key (spec_destination_id) references location
+Hibernate: alter table if exists cargo add constraint FKkefgnvxcwmyu13fii34934qoa foreign key (spec_origin_id) references location
+Hibernate: alter table if exists carrier_movement add constraint FKprwsa5jli519iuk0riayqriv2 foreign key (arrival_location_id) references location
+Hibernate: alter table if exists carrier_movement add constraint FKq0fuy9xktyi60qbt7om3ggvj6 foreign key (departure_location_id) references location
+Hibernate: alter table if exists carrier_movement add constraint FK19nu70gglmxo40637vykhb34j foreign key (voyage_id) references voyage
+Hibernate: alter table if exists handling_event add constraint FKt8gxdebmo4brebryyt5rwjbhs foreign key (cargo_id) references cargo
+Hibernate: alter table if exists handling_event add constraint FKfou7tlvonxq8mw2l3hijids55 foreign key (location_id) references location
+Hibernate: alter table if exists handling_event add constraint FKjg6vht4yhuerxyilfag4npjpi foreign key (voyage_id) references voyage
+Hibernate: alter table if exists leg add constraint FK1u5uafbfq1msjbkqxlp0afgl1 foreign key (load_location_id) references location
+Hibernate: alter table if exists leg add constraint FK6qhii1yfvw5kdbi6g5bb4034w foreign key (unload_location_id) references location
+Hibernate: alter table if exists leg add constraint FKkfw0ujiodsdy5opctigsvvl35 foreign key (voyage_id) references voyage
+Hibernate: alter table if exists leg add constraint FKfyrfbxc9avv0joklx7jcu6c9x foreign key (cargo_id) references cargo
+Hibernate: INSERT INTO application_settings (id, sample_loaded) VALUES (1, FALSE)
+2026-03-24T02:51:31.017Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0
+2026-03-24T02:51:31.353Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T02:51:31.579Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/cargo-tracker'
+2026-03-24T02:51:31.596Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : Started CargoTrackerApplication in 3.298 seconds (process running for 3.618)
+Hibernate: select as1_0.id,as1_0.sample_loaded from application_settings as1_0 where as1_0.id=? for update
+2026-03-24T02:51:31.617Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample data.
+2026-03-24T02:51:31.620Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample locations.
+Hibernate: select next value for location_seq
+Hibernate: select next value for location_seq
+2026-03-24T02:51:31.634Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample voyages.
+Hibernate: select next value for voyage_seq
+Hibernate: select next value for carrier_movement_seq
+Hibernate: select next value for carrier_movement_seq
+Hibernate: select next value for voyage_seq
+2026-03-24T02:51:31.643Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample cargo data.
+Hibernate: select next value for cargo_seq
+Hibernate: select next value for leg_seq
+Hibernate: select next value for leg_seq
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: update application_settings set sample_loaded=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select next value for handling_event_seq
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select next value for handling_event_seq
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+Hibernate: select next value for cargo_seq
+Hibernate: insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+Hibernate: insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+Hibernate: update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+[INFO] Application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T02:51:28.546Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : Starting CargoTrackerApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/cargo-tracker-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T02:51:28.553Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T02:51:29.256Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T02:51:29.271Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2026-03-24T02:51:29.598Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T02:51:29.607Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T02:51:29.608Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T02:51:29.640Z  INFO 19 --- [           main] o.a.c.c.C.[.[.[/cargo-tracker]           : Initializing Spring embedded WebApplicationContext
+2026-03-24T02:51:29.640Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 987 ms
+2026-03-24T02:51:29.662Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T02:51:29.810Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:cargotracker user=SA
+2026-03-24T02:51:29.811Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T02:51:29.816Z  INFO 19 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:cargotracker'
+2026-03-24T02:51:29.878Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T02:51:29.924Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T02:51:29.940Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T02:51:30.081Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T02:51:30.120Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T02:51:30.823Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists application_settings cascade 
+Hibernate: drop table if exists cargo cascade 
+Hibernate: drop table if exists carrier_movement cascade 
+Hibernate: drop table if exists handling_event cascade 
+Hibernate: drop table if exists leg cascade 
+Hibernate: drop table if exists location cascade 
+Hibernate: drop table if exists voyage cascade 
+Hibernate: drop sequence if exists cargo_seq
+Hibernate: drop sequence if exists carrier_movement_seq
+Hibernate: drop sequence if exists handling_event_seq
+Hibernate: drop sequence if exists leg_seq
+Hibernate: drop sequence if exists location_seq
+Hibernate: drop sequence if exists voyage_seq
+Hibernate: create sequence cargo_seq start with 1 increment by 50
+Hibernate: create sequence carrier_movement_seq start with 1 increment by 50
+Hibernate: create sequence handling_event_seq start with 1 increment by 50
+Hibernate: create sequence leg_seq start with 1 increment by 50
+Hibernate: create sequence location_seq start with 1 increment by 50
+Hibernate: create sequence voyage_seq start with 1 increment by 50
+Hibernate: create table application_settings (sample_loaded boolean not null, id bigint not null, primary key (id))
+Hibernate: create table cargo (misdirected boolean, spec_arrival_deadline date, unloaded_at_dest boolean, calculated_at timestamp(6), current_voyage_id bigint, eta timestamp(6), id bigint not null, last_event_id bigint, last_known_location_id bigint, next_expected_location_id bigint, next_expected_voyage_id bigint, origin_id bigint not null, spec_destination_id bigint, spec_origin_id bigint, next_expected_handling_event_type varchar(255) check (next_expected_handling_event_type in ('LOAD','UNLOAD','RECEIVE','CLAIM','CUSTOMS')), routing_status varchar(255) check (routing_status in ('NOT_ROUTED','ROUTED','MISROUTED')), tracking_id varchar(255) unique, transport_status varchar(255) check (transport_status in ('NOT_RECEIVED','IN_PORT','ONBOARD_CARRIER','CLAIMED','UNKNOWN')), primary key (id))
+Hibernate: create table carrier_movement (movement_order integer, arrival_location_id bigint not null, arrival_time timestamp(6) not null, departure_location_id bigint not null, departure_time timestamp(6) not null, id bigint not null, voyage_id bigint, primary key (id))
+Hibernate: create table handling_event (cargo_id bigint not null, completion_time timestamp(6) not null, id bigint not null, location_id bigint not null, registration timestamp(6) not null, voyage_id bigint, type varchar(255) not null check (type in ('LOAD','UNLOAD','RECEIVE','CLAIM','CUSTOMS')), primary key (id))
+Hibernate: create table leg (leg_order integer, cargo_id bigint, id bigint not null, load_location_id bigint not null, load_time timestamp(6) not null, unload_location_id bigint not null, unload_time timestamp(6) not null, voyage_id bigint not null, primary key (id))
+Hibernate: create table location (id bigint not null, name varchar(255), unlocode varchar(255), primary key (id))
+Hibernate: create table voyage (id bigint not null, voyage_number varchar(255), primary key (id))
+Hibernate: alter table if exists cargo add constraint FKjg7tqvng4lrroi3x7k2pgcg8s foreign key (current_voyage_id) references voyage
+Hibernate: alter table if exists cargo add constraint FK9lgjt11lhhs90je4ts8vdps3h foreign key (last_event_id) references handling_event
+Hibernate: alter table if exists cargo add constraint FKlevr3jshtdpkr0b0cs3x2xai8 foreign key (last_known_location_id) references location
+Hibernate: alter table if exists cargo add constraint FK8j6s79x483hpgpow41m2jr8al foreign key (next_expected_location_id) references location
+Hibernate: alter table if exists cargo add constraint FKfllsyoa5okq5wj3xso3fl5bds foreign key (next_expected_voyage_id) references voyage
+Hibernate: alter table if exists cargo add constraint FKsh6x4pwr7fh8essy98rdttn3m foreign key (origin_id) references location
+Hibernate: alter table if exists cargo add constraint FKt96v2sqou50rrb83xb94rraih foreign key (spec_destination_id) references location
+Hibernate: alter table if exists cargo add constraint FKkefgnvxcwmyu13fii34934qoa foreign key (spec_origin_id) references location
+Hibernate: alter table if exists carrier_movement add constraint FKprwsa5jli519iuk0riayqriv2 foreign key (arrival_location_id) references location
+Hibernate: alter table if exists carrier_movement add constraint FKq0fuy9xktyi60qbt7om3ggvj6 foreign key (departure_location_id) references location
+Hibernate: alter table if exists carrier_movement add constraint FK19nu70gglmxo40637vykhb34j foreign key (voyage_id) references voyage
+Hibernate: alter table if exists handling_event add constraint FKt8gxdebmo4brebryyt5rwjbhs foreign key (cargo_id) references cargo
+Hibernate: alter table if exists handling_event add constraint FKfou7tlvonxq8mw2l3hijids55 foreign key (location_id) references location
+Hibernate: alter table if exists handling_event add constraint FKjg6vht4yhuerxyilfag4npjpi foreign key (voyage_id) references voyage
+Hibernate: alter table if exists leg add constraint FK1u5uafbfq1msjbkqxlp0afgl1 foreign key (load_location_id) references location
+Hibernate: alter table if exists leg add constraint FK6qhii1yfvw5kdbi6g5bb4034w foreign key (unload_location_id) references location
+Hibernate: alter table if exists leg add constraint FKkfw0ujiodsdy5opctigsvvl35 foreign key (voyage_id) references voyage
+Hibernate: alter table if exists leg add constraint FKfyrfbxc9avv0joklx7jcu6c9x foreign key (cargo_id) references cargo
+Hibernate: INSERT INTO application_settings (id, sample_loaded) VALUES (1, FALSE)
+2026-03-24T02:51:31.017Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0
+2026-03-24T02:51:31.353Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T02:51:31.579Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/cargo-tracker'
+2026-03-24T02:51:31.596Z  INFO 19 --- [           main] o.e.c.CargoTrackerApplication            : Started CargoTrackerApplication in 3.298 seconds (process running for 3.618)
+Hibernate: select as1_0.id,as1_0.sample_loaded from application_settings as1_0 where as1_0.id=? for update
+2026-03-24T02:51:31.617Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample data.
+2026-03-24T02:51:31.620Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample locations.
+Hibernate: select next value for location_seq
+Hibernate: select next value for location_seq
+2026-03-24T02:51:31.634Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample voyages.
+Hibernate: select next value for voyage_seq
+Hibernate: select next value for carrier_movement_seq
+Hibernate: select next value for carrier_movement_seq
+Hibernate: select next value for voyage_seq
+2026-03-24T02:51:31.643Z  INFO 19 --- [           main] o.e.c.application.util.InitLoader        : Loading sample cargo data.
+Hibernate: select next value for cargo_seq
+Hibernate: select next value for leg_seq
+Hibernate: select next value for leg_seq
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into location (name,unlocode,id) values (?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into voyage (voyage_number,id) values (?,?)
+Hibernate: insert into carrier_movement (arrival_location_id,arrival_time,departure_location_id,departure_time,id) values (?,?,?,?,?)
+Hibernate: insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: update application_settings set sample_loaded=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update carrier_movement set voyage_id=?,movement_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select next value for handling_event_seq
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select next value for handling_event_seq
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+Hibernate: select next value for cargo_seq
+Hibernate: insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+Hibernate: insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cargo (calculated_at,current_voyage_id,eta,unloaded_at_dest,last_event_id,last_known_location_id,misdirected,next_expected_location_id,next_expected_handling_event_type,next_expected_voyage_id,routing_status,transport_status,origin_id,spec_arrival_deadline,spec_destination_id,spec_origin_id,tracking_id,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into leg (load_location_id,load_time,unload_location_id,unload_time,voyage_id,id) values (?,?,?,?,?,?)
+Hibernate: update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+Hibernate: update leg set cargo_id=?,leg_order=? where id=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select v1_0.id,v1_0.voyage_number from voyage v1_0 where v1_0.voyage_number=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: select c1_0.id,c1_0.calculated_at,c1_0.current_voyage_id,c1_0.eta,c1_0.unloaded_at_dest,c1_0.last_event_id,c1_0.last_known_location_id,c1_0.misdirected,c1_0.next_expected_location_id,c1_0.next_expected_handling_event_type,c1_0.next_expected_voyage_id,c1_0.routing_status,c1_0.transport_status,c1_0.origin_id,c1_0.spec_arrival_deadline,c1_0.spec_destination_id,c1_0.spec_origin_id,c1_0.tracking_id from cargo c1_0 where c1_0.tracking_id=?
+Hibernate: select l1_0.id,l1_0.name,l1_0.unlocode from location l1_0 where l1_0.unlocode=?
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into handling_event (cargo_id,completion_time,location_id,registration,type,voyage_id,id) values (?,?,?,?,?,?,?)
+Hibernate: select he1_0.id,he1_0.cargo_id,he1_0.completion_time,he1_0.location_id,he1_0.registration,he1_0.type,he1_0.voyage_id from handling_event he1_0 join cargo c1_0 on c1_0.id=he1_0.cargo_id where c1_0.tracking_id=?
+Hibernate: update cargo set calculated_at=?,current_voyage_id=?,eta=?,unloaded_at_dest=?,last_event_id=?,last_known_location_id=?,misdirected=?,next_expected_location_id=?,next_expected_handling_event_type=?,next_expected_voyage_id=?,routing_status=?,transport_status=?,spec_arrival_deadline=?,spec_destination_id=? where id=?
+[INFO] Running smoke tests inside container cargo-tracker-spring-f9fd3cc2...
+Downloading cpython-3.14.3-linux-x86_64-gnu (download) (34.4MiB)
+ Downloaded cpython-3.14.3-linux-x86_64-gnu (download)
+Using CPython 3.14.3
+Creating virtual environment at: .venv
+Resolved 20 packages in 0.42ms
+Downloading pygments (1.2MiB)
+Downloading playwright (44.1MiB)
+ Downloaded pygments
+ Downloaded playwright
+Prepared 18 packages in 1.77s
+Installed 18 packages in 19ms
+ + certifi==2025.11.12
+ + charset-normalizer==3.4.4
+ + greenlet==3.2.4
+ + idna==3.11
+ + iniconfig==2.3.0
+ + packaging==25.0
+ + playwright==1.56.0
+ + pluggy==1.6.0
+ + pyee==13.0.0
+ + pygments==2.19.2
+ + pytest==8.4.2
+ + pytest-base-url==2.1.0
+ + pytest-playwright==0.7.1
+ + python-slugify==8.0.4
+ + requests==2.32.5
+ + text-unidecode==1.3
+ + typing-extensions==4.15.0
+ + urllib3==2.5.0
+Downloading Chromium 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-linux.zip
+|                                                                                |   0% of 173.9 MiB
+|■■■■■■■■                                                                        |  10% of 173.9 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 173.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 173.9 MiB
+Chromium 141.0.7390.37 (playwright build v1194) downloaded to /ms-playwright/chromium-1194
+Downloading FFMPEG playwright build v1011 from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+|                                                                                |   0% of 2.3 MiB
+|■■■■■■■■                                                                        |  10% of 2.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+FFMPEG playwright build v1011 downloaded to /ms-playwright/ffmpeg-1011
+Downloading Chromium Headless Shell 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-headless-shell-linux.zip
+|                                                                                |   0% of 104.3 MiB
+|■■■■■■■■                                                                        |  10% of 104.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 104.3 MiB
+Chromium Headless Shell 141.0.7390.37 (playwright build v1194) downloaded to /ms-playwright/chromium_headless_shell-1194
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0 -- /app/smoke/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app/smoke
+configfile: pyproject.toml
+plugins: base-url-2.1.0, playwright-0.7.1
+collecting ... collected 34 items
+
+smoke.py::test_cargo_tracker_homepage[chromium] FAILED                   [  2%]
+smoke.py::test_navigate_to_public_tracking_interface[chromium] FAILED    [  5%]
+smoke.py::test_navigate_to_administration_interface[chromium] FAILED     [  8%]
+smoke.py::test_open_event_logging_interface_popup[chromium] FAILED       [ 11%]
+smoke.py::test_verify_public_tracking_page_structure[chromium] FAILED    [ 14%]
+smoke.py::test_track_valid_cargo_abc123[chromium] FAILED                 [ 17%]
+smoke.py::test_track_valid_cargo_jkl567[chromium] FAILED                 [ 20%]
+smoke.py::test_track_valid_cargo_def789[chromium] FAILED                 [ 23%]
+smoke.py::test_track_valid_cargo_mno456[chromium] FAILED                 [ 26%]
+smoke.py::test_track_invalid_cargo_id[chromium] FAILED                   [ 29%]
+smoke.py::test_submit_empty_tracking_id[chromium] FAILED                 [ 32%]
+smoke.py::test_navigate_to_about_page_from_public_tracking[chromium] FAILED [ 35%]
+smoke.py::test_verify_dashboard_structure[chromium] FAILED               [ 38%]
+smoke.py::test_click_on_routed_cargo_details[chromium] FAILED            [ 41%]
+smoke.py::test_tooltip_verification[chromium] FAILED                     [ 44%]
+smoke.py::test_track_cargo_not_found_zzzzz[chromium] FAILED              [ 47%]
+smoke.py::test_tracking_shows_misdirection_warning_jkl567[chromium] FAILED [ 50%]
+smoke.py::test_tracking_shows_handling_event_history[chromium] FAILED    [ 52%]
+smoke.py::test_tracking_shows_map_iframe[chromium] FAILED                [ 55%]
+smoke.py::test_tracking_shows_eta_for_routed_cargo[chromium] FAILED      [ 58%]
+smoke.py::test_cargo_details_shows_itinerary[chromium] FAILED            [ 61%]
+smoke.py::test_misrouted_cargo_shows_warning_and_reroute[chromium] FAILED [ 64%]
+smoke.py::test_not_routed_cargo_links_to_route_page[chromium] FAILED     [ 67%]
+smoke.py::test_claimed_cargo_on_dashboard[chromium] FAILED               [ 70%]
+smoke.py::test_booking_flow_shows_location_dropdown[chromium] FAILED     [ 73%]
+smoke.py::test_event_logger_wizard_structure[chromium] FAILED            [ 76%]
+smoke.py::test_event_logger_tracking_id_dropdown[chromium] FAILED        [ 79%]
+smoke.py::test_rest_handling_report_submission[chromium] PASSED          [ 82%]
+smoke.py::test_rest_handling_report_invalid_tracking_id[chromium] PASSED [ 85%]
+smoke.py::test_rest_handling_report_invalid_unlocode[chromium] PASSED    [ 88%]
+smoke.py::test_rest_handling_report_invalid_event_type[chromium] PASSED  [ 91%]
+smoke.py::test_sse_cargo_endpoint[chromium] PASSED                       [ 94%]
+smoke.py::test_admin_tracking_page[chromium] FAILED                      [ 97%]
+smoke.py::test_admin_live_map_page[chromium] FAILED                      [100%]
+
+=================================== FAILURES ===================================
+____________________ test_cargo_tracker_homepage[chromium] _____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_cargo_tracker_homepage(page: Page):
+        # 1. Navigate to the Cargo Tracker homepage
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+    
+        # 2. Verify page title
+>       expect(page).to_have_title("Eclipse Cargo Tracker")
+E       AssertionError: Page title expected to be 'Eclipse Cargo Tracker'
+E       Actual value:  
+E       Call log:
+E         - Expect "to_have_title" with timeout 5000ms
+E           9 × unexpected value ""
+
+smoke.py:12: AssertionError
+_____________ test_navigate_to_public_tracking_interface[chromium] _____________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_navigate_to_public_tracking_interface(page: Page):
+        # 1. Navigate to home page
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+    
+        # 2. Click on "Public Tracking Interface" button
+>       page.get_by_role("link", name="Public Tracking Interface").click()
+
+smoke.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7fe2090>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Public Tracking Interface")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_____________ test_navigate_to_administration_interface[chromium] ______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_navigate_to_administration_interface(page: Page):
+        # 1. Navigate to home page
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+    
+        # 2. Click on "Administration" button
+>       page.get_by_role("link", name="Administration").click()
+
+smoke.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7fe3d70>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Administration")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+______________ test_open_event_logging_interface_popup[chromium] _______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_open_event_logging_interface_popup(page: Page):
+        # 1. Navigate to home page
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+    
+        # 2. Click on "Event Logging Interface" button and wait for popup
+        with page.expect_popup() as popup_info:
+>           page.get_by_role("link", name="Event Logging Interface").click()
+
+smoke.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7fe3110>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Event Logging Interface")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_____________ test_verify_public_tracking_page_structure[chromium] _____________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_verify_public_tracking_page_structure(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Verify page title is "Track Cargo"
+>       expect(page).to_have_title("Track Cargo")
+E       AssertionError: Page title expected to be 'Track Cargo'
+E       Actual value:  
+E       Call log:
+E         - Expect "to_have_title" with timeout 5000ms
+E           9 × unexpected value ""
+
+smoke.py:86: AssertionError
+___________________ test_track_valid_cargo_abc123[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_valid_cargo_abc123(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "ABC123" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("ABC123")
+
+smoke.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7cb54e0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("ABC123")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_track_valid_cargo_jkl567[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_valid_cargo_jkl567(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "JKL567" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("JKL567")
+
+smoke.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7f3f5e0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("JKL567")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_track_valid_cargo_def789[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_valid_cargo_def789(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "DEF789" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("DEF789")
+
+smoke.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7c54e00>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("DEF789")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_track_valid_cargo_mno456[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_valid_cargo_mno456(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "MNO456" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("MNO456")
+
+smoke.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b71d0e00>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("MNO456")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+____________________ test_track_invalid_cargo_id[chromium] _____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_invalid_cargo_id(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Enter "INVALID999" in the tracking ID input field
+>       page.get_by_placeholder("XYZ789").fill("INVALID999")
+
+smoke.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7c56ae0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("INVALID999")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_submit_empty_tracking_id[chromium] ____________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_submit_empty_tracking_id(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Leave tracking ID input field empty
+        # 3. Click "Track!" button
+>       page.get_by_role("button", name="Track!").click()
+
+smoke.py:180: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b716af00>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("button", name="Track!")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+__________ test_navigate_to_about_page_from_public_tracking[chromium] __________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_navigate_to_about_page_from_public_tracking(page: Page):
+        # 1. Navigate to public tracking page
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+    
+        # 2. Click on "About" menu item in side panel
+        # PrimeFaces menu items render as links within .ui-menu-list
+>       page.locator(".ui-menu-list >> text=About").click()
+
+smoke.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b71741a0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator(".ui-menu-list").locator("text=About")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+__________________ test_verify_dashboard_structure[chromium] ___________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_verify_dashboard_structure(page: Page):
+        """
+        Verify the basic structure of the dashboard page.
+        """
+        # 1. Navigate to admin dashboard page
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+    
+        # 2. Find the Routed Cargo Section table
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       expect(routed_cargo_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]")
+
+smoke.py:213: AssertionError
+_________________ test_click_on_routed_cargo_details[chromium] _________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_click_on_routed_cargo_details(page: Page):
+        """
+        Test clicking on a routed cargo item to view its details.
+        """
+        # 1. Navigate to admin dashboard page
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+    
+        # 2. Find the Routed Cargo Section table
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       expect(routed_cargo_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]")
+
+smoke.py:270: AssertionError
+_____________________ test_tooltip_verification[chromium] ______________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_tooltip_verification(page: Page):
+        """
+        Test to verify that tooltips appear correctly on hovering over specific elements.
+        """
+    
+        # 1. Navigate to admin dashboard page
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+    
+        # 2. Find the Routed Cargo Section table
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       expect(routed_cargo_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]")
+
+smoke.py:318: AssertionError
+__________________ test_track_cargo_not_found_zzzzz[chromium] __________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_track_cargo_not_found_zzzzz(page: Page):
+        """Track a non-existent cargo shows 'not found'."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("ZZZZZ")
+
+smoke.py:339: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b70e2ae0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("ZZZZZ")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+__________ test_tracking_shows_misdirection_warning_jkl567[chromium] ___________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_tracking_shows_misdirection_warning_jkl567(page: Page):
+        """Tracking page shows misdirection warning for JKL567."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("JKL567")
+
+smoke.py:347: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b70cafb0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("JKL567")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_____________ test_tracking_shows_handling_event_history[chromium] _____________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_tracking_shows_handling_event_history(page: Page):
+        """Tracking page displays handling event history for ABC123."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("ABC123")
+
+smoke.py:355: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7104930>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("ABC123")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________________ test_tracking_shows_map_iframe[chromium] ___________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_tracking_shows_map_iframe(page: Page):
+        """Tracking page includes a map iframe showing cargo location."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("ABC123")
+
+smoke.py:366: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b71752d0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("ABC123")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+______________ test_tracking_shows_eta_for_routed_cargo[chromium] ______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/public/track.xhtml'>
+
+    def test_tracking_shows_eta_for_routed_cargo(page: Page):
+        """Tracking page shows ETA for routed, non-misdirected cargo."""
+        page.goto("http://localhost:8080/cargo-tracker/public/track.xhtml")
+>       page.get_by_placeholder("XYZ789").fill("ABC123")
+
+smoke.py:375: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15919: in fill
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:212: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:590: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:602: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7452fb0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_placeholder("XYZ789")
+E               - locator resolved to <p:inputtext required="true" id="trackingIdInput" placeholder="XYZ789" title="Valid tracking ID" value="#{publicTrack.trackingId}"></p:inputtext>
+E               - fill("ABC123")
+E             - attempting fill action
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E               - waiting 20ms
+E               2 × waiting for element to be visible, enabled and editable
+E                 - element is not visible
+E               - retrying fill action
+E                 - waiting 100ms
+E               60 × waiting for element to be visible, enabled and editable
+E                  - element is not visible
+E                - retrying fill action
+E                  - waiting 500ms
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_________________ test_cargo_details_shows_itinerary[chromium] _________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_cargo_details_shows_itinerary(page: Page):
+        """Cargo details page shows itinerary with voyage, load/unload locations, and times."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       routed_cargo_table.get_by_role("link", name="ABC123").click()
+
+smoke.py:387: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7367060>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]").get_by_role("link", name="ABC123")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+___________ test_misrouted_cargo_shows_warning_and_reroute[chromium] ___________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_misrouted_cargo_shows_warning_and_reroute(page: Page):
+        """Cargo details page for misdirected cargo JKL567 shows routing details and itinerary."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        routed_cargo_table = page.locator(
+            "//label[normalize-space(.)='Routed Cargo']/following::table[1]"
+        )
+>       routed_cargo_table.get_by_role("link", name="JKL567").click()
+
+smoke.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7450460>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("//label[normalize-space(.)='Routed Cargo']/following::table[1]").get_by_role("link", name="JKL567")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_____________ test_not_routed_cargo_links_to_route_page[chromium] ______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_not_routed_cargo_links_to_route_page(page: Page):
+        """Not routed cargo table links to route selection page."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        not_routed_table = page.locator(
+            "//label[normalize-space(.)='Not Routed Cargo']/following::table[1]"
+        )
+>       expect(not_routed_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Not Routed Cargo']/following::table[1]")
+
+smoke.py:418: AssertionError
+__________________ test_claimed_cargo_on_dashboard[chromium] ___________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_claimed_cargo_on_dashboard(page: Page):
+        """Claimed cargo table shows MNO456."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        claimed_table = page.locator(
+            "//label[normalize-space(.)='Claimed Cargo']/following::table[1]"
+        )
+>       expect(claimed_table).to_be_visible()
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" with timeout 5000ms
+E         - waiting for locator("//label[normalize-space(.)='Claimed Cargo']/following::table[1]")
+
+smoke.py:431: AssertionError
+_____________ test_booking_flow_shows_location_dropdown[chromium] ______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_booking_flow_shows_location_dropdown(page: Page):
+        """Booking flow starts with origin selection showing all 13 locations."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+        # Navigate to booking page via the Book link in the sidebar
+>       page.locator(".ui-menu-list >> text=Book").click()
+
+smoke.py:439: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7323e20>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator(".ui-menu-list").locator("text=Book")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_________________ test_event_logger_wizard_structure[chromium] _________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_event_logger_wizard_structure(page: Page):
+        """Event Logger is a multi-step wizard with tracking ID, location, event type fields."""
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+        with page.expect_popup() as popup_info:
+>           page.get_by_role("link", name="Event Logging Interface").click()
+
+smoke.py:452: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7a816f0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Event Logging Interface")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+_______________ test_event_logger_tracking_id_dropdown[chromium] _______________
+
+page = <Page url='http://localhost:8080/cargo-tracker/index.xhtml'>
+
+    def test_event_logger_tracking_id_dropdown(page: Page):
+        """Event Logger tracking ID dropdown shows routed unclaimed cargos."""
+        page.goto("http://localhost:8080/cargo-tracker/index.xhtml")
+        with page.expect_popup() as popup_info:
+>           page.get_by_role("link", name="Event Logging Interface").click()
+
+smoke.py:464: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7a31f30>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for get_by_role("link", name="Event Logging Interface")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+______________________ test_admin_tracking_page[chromium] ______________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_admin_tracking_page(page: Page):
+        """Admin tracking page is accessible and has tracking input."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+>       page.locator(".ui-menu-list >> text=Track").click()
+
+smoke.py:568: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b73226c0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator(".ui-menu-list").locator("text=Track")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+______________________ test_admin_live_map_page[chromium] ______________________
+
+page = <Page url='http://localhost:8080/cargo-tracker/admin/dashboard.xhtml'>
+
+    def test_admin_live_map_page(page: Page):
+        """Admin live map page is accessible."""
+        page.goto("http://localhost:8080/cargo-tracker/admin/dashboard.xhtml")
+>       page.locator(".ui-menu-list >> text=Live").click()
+
+smoke.py:576: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py:15573: in click
+    self._sync(
+.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py:160: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py:549: in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7b85bccfe900>
+cb = <function Channel.send.<locals>.<lambda> at 0x7b85b7b2dd20>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator(".ui-menu-list").locator("text=Live")
+
+.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py:559: TimeoutError
+=========================== short test summary info ============================
+FAILED smoke.py::test_cargo_tracker_homepage[chromium] - AssertionError: Page...
+FAILED smoke.py::test_navigate_to_public_tracking_interface[chromium] - playw...
+FAILED smoke.py::test_navigate_to_administration_interface[chromium] - playwr...
+FAILED smoke.py::test_open_event_logging_interface_popup[chromium] - playwrig...
+FAILED smoke.py::test_verify_public_tracking_page_structure[chromium] - Asser...
+FAILED smoke.py::test_track_valid_cargo_abc123[chromium] - playwright._impl._...
+FAILED smoke.py::test_track_valid_cargo_jkl567[chromium] - playwright._impl._...
+FAILED smoke.py::test_track_valid_cargo_def789[chromium] - playwright._impl._...
+FAILED smoke.py::test_track_valid_cargo_mno456[chromium] - playwright._impl._...
+FAILED smoke.py::test_track_invalid_cargo_id[chromium] - playwright._impl._er...
+FAILED smoke.py::test_submit_empty_tracking_id[chromium] - playwright._impl._...
+FAILED smoke.py::test_navigate_to_about_page_from_public_tracking[chromium]
+FAILED smoke.py::test_verify_dashboard_structure[chromium] - AssertionError: ...
+FAILED smoke.py::test_click_on_routed_cargo_details[chromium] - AssertionErro...
+FAILED smoke.py::test_tooltip_verification[chromium] - AssertionError: Locato...
+FAILED smoke.py::test_track_cargo_not_found_zzzzz[chromium] - playwright._imp...
+FAILED smoke.py::test_tracking_shows_misdirection_warning_jkl567[chromium] - ...
+FAILED smoke.py::test_tracking_shows_handling_event_history[chromium] - playw...
+FAILED smoke.py::test_tracking_shows_map_iframe[chromium] - playwright._impl....
+FAILED smoke.py::test_tracking_shows_eta_for_routed_cargo[chromium] - playwri...
+FAILED smoke.py::test_cargo_details_shows_itinerary[chromium] - playwright._i...
+FAILED smoke.py::test_misrouted_cargo_shows_warning_and_reroute[chromium] - p...
+FAILED smoke.py::test_not_routed_cargo_links_to_route_page[chromium] - Assert...
+FAILED smoke.py::test_claimed_cargo_on_dashboard[chromium] - AssertionError: ...
+FAILED smoke.py::test_booking_flow_shows_location_dropdown[chromium] - playwr...
+FAILED smoke.py::test_event_logger_wizard_structure[chromium] - playwright._i...
+FAILED smoke.py::test_event_logger_tracking_id_dropdown[chromium] - playwrigh...
+FAILED smoke.py::test_admin_tracking_page[chromium] - playwright._impl._error...
+FAILED smoke.py::test_admin_live_map_page[chromium] - playwright._impl._error...
+=================== 29 failed, 5 passed in 698.88s (0:11:38) ===================

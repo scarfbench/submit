@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>Coffee Shop</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cookie%7cMontserrat:300,400,500,600,700%7cRoboto:300,400,500,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    <link href="/css/cafe.css" rel="stylesheet" />
+    <link href="/css/toastr.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#banner"><i class="fa fa-coffee"></i> Coffee Shop</a>
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Twitter</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li id="rewards_link" class="nav-item">
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rewardsModal">Rewards</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<span id="banner"></span>
+<section class="banner">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="content">
+                <h5>Established 2020</h5>
+                <h1>Coffee Shop</h1>
+                <a href="#menu" class="btn">Place an Order</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal" id="rewardsModal">
+    <div class="modal-dialog">
+        <form id="rewards_modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Rewards Info</h4>
+                    <button id="btn_cancel" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body flex-fill d-inline-flex">
+                    <div class="flex-fill d-inline-flex justify-content-end form-group">
+                        <label for="rewards_id" class="mr-sm-2 input-cafe text-nowrap mb-2">Rewards email:</label>
+                        <input type="email" required class="form-control mb-2 mr-sm-2" placeholder="Enter rewards email" id="rewards_id" rewards_id="rewards_id">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="flex-fill">
+                        <button type="submit" id="rewards_entered" class="btn-sm btn-primary pull-right">Done</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<span class="anchor" id="about"></span>
+<section class="about">
+    <div class="container padding-2x">
+        <div class="row text-wrap">
+            <div class="col-sm-12">
+                <h3 class="text-center">Welcome to Coffee Shop</h3>
+                <hr>
+                <p class="text-center">A demo application showcasing an event driven architecture.</p>
+            </div>
+        </div>
+        <div class="row about-info">
+            <div class="col-sm-12 col-md-6">
+                <div class="box wow fadeIn" data-wow-duration="400ms" data-wow-offset="10">
+                    <img src="/images/about.jpg" alt="about" />
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="box wow fadeIn" data-wow-duration="800ms" data-wow-offset="10">
+                    <h5>Our Story</h5>
+                    <p>This application is a demo showcasing an event driven application that uses messaging for communication.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<span class="anchor" id="menu"></span>
+<section class="menu">
+    <div class="container padding-2x">
+        <div class="row text-wrap">
+            <div class="col-sm-12">
+                <h3 class="text-center">Menu</h3>
+                <hr>
+                <p class="text-center">Choose your items below.</p>
+            </div>
+        </div>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog" display="flex">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Current Order</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="pt-10">
+                            <ul class="list-group mt-10" id="current_order"></ul>
+                        </div>
+                        <div class="alert alert-success" role="alert" id="item_added_alert"></div>
+                    </div>
+                    <div class="modal-body">
+                        <div id="rewards_display" class="small text-muted" style="align-self: flex-end">
+                            <text>Rewards member</text>
+                            <text id="rewards_display_id"></text>
+                        </div>
+                        <form class="form-inline" action="" id="item_form">
+                            <div class="flex-fill d-inline-flex justify-content-between">
+                                <input type="hidden" id="item_type" name="item_type"/>
+                                <input type="hidden" id="item_price" name="item_price"/>
+                                <label for="item" class="mr-sm-2 input-cafe text-nowrap mb-2" id="item_label"></label>
+                                <input type="hidden" id="item" name="item"/>
+                                <label for="name" class="mr-sm-2 input-cafe text-nowrap mb-2">for Name:</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter name" id="name" name="name">
+                                <button type="submit" class="btn-sm btn-primary mb-2">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <form class="form-inline flex-fill" action="" id="order_form">
+                            <div class="flex-fill">
+                                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Back to Menu</button>
+                                <button type="submit" class="btn-sm btn-primary pull-right">Place Order</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row menu-lists">
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs nav-justified" id="menuTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="espresso-tab" data-bs-toggle="tab"
+                                data-bs-target="#espresso" type="button" role="tab"
+                                aria-controls="espresso" aria-selected="true">BARISTA</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="bakery-tab" data-bs-toggle="tab"
+                                data-bs-target="#bakery" type="button" role="tab"
+                                aria-controls="bakery" aria-selected="false">BAKERY</button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="espresso" role="tabpanel" aria-labelledby="espresso-tab">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Coffee (black)</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="COFFEE_BLACK" data-item_type="beverage" data-item_price="3.50" data-display_name="Coffee (black)">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>a full cup of coffee</p></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Coffee (with room)</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="COFFEE_WITH_ROOM" data-item_type="beverage" data-item_price="3.50" data-display_name="Coffee (with room)">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>a cup of coffee with room for cream or milk</p></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Espresso - $3.25</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="ESPRESSO" data-item_type="beverage" data-item_price="4.00" data-display_name="Espresso">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>espresso served with seltzer water</p></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Espresso (Double) - $4.25</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="ESPRESSO_DOUBLE" data-item_type="beverage" data-item_price="5.25" data-display_name="Double Espresso">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>2 shots of espresso</p></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Cappuccino - $3.75</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="CAPPUCCINO" data-item_type="beverage" data-item_price="3.75" data-display_name="Cappuccino">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>espresso + 4 oz steamed milk</p></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Croissant - $4.00</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="CROISSANT" data-item_type="kitchen" data-item_price="3.00" data-display_name="Butter Croissant">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>fresh baked butter croissant</p></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Chocolate Croissant - $4.00</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="CROISSANT_CHOCOLATE" data-item_type="kitchen" data-item_price="3.25" data-display_name="Chocolate Croissant">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>fresh baked chocolate croissant</p></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Muffin - $3.25</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="MUFFIN" data-item_type="kitchen" data-item_price="3.50" data-display_name="Muffin of the Day">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>blueberry muffin</p></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="name-price-wrap">
+                                        <div class="name pull-left"><h6>Cakepop - $2.25</h6></div>
+                                        <div class="price pull-right">
+                                            <button type="button" class="btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-whatever="CAKEPOP" data-item_type="kitchen" data-item_price="2.50" data-display_name="Cakepop">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="desc"><p>chocolate cake with strawberry frosting</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bakery" role="tabpanel" aria-labelledby="bakery-tab">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <p>Additional bakery items coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<span class="anchor" id="statusboard"></span>
+<section class="statusboard">
+    <div class="container padding-2x">
+        <div class="row text-wrap">
+            <div class="col-sm-12">
+                <h3 class="text-center">Orders</h3>
+                <hr/>
+                <p class="text-center">Check Here for Your Order Status</p>
+            </div>
+            <div class="row justify-content-center">
+                <table class="table table-lg table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th style="width:30%">Customer</th>
+                        <th style="width:30%">Item</th>
+                        <th style="width:20%">Status</th>
+                        <th style="width:20%">Prepared By</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<span class="anchor" id="team"></span>
+<span class="anchor" id="gallery"></span>
+<span class="anchor" id="contact"></span>
+
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-center">Coffee Shop Demo</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class=".d-none"></div>
+<appvalues id="appvalues"
+           th:attr="data-store-id=${storeId},data-stream-url=${streamUrl}"
+/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/jquery.matchHeight.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/cafe.js"></script>
+<script src="/js/wow.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+<script src="/js/toastr.js"></script>
+<script>
+    new WOW().init();
+</script>
+</body>
+</html>

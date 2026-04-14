@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess My Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .game-info {
+            color: black;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .blue-text {
+            color: blue;
+            font-weight: bold;
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        input[type="number"] {
+            font-size: 18px;
+            padding: 5px;
+            width: 80px;
+        }
+        button {
+            font-size: 18px;
+            padding: 8px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .hint {
+            color: #d20005;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .message {
+            color: #d20005;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .success {
+            color: #008000;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess My Number</h1>
+
+    <div class="game-info">
+        <p>I'm thinking of a number from
+        <span class="blue-text" th:text="${minimum}">0</span>
+        to
+        <span class="blue-text" th:text="${maximum}">100</span>.
+        You have
+        <span class="blue-text" th:text="${remainingGuesses}">10</span>
+        guesses.</p>
+    </div>
+
+    <div class="form-container">
+        <form method="post" th:action="@{/guess}">
+            <label for="userNumber">Number:</label>
+            <input type="number"
+                   id="userNumber"
+                   name="userNumber"
+                   required
+                   th:value="${userNumber}"
+                   th:disabled="${gameOver}"/>
+
+            <button type="submit"
+                    th:disabled="${gameOver}">Guess</button>
+        </form>
+
+        <form method="post" th:action="@{/reset}" style="display: inline;">
+            <button type="submit">Reset</button>
+        </form>
+
+        <div th:if="${hint != null and hint != ''}" class="hint" th:text="${hint}"></div>
+        <div th:if="${message != null and message != ''}"
+             th:class="${won ? 'success' : 'message'}"
+             th:text="${message}"></div>
+    </div>
+</body>
+</html>

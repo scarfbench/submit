@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interceptor Example Response</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .message {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100px;
+        }
+        input[type="submit"]:hover {
+            background-color: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interceptor Example Response</h1>
+    <div class="message">
+        Hello, {name}.
+    </div>
+    <p><em>Note: The name was processed by the HelloInterceptor, which converts it to lowercase.</em></p>
+    <form action="/" method="get">
+        <input type="submit" value="Back" />
+    </form>
+</body>
+</html>

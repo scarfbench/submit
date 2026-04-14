@@ -1,0 +1,87 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.13kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 515B done
+#3 DONE 0.0s
+
+#4 [ 1/13] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 241.01kB done
+#5 DONE 0.0s
+
+#6 [ 2/13] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [ 5/13] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [ 3/13] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#8 CACHED
+
+#9 [ 4/13] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#9 CACHED
+
+#10 [ 6/13] WORKDIR /app
+#10 CACHED
+
+#11 [ 7/13] COPY pom.xml .
+#11 DONE 0.1s
+
+#12 [ 8/13] COPY cart-ejb/pom.xml cart-ejb/
+#12 DONE 0.1s
+
+#13 [ 9/13] COPY cart-web/pom.xml cart-web/
+#13 DONE 0.1s
+
+#14 [10/13] RUN mvn dependency:go-offline -q
+#14 DONE 24.4s
+
+#15 [11/13] COPY . .
+#15 DONE 0.1s
+
+#16 [12/13] RUN mvn install -pl cart-web -am -DskipTests
+#16 0.918 [INFO] Scanning for projects...
+#16 1.658 [ERROR] [ERROR] Could not find the selected project in the reactor: cart-web @ 
+#16 1.659 [ERROR] Could not find the selected project in the reactor: cart-web -> [Help 1]
+#16 1.659 [ERROR] 
+#16 1.660 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#16 1.660 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#16 1.660 [ERROR] 
+#16 1.660 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#16 1.660 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MavenExecutionException
+#16 ERROR: process "/bin/sh -c mvn install -pl cart-web -am -DskipTests" did not complete successfully: exit code: 1
+------
+ > [12/13] RUN mvn install -pl cart-web -am -DskipTests:
+0.918 [INFO] Scanning for projects...
+1.658 [ERROR] [ERROR] Could not find the selected project in the reactor: cart-web @ 
+1.659 [ERROR] Could not find the selected project in the reactor: cart-web -> [Help 1]
+1.659 [ERROR] 
+1.660 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+1.660 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+1.660 [ERROR] 
+1.660 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+1.660 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MavenExecutionException
+------
+Dockerfile:31
+--------------------
+  29 |     # Build application
+  30 |     COPY . .
+  31 | >>> RUN mvn install -pl cart-web -am -DskipTests
+  32 |     
+  33 |     RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn install -pl cart-web -am -DskipTests" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: cart-quarkus-64ca69a1
+make: *** [Makefile:20: compile] Error 1

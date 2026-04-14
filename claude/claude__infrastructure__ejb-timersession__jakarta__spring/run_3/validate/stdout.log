@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "timersession-spring:latest" .
+[INFO] Built image: timersession-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "timersession-spring" "timersession-spring:latest"
+2b5eefddbcddce434717b6c0733ef303fa03ddbc9475c52b0a7463307d8f8333
+[INFO] Started timersession-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.

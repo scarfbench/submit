@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}"></head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<div class="container">
+    <h1 th:text="${specialty.name}">Specialty</h1>
+    <div class="card mt-3">
+        <div class="card-body">
+            <p><strong>ID:</strong> <span th:text="${specialty.id}"></span></p>
+            <p><strong>Name:</strong> <span th:text="${specialty.name}"></span></p>
+        </div>
+    </div>
+    <a th:href="@{/specialties}" class="btn btn-secondary mt-3">Back to Specialties</a>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

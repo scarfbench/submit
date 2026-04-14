@@ -1,0 +1,17 @@
+{
+  "status": "CONVERTED",
+  "agent": "claude",
+  "app": "petclinic",
+  "layer": "whole_applications",
+  "repeat": 1,
+  "source_framework": "jakarta",
+  "target_framework": "spring",
+  "num_smoke_tests": 13,
+  "compile_ok": "TRUE",
+  "deploy_ok": "FALSE",
+  "tests_passed": 0,
+  "failure_reason": "Container started but application failed to start; Cannot test - deployment failed",
+  "failure_category": "deploy_dependency",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

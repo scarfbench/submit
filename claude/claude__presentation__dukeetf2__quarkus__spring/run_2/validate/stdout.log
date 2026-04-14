@@ -1,0 +1,58 @@
+docker build -f Dockerfile -t "dukeetf2-spring:latest" .
+[INFO] Built image: dukeetf2-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "dukeetf2-spring" "dukeetf2-spring:latest"
+7af34c6f392d7570d63a46cada47a267fb3a5b93cac252f23550670c59b4fbc9
+[INFO] Started dukeetf2-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /index.html -> 200
+[WARN] GET /css/default.css -> 404
+[PASS] WS changes over 5s: 99.80/298058 -> 99.40/295913
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__dukeetf2__quarkus__spring/run_2/output'
+docker rm -f "dukeetf2-spring"
+dukeetf2-spring
+[INFO] Container removed (if it existed)
+docker rmi "dukeetf2-spring:latest"
+Untagged: dukeetf2-spring:latest
+Deleted: sha256:c1452a4e46035633ae47d839823011fa2e98378485b96587bdb4024797d47164
+docker image prune -f
+Deleted Images:
+deleted: sha256:8e37bb79fc7c5581731b0ff89b5d6bad1f1103205f80f8b304e99aad8681b784
+deleted: sha256:d2fca8129bc68b74e8a9ae686b8ac3c2519722b5e205960a90ff10b64f8d33cb
+deleted: sha256:c04af824cb5c5a42bf6099c032d0fa1e01ffa4ac0b2d25eccacf6ad77262f5fe
+deleted: sha256:ae577c66046d7253a4bab5f3020cf1444f0b6e3c27c2d238aa22d914305ea903
+deleted: sha256:835154ba52fb450c4e12ba1c85538d9d069a416d1db1cfe782970d62462697c8
+deleted: sha256:752251714a52cca513044ca59efee5a95f47874af039365305970836623ec718
+deleted: sha256:90c2a128505363fadc6d924695a50b93891baddfd4101fde72d9492ff5e49a42
+deleted: sha256:6eec4aabd36ede2e93b7ac055986a9ab5738a7bfbaeb4def658c51fe11d7a9b7
+deleted: sha256:7e5514aeb15aded6dae4e7a9a8544eaf49eebc65d9e288ccfb50d502eb21a2ce
+deleted: sha256:03209a41a0c817a3abe945992de05b411d6eb983fdb54c106c8daf817b243a46
+deleted: sha256:760000cf441b2357614cab410a4c5584e53a5790e8df10deb39655ff9bede3cf
+deleted: sha256:6605a3fdfc003e92a2241233b9071533c60e5599309217737a5ae411d7285e4f
+deleted: sha256:b02111c9b73ef3854ac7b4adce68c85df62fecb5aeed1b986a7640f28ada0d1a
+deleted: sha256:45f40d9cc90ad2788389c6ac04763e8657cfd8eaedca55635d8584031f09a304
+deleted: sha256:aa311ab929471c815f96b8298d799364c25207adc48382d39df9e17861fb6fd4
+deleted: sha256:b8fdd0674b8f3516b283d6874ad362307f98ddfd3dc411a13d640e41d91bc0d0
+deleted: sha256:741aca63be21daaf2a98e180c3b2a436717ffc88947d78762553922c35d300cc
+deleted: sha256:0ab5581a3d72ec868bbf5d28781ed93c792d4d919d453b75b35f3e1af1c6a9ed
+deleted: sha256:1f55090d09a6ae2fc8a20e7e8d6cbdab21d9d250f0597c706de915ce7f5ad012
+deleted: sha256:1e0b965da12879025a88a7cd96b2e879e1597f40883875c85112aab4b37b53de
+deleted: sha256:1eefc825fefc93de055865e4f440f0b5efe4e36ec3914a86c4d1de238f6dc4ab
+deleted: sha256:04e5f7691223f148657939736df8303c45d32ad2db123d50f2ef48ed04f11cae
+deleted: sha256:1c041d581b9a0ce5f82e92a4d774e793bab8f21212d19c73733c1663b1e965d4
+deleted: sha256:cab0a30874de183cdbda9d95c0d1c7eff9fc39a1b42c87ab739573033f6d2000
+deleted: sha256:1c75d8cad167c8e6b0e5e47f4c5c7df98dd3fbe0676a72af49e8e773fcf42243
+deleted: sha256:4c9feb57d94c827d29ddb8dd1b466ae580ddd7e91e99e963231c0aa93a159232
+deleted: sha256:065453e871192dadf3f5b74583ccc031727db819d94acc84196da8489a0a2ff9
+deleted: sha256:944b7acf4a87d1faf499ee18e45de4cbf5be2f5a9b815454ff4753d193ec59af
+deleted: sha256:853ebb18876db0002f3a512081c65ce61d8846cb331ba49cbfd6e85d9e81cc50
+deleted: sha256:aa8fec31036ea9c11c4b8137600f09333429870900bf8bdafbf6b429041e31ce
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__dukeetf2__quarkus__spring/run_2/output'

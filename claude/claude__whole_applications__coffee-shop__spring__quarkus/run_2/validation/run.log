@@ -1,0 +1,68 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.03kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 442B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 67.24MB 0.2s done
+#5 DONE 0.2s
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [6/9] WORKDIR /app
+#7 CACHED
+
+#8 [7/9] COPY . .
+#8 CACHED
+
+#9 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#9 CACHED
+
+#10 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#10 CACHED
+
+#11 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#11 CACHED
+
+#12 [5/9] RUN playwright install --with-deps chromium
+#12 CACHED
+
+#13 [9/9] RUN mvn clean package -DskipTests -Dpmd.skip=true -Dspotbugs.skip=true
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:fafedafdacbf25455fb7543c714e84ea94f89e53595fa78bb5beb799a02c874b done
+#14 exporting config sha256:ccf3f426f3792de23c97ae701fe936dd357abe84413a903cc808edc42d912453 done
+#14 exporting attestation manifest sha256:da50c411f37e5faf1f768858628e1a5d669fe08dd4a6a08362f346dee9fb38d3 0.1s done
+#14 exporting manifest list sha256:dd8960b449261a3a203fcf6d388b65789f0fbc75caa049b68bf2155b7c1bacbf
+#14 exporting manifest list sha256:dd8960b449261a3a203fcf6d388b65789f0fbc75caa049b68bf2155b7c1bacbf 0.0s done
+#14 naming to docker.io/library/coffeeshop-quarkus:e5cefb1f done
+#14 unpacking to docker.io/library/coffeeshop-quarkus:e5cefb1f done
+#14 DONE 0.2s
+[INFO] Built image: coffeeshop-quarkus:e5cefb1f
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name coffeeshop-quarkus-177e5a20 \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	-e QUARKUS_PROFILE=dev \
+	-e STREAM_URL=http://localhost:8080/dashboard/stream \
+	-e STORE_ID=ATLANTA \
+	coffeeshop-quarkus:e5cefb1f
+adfb0b442ea79eed3ea761063716e77dc9a74372bf99df3fa05358d4702badff
+[INFO] Started coffeeshop-quarkus-177e5a20, waiting for app to start...
+Error: Unable to access jarfile target/quarkus-app/quarkus-run.jar

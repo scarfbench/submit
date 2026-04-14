@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Concurrency Jobs Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Concurrency Jobs Example</h1>
+        <p>Submit jobs with optional priority token. Jobs with valid tokens execute on high-priority thread pool (5-10 threads), others on low-priority pool (2-4 threads).</p>
+
+        <div th:if="${message}" th:class="'message ' + ${messageType}">
+            <span th:text="${message}">Message</span>
+        </div>
+
+        <form action="/submit" method="post">
+            <label for="token">Token (optional):</label>
+            <input type="text" id="token" name="token" placeholder="Enter your token here"/>
+
+            <label for="jobID">Job ID:</label>
+            <input type="number" id="jobID" name="jobID" required min="1" placeholder="Enter job ID"/>
+
+            <input type="submit" value="Submit Job"/>
+        </form>
+
+        <hr/>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Get a token from: <a href="/webapi/JobService/token" target="_blank">/webapi/JobService/token</a></li>
+            <li>Copy the token and paste it in the form above</li>
+            <li>Enter a Job ID and submit</li>
+            <li>Jobs with valid tokens will be executed with high priority</li>
+        </ol>
+    </div>
+</body>
+</html>

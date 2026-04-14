@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "websocketbot",
+  "layer": "presentation",
+  "repeat": 3,
+  "source_framework": "jakarta",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 21,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 6,
+  "failure_reason": "15 failed, 0 errors, 6 passed out of 21 tests",
+  "failure_category": "test_failures",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

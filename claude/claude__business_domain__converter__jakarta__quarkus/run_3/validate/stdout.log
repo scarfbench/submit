@@ -1,0 +1,32 @@
+docker build -f Dockerfile -t "converter-quarkus":latest .
+[INFO] Built image: converter-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "converter-quarkus" "converter-quarkus":latest
+5718cc595158ca78c977229107c89ef9e4d26b70b35284e23b2764c62446fe47
+[INFO] Started converter-quarkus, waiting for app to start...
+### Check for startup failure or success
+[INFO] Quarkus application started and ready.
+---[ 00:40:32 - Smoke test ]---
+[PASS] Page loaded successfully and contains expected text.
+[PASS] Convertion displayed correctly.
+Summary: 2/2 tests passed.
+---[ 00:40:32 - Smoke test complete ]---
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__business_domain__converter__jakarta__quarkus/run_3/output'
+docker rm -f "converter-quarkus"
+converter-quarkus
+[INFO] Container removed (if it existed)
+docker rmi "converter-quarkus":latest
+Untagged: converter-quarkus:latest
+Deleted: sha256:65c7c4dcf0804d3221a2ad42802bea44aa99d5519ad805de250ae5c9647b8888
+docker image prune -f
+Deleted Images:
+deleted: sha256:9211b79b5000275fc86da08ee09c59f94d4c6db977e9426b4e4c426a9970e1f4
+deleted: sha256:f7661bb6403bb995bceb258f474a8f2be418b8e2704d4f80ae3b10b9b6829d44
+deleted: sha256:32c31352077d504601ad08635df02eee829e23ce08f56c0e1204ad6943fd6e31
+deleted: sha256:f774431cbf62d2f0cb3eae347878af6a35b37c138b3eb26008737070b236da6d
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__business_domain__converter__jakarta__quarkus/run_3/output'

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Roster Jakarta EE Application">
+
+    <!-- Enable Jakarta EE features -->
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+    </featureManager>
+
+    <!-- HTTP endpoint -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- Application configuration -->
+    <webApplication id="roster" location="roster.war" contextRoot="/">
+        <classloader apiTypeVisibility="+third-party" />
+    </webApplication>
+
+    <!-- H2 DataSource configuration -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2-*.jar"/>
+    </library>
+
+    <dataSource id="RosterDS" jndiName="jdbc/RosterDS" type="javax.sql.DataSource">
+        <jdbcDriver libraryRef="h2Lib" javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"/>
+        <properties url="jdbc:h2:mem:roster;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+                    user="sa"
+                    password=""/>
+    </dataSource>
+
+</server>

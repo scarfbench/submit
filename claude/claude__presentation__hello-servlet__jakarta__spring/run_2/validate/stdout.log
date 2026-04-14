@@ -1,0 +1,4 @@
+docker build -f Dockerfile -t "hello-servlet-spring:latest" .
+[INFO] Built image: hello-servlet-spring:latest
+### Run the container in detached mode
+docker run -d --name "hello-servlet-spring" "hello-servlet-spring:latest"

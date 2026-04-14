@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Coffee Shop Jakarta EE Application">
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>microProfile-6.1</feature>
+    </featureManager>
+
+    <!-- HTTP endpoint -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  host="*"
+                  httpPort="8080"
+                  httpsPort="9443"/>
+
+    <!-- Application configuration -->
+    <webApplication location="coffeeshop.war" contextRoot="/">
+        <classloader apiTypeVisibility="+third-party"/>
+    </webApplication>
+
+    <!-- Data source configuration using H2 in-memory database -->
+    <library id="h2lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2*.jar"/>
+    </library>
+
+    <dataSource id="DefaultDataSource" jndiName="jdbc/coffeeshop">
+        <jdbcDriver libraryRef="h2lib"/>
+        <properties URL="jdbc:h2:mem:coffeeshopdb;DB_CLOSE_DELAY=-1"
+            user="sa"
+            password=""/>
+    </dataSource>
+
+    <!-- Logging -->
+    <logging consoleLogLevel="INFO"
+             traceSpecification="*=info:io.quarkuscoffeeshop.*=debug"/>
+
+</server>

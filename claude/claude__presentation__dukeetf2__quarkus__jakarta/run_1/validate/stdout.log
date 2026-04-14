@@ -1,0 +1,4 @@
+docker build -f Dockerfile -t "dukeetf2-jakarta:latest" .
+[INFO] Built image: dukeetf2-jakarta:latest
+### Run the container in detached mode
+docker run -d --name "dukeetf2-jakarta" "dukeetf2-jakarta:latest"

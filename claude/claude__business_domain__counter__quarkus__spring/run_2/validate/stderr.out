@@ -1,0 +1,53 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 876B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B done
+#3 DONE 0.5s
+
+#4 [1/8] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:63b453701d8e0a4c14dc138efa7d46d3235a156fb80fd16342bb554b00b456db
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 205.28kB done
+#5 ...
+
+#6 [5/8] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [2/8] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [3/8] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#8 CACHED
+
+#9 [4/8] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#9 CACHED
+
+#5 [internal] load build context
+#5 DONE 0.3s
+
+#10 [6/8] WORKDIR /app
+#10 CACHED
+
+#11 [7/8] COPY . .
+#11 DONE 0.5s
+
+#12 [8/8] RUN if [ -f smoke.py ]; then chmod +x smoke.py; fi
+#12 DONE 2.2s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.6s done
+#13 writing image sha256:2ccc8d3ca3668e470bb7acbd60a08c838f9f4986ae76118fbb99ca993824d558
+#13 writing image sha256:2ccc8d3ca3668e470bb7acbd60a08c838f9f4986ae76118fbb99ca993824d558 0.0s done
+#13 naming to docker.io/library/counter-spring:latest 0.1s done
+#13 DONE 1.4s
+make: *** [Makefile:31: up] Error 1

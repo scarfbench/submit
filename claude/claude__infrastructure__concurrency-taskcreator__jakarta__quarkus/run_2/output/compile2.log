@@ -1,0 +1,7 @@
+[ERROR] Failed to execute goal on project taskcreator: Could not resolve dependencies for project jakarta.examples.tutorial.concurrency:taskcreator:jar:10-SNAPSHOT: The following artifacts could not be resolved: io.quarkiverse.myfaces:quarkus-myfaces:jar:3.0.3 (absent): Could not find artifact io.quarkiverse.myfaces:quarkus-myfaces:jar:3.0.3 in central (https://repo.maven.apache.org/maven2) -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException

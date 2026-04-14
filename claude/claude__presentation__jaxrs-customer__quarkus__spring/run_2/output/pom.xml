@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>spring.examples.tutorial.web.servlet</groupId>
+  <artifactId>jaxrs-customer</artifactId>
+  <version>1.0.0-Spring</version>
+  <packaging>jar</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+    <spring-boot.version>3.2.0</spring-boot.version>
+  </properties>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.0</version>
+    <relativePath/>
+  </parent>
+
+  <dependencies>
+    <!-- Spring Boot Starter Web for REST APIs -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- Spring Boot Starter Data JPA for Hibernate -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!-- H2 Database -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Jakarta XML Bind API for JAXB support -->
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+
+    <!-- JAXB Runtime -->
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>4.0.2</version>
+    </dependency>
+
+    <!-- Jackson for JSON processing (included in spring-boot-starter-web) -->
+
+    <!-- JSF support for Spring Boot -->
+    <dependency>
+      <groupId>org.joinfaces</groupId>
+      <artifactId>jsf-spring-boot-starter</artifactId>
+      <version>5.2.0</version>
+    </dependency>
+
+    <!-- Jakarta Faces API -->
+    <dependency>
+      <groupId>jakarta.faces</groupId>
+      <artifactId>jakarta.faces-api</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+
+    <!-- MyFaces Implementation -->
+    <dependency>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-impl</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+
+    <!-- Jakarta Servlet API -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

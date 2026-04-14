@@ -1,0 +1,17 @@
+{
+  "status": "CONVERTED",
+  "agent": "claude",
+  "app": "cargotracker",
+  "layer": "whole_applications",
+  "repeat": 3,
+  "source_framework": "quarkus",
+  "target_framework": "jakarta",
+  "num_smoke_tests": 34,
+  "compile_ok": "FALSE",
+  "deploy_ok": "FALSE",
+  "tests_passed": 0,
+  "failure_reason": "Maven build failed; Cannot deploy - compilation failed; Cannot test - deployment failed",
+  "failure_category": "deploy_dependency",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

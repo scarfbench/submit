@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>jakarta.examples.tutorial.web.servlet</groupId>
+  <artifactId>jaxrs-customer</artifactId>
+  <version>1.0.0-Jakarta</version>
+  <packaging>war</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+    <jakarta.ee.version>10.0.0</jakarta.ee.version>
+    <hibernate.version>6.2.7.Final</hibernate.version>
+    <h2.version>2.2.224</h2.version>
+  </properties>
+
+  <dependencies>
+    <!-- Jakarta EE 10 Platform -->
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <version>${jakarta.ee.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Hibernate ORM for JPA Implementation -->
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+
+    <!-- H2 Database -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.version}</version>
+    </dependency>
+
+    <!-- Jakarta XML Binding (JAXB) Implementation -->
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>4.0.3</version>
+    </dependency>
+
+    <!-- Jakarta JSON Binding (JSON-B) Implementation -->
+    <dependency>
+      <groupId>org.eclipse.parsson</groupId>
+      <artifactId>parsson</artifactId>
+      <version>1.1.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse</groupId>
+      <artifactId>yasson</artifactId>
+      <version>3.0.3</version>
+    </dependency>
+
+    <!-- Jakarta Faces (JSF) Implementation -->
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>jakarta.faces</artifactId>
+      <version>4.0.4</version>
+    </dependency>
+
+    <!-- Weld (CDI Implementation) for standalone use -->
+    <dependency>
+      <groupId>org.jboss.weld.servlet</groupId>
+      <artifactId>weld-servlet-core</artifactId>
+      <version>5.1.2.Final</version>
+    </dependency>
+
+    <!-- RESTEasy for JAX-RS Implementation -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-core</artifactId>
+      <version>6.2.5.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jackson2-provider</artifactId>
+      <version>6.2.5.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-client</artifactId>
+      <version>6.2.5.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-servlet-initializer</artifactId>
+      <version>6.2.5.Final</version>
+    </dependency>
+
+    <!-- Jackson for JSON Processing -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.15.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.15.2</version>
+    </dependency>
+
+    <!-- Transaction API -->
+    <dependency>
+      <groupId>jakarta.transaction</groupId>
+      <artifactId>jakarta.transaction-api</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>jaxrs-customer</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

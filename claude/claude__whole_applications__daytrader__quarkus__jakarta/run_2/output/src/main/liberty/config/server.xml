@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="DayTrader Jakarta EE Server">
+
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>mpConfig-3.1</feature>
+        <feature>localConnector-1.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443" />
+
+    <!-- Basic user registry (required for EJB/ORB) -->
+    <basicRegistry id="basic" realm="BasicRealm">
+        <user name="admin" password="admin"/>
+    </basicRegistry>
+
+    <!-- H2 Database Library -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2*.jar"/>
+    </library>
+
+    <!-- JDBC Driver for H2 -->
+    <jdbcDriver id="h2Driver" libraryRef="h2Lib"/>
+
+    <!-- DataSource Configuration (MODE=LEGACY for EclipseLink H2Platform compatibility) -->
+    <dataSource id="TradeDataSource" jndiName="jdbc/TradeDataSource" jdbcDriverRef="h2Driver">
+        <properties URL="jdbc:h2:mem:tradedb;DB_CLOSE_DELAY=-1;MODE=LEGACY" user="sa" password=""/>
+    </dataSource>
+
+    <!-- Override default datasource to use H2 instead of Derby -->
+    <dataSource id="DefaultDataSource" jndiName="jdbc/defaultDS" jdbcDriverRef="h2Driver">
+        <properties URL="jdbc:h2:mem:defaultdb;DB_CLOSE_DELAY=-1;MODE=LEGACY" user="sa" password=""/>
+    </dataSource>
+
+    <!-- JMS Configuration using embedded messaging -->
+    <wasJmsEndpoint id="InboundJmsCommsEndpoint" wasJmsPort="7276" wasJmsSSLPort="9100"/>
+
+    <jmsActivationSpec id="daytrader/DTBroker3MDB">
+        <properties.wasJms destinationType="jakarta.jms.Queue" destinationRef="TradeBrokerQueue"/>
+    </jmsActivationSpec>
+
+    <jmsActivationSpec id="daytrader/DTStreamer3MDB">
+        <properties.wasJms destinationType="jakarta.jms.Topic" destinationRef="TradeStreamerTopic"/>
+    </jmsActivationSpec>
+
+    <jmsQueue id="TradeBrokerQueue" jndiName="jms/TradeBrokerQueue">
+        <properties.wasJms queueName="TradeBrokerQueue"/>
+    </jmsQueue>
+
+    <jmsTopic id="TradeStreamerTopic" jndiName="jms/TradeStreamerTopic">
+        <properties.wasJms topicName="TradeStreamerTopic"/>
+    </jmsTopic>
+
+    <jmsConnectionFactory id="QueueConnectionFactory" jndiName="jms/QueueConnectionFactory">
+        <properties.wasJms/>
+    </jmsConnectionFactory>
+
+    <jmsConnectionFactory id="TopicConnectionFactory" jndiName="jms/TopicConnectionFactory">
+        <properties.wasJms/>
+    </jmsConnectionFactory>
+
+    <messagingEngine>
+        <queue id="TradeBrokerQueue"/>
+        <topicSpace id="TradeStreamerTopic"/>
+    </messagingEngine>
+
+    <!-- Application -->
+    <webApplication id="daytrader" location="daytrader.war" contextRoot="/">
+        <classloader apiTypeVisibility="+third-party" commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+    <logging consoleLogLevel="INFO"/>
+</server>

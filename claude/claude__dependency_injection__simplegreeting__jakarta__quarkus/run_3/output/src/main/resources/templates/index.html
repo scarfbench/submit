@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Greeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Greeting</h1>
+
+    <form method="get" action="/">
+        <label for="name">Enter your name:</label><br><br>
+        <input type="text" id="name" name="name" value="{name ?: ''}" required>
+        <button type="submit">Say Hello</button>
+    </form>
+
+    {#if salutation}
+    <div class="result">
+        <strong>{salutation}</strong>
+    </div>
+    {/if}
+</body>
+</html>

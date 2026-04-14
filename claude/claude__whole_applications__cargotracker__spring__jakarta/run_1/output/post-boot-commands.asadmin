@@ -1,0 +1,8 @@
+create-jdbc-connection-pool --datasourceclassname=org.h2.jdbcx.JdbcDataSource --restype=javax.sql.DataSource --property=URL="jdbc\:h2\:mem\:cargo-tracker-database;DB_CLOSE_DELAY\=-1":User=sa:Password=sa CargoTrackerPool
+create-jdbc-resource --connectionpoolid=CargoTrackerPool java:app/jdbc/CargoTrackerDatabase
+create-jms-resource --restype=jakarta.jms.ConnectionFactory java:app/jms/CargoTrackerConnectionFactory
+create-jms-resource --restype=jakarta.jms.Queue --property=Name=CargoHandledQueue java:app/jms/CargoHandledQueue
+create-jms-resource --restype=jakarta.jms.Queue --property=Name=DeliveredCargoQueue java:app/jms/DeliveredCargoQueue
+create-jms-resource --restype=jakarta.jms.Queue --property=Name=HandlingEventRegistrationAttemptQueue java:app/jms/HandlingEventRegistrationAttemptQueue
+create-jms-resource --restype=jakarta.jms.Queue --property=Name=MisdirectedCargoQueue java:app/jms/MisdirectedCargoQueue
+create-jms-resource --restype=jakarta.jms.Queue --property=Name=RejectedRegistrationAttemptsQueue java:app/jms/RejectedRegistrationAttemptsQueue

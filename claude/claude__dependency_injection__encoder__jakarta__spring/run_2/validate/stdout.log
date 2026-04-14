@@ -1,0 +1,4 @@
+docker build -f Dockerfile -t "encoder-spring:latest" .
+[INFO] Built image: encoder-spring:latest
+### Run the container in detached mode
+docker run -d --name "encoder-spring" "encoder-spring:latest"

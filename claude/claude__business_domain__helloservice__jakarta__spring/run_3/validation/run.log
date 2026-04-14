@@ -1,0 +1,359 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 986B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#4 CACHED
+
+#5 [5/9] RUN playwright install --with-deps chromium
+#5 CACHED
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 131.15kB 0.0s done
+#10 DONE 0.0s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 28.6s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 1.405 [INFO] Scanning for projects...
+#13 1.676 [INFO] 
+#13 1.676 [INFO] -------------< jakarta.examples.tutorial.ejb:helloservice >-------------
+#13 1.676 [INFO] Building helloservice 10-SNAPSHOT
+#13 1.676 [INFO]   from pom.xml
+#13 1.676 [INFO] --------------------------------[ jar ]---------------------------------
+#13 2.100 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.pom
+#13 2.323 Progress (1): 806 BProgress (1): 2.4 kBProgress (1): 6.4 kBProgress (1): 9.2 kBProgress (1): 11 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.pom (11 kB at 46 kB/s)
+#13 2.332 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-runtime-parent/4.0.4/jaxb-runtime-parent-4.0.4.pom
+#13 2.395 Progress (1): 932 BProgress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-runtime-parent/4.0.4/jaxb-runtime-parent-4.0.4.pom (1.2 kB at 18 kB/s)
+#13 2.401 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/4.0.4/jaxb-parent-4.0.4.pom
+#13 2.433 Progress (1): 778 BProgress (1): 2.0 kBProgress (1): 4.0 kBProgress (1): 5.7 kBProgress (1): 8.2 kBProgress (1): 14 kB Progress (1): 18 kBProgress (1): 22 kBProgress (1): 28 kBProgress (1): 33 kBProgress (1): 35 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/4.0.4/jaxb-parent-4.0.4.pom (35 kB at 1.1 MB/s)
+#13 2.436 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/4.0.4/jaxb-bom-ext-4.0.4.pom
+#13 2.465 Progress (1): 863 BProgress (1): 2.6 kBProgress (1): 3.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/4.0.4/jaxb-bom-ext-4.0.4.pom (3.5 kB at 116 kB/s)
+#13 2.474 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.pom
+#13 2.504 Progress (1): 899 BProgress (1): 2.5 kBProgress (1): 3.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.pom (3.7 kB at 117 kB/s)
+#13 2.508 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.pom
+#13 2.537 Progress (1): 931 BProgress (1): 1.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.pom (1.8 kB at 61 kB/s)
+#13 2.539 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-txw-parent/4.0.4/jaxb-txw-parent-4.0.4.pom
+#13 2.568 Progress (1): 930 BProgress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-txw-parent/4.0.4/jaxb-txw-parent-4.0.4.pom (1.2 kB at 40 kB/s)
+#13 2.571 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.pom
+#13 2.604 Progress (1): 933 BProgress (1): 1.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.pom (1.6 kB at 47 kB/s)
+#13 2.607 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/4.1.2/istack-commons-4.1.2.pom
+#13 2.636 Progress (1): 794 BProgress (1): 2.1 kBProgress (1): 4.1 kBProgress (1): 10 kB Progress (1): 15 kBProgress (1): 19 kBProgress (1): 24 kBProgress (1): 26 kBProgress (1): 26 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/4.1.2/istack-commons-4.1.2.pom (26 kB at 797 kB/s)
+#13 2.678 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/4.0.4/jaxb-impl-4.0.4.pom
+#13 2.707 Progress (1): 802 BProgress (1): 2.3 kBProgress (1): 6.2 kBProgress (1): 9.5 kBProgress (1): 12 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/4.0.4/jaxb-impl-4.0.4.pom (12 kB at 385 kB/s)
+#13 2.709 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-bundles/4.0.4/jaxb-bundles-4.0.4.pom
+#13 2.736 Progress (1): 924 BProgress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-bundles/4.0.4/jaxb-bundles-4.0.4.pom (1.3 kB at 50 kB/s)
+#13 2.740 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/4.0.4/jaxb-core-4.0.4.pom
+#13 2.768 Progress (1): 826 BProgress (1): 2.5 kBProgress (1): 6.0 kBProgress (1): 11 kB Progress (1): 11 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/4.0.4/jaxb-core-4.0.4.pom (11 kB at 355 kB/s)
+#13 2.782 Downloading from central: https://repo.maven.apache.org/maven2/jakarta/mail/jakarta.mail-api/2.1.2/jakarta.mail-api-2.1.2.pom
+#13 2.823 Progress (1): 819 BProgress (1): 2.0 kBProgress (1): 4.8 kBProgress (1): 9.8 kBProgress (1): 13 kB Progress (1): 16 kBProgress (1): 19 kBProgress (1): 21 kBProgress (1): 22 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/jakarta/mail/jakarta.mail-api/2.1.2/jakarta.mail-api-2.1.2.pom (22 kB at 512 kB/s)
+#13 2.828 Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-mail/2.0.2/angus-mail-2.0.2.pom
+#13 2.873 Progress (1): 849 BProgress (1): 1.8 kBProgress (1): 5.0 kBProgress (1): 8.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-mail/2.0.2/angus-mail-2.0.2.pom (8.0 kB at 174 kB/s)
+#13 2.876 Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/all/2.0.2/all-2.0.2.pom
+#13 2.907 Progress (1): 802 BProgress (1): 2.6 kBProgress (1): 4.5 kBProgress (1): 9.1 kBProgress (1): 13 kB Progress (1): 17 kBProgress (1): 20 kBProgress (1): 21 kBProgress (1): 25 kBProgress (1): 29 kBProgress (1): 31 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/all/2.0.2/all-2.0.2.pom (31 kB at 983 kB/s)
+#13 2.938 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+#13 2.938 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.jar
+#13 2.939 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar
+#13 2.939 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.jar
+#13 2.939 Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.jar
+#13 2.977 Progress (1): 3.8/65 kBProgress (1): 8.0/65 kBProgress (1): 12/65 kB Progress (1): 12/65 kBProgress (1): 17/65 kBProgress (1): 21/65 kBProgress (1): 25/65 kBProgress (1): 29/65 kBProgress (1): 33/65 kBProgress (1): 38/65 kBProgress (1): 42/65 kBProgress (1): 46/65 kBProgress (1): 50/65 kBProgress (1): 55/65 kBProgress (1): 59/65 kBProgress (1): 63/65 kBProgress (1): 65 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar (65 kB at 1.6 MB/s)
+#13 2.978 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/4.0.4/jaxb-impl-4.0.4.jar
+#13 2.989 Progress (1): 0.9/139 kBProgress (1): 2.3/139 kBProgress (1): 3.6/139 kBProgress (1): 5.0/139 kBProgress (1): 6.4/139 kBProgress (1): 7.7/139 kBProgress (1): 9.1/139 kBProgress (1): 10/139 kB Progress (1): 12/139 kBProgress (1): 12/139 kBProgress (2): 12/139 kB | 0.9/26 kBProgress (2): 12/139 kB | 2.3/26 kBProgress (2): 12/139 kB | 3.6/26 kBProgress (2): 12/139 kB | 5.0/26 kBProgress (2): 12/139 kB | 6.4/26 kBProgress (2): 12/139 kB | 7.7/26 kBProgress (2): 12/139 kB | 9.1/26 kBProgress (2): 12/139 kB | 10/26 kB Progress (2): 14/139 kB | 10/26 kBProgress (2): 15/139 kB | 10/26 kBProgress (2): 16/139 kB | 10/26 kBProgress (2): 18/139 kB | 10/26 kBProgress (2): 19/139 kB | 10/26 kBProgress (2): 21/139 kB | 10/26 kBProgress (2): 22/139 kB | 10/26 kBProgress (2): 23/139 kB | 10/26 kBProgress (2): 25/139 kB | 10/26 kBProgress (2): 26/139 kB | 10/26 kBProgress (2): 27/139 kB | 10/26 kBProgress (2): 27/139 kB | 12/26 kBProgress (2): 27/139 kB | 13/26 kBProgress (2): 27/139 kB | 15/26 kBProgress (2): 27/139 kB | 16/26 kBProgress (2): 27/139 kB | 17/26 kBProgress (2): 27/139 kB | 18/26 kBProgress (2): 27/139 kB | 20/26 kBProgress (2): 27/139 kB | 21/26 kBProgress (2): 27/139 kB | 23/26 kBProgress (2): 27/139 kB | 24/26 kBProgress (2): 27/139 kB | 25/26 kBProgress (2): 27/139 kB | 26 kB   Progress (2): 29/139 kB | 26 kBProgress (2): 30/139 kB | 26 kBProgress (2): 31/139 kB | 26 kBProgress (3): 31/139 kB | 26 kB | 0.9/920 kBProgress (3): 33/139 kB | 26 kB | 0.9/920 kBProgress (3): 34/139 kB | 26 kB | 0.9/920 kBProgress (3): 34/139 kB | 26 kB | 2.3/920 kBProgress (3): 36/139 kB | 26 kB | 2.3/920 kBProgress (3): 36/139 kB | 26 kB | 3.6/920 kBProgress (3): 37/139 kB | 26 kB | 3.6/920 kBProgress (3): 37/139 kB | 26 kB | 5.0/920 kBProgress (3): 38/139 kB | 26 kB | 5.0/920 kBProgress (3): 38/139 kB | 26 kB | 6.4/920 kBProgress (3): 40/139 kB | 26 kB | 6.4/920 kBProgress (3): 40/139 kB | 26 kB | 7.7/920 kB                                            Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar (26 kB at 430 kB/s)
+#13 2.998 Progress (2): 41/139 kB | 7.7/920 kB                                    Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/4.0.4/jaxb-core-4.0.4.jar
+#13 2.998 Progress (2): 41/139 kB | 9.1/920 kBProgress (2): 42/139 kB | 9.1/920 kBProgress (2): 42/139 kB | 10/920 kB Progress (2): 44/139 kB | 10/920 kBProgress (2): 44/139 kB | 12/920 kBProgress (2): 45/139 kB | 12/920 kBProgress (2): 45/139 kB | 12/920 kBProgress (2): 47/139 kB | 12/920 kBProgress (2): 47/139 kB | 14/920 kBProgress (2): 48/139 kB | 14/920 kBProgress (2): 48/139 kB | 15/920 kBProgress (2): 49/139 kB | 15/920 kBProgress (2): 49/139 kB | 16/920 kBProgress (2): 51/139 kB | 16/920 kBProgress (2): 51/139 kB | 18/920 kBProgress (2): 52/139 kB | 18/920 kBProgress (2): 52/139 kB | 19/920 kBProgress (2): 53/139 kB | 19/920 kBProgress (2): 53/139 kB | 21/920 kBProgress (2): 55/139 kB | 21/920 kBProgress (2): 55/139 kB | 22/920 kBProgress (2): 59/139 kB | 22/920 kBProgress (2): 59/139 kB | 23/920 kBProgress (2): 59/139 kB | 25/920 kBProgress (2): 63/139 kB | 25/920 kBProgress (2): 63/139 kB | 26/920 kBProgress (2): 67/139 kB | 26/920 kBProgress (2): 67/139 kB | 27/920 kBProgress (2): 67/139 kB | 29/920 kBProgress (2): 67/139 kB | 30/920 kBProgress (2): 67/139 kB | 31/920 kBProgress (2): 67/139 kB | 33/920 kBProgress (2): 67/139 kB | 34/920 kBProgress (2): 67/139 kB | 36/920 kBProgress (2): 67/139 kB | 37/920 kBProgress (2): 67/139 kB | 38/920 kBProgress (2): 67/139 kB | 40/920 kBProgress (2): 67/139 kB | 41/920 kBProgress (2): 67/139 kB | 42/920 kBProgress (2): 67/139 kB | 44/920 kBProgress (2): 67/139 kB | 45/920 kBProgress (2): 67/139 kB | 47/920 kBProgress (2): 67/139 kB | 48/920 kBProgress (2): 67/139 kB | 49/920 kBProgress (2): 67/139 kB | 51/920 kBProgress (2): 67/139 kB | 52/920 kBProgress (2): 67/139 kB | 53/920 kBProgress (2): 67/139 kB | 55/920 kBProgress (2): 67/139 kB | 59/920 kBProgress (2): 67/139 kB | 63/920 kBProgress (2): 67/139 kB | 67/920 kBProgress (3): 67/139 kB | 67/920 kB | 0.9/73 kBProgress (3): 72/139 kB | 67/920 kB | 0.9/73 kBProgress (3): 72/139 kB | 67/920 kB | 2.3/73 kBProgress (3): 72/139 kB | 67/920 kB | 3.6/73 kBProgress (3): 72/139 kB | 67/920 kB | 5.0/73 kBProgress (3): 72/139 kB | 67/920 kB | 6.4/73 kBProgress (3): 72/139 kB | 67/920 kB | 7.7/73 kBProgress (3): 72/139 kB | 67/920 kB | 9.1/73 kBProgress (3): 72/139 kB | 67/920 kB | 10/73 kB Progress (3): 72/139 kB | 67/920 kB | 12/73 kBProgress (3): 72/139 kB | 67/920 kB | 12/73 kBProgress (3): 72/139 kB | 67/920 kB | 14/73 kBProgress (3): 72/139 kB | 67/920 kB | 15/73 kBProgress (3): 72/139 kB | 67/920 kB | 16/73 kBProgress (4): 72/139 kB | 67/920 kB | 16/73 kB | 3.8/923 kBProgress (4): 72/139 kB | 67/920 kB | 18/73 kB | 3.8/923 kBProgress (4): 72/139 kB | 67/920 kB | 19/73 kB | 3.8/923 kBProgress (4): 72/139 kB | 67/920 kB | 21/73 kB | 3.8/923 kBProgress (4): 72/139 kB | 67/920 kB | 22/73 kB | 3.8/923 kBProgress (4): 72/139 kB | 67/920 kB | 23/73 kB | 3.8/923 kBProgress (4): 72/139 kB | 67/920 kB | 25/73 kB | 3.8/923 kBProgress (4): 72/139 kB | 67/920 kB | 25/73 kB | 8.0/923 kBProgress (4): 72/139 kB | 67/920 kB | 26/73 kB | 8.0/923 kBProgress (4): 72/139 kB | 67/920 kB | 27/73 kB | 8.0/923 kBProgress (4): 72/139 kB | 67/920 kB | 29/73 kB | 8.0/923 kBProgress (4): 72/139 kB | 67/920 kB | 30/73 kB | 8.0/923 kBProgress (4): 72/139 kB | 67/920 kB | 30/73 kB | 12/923 kB Progress (4): 76/139 kB | 67/920 kB | 30/73 kB | 12/923 kBProgress (4): 76/139 kB | 67/920 kB | 31/73 kB | 12/923 kBProgress (4): 80/139 kB | 67/920 kB | 31/73 kB | 12/923 kBProgress (4): 80/139 kB | 67/920 kB | 31/73 kB | 16/923 kBProgress (4): 80/139 kB | 67/920 kB | 33/73 kB | 16/923 kBProgress (4): 80/139 kB | 67/920 kB | 34/73 kB | 16/923 kBProgress (4): 84/139 kB | 67/920 kB | 34/73 kB | 16/923 kBProgress (4): 84/139 kB | 67/920 kB | 34/73 kB | 21/923 kBProgress (4): 84/139 kB | 67/920 kB | 36/73 kB | 21/923 kBProgress (4): 89/139 kB | 67/920 kB | 36/73 kB | 21/923 kBProgress (4): 89/139 kB | 67/920 kB | 36/73 kB | 25/923 kBProgress (4): 89/139 kB | 67/920 kB | 37/73 kB | 25/923 kBProgress (4): 93/139 kB | 67/920 kB | 37/73 kB | 25/923 kBProgress (4): 93/139 kB | 67/920 kB | 37/73 kB | 29/923 kBProgress (4): 93/139 kB | 67/920 kB | 38/73 kB | 29/923 kBProgress (4): 97/139 kB | 67/920 kB | 38/73 kB | 29/923 kBProgress (4): 97/139 kB | 67/920 kB | 38/73 kB | 33/923 kBProgress (4): 97/139 kB | 67/920 kB | 40/73 kB | 33/923 kBProgress (4): 97/139 kB | 67/920 kB | 41/73 kB | 33/923 kBProgress (4): 101/139 kB | 67/920 kB | 41/73 kB | 33/923 kBProgress (4): 101/139 kB | 67/920 kB | 41/73 kB | 37/923 kBProgress (4): 101/139 kB | 67/920 kB | 42/73 kB | 37/923 kBProgress (4): 105/139 kB | 67/920 kB | 42/73 kB | 37/923 kBProgress (4): 105/139 kB | 67/920 kB | 42/73 kB | 41/923 kBProgress (4): 105/139 kB | 67/920 kB | 44/73 kB | 41/923 kBProgress (4): 110/139 kB | 67/920 kB | 44/73 kB | 41/923 kBProgress (4): 110/139 kB | 67/920 kB | 44/73 kB | 46/923 kBProgress (4): 110/139 kB | 67/920 kB | 45/73 kB | 46/923 kBProgress (4): 110/139 kB | 67/920 kB | 45/73 kB | 50/923 kBProgress (4): 110/139 kB | 67/920 kB | 47/73 kB | 50/923 kBProgress (4): 110/139 kB | 67/920 kB | 47/73 kB | 54/923 kBProgress (4): 110/139 kB | 67/920 kB | 48/73 kB | 54/923 kBProgress (4): 110/139 kB | 67/920 kB | 48/73 kB | 58/923 kBProgress (4): 110/139 kB | 67/920 kB | 49/73 kB | 58/923 kBProgress (4): 110/139 kB | 67/920 kB | 49/73 kB | 63/923 kBProgress (4): 110/139 kB | 67/920 kB | 51/73 kB | 63/923 kBProgress (4): 110/139 kB | 67/920 kB | 52/73 kB | 63/923 kBProgress (4): 110/139 kB | 67/920 kB | 53/73 kB | 63/923 kBProgress (4): 110/139 kB | 67/920 kB | 55/73 kB | 63/923 kBProgress (4): 110/139 kB | 67/920 kB | 59/73 kB | 63/923 kBProgress (4): 110/139 kB | 67/920 kB | 63/73 kB | 63/923 kBProgress (4): 110/139 kB | 67/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 72/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 76/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 80/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 84/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 89/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 93/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 97/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 98/920 kB | 67/73 kB | 63/923 kBProgress (4): 110/139 kB | 102/920 kB | 67/73 kB | 63/923 kBProgress (4): 114/139 kB | 102/920 kB | 67/73 kB | 63/923 kBProgress (4): 118/139 kB | 102/920 kB | 67/73 kB | 63/923 kBProgress (4): 122/139 kB | 102/920 kB | 67/73 kB | 63/923 kBProgress (4): 127/139 kB | 102/920 kB | 67/73 kB | 63/923 kBProgress (4): 131/139 kB | 102/920 kB | 67/73 kB | 63/923 kBProgress (4): 131/139 kB | 106/920 kB | 67/73 kB | 63/923 kBProgress (4): 131/139 kB | 106/920 kB | 72/73 kB | 63/923 kBProgress (4): 135/139 kB | 106/920 kB | 72/73 kB | 63/923 kBProgress (4): 135/139 kB | 106/920 kB | 73 kB | 63/923 kB   Progress (4): 135/139 kB | 111/920 kB | 73 kB | 63/923 kBProgress (4): 139 kB | 111/920 kB | 73 kB | 63/923 kB                                                         Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.jar (139 kB at 1.8 MB/s)
+#13 3.015 Downloading from central: https://repo.maven.apache.org/maven2/jakarta/mail/jakarta.mail-api/2.1.2/jakarta.mail-api-2.1.2.jar
+#13 3.015 Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.jar (73 kB at 952 kB/s)
+#13 3.015 Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-mail/2.0.2/angus-mail-2.0.2.jar
+#13 3.015 Progress (2): 111/920 kB | 67/923 kBProgress (2): 111/920 kB | 71/923 kBProgress (2): 111/920 kB | 75/923 kBProgress (2): 111/920 kB | 92/923 kBProgress (2): 111/920 kB | 108/923 kBProgress (2): 111/920 kB | 124/923 kBProgress (2): 111/920 kB | 141/923 kBProgress (2): 111/920 kB | 156/923 kBProgress (2): 111/920 kB | 172/923 kBProgress (2): 111/920 kB | 180/923 kBProgress (2): 115/920 kB | 180/923 kBProgress (2): 119/920 kB | 180/923 kBProgress (2): 123/920 kB | 180/923 kBProgress (2): 128/920 kB | 180/923 kBProgress (2): 132/920 kB | 180/923 kBProgress (2): 136/920 kB | 180/923 kBProgress (2): 140/920 kB | 180/923 kBProgress (2): 140/920 kB | 197/923 kBProgress (2): 145/920 kB | 197/923 kBProgress (2): 149/920 kB | 197/923 kBProgress (2): 153/920 kB | 197/923 kBProgress (2): 157/920 kB | 197/923 kBProgress (3): 157/920 kB | 197/923 kB | 0.9/235 kBProgress (3): 157/920 kB | 197/923 kB | 2.3/235 kBProgress (3): 157/920 kB | 197/923 kB | 3.6/235 kBProgress (3): 157/920 kB | 197/923 kB | 5.0/235 kBProgress (3): 157/920 kB | 197/923 kB | 6.4/235 kBProgress (3): 157/920 kB | 197/923 kB | 7.7/235 kBProgress (3): 157/920 kB | 197/923 kB | 9.1/235 kBProgress (3): 157/920 kB | 197/923 kB | 10/235 kB Progress (3): 157/920 kB | 197/923 kB | 12/235 kBProgress (3): 157/920 kB | 197/923 kB | 12/235 kBProgress (3): 157/920 kB | 197/923 kB | 14/235 kBProgress (3): 157/920 kB | 197/923 kB | 15/235 kBProgress (3): 157/920 kB | 197/923 kB | 16/235 kBProgress (3): 157/920 kB | 197/923 kB | 18/235 kBProgress (3): 157/920 kB | 197/923 kB | 19/235 kBProgress (3): 157/920 kB | 197/923 kB | 21/235 kBProgress (3): 157/920 kB | 197/923 kB | 22/235 kBProgress (3): 161/920 kB | 197/923 kB | 22/235 kBProgress (3): 166/920 kB | 197/923 kB | 22/235 kBProgress (3): 166/920 kB | 197/923 kB | 23/235 kBProgress (3): 170/920 kB | 197/923 kB | 23/235 kBProgress (3): 170/920 kB | 197/923 kB | 25/235 kBProgress (3): 174/920 kB | 197/923 kB | 25/235 kBProgress (3): 174/920 kB | 197/923 kB | 26/235 kBProgress (3): 178/920 kB | 197/923 kB | 26/235 kBProgress (3): 183/920 kB | 197/923 kB | 26/235 kBProgress (3): 183/920 kB | 197/923 kB | 27/235 kBProgress (3): 187/920 kB | 197/923 kB | 27/235 kBProgress (3): 187/920 kB | 197/923 kB | 32/235 kBProgress (3): 187/920 kB | 197/923 kB | 36/235 kBProgress (3): 187/920 kB | 197/923 kB | 40/235 kBProgress (3): 191/920 kB | 197/923 kB | 40/235 kBProgress (3): 191/920 kB | 197/923 kB | 44/235 kBProgress (3): 191/920 kB | 197/923 kB | 48/235 kBProgress (3): 191/920 kB | 197/923 kB | 53/235 kBProgress (3): 191/920 kB | 197/923 kB | 57/235 kBProgress (3): 195/920 kB | 197/923 kB | 57/235 kBProgress (3): 195/920 kB | 197/923 kB | 61/235 kBProgress (3): 195/920 kB | 197/923 kB | 65/235 kBProgress (3): 199/920 kB | 197/923 kB | 65/235 kBProgress (3): 204/920 kB | 197/923 kB | 65/235 kBProgress (3): 204/920 kB | 213/923 kB | 65/235 kBProgress (3): 204/920 kB | 213/923 kB | 70/235 kBProgress (3): 204/920 kB | 213/923 kB | 74/235 kBProgress (3): 208/920 kB | 213/923 kB | 74/235 kBProgress (3): 208/920 kB | 229/923 kB | 74/235 kBProgress (3): 208/920 kB | 246/923 kB | 74/235 kBProgress (3): 208/920 kB | 262/923 kB | 74/235 kBProgress (3): 208/920 kB | 279/923 kB | 74/235 kBProgress (3): 208/920 kB | 295/923 kB | 74/235 kBProgress (3): 208/920 kB | 311/923 kB | 74/235 kBProgress (3): 212/920 kB | 311/923 kB | 74/235 kBProgress (3): 216/920 kB | 311/923 kB | 74/235 kBProgress (3): 221/920 kB | 311/923 kB | 74/235 kBProgress (3): 229/920 kB | 311/923 kB | 74/235 kBProgress (3): 229/920 kB | 328/923 kB | 74/235 kBProgress (3): 229/920 kB | 328/923 kB | 78/235 kBProgress (3): 245/920 kB | 328/923 kB | 78/235 kBProgress (3): 245/920 kB | 328/923 kB | 82/235 kBProgress (3): 245/920 kB | 328/923 kB | 87/235 kBProgress (3): 245/920 kB | 328/923 kB | 91/235 kBProgress (3): 245/920 kB | 328/923 kB | 95/235 kBProgress (3): 245/920 kB | 344/923 kB | 95/235 kBProgress (3): 245/920 kB | 344/923 kB | 98/235 kBProgress (3): 245/920 kB | 344/923 kB | 103/235 kBProgress (3): 262/920 kB | 344/923 kB | 103/235 kBProgress (3): 262/920 kB | 344/923 kB | 107/235 kBProgress (4): 262/920 kB | 344/923 kB | 107/235 kB | 3.8/492 kBProgress (4): 262/920 kB | 344/923 kB | 107/235 kB | 8.0/492 kBProgress (4): 262/920 kB | 344/923 kB | 111/235 kB | 8.0/492 kBProgress (4): 262/920 kB | 344/923 kB | 115/235 kB | 8.0/492 kBProgress (4): 262/920 kB | 344/923 kB | 119/235 kB | 8.0/492 kBProgress (4): 262/920 kB | 344/923 kB | 119/235 kB | 12/492 kB Progress (4): 262/920 kB | 344/923 kB | 119/235 kB | 16/492 kBProgress (4): 262/920 kB | 344/923 kB | 119/235 kB | 21/492 kBProgress (4): 262/920 kB | 344/923 kB | 119/235 kB | 25/492 kBProgress (4): 278/920 kB | 344/923 kB | 119/235 kB | 25/492 kBProgress (4): 278/920 kB | 360/923 kB | 119/235 kB | 25/492 kBProgress (4): 278/920 kB | 377/923 kB | 119/235 kB | 25/492 kBProgress (4): 278/920 kB | 377/923 kB | 124/235 kB | 25/492 kBProgress (4): 278/920 kB | 377/923 kB | 128/235 kB | 25/492 kBProgress (4): 278/920 kB | 377/923 kB | 132/235 kB | 25/492 kBProgress (4): 278/920 kB | 377/923 kB | 132/235 kB | 29/492 kBProgress (4): 278/920 kB | 377/923 kB | 132/235 kB | 33/492 kBProgress (4): 278/920 kB | 377/923 kB | 132/235 kB | 37/492 kBProgress (4): 278/920 kB | 377/923 kB | 132/235 kB | 41/492 kBProgress (4): 278/920 kB | 377/923 kB | 132/235 kB | 46/492 kBProgress (4): 278/920 kB | 393/923 kB | 132/235 kB | 46/492 kBProgress (4): 295/920 kB | 393/923 kB | 132/235 kB | 46/492 kBProgress (4): 295/920 kB | 393/923 kB | 136/235 kB | 46/492 kBProgress (4): 295/920 kB | 393/923 kB | 141/235 kB | 46/492 kBProgress (4): 295/920 kB | 410/923 kB | 141/235 kB | 46/492 kBProgress (4): 311/920 kB | 410/923 kB | 141/235 kB | 46/492 kBProgress (4): 311/920 kB | 410/923 kB | 141/235 kB | 50/492 kBProgress (4): 311/920 kB | 410/923 kB | 141/235 kB | 54/492 kBProgress (4): 311/920 kB | 410/923 kB | 141/235 kB | 58/492 kBProgress (4): 311/920 kB | 410/923 kB | 141/235 kB | 63/492 kBProgress (4): 311/920 kB | 410/923 kB | 141/235 kB | 67/492 kBProgress (4): 311/920 kB | 410/923 kB | 145/235 kB | 67/492 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 67/492 kB | 3.8/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 67/492 kB | 8.0/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 71/492 kB | 8.0/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 71/492 kB | 12/236 kB Progress (5): 311/920 kB | 410/923 kB | 145/235 kB | 75/492 kB | 12/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 75/492 kB | 16/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 80/492 kB | 16/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 80/492 kB | 20/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 84/492 kB | 20/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 100/492 kB | 20/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 20/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 24/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 28/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 33/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 37/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 41/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 45/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 50/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 54/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 58/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 62/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 117/492 kB | 67/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 133/492 kB | 67/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 133/492 kB | 71/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 133/492 kB | 75/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 133/492 kB | 79/236 kBProgress (5): 311/920 kB | 410/923 kB | 145/235 kB | 133/492 kB | 83/236 kBProgress (5): 311/920 kB | 426/923 kB | 145/235 kB | 133/492 kB | 83/236 kBProgress (5): 311/920 kB | 426/923 kB | 149/235 kB | 133/492 kB | 83/236 kBProgress (5): 311/920 kB | 426/923 kB | 149/235 kB | 133/492 kB | 88/236 kBProgress (5): 311/920 kB | 426/923 kB | 149/235 kB | 133/492 kB | 92/236 kBProgress (5): 311/920 kB | 426/923 kB | 153/235 kB | 133/492 kB | 92/236 kBProgress (5): 311/920 kB | 426/923 kB | 153/235 kB | 133/492 kB | 96/236 kBProgress (5): 311/920 kB | 426/923 kB | 153/235 kB | 149/492 kB | 96/236 kBProgress (5): 311/920 kB | 426/923 kB | 158/235 kB | 149/492 kB | 96/236 kBProgress (5): 311/920 kB | 426/923 kB | 158/235 kB | 156/492 kB | 96/236 kBProgress (5): 311/920 kB | 442/923 kB | 158/235 kB | 156/492 kB | 96/236 kBProgress (5): 311/920 kB | 442/923 kB | 162/235 kB | 156/492 kB | 96/236 kBProgress (5): 311/920 kB | 442/923 kB | 164/235 kB | 156/492 kB | 96/236 kBProgress (5): 311/920 kB | 442/923 kB | 168/235 kB | 156/492 kB | 96/236 kBProgress (5): 311/920 kB | 459/923 kB | 168/235 kB | 156/492 kB | 96/236 kBProgress (5): 311/920 kB | 459/923 kB | 168/235 kB | 156/492 kB | 100/236 kBProgress (5): 311/920 kB | 459/923 kB | 168/235 kB | 156/492 kB | 105/236 kBProgress (5): 311/920 kB | 459/923 kB | 168/235 kB | 156/492 kB | 109/236 kBProgress (5): 311/920 kB | 459/923 kB | 168/235 kB | 156/492 kB | 113/236 kBProgress (5): 311/920 kB | 475/923 kB | 168/235 kB | 156/492 kB | 113/236 kBProgress (5): 327/920 kB | 475/923 kB | 168/235 kB | 156/492 kB | 113/236 kBProgress (5): 327/920 kB | 492/923 kB | 168/235 kB | 156/492 kB | 113/236 kBProgress (5): 327/920 kB | 508/923 kB | 168/235 kB | 156/492 kB | 113/236 kBProgress (5): 327/920 kB | 508/923 kB | 168/235 kB | 172/492 kB | 113/236 kBProgress (5): 327/920 kB | 508/923 kB | 172/235 kB | 172/492 kB | 113/236 kBProgress (5): 327/920 kB | 508/923 kB | 177/235 kB | 172/492 kB | 113/236 kBProgress (5): 327/920 kB | 508/923 kB | 181/235 kB | 172/492 kB | 113/236 kBProgress (5): 327/920 kB | 508/923 kB | 181/235 kB | 172/492 kB | 117/236 kBProgress (5): 327/920 kB | 508/923 kB | 185/235 kB | 172/492 kB | 117/236 kBProgress (5): 327/920 kB | 508/923 kB | 185/235 kB | 172/492 kB | 122/236 kBProgress (5): 327/920 kB | 508/923 kB | 185/235 kB | 172/492 kB | 126/236 kBProgress (5): 327/920 kB | 508/923 kB | 185/235 kB | 172/492 kB | 126/236 kBProgress (5): 327/920 kB | 508/923 kB | 185/235 kB | 172/492 kB | 130/236 kBProgress (5): 327/920 kB | 524/923 kB | 185/235 kB | 172/492 kB | 130/236 kBProgress (5): 327/920 kB | 541/923 kB | 185/235 kB | 172/492 kB | 130/236 kBProgress (5): 344/920 kB | 541/923 kB | 185/235 kB | 172/492 kB | 130/236 kBProgress (5): 344/920 kB | 541/923 kB | 189/235 kB | 172/492 kB | 130/236 kBProgress (5): 344/920 kB | 541/923 kB | 193/235 kB | 172/492 kB | 130/236 kBProgress (5): 344/920 kB | 541/923 kB | 193/235 kB | 188/492 kB | 130/236 kBProgress (5): 344/920 kB | 541/923 kB | 193/235 kB | 188/492 kB | 135/236 kBProgress (5): 344/920 kB | 541/923 kB | 193/235 kB | 205/492 kB | 135/236 kBProgress (5): 344/920 kB | 541/923 kB | 193/235 kB | 205/492 kB | 139/236 kBProgress (5): 344/920 kB | 541/923 kB | 193/235 kB | 205/492 kB | 143/236 kBProgress (5): 344/920 kB | 557/923 kB | 193/235 kB | 205/492 kB | 143/236 kBProgress (5): 344/920 kB | 573/923 kB | 193/235 kB | 205/492 kB | 143/236 kBProgress (5): 360/920 kB | 573/923 kB | 193/235 kB | 205/492 kB | 143/236 kBProgress (5): 377/920 kB | 573/923 kB | 193/235 kB | 205/492 kB | 143/236 kBProgress (5): 377/920 kB | 573/923 kB | 210/235 kB | 205/492 kB | 143/236 kBProgress (5): 377/920 kB | 573/923 kB | 210/235 kB | 221/492 kB | 143/236 kBProgress (5): 377/920 kB | 573/923 kB | 210/235 kB | 221/492 kB | 160/236 kBProgress (5): 377/920 kB | 573/923 kB | 210/235 kB | 238/492 kB | 160/236 kBProgress (5): 377/920 kB | 590/923 kB | 210/235 kB | 238/492 kB | 160/236 kBProgress (5): 377/920 kB | 606/923 kB | 210/235 kB | 238/492 kB | 160/236 kBProgress (5): 393/920 kB | 606/923 kB | 210/235 kB | 238/492 kB | 160/236 kBProgress (5): 393/920 kB | 606/923 kB | 226/235 kB | 238/492 kB | 160/236 kBProgress (5): 393/920 kB | 606/923 kB | 226/235 kB | 238/492 kB | 176/236 kBProgress (5): 393/920 kB | 606/923 kB | 226/235 kB | 254/492 kB | 176/236 kBProgress (5): 393/920 kB | 606/923 kB | 226/235 kB | 270/492 kB | 176/236 kBProgress (5): 393/920 kB | 623/923 kB | 226/235 kB | 270/492 kB | 176/236 kBProgress (5): 393/920 kB | 639/923 kB | 226/235 kB | 270/492 kB | 176/236 kBProgress (5): 409/920 kB | 639/923 kB | 226/235 kB | 270/492 kB | 176/236 kBProgress (5): 409/920 kB | 639/923 kB | 226/235 kB | 270/492 kB | 192/236 kBProgress (5): 409/920 kB | 655/923 kB | 226/235 kB | 270/492 kB | 192/236 kBProgress (5): 409/920 kB | 672/923 kB | 226/235 kB | 270/492 kB | 192/236 kBProgress (5): 426/920 kB | 672/923 kB | 226/235 kB | 270/492 kB | 192/236 kBProgress (5): 426/920 kB | 672/923 kB | 226/235 kB | 270/492 kB | 209/236 kBProgress (5): 442/920 kB | 672/923 kB | 226/235 kB | 270/492 kB | 209/236 kBProgress (5): 442/920 kB | 672/923 kB | 226/235 kB | 270/492 kB | 225/236 kBProgress (5): 442/920 kB | 672/923 kB | 226/235 kB | 287/492 kB | 225/236 kBProgress (5): 442/920 kB | 672/923 kB | 226/235 kB | 287/492 kB | 236 kB    Progress (5): 442/920 kB | 672/923 kB | 235 kB | 287/492 kB | 236 kB                                                                        Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/4.0.4/jaxb-core-4.0.4.jar (235 kB at 1.8 MB/s)
+#13 3.072 Progress (4): 442/920 kB | 672/923 kB | 303/492 kB | 236 kBProgress (4): 442/920 kB | 688/923 kB | 303/492 kB | 236 kBProgress (4): 442/920 kB | 705/923 kB | 303/492 kB | 236 kBProgress (4): 442/920 kB | 721/923 kB | 303/492 kB | 236 kBProgress (4): 442/920 kB | 737/923 kB | 303/492 kB | 236 kBProgress (4): 442/920 kB | 754/923 kB | 303/492 kB | 236 kBProgress (4): 458/920 kB | 754/923 kB | 303/492 kB | 236 kBProgress (4): 475/920 kB | 754/923 kB | 303/492 kB | 236 kBProgress (4): 491/920 kB | 754/923 kB | 303/492 kB | 236 kBProgress (4): 491/920 kB | 770/923 kB | 303/492 kB | 236 kBProgress (4): 491/920 kB | 786/923 kB | 303/492 kB | 236 kBProgress (4): 491/920 kB | 803/923 kB | 303/492 kB | 236 kBProgress (4): 491/920 kB | 803/923 kB | 319/492 kB | 236 kBProgress (4): 491/920 kB | 803/923 kB | 336/492 kB | 236 kBProgress (4): 491/920 kB | 803/923 kB | 352/492 kB | 236 kB                                                           Downloaded from central: https://repo.maven.apache.org/maven2/jakarta/mail/jakarta.mail-api/2.1.2/jakarta.mail-api-2.1.2.jar (236 kB at 1.7 MB/s)
+#13 3.074 Progress (3): 491/920 kB | 819/923 kB | 352/492 kBProgress (3): 491/920 kB | 836/923 kB | 352/492 kBProgress (3): 491/920 kB | 852/923 kB | 352/492 kBProgress (3): 508/920 kB | 852/923 kB | 352/492 kBProgress (3): 524/920 kB | 852/923 kB | 352/492 kBProgress (3): 524/920 kB | 852/923 kB | 369/492 kBProgress (3): 524/920 kB | 852/923 kB | 385/492 kBProgress (3): 524/920 kB | 852/923 kB | 401/492 kBProgress (3): 524/920 kB | 852/923 kB | 418/492 kBProgress (3): 524/920 kB | 852/923 kB | 434/492 kBProgress (3): 524/920 kB | 868/923 kB | 434/492 kBProgress (3): 524/920 kB | 885/923 kB | 434/492 kBProgress (3): 524/920 kB | 901/923 kB | 434/492 kBProgress (3): 524/920 kB | 918/923 kB | 434/492 kBProgress (3): 524/920 kB | 923 kB | 434/492 kB                                                  Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/4.0.4/jaxb-impl-4.0.4.jar (923 kB at 6.7 MB/s)
+#13 3.077 Progress (2): 524/920 kB | 451/492 kBProgress (2): 524/920 kB | 467/492 kBProgress (2): 524/920 kB | 483/492 kBProgress (2): 524/920 kB | 492 kB    Progress (2): 540/920 kB | 492 kBProgress (2): 557/920 kB | 492 kBProgress (2): 564/920 kB | 492 kBProgress (2): 581/920 kB | 492 kBProgress (2): 597/920 kB | 492 kBProgress (2): 613/920 kB | 492 kBProgress (2): 630/920 kB | 492 kBProgress (2): 646/920 kB | 492 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-mail/2.0.2/angus-mail-2.0.2.jar (492 kB at 3.5 MB/s)
+#13 3.087 Progress (1): 663/920 kBProgress (1): 679/920 kBProgress (1): 695/920 kBProgress (1): 712/920 kBProgress (1): 728/920 kBProgress (1): 745/920 kBProgress (1): 761/920 kBProgress (1): 777/920 kBProgress (1): 794/920 kBProgress (1): 810/920 kBProgress (1): 826/920 kBProgress (1): 843/920 kBProgress (1): 859/920 kBProgress (1): 876/920 kBProgress (1): 892/920 kBProgress (1): 908/920 kBProgress (1): 920 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.jar (920 kB at 5.6 MB/s)
+#13 3.118 [INFO] 
+#13 3.119 [INFO] --- resources:3.3.1:resources (default-resources) @ helloservice ---
+#13 3.196 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 3.201 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 3.202 [INFO] 
+#13 3.202 [INFO] --- compiler:3.11.0:compile (default-compile) @ helloservice ---
+#13 3.283 [INFO] Changes detected - recompiling the module! :source
+#13 3.284 [INFO] Compiling 3 source files with javac [debug release 17] to target/classes
+#13 3.758 [INFO] 
+#13 3.758 [INFO] --- resources:3.3.1:testResources (default-testResources) @ helloservice ---
+#13 3.760 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 3.760 [INFO] 
+#13 3.760 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ helloservice ---
+#13 3.763 [INFO] No sources to compile
+#13 3.763 [INFO] 
+#13 3.763 [INFO] --- surefire:3.1.2:test (default-test) @ helloservice ---
+#13 3.884 [INFO] Tests are skipped.
+#13 3.884 [INFO] 
+#13 3.884 [INFO] --- jar:3.3.0:jar (default-jar) @ helloservice ---
+#13 4.039 [INFO] Building jar: /app/target/helloservice.jar
+#13 4.060 [INFO] 
+#13 4.061 [INFO] --- spring-boot:3.2.0:repackage (repackage) @ helloservice ---
+#13 4.286 [INFO] Replacing main artifact /app/target/helloservice.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 4.287 [INFO] The original artifact has been renamed to /app/target/helloservice.jar.original
+#13 4.287 [INFO] ------------------------------------------------------------------------
+#13 4.287 [INFO] BUILD SUCCESS
+#13 4.287 [INFO] ------------------------------------------------------------------------
+#13 4.288 [INFO] Total time:  2.891 s
+#13 4.288 [INFO] Finished at: 2026-03-24T04:53:29Z
+#13 4.288 [INFO] ------------------------------------------------------------------------
+#13 DONE 4.4s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 0.4s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 2.2s done
+#15 exporting manifest sha256:8fd21406e81cbc3efe3c0c2d8805aeee2bdb2ff7cdc6eada6d66a9db65a0b5a2 0.0s done
+#15 exporting config sha256:2bfa9dc9342599ae7f130f74d02c83430ce38322c13c7bbe4101bac11a4186db 0.0s done
+#15 exporting attestation manifest sha256:059c34329a111f49acb5f43e80f96856ae8ced22ace6889fcd52d96652e94fc7 0.1s done
+#15 exporting manifest list sha256:a0628e61803a616741f2a76a0c2400b940f2123f1d487dcfa31402a5dd327e7e
+#15 exporting manifest list sha256:a0628e61803a616741f2a76a0c2400b940f2123f1d487dcfa31402a5dd327e7e 0.0s done
+#15 naming to docker.io/library/helloservice-spring:2e385b68 done
+#15 unpacking to docker.io/library/helloservice-spring:2e385b68
+#15 unpacking to docker.io/library/helloservice-spring:2e385b68 0.7s done
+#15 DONE 3.1s
+[INFO] Built image: helloservice-spring:2e385b68
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name helloservice-spring-6db588f0 helloservice-spring:2e385b68
+46363c7d20e27223b6af14b6ac3ec937ebb2f6f1e720bcc4d723c6f0c7cd4dfd
+[INFO] Started helloservice-spring-6db588f0, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T04:53:35.273Z  INFO 18 --- [helloservice] [           main] j.tutorial.helloservice.Application      : Starting Application v10-SNAPSHOT using Java 21.0.10 with PID 18 (/app/target/helloservice.jar started by root in /app)
+2026-03-24T04:53:35.275Z  INFO 18 --- [helloservice] [           main] j.tutorial.helloservice.Application      : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T04:53:35.931Z  WARN 18 --- [helloservice] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-03-24T04:53:35.951Z  INFO 18 --- [helloservice] [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-03-24T04:53:36.177Z  INFO 18 --- [helloservice] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T04:53:36.187Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T04:53:36.188Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T04:53:36.216Z  INFO 18 --- [helloservice] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T04:53:36.216Z  INFO 18 --- [helloservice] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 851 ms
+2026-03-24T04:53:36.285Z  WARN 18 --- [helloservice] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'helloServiceEndpoint' defined in class path resource [jakarta/tutorial/helloservice/config/WebServiceConfig.class]: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+2026-03-24T04:53:36.287Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-03-24T04:53:36.295Z  INFO 18 --- [helloservice] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-24T04:53:36.303Z ERROR 18 --- [helloservice] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'helloServiceEndpoint' defined in class path resource [jakarta/tutorial/helloservice/config/WebServiceConfig.class]: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1166) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:946) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1331) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at jakarta.tutorial.helloservice.Application.main(Application.java:20) ~[!/:10-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586) ~[na:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:91) ~[helloservice.jar:10-SNAPSHOT]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:53) ~[helloservice.jar:10-SNAPSHOT]
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:58) ~[helloservice.jar:10-SNAPSHOT]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	... 24 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:213) ~[jaxws-rt-4.0.0.jar!/:4.0.0]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig.helloServiceEndpoint(WebServiceConfig.java:31) ~[!/:10-SNAPSHOT]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$0.CGLIB$helloServiceEndpoint$0(<generated>) ~[!/:10-SNAPSHOT]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[!/:10-SNAPSHOT]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$0.helloServiceEndpoint(<generated>) ~[!/:10-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	... 25 common frames omitted
+
+\[ERROR\] Build failed in container:
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T04:53:35.273Z  INFO 18 --- [helloservice] [           main] j.tutorial.helloservice.Application      : Starting Application v10-SNAPSHOT using Java 21.0.10 with PID 18 (/app/target/helloservice.jar started by root in /app)
+2026-03-24T04:53:35.275Z  INFO 18 --- [helloservice] [           main] j.tutorial.helloservice.Application      : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T04:53:35.931Z  WARN 18 --- [helloservice] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-03-24T04:53:35.951Z  INFO 18 --- [helloservice] [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-03-24T04:53:36.177Z  INFO 18 --- [helloservice] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T04:53:36.187Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T04:53:36.188Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T04:53:36.216Z  INFO 18 --- [helloservice] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T04:53:36.216Z  INFO 18 --- [helloservice] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 851 ms
+2026-03-24T04:53:36.285Z  WARN 18 --- [helloservice] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'helloServiceEndpoint' defined in class path resource [jakarta/tutorial/helloservice/config/WebServiceConfig.class]: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+2026-03-24T04:53:36.287Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-03-24T04:53:36.295Z  INFO 18 --- [helloservice] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-24T04:53:36.303Z ERROR 18 --- [helloservice] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'helloServiceEndpoint' defined in class path resource [jakarta/tutorial/helloservice/config/WebServiceConfig.class]: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1166) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:946) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1331) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at jakarta.tutorial.helloservice.Application.main(Application.java:20) ~[!/:10-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586) ~[na:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:91) ~[helloservice.jar:10-SNAPSHOT]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:53) ~[helloservice.jar:10-SNAPSHOT]
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:58) ~[helloservice.jar:10-SNAPSHOT]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	... 24 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:213) ~[jaxws-rt-4.0.0.jar!/:4.0.0]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig.helloServiceEndpoint(WebServiceConfig.java:31) ~[!/:10-SNAPSHOT]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$0.CGLIB$helloServiceEndpoint$0(<generated>) ~[!/:10-SNAPSHOT]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[!/:10-SNAPSHOT]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$0.helloServiceEndpoint(<generated>) ~[!/:10-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	... 25 common frames omitted
+
+=== DEPLOY FAIL ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T04:53:35.273Z  INFO 18 --- [helloservice] [           main] j.tutorial.helloservice.Application      : Starting Application v10-SNAPSHOT using Java 21.0.10 with PID 18 (/app/target/helloservice.jar started by root in /app)
+2026-03-24T04:53:35.275Z  INFO 18 --- [helloservice] [           main] j.tutorial.helloservice.Application      : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T04:53:35.931Z  WARN 18 --- [helloservice] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-03-24T04:53:35.951Z  INFO 18 --- [helloservice] [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-03-24T04:53:36.177Z  INFO 18 --- [helloservice] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T04:53:36.187Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T04:53:36.188Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T04:53:36.216Z  INFO 18 --- [helloservice] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T04:53:36.216Z  INFO 18 --- [helloservice] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 851 ms
+2026-03-24T04:53:36.285Z  WARN 18 --- [helloservice] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'helloServiceEndpoint' defined in class path resource [jakarta/tutorial/helloservice/config/WebServiceConfig.class]: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+2026-03-24T04:53:36.287Z  INFO 18 --- [helloservice] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-03-24T04:53:36.295Z  INFO 18 --- [helloservice] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-24T04:53:36.303Z ERROR 18 --- [helloservice] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'helloServiceEndpoint' defined in class path resource [jakarta/tutorial/helloservice/config/WebServiceConfig.class]: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1166) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:946) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1331) ~[spring-boot-3.2.0.jar!/:3.2.0]
+	at jakarta.tutorial.helloservice.Application.main(Application.java:20) ~[!/:10-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586) ~[na:na]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:91) ~[helloservice.jar:10-SNAPSHOT]
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:53) ~[helloservice.jar:10-SNAPSHOT]
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:58) ~[helloservice.jar:10-SNAPSHOT]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [jakarta.xml.ws.Endpoint]: Factory method 'helloServiceEndpoint' threw exception with message: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	... 24 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Cannot create URL for this address /HelloServiceBeanService/HelloServiceBean
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:213) ~[jaxws-rt-4.0.0.jar!/:4.0.0]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig.helloServiceEndpoint(WebServiceConfig.java:31) ~[!/:10-SNAPSHOT]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$0.CGLIB$helloServiceEndpoint$0(<generated>) ~[!/:10-SNAPSHOT]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[!/:10-SNAPSHOT]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.1.jar!/:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331) ~[spring-context-6.1.1.jar!/:6.1.1]
+	at jakarta.tutorial.helloservice.config.WebServiceConfig$$SpringCGLIB$$0.helloServiceEndpoint(<generated>) ~[!/:10-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140) ~[spring-beans-6.1.1.jar!/:6.1.1]
+	... 25 common frames omitted
+
+make: *** [Makefile:36: deploy] Error 1

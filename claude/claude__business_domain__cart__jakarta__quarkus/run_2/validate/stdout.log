@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "cart-quarkus":latest .
+[INFO] Built image: cart-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "cart-quarkus" "cart-quarkus":latest
+404028283ef09d196b4554876521377ac3c333be1b417a539943890b283bf6ae
+[INFO] Started cart-quarkus, waiting for app to start...
+### Check for startup failure or success
+[INFO] Quarkus application started and ready.
+[WARN] No base validated, using fallback http://localhost:9080/cart/api/cart

@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "dukeetf-spring:latest" .
+[INFO] Built image: dukeetf-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "dukeetf-spring" "dukeetf-spring:latest"
+48d4e43c1c16b9dc90d14f15b8a0fde0a4359395d310fbecf39f1453ab097ebe
+[INFO] Started dukeetf-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.

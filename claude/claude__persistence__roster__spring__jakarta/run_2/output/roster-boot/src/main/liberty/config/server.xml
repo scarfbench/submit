@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Roster Application">
+
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="8443" />
+
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2*.jar"/>
+    </library>
+
+    <dataSource id="rosterDS" jndiName="jdbc/rosterDS">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:mem:roster;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+                    user="sa"
+                    password=""/>
+    </dataSource>
+
+    <webApplication id="roster-boot" location="roster-boot.war" contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+</server>

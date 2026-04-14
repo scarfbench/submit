@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>View</title>
+    <link rel="stylesheet" th:href="@{/css/jsfcrud.css}"/>
+</head>
+<body>
+    <h1>View</h1>
+
+    <div th:if="${successMessage}" style="color: green;">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" style="color: #d20005;">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <table>
+        <tr>
+            <td><strong>Id:</strong></td>
+            <td th:text="${contact.id}"></td>
+        </tr>
+        <tr>
+            <td><strong>First Name:</strong></td>
+            <td th:text="${contact.firstName}"></td>
+        </tr>
+        <tr>
+            <td><strong>Last Name:</strong></td>
+            <td th:text="${contact.lastName}"></td>
+        </tr>
+        <tr>
+            <td><strong>Birthday:</strong></td>
+            <td th:text="${contact.birthday} ? ${#dates.format(contact.birthday, 'MM/dd/yyyy')} : ''"></td>
+        </tr>
+        <tr>
+            <td><strong>Home Phone:</strong></td>
+            <td th:text="${contact.homePhone}"></td>
+        </tr>
+        <tr>
+            <td><strong>Mobile Phone:</strong></td>
+            <td th:text="${contact.mobilePhone}"></td>
+        </tr>
+        <tr>
+            <td><strong>Email:</strong></td>
+            <td th:text="${contact.email}"></td>
+        </tr>
+    </table>
+    <br/>
+    <form th:action="@{/contact/delete/{id}(id=${contact.id})}" method="post" style="display:inline;">
+        <button type="submit" style="background:none;border:none;cursor:pointer;text-decoration:underline;color:black;font-size:small;padding:0;">Destroy</button>
+    </form>
+    <br/><br/>
+    <a th:href="@{/contact/edit/{id}(id=${contact.id})}">Edit</a>
+    <br/>
+    <a th:href="@{/contact/create}">Create New Contact</a>
+    <br/>
+    <a th:href="@{/contact/list}">Show All Contact Items</a>
+    <br/><br/>
+    <a th:href="@{/}">Index</a>
+</body>
+</html>

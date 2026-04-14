@@ -1,0 +1,426 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 442B done
+#3 DONE 0.0s
+
+#4 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [ 5/10] RUN playwright install --with-deps chromium
+#5 CACHED
+
+#6 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#8 CACHED
+
+#9 [ 6/10] WORKDIR /app
+#9 CACHED
+
+#10 [internal] load build context
+#10 transferring context: 1.62MB 0.4s done
+#10 DONE 1.7s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:2a3f5d95c889bcc2f341f46dac06f29539c6b154aab2b7ff61d886ceac8d9a91 0.0s done
+#14 exporting config sha256:3105b7093e2cfb469753e00ec6d412d05c8ed1b51c82abf3243166e04265109a 0.0s done
+#14 exporting attestation manifest sha256:4dce4bfba3017c335ab9a276d11b54f8d7ebb1dae6e0da764aa057e42b174cdb 0.1s done
+#14 exporting manifest list sha256:2d45c5a0e2e6a5d8a36513aa3338a83d7cacef8a621414146ad2e6292eff7db4
+#14 exporting manifest list sha256:2d45c5a0e2e6a5d8a36513aa3338a83d7cacef8a621414146ad2e6292eff7db4 0.0s done
+#14 naming to docker.io/library/petclinic-spring:3e7a2c07 done
+#14 unpacking to docker.io/library/petclinic-spring:3e7a2c07
+#14 unpacking to docker.io/library/petclinic-spring:3e7a2c07 1.0s done
+#14 DONE 1.2s
+[INFO] Built image: petclinic-spring:3e7a2c07
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name petclinic-spring-fe096610 petclinic-spring:3e7a2c07
+f44d9bc572f30c92ba51ce451266b70486e4ef0fc354a8348bb22cbc6ce3895c
+[INFO] Started petclinic-spring-fe096610, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T06:49:49.531Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : Starting PetClinicApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/spring-petclinic-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T06:49:49.562Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T06:49:50.394Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T06:49:50.477Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+2026-03-24T06:49:50.856Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T06:49:50.861Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T06:49:50.861Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T06:49:50.875Z  INFO 19 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T06:49:50.875Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1200 ms
+2026-03-24T06:49:50.900Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T06:49:51.053Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:petclinic user=SA
+2026-03-24T06:49:51.054Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T06:49:51.059Z  INFO 19 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:petclinic'
+2026-03-24T06:49:51.133Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T06:49:51.183Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T06:49:51.204Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T06:49:51.318Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T06:49:51.342Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T06:49:52.069Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists owners cascade 
+Hibernate: drop table if exists pets cascade 
+Hibernate: drop table if exists specialties cascade 
+Hibernate: drop table if exists types cascade 
+Hibernate: drop table if exists vet_specialties cascade 
+Hibernate: drop table if exists vets cascade 
+Hibernate: drop table if exists visits cascade 
+Hibernate: create table owners (id bigint generated by default as identity, address varchar(255), city varchar(255), first_name varchar(255), last_name varchar(255), telephone varchar(255), primary key (id))
+Hibernate: create table pets (birth_date date, id bigint generated by default as identity, owner_id bigint, type_id bigint, name varchar(255), primary key (id))
+Hibernate: create table specialties (id bigint generated by default as identity, name varchar(255), primary key (id))
+Hibernate: create table types (id bigint generated by default as identity, name varchar(255), primary key (id))
+Hibernate: create table vet_specialties (specialty_id bigint not null, vet_id bigint not null, primary key (specialty_id, vet_id))
+Hibernate: create table vets (id bigint generated by default as identity, first_name varchar(255), last_name varchar(255), primary key (id))
+Hibernate: create table visits (visit_date date, id bigint generated by default as identity, pet_id bigint, description varchar(255), primary key (id))
+Hibernate: alter table if exists pets add constraint FK6teg4kcjcnjhduguft56wcfoa foreign key (owner_id) references owners
+Hibernate: alter table if exists pets add constraint FKtmmh1tq8pah5vxf8kuqqplo4p foreign key (type_id) references types
+Hibernate: alter table if exists vet_specialties add constraint FK35uiboyrpfn1bndrr5jorcj0m foreign key (specialty_id) references specialties
+Hibernate: alter table if exists vet_specialties add constraint FKby1c0fbaa0byaifi63vt18sx9 foreign key (vet_id) references vets
+2026-03-24T06:49:52.111Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T06:49:52.411Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T06:49:53.233Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T06:49:53.244Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : Started PetClinicApplication in 4.107 seconds (process running for 4.756)
+[INFO] Application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T06:49:49.531Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : Starting PetClinicApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/spring-petclinic-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T06:49:49.562Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T06:49:50.394Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T06:49:50.477Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+2026-03-24T06:49:50.856Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T06:49:50.861Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T06:49:50.861Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T06:49:50.875Z  INFO 19 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T06:49:50.875Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1200 ms
+2026-03-24T06:49:50.900Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T06:49:51.053Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:petclinic user=SA
+2026-03-24T06:49:51.054Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T06:49:51.059Z  INFO 19 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:petclinic'
+2026-03-24T06:49:51.133Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T06:49:51.183Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T06:49:51.204Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T06:49:51.318Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T06:49:51.342Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T06:49:52.069Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists owners cascade 
+Hibernate: drop table if exists pets cascade 
+Hibernate: drop table if exists specialties cascade 
+Hibernate: drop table if exists types cascade 
+Hibernate: drop table if exists vet_specialties cascade 
+Hibernate: drop table if exists vets cascade 
+Hibernate: drop table if exists visits cascade 
+Hibernate: create table owners (id bigint generated by default as identity, address varchar(255), city varchar(255), first_name varchar(255), last_name varchar(255), telephone varchar(255), primary key (id))
+Hibernate: create table pets (birth_date date, id bigint generated by default as identity, owner_id bigint, type_id bigint, name varchar(255), primary key (id))
+Hibernate: create table specialties (id bigint generated by default as identity, name varchar(255), primary key (id))
+Hibernate: create table types (id bigint generated by default as identity, name varchar(255), primary key (id))
+Hibernate: create table vet_specialties (specialty_id bigint not null, vet_id bigint not null, primary key (specialty_id, vet_id))
+Hibernate: create table vets (id bigint generated by default as identity, first_name varchar(255), last_name varchar(255), primary key (id))
+Hibernate: create table visits (visit_date date, id bigint generated by default as identity, pet_id bigint, description varchar(255), primary key (id))
+Hibernate: alter table if exists pets add constraint FK6teg4kcjcnjhduguft56wcfoa foreign key (owner_id) references owners
+Hibernate: alter table if exists pets add constraint FKtmmh1tq8pah5vxf8kuqqplo4p foreign key (type_id) references types
+Hibernate: alter table if exists vet_specialties add constraint FK35uiboyrpfn1bndrr5jorcj0m foreign key (specialty_id) references specialties
+Hibernate: alter table if exists vet_specialties add constraint FKby1c0fbaa0byaifi63vt18sx9 foreign key (vet_id) references vets
+2026-03-24T06:49:52.111Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T06:49:52.411Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T06:49:53.233Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T06:49:53.244Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : Started PetClinicApplication in 4.107 seconds (process running for 4.756)
+[INFO] Running smoke tests inside container petclinic-spring-fe096610...
+Downloading cpython-3.14.3-linux-x86_64-gnu (download) (34.4MiB)
+ Downloaded cpython-3.14.3-linux-x86_64-gnu (download)
+Using CPython 3.14.3
+Creating virtual environment at: .venv
+Resolved 20 packages in 315ms
+Downloading pygments (1.2MiB)
+Downloading playwright (44.1MiB)
+ Downloaded pygments
+ Downloaded playwright
+Prepared 18 packages in 990ms
+Installed 18 packages in 12ms
+ + certifi==2026.2.25
+ + charset-normalizer==3.4.6
+ + greenlet==3.3.2
+ + idna==3.11
+ + iniconfig==2.3.0
+ + packaging==26.0
+ + playwright==1.58.0
+ + pluggy==1.6.0
+ + pyee==13.0.1
+ + pygments==2.19.2
+ + pytest==8.4.2
+ + pytest-base-url==2.1.0
+ + pytest-playwright==0.7.2
+ + python-slugify==8.0.4
+ + requests==2.32.5
+ + text-unidecode==1.3
+ + typing-extensions==4.15.0
+ + urllib3==2.6.3
+Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/chrome-for-testing-public/145.0.7632.6/linux64/chrome-linux64.zip
+(node:227) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 167.3 MiB
+|■■■■■■■■                                                                        |  10% of 167.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 167.3 MiB
+Chrome for Testing 145.0.7632.6 (playwright chromium v1208) downloaded to /ms-playwright/chromium-1208
+Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+(node:238) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 2.3 MiB
+|■■■■■■■■                                                                        |  10% of 2.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+FFmpeg (playwright ffmpeg v1011) downloaded to /ms-playwright/ffmpeg-1011
+Downloading Chrome Headless Shell 145.0.7632.6 (playwright chromium-headless-shell v1208) from https://cdn.playwright.dev/chrome-for-testing-public/145.0.7632.6/linux64/chrome-headless-shell-linux64.zip
+(node:249) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 110.9 MiB
+|■■■■■■■■                                                                        |  10% of 110.9 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 110.9 MiB
+Chrome Headless Shell 145.0.7632.6 (playwright chromium-headless-shell v1208) downloaded to /ms-playwright/chromium_headless_shell-1208
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0 -- /app/smoke/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app/smoke
+configfile: pyproject.toml
+plugins: base-url-2.1.0, playwright-0.7.2
+collecting ... collected 13 items
+
+smoke.py::test_homepage_loads[chromium] PASSED                           [  7%]
+smoke.py::test_homepage_displays_welcome_panel[chromium] PASSED          [ 15%]
+smoke.py::test_homepage_has_welcome_text[chromium] PASSED                [ 23%]
+smoke.py::test_pages_load_without_errors[chromium] PASSED                [ 30%]
+smoke.py::test_page_titles_are_set[chromium] PASSED                      [ 38%]
+smoke.py::test_navigate_to_find_owners_page[chromium] PASSED             [ 46%]
+smoke.py::test_find_owners_page_has_search_form[chromium] PASSED         [ 53%]
+smoke.py::test_owner_search_returns_results[chromium] PASSED             [ 61%]
+smoke.py::test_owner_search_by_last_name[chromium] PASSED                [ 69%]
+smoke.py::test_navigate_to_veterinarians_page[chromium] PASSED           [ 76%]
+smoke.py::test_veterinarians_page_displays_table[chromium] PASSED        [ 84%]
+smoke.py::test_error_page_for_unknown_route[chromium] PASSED             [ 92%]
+smoke.py::test_rest_vets_json PASSED                                     [100%]
+
+============================== 13 passed in 9.84s ==============================
+=== TEST OK ===
+[INFO] === Container logs after test ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T06:49:49.531Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : Starting PetClinicApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/spring-petclinic-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T06:49:49.562Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T06:49:50.394Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T06:49:50.477Z  INFO 19 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+2026-03-24T06:49:50.856Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T06:49:50.861Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T06:49:50.861Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T06:49:50.875Z  INFO 19 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T06:49:50.875Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1200 ms
+2026-03-24T06:49:50.900Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T06:49:51.053Z  INFO 19 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:petclinic user=SA
+2026-03-24T06:49:51.054Z  INFO 19 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T06:49:51.059Z  INFO 19 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:petclinic'
+2026-03-24T06:49:51.133Z  INFO 19 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T06:49:51.183Z  INFO 19 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T06:49:51.204Z  INFO 19 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T06:49:51.318Z  INFO 19 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T06:49:51.342Z  WARN 19 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T06:49:52.069Z  INFO 19 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists owners cascade 
+Hibernate: drop table if exists pets cascade 
+Hibernate: drop table if exists specialties cascade 
+Hibernate: drop table if exists types cascade 
+Hibernate: drop table if exists vet_specialties cascade 
+Hibernate: drop table if exists vets cascade 
+Hibernate: drop table if exists visits cascade 
+Hibernate: create table owners (id bigint generated by default as identity, address varchar(255), city varchar(255), first_name varchar(255), last_name varchar(255), telephone varchar(255), primary key (id))
+Hibernate: create table pets (birth_date date, id bigint generated by default as identity, owner_id bigint, type_id bigint, name varchar(255), primary key (id))
+Hibernate: create table specialties (id bigint generated by default as identity, name varchar(255), primary key (id))
+Hibernate: create table types (id bigint generated by default as identity, name varchar(255), primary key (id))
+Hibernate: create table vet_specialties (specialty_id bigint not null, vet_id bigint not null, primary key (specialty_id, vet_id))
+Hibernate: create table vets (id bigint generated by default as identity, first_name varchar(255), last_name varchar(255), primary key (id))
+Hibernate: create table visits (visit_date date, id bigint generated by default as identity, pet_id bigint, description varchar(255), primary key (id))
+Hibernate: alter table if exists pets add constraint FK6teg4kcjcnjhduguft56wcfoa foreign key (owner_id) references owners
+Hibernate: alter table if exists pets add constraint FKtmmh1tq8pah5vxf8kuqqplo4p foreign key (type_id) references types
+Hibernate: alter table if exists vet_specialties add constraint FK35uiboyrpfn1bndrr5jorcj0m foreign key (specialty_id) references specialties
+Hibernate: alter table if exists vet_specialties add constraint FKby1c0fbaa0byaifi63vt18sx9 foreign key (vet_id) references vets
+2026-03-24T06:49:52.111Z  INFO 19 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T06:49:52.411Z  WARN 19 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T06:49:53.233Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T06:49:53.244Z  INFO 19 --- [           main] o.s.s.petclinic.PetClinicApplication     : Started PetClinicApplication in 4.107 seconds (process running for 4.756)
+2026-03-24T06:49:54.512Z  INFO 19 --- [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-24T06:49:54.512Z  INFO 19 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-24T06:49:54.513Z  INFO 19 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Hibernate: select v1_0.id,v1_0.first_name,v1_0.last_name from vets v1_0
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select v1_0.id,v1_0.first_name,v1_0.last_name from vets v1_0
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone from owners o1_0
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone from owners o1_0 where o1_0.last_name=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,t1_0.id,t1_0.name from pets p1_0 left join types t1_0 on t1_0.id=p1_0.type_id where p1_0.owner_id=?
+Hibernate: select v1_0.id,v1_0.first_name,v1_0.last_name from vets v1_0
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select v1_0.id,v1_0.first_name,v1_0.last_name from vets v1_0
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+2026-03-24T06:50:16.378Z ERROR 19 --- [nio-8080-exec-8] o.s.s.petclinic.system.ErrorController   : Internal application error
+
+org.springframework.web.servlet.resource.NoResourceFoundException: No static resource nonexistent-page-xyz.
+	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:585) ~[spring-webmvc-6.1.6.jar!/:6.1.6]
+	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52) ~[spring-webmvc-6.1.6.jar!/:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar!/:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar!/:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar!/:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.6.jar!/:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar!/:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.20.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:66) ~[spring-webmvc-6.1.6.jar!/:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.6.jar!/:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar!/:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.6.jar!/:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar!/:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar!/:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar!/:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:1595) ~[na:na]
+
+Hibernate: select v1_0.id,v1_0.first_name,v1_0.last_name from vets v1_0
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+docker rm -f petclinic-spring-fe096610 >/dev/null 2>&1 || true
+docker rmi $(docker images -q petclinic-spring) 2>/dev/null
+Untagged: petclinic-spring:3e7a2c07
+Deleted: sha256:2d45c5a0e2e6a5d8a36513aa3338a83d7cacef8a621414146ad2e6292eff7db4
+make: [Makefile:59: test] Error 1 (ignored)
+docker image prune -f
+Total reclaimed space: 0B
+[INFO] Cleaned up container and image

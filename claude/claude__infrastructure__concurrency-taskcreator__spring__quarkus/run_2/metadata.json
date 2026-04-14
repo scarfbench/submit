@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "concurrency-taskcreator",
+  "layer": "infrastructure",
+  "repeat": 2,
+  "source_framework": "spring",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 6,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 6,
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

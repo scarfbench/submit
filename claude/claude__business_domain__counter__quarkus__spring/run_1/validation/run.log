@@ -1,0 +1,120 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 986B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [ 5/10] RUN playwright install --with-deps chromium
+#4 CACHED
+
+#5 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#5 CACHED
+
+#6 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#6 CACHED
+
+#7 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [ 6/10] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 180.97kB done
+#10 DONE 0.0s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 24.5s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 0.784 [INFO] Scanning for projects...
+#13 0.905 [INFO] 
+#13 0.905 [INFO] -----------------< quarkus.examples.tutorial:counter >------------------
+#13 0.905 [INFO] Building counter 1.0.0-SNAPSHOT
+#13 0.905 [INFO]   from pom.xml
+#13 0.905 [INFO] --------------------------------[ war ]---------------------------------
+#13 1.262 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.pom
+#13 1.513 Progress (1): 973 BProgress (1): 2.8 kBProgress (1): 5.9 kBProgress (1): 13 kB Progress (1): 16 kBProgress (1): 16 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.pom (16 kB at 60 kB/s)
+#13 1.524 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.10/byte-buddy-parent-1.14.10.pom
+#13 1.565 Progress (1): 836 BProgress (1): 1.7 kBProgress (1): 3.2 kBProgress (1): 5.5 kBProgress (1): 7.0 kBProgress (1): 8.9 kBProgress (1): 12 kB Progress (1): 13 kBProgress (1): 17 kBProgress (1): 22 kBProgress (1): 24 kBProgress (1): 31 kBProgress (1): 45 kBProgress (1): 48 kBProgress (1): 53 kBProgress (1): 57 kBProgress (1): 62 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.10/byte-buddy-parent-1.14.10.pom (62 kB at 1.3 MB/s)
+#13 1.580 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.pom
+#13 1.620 Progress (1): 1.2 kBProgress (1): 3.1 kBProgress (1): 5.3 kBProgress (1): 8.8 kBProgress (1): 10 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.pom (10 kB at 255 kB/s)
+#13 1.657 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+#13 1.657 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar
+#13 1.657 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar
+#13 1.713 Progress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (1): 0/4.2 MBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 0.9/65 kBProgress (2): 0/4.2 MB | 2.3/65 kBProgress (2): 0/4.2 MB | 3.6/65 kBProgress (2): 0/4.2 MB | 5.0/65 kBProgress (2): 0/4.2 MB | 6.4/65 kBProgress (2): 0/4.2 MB | 7.7/65 kBProgress (2): 0/4.2 MB | 9.1/65 kBProgress (2): 0/4.2 MB | 10/65 kB Progress (2): 0/4.2 MB | 12/65 kBProgress (2): 0/4.2 MB | 13/65 kBProgress (2): 0/4.2 MB | 15/65 kBProgress (2): 0/4.2 MB | 16/65 kBProgress (2): 0/4.2 MB | 17/65 kBProgress (2): 0/4.2 MB | 19/65 kBProgress (2): 0/4.2 MB | 19/65 kBProgress (2): 0/4.2 MB | 20/65 kBProgress (2): 0/4.2 MB | 21/65 kBProgress (2): 0/4.2 MB | 21/65 kBProgress (2): 0/4.2 MB | 23/65 kBProgress (2): 0/4.2 MB | 23/65 kBProgress (2): 0/4.2 MB | 24/65 kBProgress (2): 0/4.2 MB | 24/65 kBProgress (2): 0/4.2 MB | 25/65 kBProgress (2): 0/4.2 MB | 25/65 kBProgress (2): 0/4.2 MB | 26/65 kBProgress (2): 0/4.2 MB | 27/65 kBProgress (2): 0/4.2 MB | 29/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0/4.2 MB | 30/65 kBProgress (2): 0.1/4.2 MB | 30/65 kBProgress (2): 0.1/4.2 MB | 30/65 kBProgress (2): 0.1/4.2 MB | 30/65 kBProgress (2): 0.1/4.2 MB | 31/65 kBProgress (2): 0.1/4.2 MB | 31/65 kBProgress (2): 0.1/4.2 MB | 31/65 kBProgress (2): 0.1/4.2 MB | 33/65 kBProgress (2): 0.1/4.2 MB | 34/65 kBProgress (2): 0.1/4.2 MB | 36/65 kBProgress (2): 0.1/4.2 MB | 40/65 kBProgress (2): 0.1/4.2 MB | 44/65 kBProgress (2): 0.1/4.2 MB | 48/65 kBProgress (2): 0.1/4.2 MB | 52/65 kBProgress (2): 0.1/4.2 MB | 57/65 kBProgress (2): 0.1/4.2 MB | 61/65 kBProgress (2): 0.1/4.2 MB | 65 kB                                   Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar (65 kB at 850 kB/s)
+#13 1.731 Progress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (1): 0.1/4.2 MBProgress (2): 0.1/4.2 MB | 0.9/257 kBProgress (2): 0.1/4.2 MB | 2.3/257 kBProgress (2): 0.1/4.2 MB | 3.6/257 kBProgress (2): 0.1/4.2 MB | 5.0/257 kBProgress (2): 0.1/4.2 MB | 6.4/257 kBProgress (2): 0.1/4.2 MB | 6.4/257 kBProgress (2): 0.1/4.2 MB | 6.4/257 kBProgress (2): 0.1/4.2 MB | 6.4/257 kBProgress (2): 0.1/4.2 MB | 6.4/257 kBProgress (2): 0.1/4.2 MB | 6.4/257 kBProgress (2): 0.1/4.2 MB | 6.4/257 kBProgress (2): 0.1/4.2 MB | 7.7/257 kBProgress (2): 0.1/4.2 MB | 8.2/257 kBProgress (2): 0.1/4.2 MB | 9.6/257 kBProgress (2): 0.1/4.2 MB | 11/257 kB Progress (2): 0.1/4.2 MB | 12/257 kBProgress (2): 0.1/4.2 MB | 14/257 kBProgress (2): 0.1/4.2 MB | 15/257 kBProgress (2): 0.1/4.2 MB | 16/257 kBProgress (2): 0.1/4.2 MB | 18/257 kBProgress (2): 0.1/4.2 MB | 19/257 kBProgress (2): 0.1/4.2 MB | 21/257 kBProgress (2): 0.1/4.2 MB | 22/257 kBProgress (2): 0.1/4.2 MB | 23/257 kBProgress (2): 0.1/4.2 MB | 25/257 kBProgress (2): 0.1/4.2 MB | 26/257 kBProgress (2): 0.1/4.2 MB | 27/257 kBProgress (2): 0.1/4.2 MB | 29/257 kBProgress (2): 0.1/4.2 MB | 30/257 kBProgress (2): 0.1/4.2 MB | 31/257 kBProgress (2): 0.1/4.2 MB | 33/257 kBProgress (2): 0.1/4.2 MB | 34/257 kBProgress (2): 0.1/4.2 MB | 36/257 kBProgress (2): 0.1/4.2 MB | 37/257 kBProgress (2): 0.1/4.2 MB | 38/257 kBProgress (2): 0.1/4.2 MB | 40/257 kBProgress (2): 0.1/4.2 MB | 41/257 kBProgress (2): 0.1/4.2 MB | 42/257 kBProgress (2): 0.1/4.2 MB | 44/257 kBProgress (2): 0.1/4.2 MB | 45/257 kBProgress (2): 0.1/4.2 MB | 47/257 kBProgress (2): 0.1/4.2 MB | 48/257 kBProgress (2): 0.1/4.2 MB | 49/257 kBProgress (2): 0.1/4.2 MB | 51/257 kBProgress (2): 0.1/4.2 MB | 52/257 kBProgress (2): 0.1/4.2 MB | 53/257 kBProgress (2): 0.1/4.2 MB | 55/257 kBProgress (2): 0.1/4.2 MB | 59/257 kBProgress (2): 0.1/4.2 MB | 63/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.1/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 67/257 kBProgress (2): 0.2/4.2 MB | 72/257 kBProgress (2): 0.2/4.2 MB | 76/257 kBProgress (2): 0.2/4.2 MB | 80/257 kBProgress (2): 0.2/4.2 MB | 80/257 kBProgress (2): 0.2/4.2 MB | 80/257 kBProgress (2): 0.2/4.2 MB | 80/257 kBProgress (2): 0.2/4.2 MB | 80/257 kBProgress (2): 0.2/4.2 MB | 80/257 kBProgress (2): 0.2/4.2 MB | 80/257 kBProgress (2): 0.2/4.2 MB | 80/257 kBProgress (2): 0.2/4.2 MB | 84/257 kBProgress (2): 0.2/4.2 MB | 89/257 kBProgress (2): 0.2/4.2 MB | 93/257 kBProgress (2): 0.2/4.2 MB | 97/257 kBProgress (2): 0.2/4.2 MB | 101/257 kBProgress (2): 0.2/4.2 MB | 105/257 kBProgress (2): 0.2/4.2 MB | 110/257 kBProgress (2): 0.2/4.2 MB | 114/257 kBProgress (2): 0.2/4.2 MB | 118/257 kBProgress (2): 0.2/4.2 MB | 122/257 kBProgress (2): 0.2/4.2 MB | 127/257 kBProgress (2): 0.2/4.2 MB | 131/257 kBProgress (2): 0.2/4.2 MB | 135/257 kBProgress (2): 0.2/4.2 MB | 139/257 kBProgress (2): 0.2/4.2 MB | 143/257 kBProgress (2): 0.2/4.2 MB | 148/257 kBProgress (2): 0.2/4.2 MB | 148/257 kBProgress (2): 0.2/4.2 MB | 148/257 kBProgress (2): 0.3/4.2 MB | 148/257 kBProgress (2): 0.3/4.2 MB | 148/257 kBProgress (2): 0.3/4.2 MB | 148/257 kBProgress (2): 0.3/4.2 MB | 148/257 kBProgress (2): 0.3/4.2 MB | 148/257 kBProgress (2): 0.3/4.2 MB | 148/257 kBProgress (2): 0.3/4.2 MB | 152/257 kBProgress (2): 0.3/4.2 MB | 156/257 kBProgress (2): 0.3/4.2 MB | 160/257 kBProgress (2): 0.3/4.2 MB | 165/257 kBProgress (2): 0.3/4.2 MB | 165/257 kBProgress (2): 0.3/4.2 MB | 169/257 kBProgress (2): 0.4/4.2 MB | 169/257 kBProgress (2): 0.4/4.2 MB | 169/257 kBProgress (2): 0.4/4.2 MB | 173/257 kBProgress (2): 0.4/4.2 MB | 177/257 kBProgress (2): 0.4/4.2 MB | 182/257 kBProgress (2): 0.4/4.2 MB | 186/257 kBProgress (2): 0.4/4.2 MB | 190/257 kBProgress (2): 0.4/4.2 MB | 194/257 kBProgress (2): 0.4/4.2 MB | 198/257 kBProgress (2): 0.4/4.2 MB | 203/257 kBProgress (2): 0.4/4.2 MB | 207/257 kBProgress (2): 0.4/4.2 MB | 211/257 kBProgress (2): 0.4/4.2 MB | 211/257 kBProgress (2): 0.4/4.2 MB | 215/257 kBProgress (2): 0.4/4.2 MB | 220/257 kBProgress (2): 0.4/4.2 MB | 224/257 kBProgress (2): 0.4/4.2 MB | 224/257 kBProgress (2): 0.4/4.2 MB | 240/257 kBProgress (2): 0.4/4.2 MB | 240/257 kBProgress (2): 0.4/4.2 MB | 240/257 kBProgress (2): 0.5/4.2 MB | 240/257 kBProgress (2): 0.5/4.2 MB | 257/257 kBProgress (2): 0.5/4.2 MB | 257 kB    Progress (2): 0.5/4.2 MB | 257 kBProgress (2): 0.5/4.2 MB | 257 kBProgress (2): 0.5/4.2 MB | 257 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar (257 kB at 2.4 MB/s)
+#13 1.764 Progress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar (4.2 MB at 21 MB/s)
+#13 1.867 [INFO] 
+#13 1.867 [INFO] --- resources:3.3.1:resources (default-resources) @ counter ---
+#13 1.946 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 1.951 [INFO] Copying 4 resources from src/main/resources to target/classes
+#13 1.952 [INFO] 
+#13 1.952 [INFO] --- compiler:3.11.0:compile (default-compile) @ counter ---
+#13 2.014 [INFO] Changes detected - recompiling the module! :source
+#13 2.016 [INFO] Compiling 3 source files with javac [debug release 17] to target/classes
+#13 2.395 [INFO] 
+#13 2.396 [INFO] --- resources:3.3.1:testResources (default-testResources) @ counter ---
+#13 2.400 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 2.400 [INFO] 
+#13 2.401 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ counter ---
+#13 2.402 [INFO] No sources to compile
+#13 2.403 [INFO] 
+#13 2.403 [INFO] --- surefire:3.1.2:test (default-test) @ counter ---
+#13 2.522 [INFO] Tests are skipped.
+#13 2.523 [INFO] 
+#13 2.523 [INFO] --- war:3.4.0:war (default-war) @ counter ---
+#13 2.672 [INFO] Packaging webapp
+#13 2.672 [INFO] Assembling webapp [counter] in [/app/target/counter-1.0.0-SNAPSHOT]
+#13 2.674 [INFO] Processing war project
+#13 2.706 [INFO] Building war: /app/target/counter-1.0.0-SNAPSHOT.war
+#13 2.973 [INFO] 
+#13 2.973 [INFO] --- spring-boot:3.2.0:repackage (repackage) @ counter ---
+#13 3.220 [INFO] Replacing main artifact /app/target/counter-1.0.0-SNAPSHOT.war with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 3.220 [INFO] The original artifact has been renamed to /app/target/counter-1.0.0-SNAPSHOT.war.original
+#13 3.220 [INFO] ------------------------------------------------------------------------
+#13 3.220 [INFO] BUILD SUCCESS
+#13 3.220 [INFO] ------------------------------------------------------------------------
+#13 3.220 [INFO] Total time:  2.445 s
+#13 3.220 [INFO] Finished at: 2026-03-24T03:16:39Z
+#13 3.220 [INFO] ------------------------------------------------------------------------
+#13 DONE 3.3s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 0.2s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 2.0s done
+#15 exporting manifest sha256:d2d6c44405731900e7cb04a2ce353ae504b5bd86615552ceac648b89ac3a566b 0.0s done
+#15 exporting config sha256:4007fbb33559311ff9763b506e1b8c08a58c2126e149b6010515bb8642f22dbc 0.0s done
+#15 exporting attestation manifest sha256:70404f735804bc41b995fb5518e321c283dc8536ce874ad5c67e62ed801d6fe4 0.1s done
+#15 exporting manifest list sha256:180da08a1169d4604c7e45bcd4ebb83ac770981e00e61aea4ded58e9b16cfb2b
+#15 exporting manifest list sha256:180da08a1169d4604c7e45bcd4ebb83ac770981e00e61aea4ded58e9b16cfb2b 0.0s done
+#15 naming to docker.io/library/counter-spring:f23afc84 done
+#15 unpacking to docker.io/library/counter-spring:f23afc84
+#15 unpacking to docker.io/library/counter-spring:f23afc84 0.6s done
+#15 DONE 2.8s
+[INFO] Built image: counter-spring:f23afc84
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name counter-spring-61906f4a counter-spring:f23afc84
+fc9a53b9cbf1e08671ec1d26b314c099b60f0178b108545d9b591ec81d26cc7e
+[INFO] Started counter-spring-61906f4a, waiting for app to start...
+Error: Unable to access jarfile target/*.jar

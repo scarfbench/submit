@@ -1,0 +1,950 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 996B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 442B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 7.14MB 0.3s done
+#5 DONE 0.3s
+
+#6 [6/9] WORKDIR /app
+#6 CACHED
+
+#7 [7/9] COPY . .
+#7 CACHED
+
+#8 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#8 CACHED
+
+#9 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#9 CACHED
+
+#10 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#10 CACHED
+
+#11 [5/9] RUN playwright install --with-deps chromium
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 1.427 [INFO] Scanning for projects...
+#13 1.483 [INFO] 
+#13 1.483 [INFO] ------< io.openliberty.samples:io.openliberty.sample.daytrader8 >-------
+#13 1.483 [INFO] Building io.openliberty.sample.daytrader8 1.0-SNAPSHOT
+#13 1.483 [INFO]   from pom.xml
+#13 1.484 [INFO] --------------------------------[ war ]---------------------------------
+#13 1.671 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.2.0/maven-clean-plugin-3.2.0.pom
+#13 1.865 Progress (1): 780 BProgress (1): 1.7 kBProgress (1): 4.2 kBProgress (1): 5.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.2.0/maven-clean-plugin-3.2.0.pom (5.3 kB at 27 kB/s)
+#13 1.887 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/35/maven-plugins-35.pom
+#13 1.920 Progress (1): 752 BProgress (1): 1.7 kBProgress (1): 3.7 kBProgress (1): 6.4 kBProgress (1): 8.2 kBProgress (1): 9.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/35/maven-plugins-35.pom (9.9 kB at 291 kB/s)
+#13 1.934 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/35/maven-parent-35.pom
+#13 1.964 Progress (1): 726 BProgress (1): 1.6 kBProgress (1): 4.2 kBProgress (1): 8.4 kBProgress (1): 11 kB Progress (1): 16 kBProgress (1): 21 kBProgress (1): 23 kBProgress (1): 26 kBProgress (1): 28 kBProgress (1): 30 kBProgress (1): 33 kBProgress (1): 37 kBProgress (1): 39 kBProgress (1): 42 kBProgress (1): 45 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/35/maven-parent-35.pom (45 kB at 1.5 MB/s)
+#13 1.975 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/25/apache-25.pom
+#13 2.002 Progress (1): 743 BProgress (1): 1.6 kBProgress (1): 3.4 kBProgress (1): 5.5 kBProgress (1): 9.0 kBProgress (1): 14 kB Progress (1): 17 kBProgress (1): 19 kBProgress (1): 21 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/25/apache-25.pom (21 kB at 663 kB/s)
+#13 2.019 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.2.0/maven-clean-plugin-3.2.0.jar
+#13 2.055 Progress (1): 0.9/36 kBProgress (1): 2.3/36 kBProgress (1): 3.4/36 kBProgress (1): 4.7/36 kBProgress (1): 6.1/36 kBProgress (1): 7.5/36 kBProgress (1): 8.8/36 kBProgress (1): 10/36 kB Progress (1): 12/36 kBProgress (1): 13/36 kBProgress (1): 14/36 kBProgress (1): 16/36 kBProgress (1): 17/36 kBProgress (1): 18/36 kBProgress (1): 20/36 kBProgress (1): 21/36 kBProgress (1): 23/36 kBProgress (1): 24/36 kBProgress (1): 25/36 kBProgress (1): 27/36 kBProgress (1): 28/36 kBProgress (1): 29/36 kBProgress (1): 34/36 kBProgress (1): 36 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.2.0/maven-clean-plugin-3.2.0.jar (36 kB at 915 kB/s)
+#13 2.071 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom
+#13 2.097 Progress (1): 773 BProgress (1): 2.1 kBProgress (1): 5.7 kBProgress (1): 8.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom (8.1 kB at 280 kB/s)
+#13 2.103 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/23/maven-plugins-23.pom
+#13 2.131 Progress (1): 758 BProgress (1): 2.3 kBProgress (1): 4.5 kBProgress (1): 7.2 kBProgress (1): 9.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/23/maven-plugins-23.pom (9.2 kB at 307 kB/s)
+#13 2.135 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/22/maven-parent-22.pom
+#13 2.166 Progress (1): 764 BProgress (1): 2.0 kBProgress (1): 6.2 kBProgress (1): 11 kB Progress (1): 15 kBProgress (1): 16 kBProgress (1): 20 kBProgress (1): 22 kBProgress (1): 25 kBProgress (1): 29 kBProgress (1): 30 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/22/maven-parent-22.pom (30 kB at 875 kB/s)
+#13 2.171 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/11/apache-11.pom
+#13 2.199 Progress (1): 749 BProgress (1): 2.1 kBProgress (1): 4.1 kBProgress (1): 8.8 kBProgress (1): 12 kB Progress (1): 15 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/11/apache-11.pom (15 kB at 529 kB/s)
+#13 2.204 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.jar
+#13 2.231 Progress (1): 3.8/30 kBProgress (1): 8.0/30 kBProgress (1): 12/30 kB Progress (1): 16/30 kBProgress (1): 21/30 kBProgress (1): 25/30 kBProgress (1): 29/30 kBProgress (1): 30 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.jar (30 kB at 1.1 MB/s)
+#13 2.236 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.13.0/maven-compiler-plugin-3.13.0.pom
+#13 2.265 Progress (1): 762 BProgress (1): 2.2 kBProgress (1): 5.0 kBProgress (1): 8.5 kBProgress (1): 10 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.13.0/maven-compiler-plugin-3.13.0.pom (10 kB at 348 kB/s)
+#13 2.268 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom
+#13 2.293 Progress (1): 773 BProgress (1): 2.4 kBProgress (1): 4.9 kBProgress (1): 7.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom (7.4 kB at 263 kB/s)
+#13 2.300 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/41/maven-parent-41.pom
+#13 2.327 Progress (1): 724 BProgress (1): 1.9 kBProgress (1): 5.5 kBProgress (1): 9.9 kBProgress (1): 14 kB Progress (1): 19 kBProgress (1): 23 kBProgress (1): 25 kBProgress (1): 27 kBProgress (1): 29 kBProgress (1): 32 kBProgress (1): 36 kBProgress (1): 38 kBProgress (1): 41 kBProgress (1): 44 kBProgress (1): 50 kBProgress (1): 50 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/41/maven-parent-41.pom (50 kB at 1.6 MB/s)
+#13 2.333 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom
+#13 2.357 Progress (1): 739 BProgress (1): 2.1 kBProgress (1): 3.9 kBProgress (1): 6.2 kBProgress (1): 11 kB Progress (1): 16 kBProgress (1): 20 kBProgress (1): 21 kBProgress (1): 23 kBProgress (1): 24 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom (24 kB at 905 kB/s)
+#13 2.367 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.13.0/maven-compiler-plugin-3.13.0.jar
+#13 2.391 Progress (1): 3.8/83 kBProgress (1): 8.0/83 kBProgress (1): 12/83 kB Progress (1): 16/83 kBProgress (1): 21/83 kBProgress (1): 25/83 kBProgress (1): 29/83 kBProgress (1): 32/83 kBProgress (1): 36/83 kBProgress (1): 41/83 kBProgress (1): 45/83 kBProgress (1): 61/83 kBProgress (1): 77/83 kBProgress (1): 83 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.13.0/maven-compiler-plugin-3.13.0.jar (83 kB at 2.9 MB/s)
+#13 2.404 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.2.5/maven-surefire-plugin-3.2.5.pom
+#13 2.432 Progress (1): 834 BProgress (1): 2.7 kBProgress (1): 5.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.2.5/maven-surefire-plugin-3.2.5.pom (5.3 kB at 177 kB/s)
+#13 2.436 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.2.5/surefire-3.2.5.pom
+#13 2.463 Progress (1): 787 BProgress (1): 2.4 kBProgress (1): 4.1 kBProgress (1): 7.9 kBProgress (1): 12 kB Progress (1): 14 kBProgress (1): 17 kBProgress (1): 20 kBProgress (1): 22 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.2.5/surefire-3.2.5.pom (22 kB at 732 kB/s)
+#13 2.474 Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom
+#13 2.500 Progress (1): 907 BProgress (1): 4.1 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom (5.6 kB at 182 kB/s)
+#13 2.515 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.2.5/maven-surefire-plugin-3.2.5.jar
+#13 2.540 Progress (1): 7.7/45 kBProgress (1): 16/45 kB Progress (1): 32/45 kBProgress (1): 45 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.2.5/maven-surefire-plugin-3.2.5.jar (45 kB at 1.6 MB/s)
+#13 2.551 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-war-plugin/3.4.0/maven-war-plugin-3.4.0.pom
+#13 2.581 Progress (1): 794 BProgress (1): 2.3 kBProgress (1): 5.6 kBProgress (1): 8.3 kBProgress (1): 8.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-war-plugin/3.4.0/maven-war-plugin-3.4.0.pom (8.4 kB at 270 kB/s)
+#13 2.586 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/39/maven-plugins-39.pom
+#13 2.624 Progress (1): 773 BProgress (1): 2.3 kBProgress (1): 4.9 kBProgress (1): 7.4 kBProgress (1): 8.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/39/maven-plugins-39.pom (8.1 kB at 202 kB/s)
+#13 2.631 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/39/maven-parent-39.pom
+#13 2.660 Progress (1): 724 BProgress (1): 1.9 kBProgress (1): 5.5 kBProgress (1): 9.8 kBProgress (1): 14 kB Progress (1): 19 kBProgress (1): 23 kBProgress (1): 26 kBProgress (1): 28 kBProgress (1): 31 kBProgress (1): 34 kBProgress (1): 37 kBProgress (1): 40 kBProgress (1): 43 kBProgress (1): 48 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/39/maven-parent-39.pom (48 kB at 1.4 MB/s)
+#13 2.670 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/29/apache-29.pom
+#13 2.696 Progress (1): 741 BProgress (1): 2.1 kBProgress (1): 3.9 kBProgress (1): 6.9 kBProgress (1): 12 kB Progress (1): 16 kBProgress (1): 19 kBProgress (1): 21 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/29/apache-29.pom (21 kB at 715 kB/s)
+#13 2.704 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-war-plugin/3.4.0/maven-war-plugin-3.4.0.jar
+#13 2.731 Progress (1): 7.7/83 kBProgress (1): 16/83 kB Progress (1): 29/83 kBProgress (1): 45/83 kBProgress (1): 61/83 kBProgress (1): 78/83 kBProgress (1): 83 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-war-plugin/3.4.0/maven-war-plugin-3.4.0.jar (83 kB at 2.5 MB/s)
+#13 2.742 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/3.1.2/maven-install-plugin-3.1.2.pom
+#13 2.770 Progress (1): 787 BProgress (1): 2.2 kBProgress (1): 4.7 kBProgress (1): 8.0 kBProgress (1): 8.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/3.1.2/maven-install-plugin-3.1.2.pom (8.5 kB at 283 kB/s)
+#13 2.776 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/42/maven-plugins-42.pom
+#13 2.805 Progress (1): 773 BProgress (1): 2.4 kBProgress (1): 4.9 kBProgress (1): 7.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/42/maven-plugins-42.pom (7.7 kB at 256 kB/s)
+#13 2.809 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/42/maven-parent-42.pom
+#13 2.840 Progress (1): 724 BProgress (1): 1.9 kBProgress (1): 5.5 kBProgress (1): 9.9 kBProgress (1): 14 kB Progress (1): 19 kBProgress (1): 23 kBProgress (1): 26 kBProgress (1): 28 kBProgress (1): 31 kBProgress (1): 34 kBProgress (1): 37 kBProgress (1): 40 kBProgress (1): 43 kBProgress (1): 47 kBProgress (1): 47 kBProgress (1): 50 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/42/maven-parent-42.pom (50 kB at 1.4 MB/s)
+#13 2.853 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/32/apache-32.pom
+#13 2.882 Progress (1): 733 BProgress (1): 2.0 kBProgress (1): 4.0 kBProgress (1): 5.9 kBProgress (1): 10 kB Progress (1): 16 kBProgress (1): 19 kBProgress (1): 22 kBProgress (1): 24 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/32/apache-32.pom (24 kB at 756 kB/s)
+#13 2.897 Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.2/junit-bom-5.10.2.pom
+#13 2.930 Progress (1): 908 BProgress (1): 4.1 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.2/junit-bom-5.10.2.pom (5.6 kB at 166 kB/s)
+#13 2.933 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/3.1.2/maven-install-plugin-3.1.2.jar
+#13 2.955 Progress (1): 7.7/32 kBProgress (1): 12/32 kB Progress (1): 28/32 kBProgress (1): 32 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/3.1.2/maven-install-plugin-3.1.2.jar (32 kB at 1.3 MB/s)
+#13 2.971 Downloading from central: https://repo.maven.apache.org/maven2/javax/javaee-api/8.0/javaee-api-8.0.pom
+#13 2.996 Progress (1): 729 BProgress (1): 2.1 kBProgress (1): 3.6 kBProgress (1): 6.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/javax/javaee-api/8.0/javaee-api-8.0.pom (6.6 kB at 222 kB/s)
+#13 3.002 Downloading from central: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom
+#13 3.031 Progress (1): 838 BProgress (1): 2.5 kBProgress (1): 4.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom (4.8 kB at 145 kB/s)
+#13 3.039 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/mail/javax.mail/1.6.0/javax.mail-1.6.0.pom
+#13 3.068 Progress (1): 740 BProgress (1): 2.0 kBProgress (1): 3.7 kBProgress (1): 5.4 kBProgress (1): 5.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/mail/javax.mail/1.6.0/javax.mail-1.6.0.pom (5.9 kB at 191 kB/s)
+#13 3.077 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/mail/all/1.6.0/all-1.6.0.pom
+#13 3.103 Progress (1): 696 BProgress (1): 2.0 kBProgress (1): 3.4 kBProgress (1): 5.1 kBProgress (1): 6.7 kBProgress (1): 9.5 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 16 kBProgress (1): 20 kBProgress (1): 21 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/mail/all/1.6.0/all-1.6.0.pom (21 kB at 686 kB/s)
+#13 3.110 Downloading from central: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/1/jvnet-parent-1.pom
+#13 3.138 Progress (1): 843 BProgress (1): 2.5 kBProgress (1): 4.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/1/jvnet-parent-1.pom (4.7 kB at 162 kB/s)
+#13 3.142 Downloading from central: https://repo.maven.apache.org/maven2/javax/activation/activation/1.1/activation-1.1.pom
+#13 3.167 Progress (1): 1.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/javax/activation/activation/1.1/activation-1.1.pom (1.1 kB at 39 kB/s)
+#13 3.170 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard-spec/1.2.5/taglibs-standard-spec-1.2.5.pom
+#13 3.198 Progress (1): 817 BProgress (1): 2.7 kBProgress (1): 5.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard-spec/1.2.5/taglibs-standard-spec-1.2.5.pom (5.3 kB at 181 kB/s)
+#13 3.204 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard/1.2.5/taglibs-standard-1.2.5.pom
+#13 3.233 Progress (1): 829 BProgress (1): 2.4 kBProgress (1): 4.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard/1.2.5/taglibs-standard-1.2.5.pom (4.3 kB at 138 kB/s)
+#13 3.237 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-parent/3/taglibs-parent-3.pom
+#13 3.265 Progress (1): 792 BProgress (1): 2.4 kBProgress (1): 5.7 kBProgress (1): 7.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-parent/3/taglibs-parent-3.pom (7.6 kB at 272 kB/s)
+#13 3.268 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/10/apache-10.pom
+#13 3.290 Progress (1): 753 BProgress (1): 2.1 kBProgress (1): 4.1 kBProgress (1): 8.9 kBProgress (1): 12 kB Progress (1): 15 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/10/apache-10.pom (15 kB at 592 kB/s)
+#13 3.296 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.pom
+#13 3.326 Progress (1): 820 BProgress (1): 2.6 kBProgress (1): 5.8 kBProgress (1): 6.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.pom (6.9 kB at 222 kB/s)
+#13 3.333 Downloading from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.3.0/jaxb-api-2.3.0.pom
+#13 3.364 Progress (1): 1.5 kBProgress (1): 4.8 kBProgress (1): 8.4 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 20 kBProgress (1): 23 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.3.0/jaxb-api-2.3.0.pom (23 kB at 718 kB/s)
+#13 3.367 Downloading from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api-parent/2.3.0/jaxb-api-parent-2.3.0.pom
+#13 3.395 Progress (1): 754 BProgress (1): 2.1 kBProgress (1): 4.0 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api-parent/2.3.0/jaxb-api-parent-2.3.0.pom (5.6 kB at 188 kB/s)
+#13 3.398 Downloading from central: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/5/jvnet-parent-5.pom
+#13 3.424 Progress (1): 832 BProgress (1): 2.8 kBProgress (1): 5.3 kBProgress (1): 8.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/5/jvnet-parent-5.pom (8.9 kB at 317 kB/s)
+#13 3.429 Downloading from central: https://repo.maven.apache.org/maven2/com/h2database/h2/2.3.232/h2-2.3.232.pom
+#13 3.456 Progress (1): 1.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/h2database/h2/2.3.232/h2-2.3.232.pom (1.1 kB at 39 kB/s)
+#13 3.468 Downloading from central: https://repo.maven.apache.org/maven2/javax/javaee-api/8.0/javaee-api-8.0.jar
+#13 3.468 Downloading from central: https://repo.maven.apache.org/maven2/com/sun/mail/javax.mail/1.6.0/javax.mail-1.6.0.jar
+#13 3.468 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard-spec/1.2.5/taglibs-standard-spec-1.2.5.jar
+#13 3.468 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar
+#13 3.468 Downloading from central: https://repo.maven.apache.org/maven2/javax/activation/activation/1.1/activation-1.1.jar
+#13 3.496 Progress (1): 0/2.0 MBProgress (1): 0/2.0 MBProgress (1): 0/2.0 MBProgress (1): 0/2.0 MBProgress (1): 0.1/2.0 MBProgress (1): 0.1/2.0 MBProgress (1): 0.1/2.0 MBProgress (1): 0.1/2.0 MBProgress (1): 0.1/2.0 MBProgress (1): 0.1/2.0 MBProgress (1): 0.1/2.0 MBProgress (1): 0.2/2.0 MBProgress (1): 0.2/2.0 MBProgress (1): 0.2/2.0 MBProgress (1): 0.2/2.0 MBProgress (1): 0.2/2.0 MBProgress (1): 0.2/2.0 MBProgress (1): 0.3/2.0 MBProgress (1): 0.3/2.0 MBProgress (1): 0.3/2.0 MBProgress (1): 0.3/2.0 MBProgress (1): 0.3/2.0 MBProgress (1): 0.3/2.0 MBProgress (1): 0.4/2.0 MBProgress (1): 0.4/2.0 MBProgress (2): 0.4/2.0 MB | 0.9/63 kBProgress (2): 0.4/2.0 MB | 2.3/63 kBProgress (2): 0.4/2.0 MB | 2.3/63 kBProgress (2): 0.4/2.0 MB | 3.6/63 kBProgress (2): 0.4/2.0 MB | 5.0/63 kBProgress (2): 0.4/2.0 MB | 5.0/63 kBProgress (2): 0.4/2.0 MB | 6.4/63 kBProgress (2): 0.4/2.0 MB | 6.4/63 kBProgress (2): 0.4/2.0 MB | 6.4/63 kBProgress (2): 0.5/2.0 MB | 6.4/63 kBProgress (2): 0.5/2.0 MB | 6.4/63 kBProgress (2): 0.5/2.0 MB | 6.4/63 kBProgress (2): 0.5/2.0 MB | 6.4/63 kBProgress (2): 0.5/2.0 MB | 7.7/63 kBProgress (2): 0.5/2.0 MB | 7.7/63 kBProgress (2): 0.5/2.0 MB | 9.1/63 kBProgress (2): 0.5/2.0 MB | 10/63 kB Progress (2): 0.5/2.0 MB | 12/63 kBProgress (2): 0.5/2.0 MB | 12/63 kBProgress (2): 0.5/2.0 MB | 14/63 kBProgress (2): 0.5/2.0 MB | 15/63 kBProgress (2): 0.5/2.0 MB | 16/63 kBProgress (2): 0.5/2.0 MB | 18/63 kBProgress (2): 0.5/2.0 MB | 19/63 kBProgress (2): 0.5/2.0 MB | 21/63 kBProgress (2): 0.5/2.0 MB | 22/63 kBProgress (2): 0.5/2.0 MB | 23/63 kBProgress (2): 0.5/2.0 MB | 25/63 kBProgress (2): 0.5/2.0 MB | 26/63 kBProgress (2): 0.5/2.0 MB | 27/63 kBProgress (2): 0.5/2.0 MB | 29/63 kBProgress (2): 0.5/2.0 MB | 30/63 kBProgress (2): 0.5/2.0 MB | 30/63 kBProgress (2): 0.5/2.0 MB | 31/63 kBProgress (2): 0.5/2.0 MB | 33/63 kBProgress (2): 0.5/2.0 MB | 34/63 kBProgress (2): 0.5/2.0 MB | 36/63 kBProgress (2): 0.5/2.0 MB | 37/63 kBProgress (2): 0.5/2.0 MB | 38/63 kBProgress (2): 0.5/2.0 MB | 40/63 kBProgress (2): 0.5/2.0 MB | 41/63 kBProgress (2): 0.5/2.0 MB | 42/63 kBProgress (2): 0.5/2.0 MB | 44/63 kBProgress (2): 0.5/2.0 MB | 45/63 kBProgress (2): 0.5/2.0 MB | 47/63 kBProgress (2): 0.5/2.0 MB | 48/63 kBProgress (2): 0.5/2.0 MB | 49/63 kBProgress (2): 0.5/2.0 MB | 51/63 kBProgress (2): 0.5/2.0 MB | 52/63 kBProgress (2): 0.5/2.0 MB | 53/63 kBProgress (2): 0.5/2.0 MB | 55/63 kBProgress (2): 0.6/2.0 MB | 55/63 kBProgress (2): 0.6/2.0 MB | 59/63 kBProgress (2): 0.6/2.0 MB | 63 kB   Progress (2): 0.6/2.0 MB | 63 kB                                Downloaded from central: https://repo.maven.apache.org/maven2/javax/activation/activation/1.1/activation-1.1.jar (63 kB at 954 kB/s)
+#13 3.533 Downloading from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.3.0/jaxb-api-2.3.0.jar
+#13 3.533 Progress (1): 0.6/2.0 MBProgress (1): 0.6/2.0 MBProgress (1): 0.6/2.0 MBProgress (1): 0.6/2.0 MBProgress (1): 0.7/2.0 MBProgress (2): 0.7/2.0 MB | 1.4/40 kBProgress (2): 0.7/2.0 MB | 2.7/40 kBProgress (2): 0.7/2.0 MB | 2.7/40 kBProgress (2): 0.7/2.0 MB | 4.1/40 kBProgress (2): 0.7/2.0 MB | 5.5/40 kBProgress (2): 0.7/2.0 MB | 6.8/40 kBProgress (2): 0.7/2.0 MB | 6.8/40 kBProgress (2): 0.7/2.0 MB | 8.2/40 kBProgress (2): 0.7/2.0 MB | 9.6/40 kBProgress (2): 0.7/2.0 MB | 11/40 kB Progress (2): 0.7/2.0 MB | 12/40 kBProgress (2): 0.7/2.0 MB | 14/40 kBProgress (2): 0.7/2.0 MB | 15/40 kBProgress (2): 0.7/2.0 MB | 16/40 kBProgress (2): 0.7/2.0 MB | 18/40 kBProgress (2): 0.7/2.0 MB | 19/40 kBProgress (2): 0.7/2.0 MB | 20/40 kBProgress (2): 0.7/2.0 MB | 22/40 kBProgress (2): 0.7/2.0 MB | 22/40 kBProgress (2): 0.7/2.0 MB | 22/40 kBProgress (2): 0.7/2.0 MB | 23/40 kBProgress (2): 0.7/2.0 MB | 25/40 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 0.9/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 2.3/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 3.6/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 5.0/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 6.4/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 7.7/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 9.1/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 10/653 kB Progress (3): 0.7/2.0 MB | 25/40 kB | 12/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 12/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 14/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 15/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 16/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 18/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 19/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 21/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.7/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.8/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.8/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.8/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.8/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.8/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.8/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.9/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.9/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.9/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.9/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.9/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 0.9/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.0/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.0/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.0/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.0/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.0/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.0/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.0/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 25/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 26/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 27/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 29/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 30/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 31/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 33/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 34/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 36/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 37/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 38/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 40/40 kB | 22/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 22/653 kB   Progress (3): 1.1/2.0 MB | 40 kB | 23/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 25/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 26/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 27/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 29/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 30/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 31/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 33/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 34/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 36/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 37/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 38/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 40/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 41/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 42/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 44/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 45/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 47/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 48/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 49/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 51/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 52/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 53/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 55/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 59/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 63/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 66/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 70/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 74/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 78/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 82/653 kBProgress (3): 1.1/2.0 MB | 40 kB | 87/653 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 3.8/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 8.0/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 12/126 kB Progress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 12/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 17/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 21/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 25/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 29/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 33/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 38/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 42/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 46/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 50/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 55/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 59/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 63/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 66/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 70/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 74/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 78/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 82/126 kBProgress (4): 1.1/2.0 MB | 40 kB | 87/653 kB | 87/126 kBProgress (5): 1.1/2.0 MB | 40 kB | 87/653 kB | 87/126 kB | 0.9/206 kB                                                                     Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard-spec/1.2.5/taglibs-standard-spec-1.2.5.jar (40 kB at 352 kB/s)
+#13 3.581 Downloading from central: https://repo.maven.apache.org/maven2/com/h2database/h2/2.3.232/h2-2.3.232.jar
+#13 3.581 Progress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 2.3/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 3.6/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 5.0/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 6.4/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 7.7/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 9.1/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 10/206 kB Progress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 12/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 13/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 15/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 16/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 17/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 19/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 20/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 21/206 kBProgress (4): 1.1/2.0 MB | 87/653 kB | 87/126 kB | 23/206 kBProgress (4): 1.1/2.0 MB | 91/653 kB | 87/126 kB | 23/206 kBProgress (4): 1.1/2.0 MB | 95/653 kB | 87/126 kB | 23/206 kBProgress (4): 1.1/2.0 MB | 99/653 kB | 87/126 kB | 23/206 kBProgress (4): 1.1/2.0 MB | 99/653 kB | 87/126 kB | 24/206 kBProgress (4): 1.1/2.0 MB | 99/653 kB | 87/126 kB | 26/206 kBProgress (4): 1.1/2.0 MB | 99/653 kB | 87/126 kB | 27/206 kBProgress (4): 1.1/2.0 MB | 99/653 kB | 87/126 kB | 28/206 kBProgress (4): 1.1/2.0 MB | 104/653 kB | 87/126 kB | 28/206 kBProgress (4): 1.1/2.0 MB | 104/653 kB | 87/126 kB | 29/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 29/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 30/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 31/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 33/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 34/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 36/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 37/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 38/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 40/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 41/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 42/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 44/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 45/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 46/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 48/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 49/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 51/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 52/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 53/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 55/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 59/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 63/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 87/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 91/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 95/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 99/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 104/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 108/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 112/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 108/653 kB | 115/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 112/653 kB | 115/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 115/653 kB | 115/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 119/653 kB | 115/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 123/653 kB | 115/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 123/653 kB | 119/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 123/653 kB | 123/126 kB | 67/206 kBProgress (4): 1.1/2.0 MB | 123/653 kB | 126 kB | 67/206 kB                                                              Downloaded from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.3.0/jaxb-api-2.3.0.jar (126 kB at 1.1 MB/s)
+#13 3.583 Progress (3): 1.1/2.0 MB | 123/653 kB | 72/206 kBProgress (3): 1.1/2.0 MB | 123/653 kB | 72/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 72/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 72/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 72/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 72/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 72/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 76/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 80/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 80/206 kBProgress (3): 1.2/2.0 MB | 123/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 123/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 123/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 123/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 127/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 132/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 136/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 140/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.3/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.4/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.4/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.4/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.4/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.4/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.4/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.5/2.0 MB | 144/653 kB | 80/206 kBProgress (3): 1.5/2.0 MB | 144/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 149/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 153/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 157/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 161/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 165/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 170/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 170/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 174/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 178/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 180/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 180/653 kB | 84/206 kBProgress (3): 1.5/2.0 MB | 180/653 kB | 89/206 kBProgress (3): 1.5/2.0 MB | 180/653 kB | 93/206 kBProgress (3): 1.5/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.5/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.5/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.5/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.6/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.6/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.6/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.6/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.6/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.6/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.7/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.7/2.0 MB | 180/653 kB | 97/206 kBProgress (3): 1.7/2.0 MB | 180/653 kB | 101/206 kBProgress (3): 1.7/2.0 MB | 180/653 kB | 105/206 kBProgress (3): 1.7/2.0 MB | 180/653 kB | 110/206 kBProgress (3): 1.7/2.0 MB | 180/653 kB | 114/206 kBProgress (3): 1.7/2.0 MB | 180/653 kB | 115/206 kBProgress (3): 1.7/2.0 MB | 184/653 kB | 115/206 kBProgress (3): 1.7/2.0 MB | 189/653 kB | 115/206 kBProgress (3): 1.7/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.7/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.7/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.7/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.7/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 193/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 197/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 201/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 206/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 210/653 kB | 115/206 kBProgress (3): 1.8/2.0 MB | 210/653 kB | 119/206 kBProgress (3): 1.8/2.0 MB | 210/653 kB | 123/206 kBProgress (3): 1.8/2.0 MB | 210/653 kB | 127/206 kBProgress (3): 1.8/2.0 MB | 210/653 kB | 127/206 kBProgress (3): 1.8/2.0 MB | 210/653 kB | 127/206 kBProgress (3): 1.9/2.0 MB | 210/653 kB | 127/206 kBProgress (3): 1.9/2.0 MB | 210/653 kB | 127/206 kBProgress (3): 1.9/2.0 MB | 210/653 kB | 132/206 kBProgress (3): 1.9/2.0 MB | 210/653 kB | 136/206 kBProgress (3): 1.9/2.0 MB | 210/653 kB | 136/206 kBProgress (3): 1.9/2.0 MB | 210/653 kB | 140/206 kBProgress (3): 1.9/2.0 MB | 214/653 kB | 140/206 kBProgress (3): 1.9/2.0 MB | 214/653 kB | 144/206 kBProgress (3): 1.9/2.0 MB | 218/653 kB | 144/206 kBProgress (3): 1.9/2.0 MB | 218/653 kB | 144/206 kBProgress (3): 1.9/2.0 MB | 235/653 kB | 144/206 kBProgress (3): 1.9/2.0 MB | 235/653 kB | 144/206 kBProgress (3): 1.9/2.0 MB | 235/653 kB | 144/206 kBProgress (4): 1.9/2.0 MB | 235/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 235/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 144/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 147/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 152/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 156/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 160/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 164/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 168/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 172/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 177/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 181/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 251/653 kB | 185/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 185/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 185/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 185/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 185/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 185/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 189/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 189/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 193/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 198/206 kB | 0/2.7 MBProgress (4): 1.9/2.0 MB | 267/653 kB | 202/206 kB | 0/2.7 MBProgress (4): 2.0/2.0 MB | 267/653 kB | 202/206 kB | 0/2.7 MBProgress (4): 2.0 MB | 267/653 kB | 202/206 kB | 0/2.7 MB    Progress (4): 2.0 MB | 267/653 kB | 202/206 kB | 0/2.7 MBProgress (4): 2.0 MB | 267/653 kB | 202/206 kB | 0/2.7 MBProgress (4): 2.0 MB | 267/653 kB | 202/206 kB | 0.1/2.7 MB                                                           Downloaded from central: https://repo.maven.apache.org/maven2/javax/javaee-api/8.0/javaee-api-8.0.jar (2.0 MB at 15 MB/s)
+#13 3.598 Progress (3): 267/653 kB | 206/206 kB | 0.1/2.7 MBProgress (3): 267/653 kB | 206 kB | 0.1/2.7 MB                                                  Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar (206 kB at 1.6 MB/s)
+#13 3.598 Progress (2): 267/653 kB | 0.1/2.7 MBProgress (2): 267/653 kB | 0.1/2.7 MBProgress (2): 267/653 kB | 0.1/2.7 MBProgress (2): 267/653 kB | 0.1/2.7 MBProgress (2): 267/653 kB | 0.1/2.7 MBProgress (2): 267/653 kB | 0.1/2.7 MBProgress (2): 284/653 kB | 0.1/2.7 MBProgress (2): 300/653 kB | 0.1/2.7 MBProgress (2): 311/653 kB | 0.1/2.7 MBProgress (2): 328/653 kB | 0.1/2.7 MBProgress (2): 344/653 kB | 0.1/2.7 MBProgress (2): 344/653 kB | 0.1/2.7 MBProgress (2): 344/653 kB | 0.1/2.7 MBProgress (2): 344/653 kB | 0.1/2.7 MBProgress (2): 360/653 kB | 0.1/2.7 MBProgress (2): 360/653 kB | 0.1/2.7 MBProgress (2): 377/653 kB | 0.1/2.7 MBProgress (2): 377/653 kB | 0.1/2.7 MBProgress (2): 393/653 kB | 0.1/2.7 MBProgress (2): 410/653 kB | 0.1/2.7 MBProgress (2): 410/653 kB | 0.1/2.7 MBProgress (2): 410/653 kB | 0.1/2.7 MBProgress (2): 410/653 kB | 0.1/2.7 MBProgress (2): 410/653 kB | 0.1/2.7 MBProgress (2): 410/653 kB | 0.1/2.7 MBProgress (2): 410/653 kB | 0.1/2.7 MBProgress (2): 426/653 kB | 0.1/2.7 MBProgress (2): 426/653 kB | 0.1/2.7 MBProgress (2): 426/653 kB | 0.1/2.7 MBProgress (2): 426/653 kB | 0.1/2.7 MBProgress (2): 426/653 kB | 0.1/2.7 MBProgress (2): 426/653 kB | 0.1/2.7 MBProgress (2): 426/653 kB | 0.1/2.7 MBProgress (2): 426/653 kB | 0.2/2.7 MBProgress (2): 426/653 kB | 0.2/2.7 MBProgress (2): 442/653 kB | 0.2/2.7 MBProgress (2): 459/653 kB | 0.2/2.7 MBProgress (2): 475/653 kB | 0.2/2.7 MBProgress (2): 475/653 kB | 0.2/2.7 MBProgress (2): 475/653 kB | 0.2/2.7 MBProgress (2): 475/653 kB | 0.2/2.7 MBProgress (2): 492/653 kB | 0.2/2.7 MBProgress (2): 492/653 kB | 0.2/2.7 MBProgress (2): 492/653 kB | 0.2/2.7 MBProgress (2): 508/653 kB | 0.2/2.7 MBProgress (2): 508/653 kB | 0.2/2.7 MBProgress (2): 508/653 kB | 0.2/2.7 MBProgress (2): 524/653 kB | 0.2/2.7 MBProgress (2): 524/653 kB | 0.2/2.7 MBProgress (2): 541/653 kB | 0.2/2.7 MBProgress (2): 557/653 kB | 0.2/2.7 MBProgress (2): 573/653 kB | 0.2/2.7 MBProgress (2): 573/653 kB | 0.2/2.7 MBProgress (2): 590/653 kB | 0.2/2.7 MBProgress (2): 606/653 kB | 0.2/2.7 MBProgress (2): 606/653 kB | 0.2/2.7 MBProgress (2): 606/653 kB | 0.3/2.7 MBProgress (2): 623/653 kB | 0.3/2.7 MBProgress (2): 639/653 kB | 0.3/2.7 MBProgress (2): 653 kB | 0.3/2.7 MB                                     Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/mail/javax.mail/1.6.0/javax.mail-1.6.0.jar (653 kB at 4.1 MB/s)
+#13 3.649 Progress (1): 0.3/2.7 MBProgress (1): 0.3/2.7 MBProgress (1): 0.3/2.7 MBProgress (1): 0.3/2.7 MBProgress (1): 0.3/2.7 MBProgress (1): 0.4/2.7 MBProgress (1): 0.4/2.7 MBProgress (1): 0.4/2.7 MBProgress (1): 0.4/2.7 MBProgress (1): 0.4/2.7 MBProgress (1): 0.4/2.7 MBProgress (1): 0.5/2.7 MBProgress (1): 0.5/2.7 MBProgress (1): 0.5/2.7 MBProgress (1): 0.5/2.7 MBProgress (1): 0.5/2.7 MBProgress (1): 0.5/2.7 MBProgress (1): 0.6/2.7 MBProgress (1): 0.6/2.7 MBProgress (1): 0.6/2.7 MBProgress (1): 0.6/2.7 MBProgress (1): 0.6/2.7 MBProgress (1): 0.6/2.7 MBProgress (1): 0.7/2.7 MBProgress (1): 0.7/2.7 MBProgress (1): 0.7/2.7 MBProgress (1): 0.7/2.7 MBProgress (1): 0.7/2.7 MBProgress (1): 0.7/2.7 MBProgress (1): 0.7/2.7 MBProgress (1): 0.8/2.7 MBProgress (1): 0.8/2.7 MBProgress (1): 0.8/2.7 MBProgress (1): 0.8/2.7 MBProgress (1): 0.8/2.7 MBProgress (1): 0.8/2.7 MBProgress (1): 0.9/2.7 MBProgress (1): 0.9/2.7 MBProgress (1): 0.9/2.7 MBProgress (1): 0.9/2.7 MBProgress (1): 0.9/2.7 MBProgress (1): 0.9/2.7 MBProgress (1): 1.0/2.7 MBProgress (1): 1.0/2.7 MBProgress (1): 1.0/2.7 MBProgress (1): 1.0/2.7 MBProgress (1): 1.0/2.7 MBProgress (1): 1.0/2.7 MBProgress (1): 1.1/2.7 MBProgress (1): 1.1/2.7 MBProgress (1): 1.1/2.7 MBProgress (1): 1.1/2.7 MBProgress (1): 1.1/2.7 MBProgress (1): 1.1/2.7 MBProgress (1): 1.2/2.7 MBProgress (1): 1.2/2.7 MBProgress (1): 1.2/2.7 MBProgress (1): 1.2/2.7 MBProgress (1): 1.2/2.7 MBProgress (1): 1.2/2.7 MBProgress (1): 1.3/2.7 MBProgress (1): 1.3/2.7 MBProgress (1): 1.3/2.7 MBProgress (1): 1.3/2.7 MBProgress (1): 1.3/2.7 MBProgress (1): 1.3/2.7 MBProgress (1): 1.4/2.7 MBProgress (1): 1.4/2.7 MBProgress (1): 1.4/2.7 MBProgress (1): 1.4/2.7 MBProgress (1): 1.4/2.7 MBProgress (1): 1.4/2.7 MBProgress (1): 1.4/2.7 MBProgress (1): 1.5/2.7 MBProgress (1): 1.5/2.7 MBProgress (1): 1.5/2.7 MBProgress (1): 1.5/2.7 MBProgress (1): 1.5/2.7 MBProgress (1): 1.5/2.7 MBProgress (1): 1.6/2.7 MBProgress (1): 1.6/2.7 MBProgress (1): 1.6/2.7 MBProgress (1): 1.6/2.7 MBProgress (1): 1.6/2.7 MBProgress (1): 1.6/2.7 MBProgress (1): 1.7/2.7 MBProgress (1): 1.7/2.7 MBProgress (1): 1.7/2.7 MBProgress (1): 1.7/2.7 MBProgress (1): 1.7/2.7 MBProgress (1): 1.7/2.7 MBProgress (1): 1.7/2.7 MBProgress (1): 1.8/2.7 MBProgress (1): 1.8/2.7 MBProgress (1): 1.8/2.7 MBProgress (1): 1.8/2.7 MBProgress (1): 1.8/2.7 MBProgress (1): 1.8/2.7 MBProgress (1): 1.9/2.7 MBProgress (1): 1.9/2.7 MBProgress (1): 1.9/2.7 MBProgress (1): 1.9/2.7 MBProgress (1): 1.9/2.7 MBProgress (1): 1.9/2.7 MBProgress (1): 2.0/2.7 MBProgress (1): 2.0/2.7 MBProgress (1): 2.0/2.7 MBProgress (1): 2.0/2.7 MBProgress (1): 2.0/2.7 MBProgress (1): 2.0/2.7 MBProgress (1): 2.1/2.7 MBProgress (1): 2.1/2.7 MBProgress (1): 2.1/2.7 MBProgress (1): 2.1/2.7 MBProgress (1): 2.1/2.7 MBProgress (1): 2.1/2.7 MBProgress (1): 2.2/2.7 MBProgress (1): 2.2/2.7 MBProgress (1): 2.2/2.7 MBProgress (1): 2.2/2.7 MBProgress (1): 2.2/2.7 MBProgress (1): 2.2/2.7 MBProgress (1): 2.3/2.7 MBProgress (1): 2.3/2.7 MBProgress (1): 2.3/2.7 MBProgress (1): 2.3/2.7 MBProgress (1): 2.3/2.7 MBProgress (1): 2.3/2.7 MBProgress (1): 2.4/2.7 MBProgress (1): 2.4/2.7 MBProgress (1): 2.4/2.7 MBProgress (1): 2.4/2.7 MBProgress (1): 2.4/2.7 MBProgress (1): 2.4/2.7 MBProgress (1): 2.5/2.7 MBProgress (1): 2.5/2.7 MBProgress (1): 2.5/2.7 MBProgress (1): 2.5/2.7 MBProgress (1): 2.5/2.7 MBProgress (1): 2.5/2.7 MBProgress (1): 2.5/2.7 MBProgress (1): 2.6/2.7 MBProgress (1): 2.6/2.7 MBProgress (1): 2.6/2.7 MBProgress (1): 2.6/2.7 MBProgress (1): 2.6/2.7 MBProgress (1): 2.6/2.7 MBProgress (1): 2.7 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/com/h2database/h2/2.3.232/h2-2.3.232.jar (2.7 MB at 10 MB/s)
+#13 3.729 [INFO] 
+#13 3.729 [INFO] --- clean:3.2.0:clean (default-clean) @ io.openliberty.sample.daytrader8 ---
+#13 3.737 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.3.4/maven-shared-utils-3.3.4.pom
+#13 3.762 Progress (1): 790 BProgress (1): 2.3 kBProgress (1): 4.3 kBProgress (1): 5.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.3.4/maven-shared-utils-3.3.4.pom (5.8 kB at 224 kB/s)
+#13 3.764 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/34/maven-shared-components-34.pom
+#13 3.789 Progress (1): 781 BProgress (1): 2.3 kBProgress (1): 4.6 kBProgress (1): 5.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/34/maven-shared-components-34.pom (5.1 kB at 196 kB/s)
+#13 3.793 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/34/maven-parent-34.pom
+#13 3.817 Progress (1): 727 BProgress (1): 1.9 kBProgress (1): 5.4 kBProgress (1): 9.8 kBProgress (1): 14 kB Progress (1): 19 kBProgress (1): 23 kBProgress (1): 26 kBProgress (1): 27 kBProgress (1): 30 kBProgress (1): 34 kBProgress (1): 37 kBProgress (1): 41 kBProgress (1): 43 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/34/maven-parent-34.pom (43 kB at 1.7 MB/s)
+#13 3.825 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/23/apache-23.pom
+#13 3.850 Progress (1): 749 BProgress (1): 2.1 kBProgress (1): 3.9 kBProgress (1): 7.9 kBProgress (1): 13 kB Progress (1): 16 kBProgress (1): 18 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/23/apache-23.pom (18 kB at 682 kB/s)
+#13 3.858 Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.pom
+#13 3.883 Progress (1): 782 BProgress (1): 2.1 kBProgress (1): 5.3 kBProgress (1): 7.5 kBProgress (1): 9.5 kBProgress (1): 12 kB Progress (1): 14 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.pom (14 kB at 548 kB/s)
+#13 3.886 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/42/commons-parent-42.pom
+#13 3.912 Progress (1): 707 BProgress (1): 1.9 kBProgress (1): 3.1 kBProgress (1): 4.5 kBProgress (1): 5.9 kBProgress (1): 7.5 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 17 kBProgress (1): 21 kBProgress (1): 24 kBProgress (1): 26 kBProgress (1): 29 kBProgress (1): 31 kBProgress (1): 34 kBProgress (1): 34 kBProgress (1): 37 kBProgress (1): 40 kBProgress (1): 44 kBProgress (1): 49 kBProgress (1): 53 kBProgress (1): 55 kBProgress (1): 59 kBProgress (1): 60 kBProgress (1): 62 kBProgress (1): 65 kBProgress (1): 66 kBProgress (1): 68 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/42/commons-parent-42.pom (68 kB at 2.4 MB/s)
+#13 3.922 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/18/apache-18.pom
+#13 3.946 Progress (1): 748 BProgress (1): 2.1 kBProgress (1): 3.9 kBProgress (1): 8.0 kBProgress (1): 12 kB Progress (1): 15 kBProgress (1): 16 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/18/apache-18.pom (16 kB at 603 kB/s)
+#13 3.953 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.3.4/maven-shared-utils-3.3.4.jar
+#13 3.955 Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.jar
+#13 3.978 Progress (1): 4.1/153 kBProgress (1): 20/153 kB Progress (1): 29/153 kBProgress (1): 45/153 kBProgress (1): 61/153 kBProgress (1): 78/153 kBProgress (1): 94/153 kBProgress (1): 111/153 kBProgress (1): 127/153 kBProgress (1): 143/153 kBProgress (1): 153 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.3.4/maven-shared-utils-3.3.4.jar (153 kB at 5.7 MB/s)
+#13 3.983 Progress (1): 7.7/215 kBProgress (1): 16/215 kB Progress (1): 32/215 kBProgress (1): 48/215 kBProgress (1): 65/215 kBProgress (1): 81/215 kBProgress (1): 98/215 kBProgress (1): 114/215 kBProgress (1): 130/215 kBProgress (1): 147/215 kBProgress (1): 163/215 kBProgress (1): 179/215 kBProgress (1): 196/215 kBProgress (1): 212/215 kBProgress (1): 215 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.jar (215 kB at 7.4 MB/s)
+#13 4.007 [INFO] 
+#13 4.007 [INFO] --- resources:2.6:resources (default-resources) @ io.openliberty.sample.daytrader8 ---
+#13 4.010 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom
+#13 4.045 Progress (1): 847 BProgress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom (1.5 kB at 42 kB/s)
+#13 4.048 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.6/maven-2.0.6.pom
+#13 4.074 Progress (1): 782 BProgress (1): 2.0 kBProgress (1): 4.4 kBProgress (1): 9.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.6/maven-2.0.6.pom (9.0 kB at 312 kB/s)
+#13 4.079 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom
+#13 4.106 Progress (1): 755 BProgress (1): 2.1 kBProgress (1): 5.4 kBProgress (1): 9.1 kBProgress (1): 12 kB Progress (1): 15 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom (15 kB at 544 kB/s)
+#13 4.109 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/3/apache-3.pom
+#13 4.133 Progress (1): 812 BProgress (1): 2.3 kBProgress (1): 3.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/3/apache-3.pom (3.4 kB at 132 kB/s)
+#13 4.139 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom
+#13 4.167 Progress (1): 823 BProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom (2.6 kB at 91 kB/s)
+#13 4.175 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.pom
+#13 4.202 Progress (1): 830 BProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.pom (2.0 kB at 69 kB/s)
+#13 4.206 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.pom
+#13 4.231 Progress (1): 814 BProgress (1): 3.0 kBProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.pom (3.0 kB at 113 kB/s)
+#13 4.235 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom
+#13 4.264 Progress (1): 1.2 kBProgress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom (1.9 kB at 66 kB/s)
+#13 4.267 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom
+#13 4.299 Progress (1): 1.2 kBProgress (1): 4.4 kBProgress (1): 7.6 kBProgress (1): 9.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom (9.0 kB at 272 kB/s)
+#13 4.306 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom
+#13 4.332 Progress (1): 2.1 kBProgress (1): 3.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom (3.9 kB at 152 kB/s)
+#13 4.334 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom
+#13 4.366 Progress (1): 492 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom (492 B at 11 kB/s)
+#13 4.378 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom
+#13 4.406 Progress (1): 1.5 kBProgress (1): 4.6 kBProgress (1): 5.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom (5.7 kB at 198 kB/s)
+#13 4.412 Downloading from central: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom
+#13 4.438 Progress (1): 998 B                   Downloaded from central: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom (998 B at 36 kB/s)
+#13 4.440 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom
+#13 4.467 Progress (1): 1.5 kBProgress (1): 4.4 kBProgress (1): 6.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom (6.9 kB at 254 kB/s)
+#13 4.473 Downloading from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom
+#13 4.500 Progress (1): 2.0 kBProgress (1): 3.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom (3.1 kB at 104 kB/s)
+#13 4.505 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.pom
+#13 4.529 Progress (1): 830 BProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.pom (2.0 kB at 71 kB/s)
+#13 4.534 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.pom
+#13 4.570 Progress (1): 816 BProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.pom (2.6 kB at 69 kB/s)
+#13 4.576 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom
+#13 4.603 Progress (1): 832 BProgress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom (1.9 kB at 62 kB/s)
+#13 4.612 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom
+#13 4.638 Progress (1): 835 BProgress (1): 1.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom (1.6 kB at 58 kB/s)
+#13 4.643 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.pom
+#13 4.671 Progress (1): 830 BProgress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.pom (1.9 kB at 70 kB/s)
+#13 4.675 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom
+#13 4.700 Progress (1): 776 BProgress (1): 2.7 kBProgress (1): 6.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom (6.7 kB at 280 kB/s)
+#13 4.703 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.pom
+#13 4.732 Progress (1): 830 BProgress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.pom (1.9 kB at 64 kB/s)
+#13 4.735 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom
+#13 4.765 Progress (1): 830 BProgress (1): 1.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom (1.8 kB at 49 kB/s)
+#13 4.776 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.0.6/maven-reporting-2.0.6.pom
+#13 4.803 Progress (1): 835 BProgress (1): 1.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.0.6/maven-reporting-2.0.6.pom (1.4 kB at 55 kB/s)
+#13 4.806 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom
+#13 4.835 Progress (1): 424 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom (424 B at 15 kB/s)
+#13 4.838 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-7/doxia-1.0-alpha-7.pom
+#13 4.896 Progress (1): 1.6 kBProgress (1): 3.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-7/doxia-1.0-alpha-7.pom (3.9 kB at 67 kB/s)
+#13 4.901 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom
+#13 4.952 Progress (1): 832 BProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom (1.7 kB at 33 kB/s)
+#13 4.955 Downloading from central: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.pom
+#13 4.993 Progress (1): 1.4 kBProgress (1): 2.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.pom (2.1 kB at 55 kB/s)
+#13 4.996 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.pom
+#13 5.034 Progress (1): 830 BProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.pom (2.0 kB at 52 kB/s)
+#13 5.041 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom
+#13 5.067 Progress (1): 1.4 kBProgress (1): 4.3 kBProgress (1): 7.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom (7.1 kB at 245 kB/s)
+#13 5.074 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom
+#13 5.099 Progress (1): 849 BProgress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom (1.3 kB at 45 kB/s)
+#13 5.104 Downloading from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.pom
+#13 5.132 Progress (1): 2.1 kBProgress (1): 3.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.pom (3.3 kB at 107 kB/s)
+#13 5.137 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.pom
+#13 5.163 Progress (1): 819 BProgress (1): 2.5 kBProgress (1): 3.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.pom (3.3 kB at 123 kB/s)
+#13 5.165 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.6/plexus-2.0.6.pom
+#13 5.194 Progress (1): 711 BProgress (1): 2.7 kBProgress (1): 6.4 kBProgress (1): 8.9 kBProgress (1): 13 kB Progress (1): 17 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.6/plexus-2.0.6.pom (17 kB at 559 kB/s)
+#13 5.198 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.pom
+#13 5.226 Progress (1): 797 BProgress (1): 2.3 kBProgress (1): 5.5 kBProgress (1): 5.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.pom (5.8 kB at 200 kB/s)
+#13 5.233 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom
+#13 5.264 Progress (1): 768 BProgress (1): 3.0 kBProgress (1): 6.3 kBProgress (1): 8.5 kBProgress (1): 8.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom (8.7 kB at 272 kB/s)
+#13 5.267 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/21/maven-parent-21.pom
+#13 5.293 Progress (1): 740 BProgress (1): 2.0 kBProgress (1): 6.0 kBProgress (1): 11 kB Progress (1): 15 kBProgress (1): 18 kBProgress (1): 20 kBProgress (1): 23 kBProgress (1): 26 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/21/maven-parent-21.pom (26 kB at 941 kB/s)
+#13 5.298 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom
+#13 5.326 Progress (1): 794 BProgress (1): 2.2 kBProgress (1): 4.8 kBProgress (1): 6.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom (6.8 kB at 285 kB/s)
+#13 5.326 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom
+#13 5.351 Progress (1): 1.0 kBProgress (1): 3.9 kBProgress (1): 7.5 kBProgress (1): 11 kB Progress (1): 12 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom (12 kB at 415 kB/s)
+#13 5.362 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.12/plexus-interpolation-1.12.pom
+#13 5.392 Progress (1): 889 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.12/plexus-interpolation-1.12.pom (889 B at 30 kB/s)
+#13 5.397 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom
+#13 5.425 Progress (1): 1.2 kBProgress (1): 3.7 kBProgress (1): 5.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom (5.8 kB at 177 kB/s)
+#13 5.440 Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.pom
+#13 5.468 Progress (1): 915 BProgress (1): 2.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.pom (2.9 kB at 92 kB/s)
+#13 5.470 Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/10/spice-parent-10.pom
+#13 5.495 Progress (1): 1.6 kBProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/10/spice-parent-10.pom (3.0 kB at 108 kB/s)
+#13 5.499 Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/3/forge-parent-3.pom
+#13 5.526 Progress (1): 1.5 kBProgress (1): 5.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/3/forge-parent-3.pom (5.0 kB at 180 kB/s)
+#13 5.532 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.pom
+#13 5.558 Progress (1): 994 BProgress (1): 5.0 kBProgress (1): 8.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.pom (8.1 kB at 299 kB/s)
+#13 5.563 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.pom
+#13 5.600 Progress (1): 890 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.pom (890 B at 23 kB/s)
+#13 5.604 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.15/plexus-components-1.1.15.pom
+#13 5.631 Progress (1): 1.5 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.15/plexus-components-1.1.15.pom (2.8 kB at 98 kB/s)
+#13 5.634 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.3/plexus-2.0.3.pom
+#13 5.672 Progress (1): 714 BProgress (1): 2.8 kBProgress (1): 6.4 kBProgress (1): 8.9 kBProgress (1): 13 kB Progress (1): 15 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.3/plexus-2.0.3.pom (15 kB at 360 kB/s)
+#13 5.723 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.jar
+#13 5.723 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.jar
+#13 5.723 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.jar
+#13 5.723 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.jar
+#13 5.724 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.jar
+#13 5.744 Progress (1): 3.8/13 kBProgress (1): 7.4/13 kBProgress (1): 12/13 kB Progress (1): 13 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.jar (13 kB at 559 kB/s)
+#13 5.746 Progress (1): 7.7/29 kBProgress (1): 16/29 kB Progress (1): 29 kB                      Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.jar
+#13 5.747 Progress (2): 29 kB | 3.8/57 kBProgress (2): 29 kB | 8.0/57 kB                               Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.jar (29 kB at 1.2 MB/s)
+#13 5.747 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.jar
+#13 5.747 Progress (1): 16/57 kBProgress (1): 32/57 kBProgress (1): 48/57 kBProgress (1): 57 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.jar (57 kB at 2.2 MB/s)
+#13 5.749 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar
+#13 5.749 Progress (1): 7.7/116 kBProgress (1): 16/116 kB Progress (1): 32/116 kBProgress (2): 32/116 kB | 7.7/35 kBProgress (2): 32/116 kB | 12/35 kB Progress (2): 48/116 kB | 12/35 kBProgress (2): 65/116 kB | 12/35 kBProgress (2): 65/116 kB | 29/35 kBProgress (2): 65/116 kB | 35 kB                                  Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.jar (35 kB at 1.3 MB/s)
+#13 5.751 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar
+#13 5.752 Progress (1): 81/116 kBProgress (1): 98/116 kBProgress (1): 114/116 kBProgress (1): 116 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.jar (116 kB at 4.0 MB/s)
+#13 5.752 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.jar
+#13 5.770 Progress (1): 7.7/21 kBProgress (1): 8.2/21 kBProgress (1): 21 kB    Progress (2): 21 kB | 3.8/152 kBProgress (2): 21 kB | 8.0/152 kB                                Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.jar (21 kB at 442 kB/s)
+#13 5.771 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.jar
+#13 5.772 Progress (1): 16/152 kBProgress (1): 32/152 kBProgress (1): 48/152 kBProgress (1): 65/152 kBProgress (1): 81/152 kBProgress (1): 98/152 kBProgress (1): 114/152 kBProgress (1): 130/152 kBProgress (1): 147/152 kBProgress (2): 147/152 kB | 7.7/9.9 kBProgress (3): 147/152 kB | 7.7/9.9 kB | 5.9 kBProgress (4): 147/152 kB | 7.7/9.9 kB | 5.9 kB | 7.7/24 kBProgress (4): 147/152 kB | 7.7/9.9 kB | 5.9 kB | 12/24 kB                                                          Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar (5.9 kB at 104 kB/s)
+#13 5.780 Progress (3): 147/152 kB | 7.7/9.9 kB | 24 kB                                             Downloading from central: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.jar
+#13 5.780 Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.jar (24 kB at 429 kB/s)
+#13 5.780 Progress (2): 147/152 kB | 8.2/9.9 kBProgress (2): 147/152 kB | 9.9 kB                                     Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar (9.9 kB at 174 kB/s)
+#13 5.780 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.jar
+#13 5.780 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar
+#13 5.791 Progress (1): 152 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.jar (152 kB at 2.2 MB/s)
+#13 5.791 Downloading from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.jar
+#13 5.801 Progress (1): 7.5/37 kBProgress (1): 24/37 kB Progress (2): 24/37 kB | 7.4/14 kBProgress (2): 37 kB | 7.4/14 kB   Progress (2): 37 kB | 14 kB                               Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.jar (37 kB at 461 kB/s)
+#13 5.803 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.jar
+#13 5.804 Progress (2): 14 kB | 3.4/13 kBProgress (2): 14 kB | 13 kB                               Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.jar (14 kB at 168 kB/s)
+#13 5.804 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.jar
+#13 5.804 Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar (13 kB at 166 kB/s)
+#13 5.804 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.jar
+#13 5.805 Progress (1): 7.7/30 kBProgress (1): 16/30 kB Progress (1): 30 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.jar (30 kB at 367 kB/s)
+#13 5.805 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.jar
+#13 5.811 Progress (1): 7.7/38 kBProgress (1): 12/38 kB Progress (1): 29/38 kBProgress (1): 38 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.jar (38 kB at 421 kB/s)
+#13 5.813 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar
+#13 5.825 Progress (1): 7.7/87 kBProgress (1): 16/87 kB Progress (1): 32/87 kBProgress (1): 48/87 kBProgress (1): 65/87 kBProgress (1): 81/87 kBProgress (1): 87 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.jar (87 kB at 832 kB/s)
+#13 5.829 Downloading from central: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar
+#13 5.830 Progress (1): 3.4/49 kBProgress (2): 3.4/49 kB | 7.7/86 kBProgress (2): 3.4/49 kB | 16/86 kB Progress (2): 3.4/49 kB | 29/86 kBProgress (3): 3.4/49 kB | 29/86 kB | 7.7/10 kBProgress (3): 3.4/49 kB | 29/86 kB | 10 kB    Progress (3): 3.4/49 kB | 45/86 kB | 10 kB                                          Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.jar (10 kB at 95 kB/s)
+#13 5.831 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar
+#13 5.831 Progress (2): 3.4/49 kB | 61/86 kBProgress (2): 20/49 kB | 61/86 kB Progress (2): 36/49 kB | 61/86 kBProgress (2): 49 kB | 61/86 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.jar (49 kB at 455 kB/s)
+#13 5.832 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.jar
+#13 5.832 Progress (1): 78/86 kBProgress (1): 86 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.jar (86 kB at 793 kB/s)
+#13 5.832 Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.jar
+#13 5.833 Progress (1): 3.4/194 kBProgress (1): 20/194 kB Progress (1): 36/194 kBProgress (1): 53/194 kBProgress (1): 61/194 kBProgress (1): 77/194 kBProgress (1): 93/194 kBProgress (1): 110/194 kBProgress (1): 126/194 kBProgress (1): 143/194 kBProgress (1): 159/194 kBProgress (1): 175/194 kBProgress (1): 192/194 kBProgress (1): 194 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar (194 kB at 1.6 MB/s)
+#13 5.842 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.jar
+#13 5.853 Progress (1): 7.7/43 kBProgress (1): 16/43 kB Progress (1): 28/43 kBProgress (1): 43 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.jar (43 kB at 332 kB/s)
+#13 5.855 Progress (1): 7.7/121 kBProgress (1): 16/121 kB Progress (1): 32/121 kBProgress (1): 48/121 kBProgress (1): 65/121 kBProgress (1): 81/121 kBProgress (1): 98/121 kBProgress (2): 98/121 kB | 3.4/6.8 kBProgress (2): 98/121 kB | 6.8 kB                                    Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.jar (6.8 kB at 52 kB/s)
+#13 5.856 Progress (1): 114/121 kBProgress (1): 121 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar (121 kB at 917 kB/s)
+#13 5.857 Progress (1): 7.7/223 kBProgress (1): 16/223 kB Progress (1): 25/223 kBProgress (1): 41/223 kBProgress (1): 57/223 kBProgress (1): 74/223 kBProgress (1): 90/223 kBProgress (1): 106/223 kBProgress (1): 123/223 kBProgress (1): 139/223 kBProgress (1): 156/223 kBProgress (1): 172/223 kBProgress (1): 188/223 kBProgress (1): 205/223 kBProgress (1): 221/223 kBProgress (1): 223 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar (223 kB at 1.6 MB/s)
+#13 5.867 Progress (1): 7.7/61 kBProgress (1): 16/61 kB Progress (1): 32/61 kBProgress (1): 48/61 kBProgress (1): 61 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.jar (61 kB at 427 kB/s)
+#13 5.916 [INFO] Using 'UTF-8' encoding to copy filtered resources.
+#13 5.926 [INFO] Copying 2 resources
+#13 5.928 [INFO] 
+#13 5.928 [INFO] --- compiler:3.13.0:compile (default-compile) @ io.openliberty.sample.daytrader8 ---
+#13 5.933 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.pom
+#13 5.955 Progress (1): 793 BProgress (1): 2.3 kBProgress (1): 4.3 kBProgress (1): 5.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.pom (5.9 kB at 256 kB/s)
+#13 5.958 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/39/maven-shared-components-39.pom
+#13 5.981 Progress (1): 812 BProgress (1): 2.2 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/39/maven-shared-components-39.pom (3.2 kB at 129 kB/s)
+#13 5.991 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom
+#13 6.016 Progress (1): 1.0 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom (2.7 kB at 114 kB/s)
+#13 6.016 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom
+#13 6.042 Progress (1): 1.0 kBProgress (1): 3.0 kBProgress (1): 5.9 kBProgress (1): 8.7 kBProgress (1): 12 kB Progress (1): 14 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom (14 kB at 671 kB/s)
+#13 6.042 Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.pom
+#13 6.065 Progress (1): 764 BProgress (1): 2.1 kBProgress (1): 5.2 kBProgress (1): 7.8 kBProgress (1): 10 kB Progress (1): 12 kBProgress (1): 15 kBProgress (1): 18 kBProgress (1): 20 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.pom (20 kB at 759 kB/s)
+#13 6.069 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/52/commons-parent-52.pom
+#13 6.104 Progress (1): 703 BProgress (1): 1.8 kBProgress (1): 3.1 kBProgress (1): 4.6 kBProgress (1): 6.7 kBProgress (1): 8.1 kBProgress (1): 10 kB Progress (1): 12 kBProgress (1): 15 kBProgress (1): 17 kBProgress (1): 20 kBProgress (1): 22 kBProgress (1): 25 kBProgress (1): 29 kBProgress (1): 32 kBProgress (1): 32 kBProgress (1): 36 kBProgress (1): 39 kBProgress (1): 42 kBProgress (1): 44 kBProgress (1): 47 kBProgress (1): 51 kBProgress (1): 54 kBProgress (1): 56 kBProgress (1): 61 kBProgress (1): 65 kBProgress (1): 73 kBProgress (1): 76 kBProgress (1): 79 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/52/commons-parent-52.pom (79 kB at 2.1 MB/s)
+#13 6.119 Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.2/junit-bom-5.7.2.pom
+#13 6.141 Progress (1): 912 BProgress (1): 4.1 kBProgress (1): 5.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.2/junit-bom-5.7.2.pom (5.1 kB at 222 kB/s)
+#13 6.145 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom
+#13 6.167 Progress (1): 806 BProgress (1): 2.3 kBProgress (1): 4.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom (4.7 kB at 206 kB/s)
+#13 6.170 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
+#13 6.192 Progress (1): 773 BProgress (1): 2.4 kBProgress (1): 4.2 kBProgress (1): 6.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom (6.4 kB at 276 kB/s)
+#13 6.196 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom
+#13 6.219 Progress (1): 726 BProgress (1): 2.0 kBProgress (1): 5.9 kBProgress (1): 10 kB Progress (1): 15 kBProgress (1): 19 kBProgress (1): 22 kBProgress (1): 25 kBProgress (1): 27 kBProgress (1): 31 kBProgress (1): 33 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom (33 kB at 1.3 MB/s)
+#13 6.223 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom
+#13 6.245 Progress (1): 749 BProgress (1): 2.1 kBProgress (1): 4.1 kBProgress (1): 9.0 kBProgress (1): 11 kB Progress (1): 14 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom (14 kB at 608 kB/s)
+#13 6.251 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.2.0/plexus-java-1.2.0.pom
+#13 6.271 Progress (1): 1.9 kBProgress (1): 4.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.2.0/plexus-java-1.2.0.pom (4.3 kB at 186 kB/s)
+#13 6.273 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-languages/1.2.0/plexus-languages-1.2.0.pom
+#13 6.294 Progress (1): 1.3 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-languages/1.2.0/plexus-languages-1.2.0.pom (3.2 kB at 152 kB/s)
+#13 6.297 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/15/plexus-15.pom
+#13 6.318 Progress (1): 692 BProgress (1): 2.7 kBProgress (1): 6.4 kBProgress (1): 8.9 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 18 kBProgress (1): 21 kBProgress (1): 25 kBProgress (1): 28 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/15/plexus-15.pom (28 kB at 1.2 MB/s)
+#13 6.324 Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.0/junit-bom-5.10.0.pom
+#13 6.346 Progress (1): 913 BProgress (1): 4.1 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.0/junit-bom-5.10.0.pom (5.6 kB at 246 kB/s)
+#13 6.351 Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.6/asm-9.6.pom
+#13 6.378 Progress (1): 1.3 kBProgress (1): 2.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.6/asm-9.6.pom (2.4 kB at 95 kB/s)
+#13 6.378 Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5.1/ow2-1.5.1.pom
+#13 6.398 Progress (1): 709 BProgress (1): 2.1 kBProgress (1): 3.6 kBProgress (1): 5.7 kBProgress (1): 8.1 kBProgress (1): 11 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5.1/ow2-1.5.1.pom (11 kB at 491 kB/s)
+#13 6.404 Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.0.3/qdox-2.0.3.pom
+#13 6.429 Progress (1): 872 BProgress (1): 3.4 kBProgress (1): 6.6 kBProgress (1): 11 kB Progress (1): 13 kBProgress (1): 17 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.0.3/qdox-2.0.3.pom (17 kB at 638 kB/s)
+#13 6.435 Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+#13 6.457 Progress (1): 838 BProgress (1): 2.7 kBProgress (1): 6.5 kBProgress (1): 6.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (6.6 kB at 263 kB/s)
+#13 6.474 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.pom
+#13 6.502 Progress (1): 1.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.pom (1.4 kB at 47 kB/s)
+#13 6.504 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.15.0/plexus-compiler-2.15.0.pom
+#13 6.524 Progress (1): 1.2 kBProgress (1): 4.5 kBProgress (1): 7.6 kBProgress (1): 7.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.15.0/plexus-compiler-2.15.0.pom (7.6 kB at 345 kB/s)
+#13 6.528 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/17/plexus-17.pom
+#13 6.549 Progress (1): 691 BProgress (1): 2.5 kBProgress (1): 6.4 kBProgress (1): 8.9 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 19 kBProgress (1): 21 kBProgress (1): 25 kBProgress (1): 28 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/17/plexus-17.pom (28 kB at 1.2 MB/s)
+#13 6.558 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.0/plexus-utils-4.0.0.pom
+#13 6.579 Progress (1): 724 BProgress (1): 2.3 kBProgress (1): 4.5 kBProgress (1): 8.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.0/plexus-utils-4.0.0.pom (8.7 kB at 361 kB/s)
+#13 6.585 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/13/plexus-13.pom
+#13 6.606 Progress (1): 693 BProgress (1): 2.5 kBProgress (1): 6.4 kBProgress (1): 8.9 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 18 kBProgress (1): 21 kBProgress (1): 26 kBProgress (1): 27 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/13/plexus-13.pom (27 kB at 1.2 MB/s)
+#13 6.613 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.pom
+#13 6.636 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.pom (1.3 kB at 59 kB/s)
+#13 6.639 Downloading from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom
+#13 6.662 Progress (1): 612 B                   Downloaded from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom (612 B at 26 kB/s)
+#13 6.664 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.0/plexus-xml-3.0.0.pom
+#13 6.702 Progress (1): 815 BProgress (1): 2.7 kBProgress (1): 3.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.0/plexus-xml-3.0.0.pom (3.7 kB at 113 kB/s)
+#13 6.702 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.pom
+#13 6.725 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.pom (1.3 kB at 52 kB/s)
+#13 6.729 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.15.0/plexus-compilers-2.15.0.pom
+#13 6.755 Progress (1): 1.6 kBProgress (1): 1.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.15.0/plexus-compilers-2.15.0.pom (1.6 kB at 60 kB/s)
+#13 6.765 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.jar
+#13 6.765 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar
+#13 6.765 Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar
+#13 6.765 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar
+#13 6.765 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.2.0/plexus-java-1.2.0.jar
+#13 6.785 Progress (1): 7.7/151 kBProgress (1): 16/151 kB Progress (1): 16/151 kBProgress (1): 33/151 kBProgress (1): 49/151 kBProgress (1): 66/151 kBProgress (1): 82/151 kBProgress (2): 82/151 kB | 7.7/14 kBProgress (2): 82/151 kB | 14 kB                                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar (14 kB at 589 kB/s)
+#13 6.788 Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.6/asm-9.6.jar
+#13 6.788 Progress (1): 98/151 kBProgress (1): 115/151 kBProgress (1): 131/151 kBProgress (2): 131/151 kB | 7.7/58 kBProgress (2): 131/151 kB | 12/58 kB Progress (2): 131/151 kB | 29/58 kBProgress (2): 139/151 kB | 29/58 kBProgress (2): 151 kB | 29/58 kB                                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.jar (151 kB at 5.8 MB/s)
+#13 6.792 Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.0.3/qdox-2.0.3.jar
+#13 6.792 Progress (1): 45/58 kBProgress (1): 58 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.2.0/plexus-java-1.2.0.jar (58 kB at 2.1 MB/s)
+#13 6.792 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.jar
+#13 6.793 Progress (1): 7.7/327 kBProgress (1): 12/327 kB Progress (1): 29/327 kBProgress (1): 45/327 kBProgress (2): 45/327 kB | 7.7/41 kBProgress (2): 45/327 kB | 16/41 kB Progress (2): 45/327 kB | 32/41 kBProgress (2): 45/327 kB | 41 kB                                  Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar (41 kB at 1.3 MB/s)
+#13 6.796 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.jar
+#13 6.799 Progress (1): 61/327 kBProgress (1): 78/327 kBProgress (1): 94/327 kBProgress (1): 111/327 kBProgress (1): 127/327 kBProgress (1): 143/327 kBProgress (1): 160/327 kBProgress (1): 164/327 kBProgress (1): 180/327 kBProgress (1): 196/327 kBProgress (1): 213/327 kBProgress (1): 229/327 kBProgress (1): 245/327 kBProgress (1): 262/327 kBProgress (1): 278/327 kBProgress (2): 278/327 kB | 7.7/29 kBProgress (2): 278/327 kB | 16/29 kB Progress (2): 278/327 kB | 29 kB                                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.jar (29 kB at 570 kB/s)
+#13 6.816 Progress (1): 295/327 kB                        Downloading from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar
+#13 6.817 Progress (2): 295/327 kB | 7.7/124 kBProgress (2): 295/327 kB | 16/124 kB Progress (2): 295/327 kB | 32/124 kBProgress (2): 295/327 kB | 48/124 kBProgress (2): 295/327 kB | 65/124 kBProgress (2): 295/327 kB | 81/124 kBProgress (2): 295/327 kB | 98/124 kBProgress (2): 295/327 kB | 114/124 kBProgress (2): 295/327 kB | 124 kB                                     Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.6/asm-9.6.jar (124 kB at 2.3 MB/s)
+#13 6.819 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.0/plexus-xml-3.0.0.jar
+#13 6.824 Progress (1): 311/327 kBProgress (1): 327 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar (327 kB at 5.5 MB/s)
+#13 6.825 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.jar
+#13 6.825 Progress (1): 7.7/334 kBProgress (1): 16/334 kB Progress (1): 32/334 kBProgress (1): 48/334 kBProgress (1): 65/334 kBProgress (1): 81/334 kBProgress (1): 98/334 kBProgress (1): 114/334 kBProgress (1): 130/334 kBProgress (1): 147/334 kBProgress (1): 163/334 kBProgress (1): 179/334 kBProgress (1): 196/334 kBProgress (1): 212/334 kBProgress (1): 229/334 kBProgress (1): 245/334 kBProgress (1): 253/334 kBProgress (2): 253/334 kB | 5.2 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.jar (5.2 kB at 82 kB/s)
+#13 6.829 Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.0/plexus-utils-4.0.0.jar
+#13 6.830 Progress (1): 270/334 kBProgress (1): 286/334 kBProgress (1): 302/334 kBProgress (1): 319/334 kBProgress (1): 334 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.0.3/qdox-2.0.3.jar (334 kB at 5.1 MB/s)
+#13 6.839 Progress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar (2.5 kB at 34 kB/s)
+#13 6.845 Progress (1): 7.7/93 kBProgress (1): 12/93 kB Progress (1): 28/93 kBProgress (1): 44/93 kBProgress (1): 61/93 kBProgress (1): 77/93 kBProgress (1): 93 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.0/plexus-xml-3.0.0.jar (93 kB at 1.1 MB/s)
+#13 6.856 Progress (1): 7.7/26 kBProgress (1): 16/26 kB Progress (1): 25/26 kBProgress (1): 26 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.jar (26 kB at 286 kB/s)
+#13 6.857 Progress (1): 7.7/192 kBProgress (1): 8.2/192 kBProgress (1): 25/192 kB Progress (1): 41/192 kBProgress (1): 57/192 kBProgress (1): 74/192 kBProgress (1): 90/192 kBProgress (1): 106/192 kBProgress (1): 123/192 kBProgress (1): 139/192 kBProgress (1): 156/192 kBProgress (1): 172/192 kBProgress (1): 188/192 kBProgress (1): 192 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.0/plexus-utils-4.0.0.jar (192 kB at 2.0 MB/s)
+#13 6.943 [INFO] Recompiling the module because of changed source code.
+#13 6.950 [INFO] Compiling 144 source files with javac [debug target 1.8] to target/classes
+#13 8.863 [INFO] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java: Some input files use or override a deprecated API.
+#13 8.864 [INFO] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java: Recompile with -Xlint:deprecation for details.
+#13 8.864 [INFO] -------------------------------------------------------------
+#13 8.864 [WARNING] COMPILATION WARNING : 
+#13 8.864 [INFO] -------------------------------------------------------------
+#13 8.864 [WARNING] bootstrap class path not set in conjunction with -source 8
+#13 8.864 [WARNING] source value 8 is obsolete and will be removed in a future release
+#13 8.864 [WARNING] target value 8 is obsolete and will be removed in a future release
+#13 8.864 [WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/entities/AccountDataBean.java:[128,36] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/entities/OrderDataBean.java:[153,34] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/entities/HoldingDataBean.java:[101,36] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[92,52] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[162,7] attempt to synchronize on an instance of a value-based class
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[594,49] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[1076,83] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[1322,113] Double(double) in java.lang.Double has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[1553,41] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[1576,39] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[1592,35] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[1643,11] attempt to synchronize on an instance of a value-based class
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[1660,33] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/direct/TradeDirect.java:[1670,7] attempt to synchronize on an instance of a value-based class
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/util/RecentQuotePriceChangeList.java:[54,24] Integer(java.lang.String) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/impl/ejb3/TradeSLSBBean.java:[605,20] Double(double) in java.lang.Double has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/mdb/DTBroker3MDB.java:[96,27] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/util/KeyBlock.java:[82,20] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/util/KeyBlock.java:[98,20] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/util/TradeConfig.java:[327,13] Float(double) in java.lang.Float has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/util/TradeConfig.java:[331,13] Float(double) in java.lang.Float has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/util/TradeConfig.java:[351,14] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/util/TradeConfig.java:[374,14] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/util/TradeConfig.java:[409,21] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/web/jsf/QuoteJSF.java:[102,70] Double(double) in java.lang.Double has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/PingSession1.java:[88,24] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/PingSession2.java:[85,24] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/PingSession2.java:[87,24] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/web/servlet/TradeAppServlet.java:[178,47] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+#13 8.864 [WARNING] /app/src/main/java/com/ibm/websphere/samples/daytrader/web/servlet/TradeServletAction.java:[217,61] Double(java.lang.String) in java.lang.Double has been deprecated and marked for removal
+#13 8.864 [INFO] 34 warnings 
+#13 8.864 [INFO] -------------------------------------------------------------
+#13 8.864 [INFO] -------------------------------------------------------------
+#13 8.864 [ERROR] COMPILATION ERROR : 
+#13 8.864 [INFO] -------------------------------------------------------------
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[12,22] package jakarta.inject does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[13,27] package jakarta.transaction does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[14,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[15,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[16,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[17,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[18,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[19,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[20,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[21,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[22,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[23,21] package jakarta.ws.rs does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[24,26] package jakarta.ws.rs.core does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[25,26] package jakarta.ws.rs.core does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[37,2] cannot find symbol
+#13 8.864   symbol: class Path
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[38,2] cannot find symbol
+#13 8.864   symbol: class Produces
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[39,2] cannot find symbol
+#13 8.864   symbol: class Consumes
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[16,34] package jakarta.enterprise.context does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[17,22] package jakarta.inject does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[18,27] package jakarta.persistence does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[19,27] package jakarta.persistence does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[20,36] package jakarta.persistence.criteria does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[21,36] package jakarta.persistence.criteria does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[22,36] package jakarta.persistence.criteria does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[23,27] package jakarta.transaction does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[24,38] package jakarta.validation.constraints does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[38,2] cannot find symbol
+#13 8.864   symbol: class ApplicationScoped
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[39,2] cannot find symbol
+#13 8.864   symbol: class Transactional
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[49,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[65,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[78,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[92,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[111,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[126,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[142,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[157,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[176,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[192,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[207,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[221,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[233,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[250,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[263,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[277,12] cannot find symbol
+#13 8.864   symbol:   class Response
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[43,5] cannot find symbol
+#13 8.864   symbol:   class EntityManager
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.service.TradeServiceBean
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[12,34] package jakarta.enterprise.context does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[13,32] package jakarta.enterprise.event does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[14,22] package jakarta.inject does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[15,27] package jakarta.persistence does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[16,27] package jakarta.persistence does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[17,36] package jakarta.persistence.criteria does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[18,36] package jakarta.persistence.criteria does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[19,36] package jakarta.persistence.criteria does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[20,27] package jakarta.transaction does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[22,28] package io.quarkus.scheduler does not exist
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[31,2] cannot find symbol
+#13 8.864   symbol: class ApplicationScoped
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[38,5] cannot find symbol
+#13 8.864   symbol:   class EntityManager
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.service.MarketSummaryService
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[42,5] cannot find symbol
+#13 8.864   symbol:   class Event
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.service.MarketSummaryService
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[38,11] cannot find symbol
+#13 8.864   symbol: variable MediaType
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[39,11] cannot find symbol
+#13 8.864   symbol: variable MediaType
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[42,6] cannot find symbol
+#13 8.864   symbol:   class Inject
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[47,6] cannot find symbol
+#13 8.864   symbol:   class GET
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[48,6] cannot find symbol
+#13 8.864   symbol:   class Path
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[65,28] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[65,64] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[61,6] cannot find symbol
+#13 8.864   symbol:   class POST
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[62,6] cannot find symbol
+#13 8.864   symbol:   class Path
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[63,6] cannot find symbol
+#13 8.864   symbol:   class Consumes
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[63,15] cannot find symbol
+#13 8.864   symbol:   variable MediaType
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[64,6] cannot find symbol
+#13 8.864   symbol:   class Transactional
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[78,29] cannot find symbol
+#13 8.864   symbol:   class PathParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[75,6] cannot find symbol
+#13 8.864   symbol:   class POST
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[76,6] cannot find symbol
+#13 8.864   symbol:   class Path
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[77,6] cannot find symbol
+#13 8.864   symbol:   class Transactional
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[92,31] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[92,67] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[93,31] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[93,71] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[94,31] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[94,65] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[95,31] cannot find symbol
+#13 8.864   symbol:   class FormParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[88,6] cannot find symbol
+#13 8.864   symbol:   class POST
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[89,6] cannot find symbol
+#13 8.864   symbol:   class Path
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[90,6] cannot find symbol
+#13 8.864   symbol:   class Consumes
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[90,15] cannot find symbol
+#13 8.864   symbol:   variable MediaType
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[91,6] cannot find symbol
+#13 8.864   symbol:   class Transactional
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[111,37] cannot find symbol
+#13 8.864   symbol:   class PathParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[109,6] cannot find symbol
+#13 8.864   symbol:   class GET
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[110,6] cannot find symbol
+#13 8.864   symbol:   class Path
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[126,40] cannot find symbol
+#13 8.864   symbol:   class PathParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[124,6] cannot find symbol
+#13 8.864   symbol:   class GET
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[125,6] cannot find symbol
+#13 8.864   symbol:   class Path
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[142,43] cannot find symbol
+#13 8.864   symbol:   class PathParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[139,6] cannot find symbol
+#13 8.864   symbol:   class PUT
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[140,6] cannot find symbol
+#13 8.864   symbol:   class Path
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[141,6] cannot find symbol
+#13 8.864   symbol:   class Transactional
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[157,32] cannot find symbol
+#13 8.864   symbol:   class PathParam
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[155,6] cannot find symbol
+#13 8.864   symbol:   class GET
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[156,6] cannot find symbol
+#13 8.864   symbol:   class Path
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[174,6] cannot find symbol
+#13 8.864   symbol:   class GET
+#13 8.864   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.864 [INFO] 100 errors 
+#13 8.864 [INFO] -------------------------------------------------------------
+#13 8.865 [INFO] ------------------------------------------------------------------------
+#13 8.865 [INFO] BUILD FAILURE
+#13 8.865 [INFO] ------------------------------------------------------------------------
+#13 8.867 [INFO] Total time:  7.457 s
+#13 8.867 [INFO] Finished at: 2026-03-24T05:48:09Z
+#13 8.867 [INFO] ------------------------------------------------------------------------
+#13 8.872 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project io.openliberty.sample.daytrader8: Compilation failure: Compilation failure: 
+#13 8.873 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[12,22] package jakarta.inject does not exist
+#13 8.873 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[13,27] package jakarta.transaction does not exist
+#13 8.873 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[14,21] package jakarta.ws.rs does not exist
+#13 8.873 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[15,21] package jakarta.ws.rs does not exist
+#13 8.873 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[16,21] package jakarta.ws.rs does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[17,21] package jakarta.ws.rs does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[18,21] package jakarta.ws.rs does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[19,21] package jakarta.ws.rs does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[20,21] package jakarta.ws.rs does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[21,21] package jakarta.ws.rs does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[22,21] package jakarta.ws.rs does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[23,21] package jakarta.ws.rs does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[24,26] package jakarta.ws.rs.core does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[25,26] package jakarta.ws.rs.core does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[37,2] cannot find symbol
+#13 8.874 [ERROR]   symbol: class Path
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[38,2] cannot find symbol
+#13 8.874 [ERROR]   symbol: class Produces
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[39,2] cannot find symbol
+#13 8.874 [ERROR]   symbol: class Consumes
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[16,34] package jakarta.enterprise.context does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[17,22] package jakarta.inject does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[18,27] package jakarta.persistence does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[19,27] package jakarta.persistence does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[20,36] package jakarta.persistence.criteria does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[21,36] package jakarta.persistence.criteria does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[22,36] package jakarta.persistence.criteria does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[23,27] package jakarta.transaction does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[24,38] package jakarta.validation.constraints does not exist
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[38,2] cannot find symbol
+#13 8.874 [ERROR]   symbol: class ApplicationScoped
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[39,2] cannot find symbol
+#13 8.874 [ERROR]   symbol: class Transactional
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[49,12] cannot find symbol
+#13 8.874 [ERROR]   symbol:   class Response
+#13 8.874 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[65,12] cannot find symbol
+#13 8.874 [ERROR]   symbol:   class Response
+#13 8.874 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[78,12] cannot find symbol
+#13 8.874 [ERROR]   symbol:   class Response
+#13 8.874 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[92,12] cannot find symbol
+#13 8.874 [ERROR]   symbol:   class Response
+#13 8.874 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.874 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[111,12] cannot find symbol
+#13 8.874 [ERROR]   symbol:   class Response
+#13 8.875 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.875 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[126,12] cannot find symbol
+#13 8.875 [ERROR]   symbol:   class Response
+#13 8.875 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.875 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[142,12] cannot find symbol
+#13 8.875 [ERROR]   symbol:   class Response
+#13 8.875 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.875 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[157,12] cannot find symbol
+#13 8.875 [ERROR]   symbol:   class Response
+#13 8.875 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.875 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[176,12] cannot find symbol
+#13 8.875 [ERROR]   symbol:   class Response
+#13 8.876 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.876 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[192,12] cannot find symbol
+#13 8.876 [ERROR]   symbol:   class Response
+#13 8.876 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.876 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[207,12] cannot find symbol
+#13 8.876 [ERROR]   symbol:   class Response
+#13 8.876 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.876 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[221,12] cannot find symbol
+#13 8.876 [ERROR]   symbol:   class Response
+#13 8.876 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.876 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[233,12] cannot find symbol
+#13 8.876 [ERROR]   symbol:   class Response
+#13 8.876 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.876 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[250,12] cannot find symbol
+#13 8.876 [ERROR]   symbol:   class Response
+#13 8.876 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.876 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[263,12] cannot find symbol
+#13 8.876 [ERROR]   symbol:   class Response
+#13 8.877 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[277,12] cannot find symbol
+#13 8.877 [ERROR]   symbol:   class Response
+#13 8.877 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/TradeServiceBean.java:[43,5] cannot find symbol
+#13 8.877 [ERROR]   symbol:   class EntityManager
+#13 8.877 [ERROR]   location: class com.ibm.websphere.samples.daytrader.service.TradeServiceBean
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[12,34] package jakarta.enterprise.context does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[13,32] package jakarta.enterprise.event does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[14,22] package jakarta.inject does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[15,27] package jakarta.persistence does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[16,27] package jakarta.persistence does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[17,36] package jakarta.persistence.criteria does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[18,36] package jakarta.persistence.criteria does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[19,36] package jakarta.persistence.criteria does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[20,27] package jakarta.transaction does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[22,28] package io.quarkus.scheduler does not exist
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[31,2] cannot find symbol
+#13 8.877 [ERROR]   symbol: class ApplicationScoped
+#13 8.877 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[38,5] cannot find symbol
+#13 8.877 [ERROR]   symbol:   class EntityManager
+#13 8.878 [ERROR]   location: class com.ibm.websphere.samples.daytrader.service.MarketSummaryService
+#13 8.878 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/service/MarketSummaryService.java:[42,5] cannot find symbol
+#13 8.878 [ERROR]   symbol:   class Event
+#13 8.878 [ERROR]   location: class com.ibm.websphere.samples.daytrader.service.MarketSummaryService
+#13 8.878 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[38,11] cannot find symbol
+#13 8.878 [ERROR]   symbol: variable MediaType
+#13 8.878 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[39,11] cannot find symbol
+#13 8.878 [ERROR]   symbol: variable MediaType
+#13 8.878 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[42,6] cannot find symbol
+#13 8.878 [ERROR]   symbol:   class Inject
+#13 8.878 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.878 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[47,6] cannot find symbol
+#13 8.878 [ERROR]   symbol:   class GET
+#13 8.879 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.879 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[48,6] cannot find symbol
+#13 8.879 [ERROR]   symbol:   class Path
+#13 8.879 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.880 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[65,28] cannot find symbol
+#13 8.880 [ERROR]   symbol:   class FormParam
+#13 8.880 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.880 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[65,64] cannot find symbol
+#13 8.880 [ERROR]   symbol:   class FormParam
+#13 8.880 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.880 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[61,6] cannot find symbol
+#13 8.880 [ERROR]   symbol:   class POST
+#13 8.880 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.880 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[62,6] cannot find symbol
+#13 8.880 [ERROR]   symbol:   class Path
+#13 8.880 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.880 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[63,6] cannot find symbol
+#13 8.880 [ERROR]   symbol:   class Consumes
+#13 8.880 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.880 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[63,15] cannot find symbol
+#13 8.880 [ERROR]   symbol:   variable MediaType
+#13 8.880 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.880 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[64,6] cannot find symbol
+#13 8.880 [ERROR]   symbol:   class Transactional
+#13 8.880 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.881 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[78,29] cannot find symbol
+#13 8.881 [ERROR]   symbol:   class PathParam
+#13 8.882 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.882 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[75,6] cannot find symbol
+#13 8.882 [ERROR]   symbol:   class POST
+#13 8.882 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.882 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[76,6] cannot find symbol
+#13 8.882 [ERROR]   symbol:   class Path
+#13 8.882 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.882 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[77,6] cannot find symbol
+#13 8.882 [ERROR]   symbol:   class Transactional
+#13 8.882 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.882 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[92,31] cannot find symbol
+#13 8.882 [ERROR]   symbol:   class FormParam
+#13 8.882 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.882 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[92,67] cannot find symbol
+#13 8.882 [ERROR]   symbol:   class FormParam
+#13 8.882 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.882 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[93,31] cannot find symbol
+#13 8.882 [ERROR]   symbol:   class FormParam
+#13 8.882 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.882 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[93,71] cannot find symbol
+#13 8.882 [ERROR]   symbol:   class FormParam
+#13 8.882 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[94,31] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class FormParam
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[94,65] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class FormParam
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[95,31] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class FormParam
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[88,6] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class POST
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[89,6] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class Path
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[90,6] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class Consumes
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[90,15] cannot find symbol
+#13 8.883 [ERROR]   symbol:   variable MediaType
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[91,6] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class Transactional
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[111,37] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class PathParam
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[109,6] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class GET
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[110,6] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class Path
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.883 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[126,40] cannot find symbol
+#13 8.883 [ERROR]   symbol:   class PathParam
+#13 8.883 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[124,6] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class GET
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[125,6] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class Path
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[142,43] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class PathParam
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[139,6] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class PUT
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[140,6] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class Path
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[141,6] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class Transactional
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[157,32] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class PathParam
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[155,6] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class GET
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[156,6] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class Path
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[174,6] cannot find symbol
+#13 8.884 [ERROR]   symbol:   class GET
+#13 8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+#13 8.884 [ERROR] -> [Help 1]
+#13 8.885 [ERROR] 
+#13 8.885 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#13 8.885 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#13 8.885 [ERROR] 
+#13 8.885 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#13 8.885 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+#13 ERROR: process "/bin/sh -c mvn clean install -DskipTests" did not complete successfully: exit code: 1
+------
+ > [9/9] RUN mvn clean install -DskipTests:
+8.884 [ERROR] /app/src/main/java/com/ibm/websphere/samples/daytrader/rest/TradeResource.java:[174,6] cannot find symbol
+8.884 [ERROR]   symbol:   class GET
+8.884 [ERROR]   location: class com.ibm.websphere.samples.daytrader.rest.TradeResource
+8.884 [ERROR] -> [Help 1]
+8.885 [ERROR] 
+8.885 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+8.885 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+8.885 [ERROR] 
+8.885 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+8.885 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+------
+Dockerfile:27
+--------------------
+  25 |     RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+  26 |     # Build the application at image build time
+  27 | >>> RUN mvn clean install -DskipTests
+  28 |     
+  29 |     CMD ["java", "-jar", "target/quarkus-app/quarkus-run.jar"]
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn clean install -DskipTests" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: daytrader-quarkus-54d05001
+make: *** [Makefile:10: compile] Error 1

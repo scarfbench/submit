@@ -1,0 +1,3 @@
+-- DayTrader Database Initialization for Quarkus/H2
+-- KEYGENEJB table is auto-created by JPA @TableGenerator annotations
+-- No manual initialization needed

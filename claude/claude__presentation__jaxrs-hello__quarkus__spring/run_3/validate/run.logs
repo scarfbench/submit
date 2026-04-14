@@ -1,0 +1,6 @@
+docker logs "jaxrs-hello-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: jaxrs-hello-spring
+make: *** [Makefile:32: logs] Error 1

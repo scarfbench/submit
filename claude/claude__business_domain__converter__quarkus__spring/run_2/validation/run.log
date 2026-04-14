@@ -1,0 +1,218 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 987B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 175.31kB 0.0s done
+#5 DONE 0.0s
+
+#6 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#8 CACHED
+
+#9 [ 5/10] RUN playwright install --with-deps chromium
+#9 CACHED
+
+#10 [ 6/10] WORKDIR /app
+#10 CACHED
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 22.8s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 1.687 [INFO] Scanning for projects...
+#13 1.903 [INFO] 
+#13 1.903 [INFO] ----------------< quarkus.examples.tutorial:converter >-----------------
+#13 1.903 [INFO] Building converter 1.0.0-SNAPSHOT
+#13 1.904 [INFO]   from pom.xml
+#13 1.904 [INFO] --------------------------------[ jar ]---------------------------------
+#13 2.204 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.pom
+#13 2.397 Progress (1): 973 BProgress (1): 2.8 kBProgress (1): 5.9 kBProgress (1): 13 kB Progress (1): 16 kBProgress (1): 16 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.pom (16 kB at 78 kB/s)
+#13 2.414 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.10/byte-buddy-parent-1.14.10.pom
+#13 2.447 Progress (1): 836 BProgress (1): 1.7 kBProgress (1): 3.2 kBProgress (1): 5.5 kBProgress (1): 7.0 kBProgress (1): 8.9 kBProgress (1): 12 kB Progress (1): 13 kBProgress (1): 17 kBProgress (1): 22 kBProgress (1): 24 kBProgress (1): 31 kBProgress (1): 45 kBProgress (1): 48 kBProgress (1): 53 kBProgress (1): 57 kBProgress (1): 62 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.10/byte-buddy-parent-1.14.10.pom (62 kB at 1.4 MB/s)
+#13 2.486 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.pom
+#13 2.517 Progress (1): 1.2 kBProgress (1): 3.1 kBProgress (1): 5.3 kBProgress (1): 8.8 kBProgress (1): 10 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.pom (10 kB at 327 kB/s)
+#13 2.576 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+#13 2.576 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar
+#13 2.576 Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar
+#13 2.614 Progress (1): 0.9/65 kBProgress (1): 2.3/65 kBProgress (1): 3.6/65 kBProgress (1): 5.0/65 kBProgress (1): 6.4/65 kBProgress (1): 7.7/65 kBProgress (1): 9.1/65 kBProgress (1): 10/65 kB Progress (1): 12/65 kBProgress (1): 13/65 kBProgress (1): 15/65 kBProgress (1): 16/65 kBProgress (1): 17/65 kBProgress (1): 18/65 kBProgress (1): 20/65 kBProgress (1): 21/65 kBProgress (1): 23/65 kBProgress (1): 24/65 kBProgress (1): 25/65 kBProgress (1): 27/65 kBProgress (1): 28/65 kBProgress (1): 29/65 kBProgress (1): 31/65 kBProgress (1): 32/65 kBProgress (1): 33/65 kBProgress (1): 35/65 kBProgress (1): 36/65 kBProgress (1): 40/65 kBProgress (1): 45/65 kBProgress (1): 49/65 kBProgress (1): 53/65 kBProgress (1): 57/65 kBProgress (1): 62/65 kBProgress (1): 65 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar (65 kB at 1.3 MB/s)
+#13 2.634 Progress (1): 0.9/257 kBProgress (1): 2.3/257 kBProgress (1): 3.6/257 kBProgress (1): 5.0/257 kBProgress (1): 6.4/257 kBProgress (1): 7.7/257 kBProgress (1): 9.1/257 kBProgress (1): 10/257 kB Progress (1): 12/257 kBProgress (1): 12/257 kBProgress (1): 14/257 kBProgress (1): 15/257 kBProgress (1): 16/257 kBProgress (1): 18/257 kBProgress (1): 19/257 kBProgress (1): 21/257 kBProgress (2): 21/257 kB | 0/4.2 MBProgress (2): 22/257 kB | 0/4.2 MBProgress (2): 22/257 kB | 0/4.2 MBProgress (2): 23/257 kB | 0/4.2 MBProgress (2): 23/257 kB | 0/4.2 MBProgress (2): 23/257 kB | 0/4.2 MBProgress (2): 25/257 kB | 0/4.2 MBProgress (2): 26/257 kB | 0/4.2 MBProgress (2): 26/257 kB | 0/4.2 MBProgress (2): 26/257 kB | 0/4.2 MBProgress (2): 26/257 kB | 0/4.2 MBProgress (2): 27/257 kB | 0/4.2 MBProgress (2): 27/257 kB | 0/4.2 MBProgress (2): 29/257 kB | 0/4.2 MBProgress (2): 30/257 kB | 0/4.2 MBProgress (2): 31/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 33/257 kB | 0/4.2 MBProgress (2): 34/257 kB | 0/4.2 MBProgress (2): 34/257 kB | 0/4.2 MBProgress (2): 36/257 kB | 0/4.2 MBProgress (2): 37/257 kB | 0/4.2 MBProgress (2): 38/257 kB | 0/4.2 MBProgress (2): 38/257 kB | 0/4.2 MBProgress (2): 40/257 kB | 0/4.2 MBProgress (2): 40/257 kB | 0/4.2 MBProgress (2): 41/257 kB | 0/4.2 MBProgress (2): 41/257 kB | 0/4.2 MBProgress (2): 42/257 kB | 0/4.2 MBProgress (2): 42/257 kB | 0/4.2 MBProgress (2): 42/257 kB | 0/4.2 MBProgress (2): 42/257 kB | 0/4.2 MBProgress (2): 42/257 kB | 0/4.2 MBProgress (2): 42/257 kB | 0/4.2 MBProgress (2): 44/257 kB | 0/4.2 MBProgress (2): 45/257 kB | 0/4.2 MBProgress (2): 47/257 kB | 0/4.2 MBProgress (2): 47/257 kB | 0/4.2 MBProgress (2): 48/257 kB | 0/4.2 MBProgress (2): 48/257 kB | 0/4.2 MBProgress (2): 49/257 kB | 0/4.2 MBProgress (2): 51/257 kB | 0/4.2 MBProgress (2): 52/257 kB | 0/4.2 MBProgress (2): 52/257 kB | 0/4.2 MBProgress (2): 53/257 kB | 0/4.2 MBProgress (2): 53/257 kB | 0/4.2 MBProgress (2): 55/257 kB | 0/4.2 MBProgress (2): 55/257 kB | 0/4.2 MBProgress (2): 55/257 kB | 0/4.2 MBProgress (2): 55/257 kB | 0/4.2 MBProgress (2): 55/257 kB | 0/4.2 MBProgress (2): 59/257 kB | 0/4.2 MBProgress (2): 59/257 kB | 0/4.2 MBProgress (2): 59/257 kB | 0/4.2 MBProgress (2): 59/257 kB | 0.1/4.2 MBProgress (2): 59/257 kB | 0.1/4.2 MBProgress (2): 59/257 kB | 0.1/4.2 MBProgress (2): 59/257 kB | 0.1/4.2 MBProgress (2): 59/257 kB | 0.1/4.2 MBProgress (2): 59/257 kB | 0.1/4.2 MBProgress (2): 63/257 kB | 0.1/4.2 MBProgress (2): 67/257 kB | 0.1/4.2 MBProgress (2): 72/257 kB | 0.1/4.2 MBProgress (2): 76/257 kB | 0.1/4.2 MBProgress (2): 80/257 kB | 0.1/4.2 MBProgress (2): 84/257 kB | 0.1/4.2 MBProgress (2): 89/257 kB | 0.1/4.2 MBProgress (2): 89/257 kB | 0.1/4.2 MBProgress (2): 89/257 kB | 0.1/4.2 MBProgress (2): 89/257 kB | 0.1/4.2 MBProgress (2): 89/257 kB | 0.1/4.2 MBProgress (2): 89/257 kB | 0.1/4.2 MBProgress (2): 93/257 kB | 0.1/4.2 MBProgress (2): 97/257 kB | 0.1/4.2 MBProgress (2): 97/257 kB | 0.1/4.2 MBProgress (2): 97/257 kB | 0.1/4.2 MBProgress (2): 97/257 kB | 0.1/4.2 MBProgress (2): 97/257 kB | 0.1/4.2 MBProgress (2): 101/257 kB | 0.1/4.2 MBProgress (2): 105/257 kB | 0.1/4.2 MBProgress (2): 110/257 kB | 0.1/4.2 MBProgress (2): 114/257 kB | 0.1/4.2 MBProgress (2): 118/257 kB | 0.1/4.2 MBProgress (2): 118/257 kB | 0.1/4.2 MBProgress (2): 118/257 kB | 0.1/4.2 MBProgress (2): 118/257 kB | 0.1/4.2 MBProgress (2): 122/257 kB | 0.1/4.2 MBProgress (2): 127/257 kB | 0.1/4.2 MBProgress (2): 131/257 kB | 0.1/4.2 MBProgress (2): 135/257 kB | 0.1/4.2 MBProgress (2): 139/257 kB | 0.1/4.2 MBProgress (2): 143/257 kB | 0.1/4.2 MBProgress (2): 148/257 kB | 0.1/4.2 MBProgress (2): 152/257 kB | 0.1/4.2 MBProgress (2): 156/257 kB | 0.1/4.2 MBProgress (2): 160/257 kB | 0.1/4.2 MBProgress (2): 165/257 kB | 0.1/4.2 MBProgress (2): 169/257 kB | 0.1/4.2 MBProgress (2): 173/257 kB | 0.1/4.2 MBProgress (2): 177/257 kB | 0.1/4.2 MBProgress (2): 177/257 kB | 0.1/4.2 MBProgress (2): 181/257 kB | 0.1/4.2 MBProgress (2): 186/257 kB | 0.1/4.2 MBProgress (2): 190/257 kB | 0.1/4.2 MBProgress (2): 194/257 kB | 0.1/4.2 MBProgress (2): 198/257 kB | 0.1/4.2 MBProgress (2): 198/257 kB | 0.1/4.2 MBProgress (2): 198/257 kB | 0.1/4.2 MBProgress (2): 198/257 kB | 0.1/4.2 MBProgress (2): 198/257 kB | 0.1/4.2 MBProgress (2): 198/257 kB | 0.1/4.2 MBProgress (2): 198/257 kB | 0.1/4.2 MBProgress (2): 203/257 kB | 0.1/4.2 MBProgress (2): 203/257 kB | 0.1/4.2 MBProgress (2): 203/257 kB | 0.2/4.2 MBProgress (2): 203/257 kB | 0.2/4.2 MBProgress (2): 203/257 kB | 0.2/4.2 MBProgress (2): 203/257 kB | 0.2/4.2 MBProgress (2): 203/257 kB | 0.2/4.2 MBProgress (2): 203/257 kB | 0.2/4.2 MBProgress (2): 207/257 kB | 0.2/4.2 MBProgress (2): 211/257 kB | 0.2/4.2 MBProgress (2): 215/257 kB | 0.2/4.2 MBProgress (2): 215/257 kB | 0.2/4.2 MBProgress (2): 219/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 224/257 kB | 0.2/4.2 MBProgress (2): 240/257 kB | 0.2/4.2 MBProgress (2): 240/257 kB | 0.2/4.2 MBProgress (2): 256/257 kB | 0.2/4.2 MBProgress (2): 256/257 kB | 0.2/4.2 MBProgress (2): 257 kB | 0.2/4.2 MB    Progress (2): 257 kB | 0.2/4.2 MB                                 Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar (257 kB at 2.6 MB/s)
+#13 2.672 Progress (1): 0.2/4.2 MBProgress (1): 0.3/4.2 MBProgress (1): 0.3/4.2 MBProgress (1): 0.3/4.2 MBProgress (1): 0.3/4.2 MBProgress (1): 0.3/4.2 MBProgress (1): 0.3/4.2 MBProgress (1): 0.3/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.4/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.5/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.6/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.7/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.8/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 0.9/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.0/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.1/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.2/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.3/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.4/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.5/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.6/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.7/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.8/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 1.9/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.0/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.1/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.2/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.3/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.4/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.5/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.6/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.7/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.8/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 2.9/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.0/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.1/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.2/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.3/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.4/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.5/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.6/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.7/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.8/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 3.9/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.0/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.1/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2/4.2 MBProgress (1): 4.2 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar (4.2 MB at 17 MB/s)
+#13 2.834 [INFO] 
+#13 2.834 [INFO] --- resources:3.3.1:resources (default-resources) @ converter ---
+#13 2.910 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 2.914 [INFO] Copying 0 resource from src/main/resources to target/classes
+#13 2.915 [INFO] 
+#13 2.915 [INFO] --- compiler:3.11.0:compile (default-compile) @ converter ---
+#13 2.992 [INFO] Changes detected - recompiling the module! :source
+#13 2.993 [INFO] Compiling 3 source files with javac [debug release 17] to target/classes
+#13 3.535 [INFO] /app/src/main/java/quarkus/examples/tutorial/ConverterBean.java: /app/src/main/java/quarkus/examples/tutorial/ConverterBean.java uses or overrides a deprecated API.
+#13 3.535 [INFO] /app/src/main/java/quarkus/examples/tutorial/ConverterBean.java: Recompile with -Xlint:deprecation for details.
+#13 3.535 [INFO] 
+#13 3.535 [INFO] --- resources:3.3.1:testResources (default-testResources) @ converter ---
+#13 3.539 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 3.539 [INFO] 
+#13 3.539 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ converter ---
+#13 3.541 [INFO] No sources to compile
+#13 3.541 [INFO] 
+#13 3.541 [INFO] --- surefire:3.1.2:test (default-test) @ converter ---
+#13 3.667 [INFO] Tests are skipped.
+#13 3.667 [INFO] 
+#13 3.667 [INFO] --- jar:3.3.0:jar (default-jar) @ converter ---
+#13 3.750 [INFO] Building jar: /app/target/converter-1.0.0-SNAPSHOT.jar
+#13 3.800 [INFO] 
+#13 3.800 [INFO] --- spring-boot:3.2.0:repackage (repackage) @ converter ---
+#13 3.988 [INFO] Replacing main artifact /app/target/converter-1.0.0-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 3.988 [INFO] The original artifact has been renamed to /app/target/converter-1.0.0-SNAPSHOT.jar.original
+#13 3.989 [INFO] ------------------------------------------------------------------------
+#13 3.989 [INFO] BUILD SUCCESS
+#13 3.989 [INFO] ------------------------------------------------------------------------
+#13 3.989 [INFO] Total time:  2.316 s
+#13 3.989 [INFO] Finished at: 2026-03-24T05:34:48Z
+#13 3.989 [INFO] ------------------------------------------------------------------------
+#13 DONE 4.1s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 0.5s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 2.3s done
+#15 exporting manifest sha256:f49b9261735242793c7c33b62774f121c447b9cd084e544ad94efbfa6de4ec0e 0.0s done
+#15 exporting config sha256:3ec953fd0d37b1c605081f84ba56c7902d6007fc78b12c9c4f9c0f280259eeb3 0.0s done
+#15 exporting attestation manifest sha256:c85c73f04f0b8f3facb9c8c0d079df51fe87a9ddd40d0411660b1bf57d915602 0.1s done
+#15 exporting manifest list sha256:e5bfbcb24940913668361fe670e9e83b38090c99dc27a93cd97d6d8dfec71553
+#15 exporting manifest list sha256:e5bfbcb24940913668361fe670e9e83b38090c99dc27a93cd97d6d8dfec71553 0.0s done
+#15 naming to docker.io/library/converter-spring:0a5b3c99 done
+#15 unpacking to docker.io/library/converter-spring:0a5b3c99
+#15 unpacking to docker.io/library/converter-spring:0a5b3c99 0.6s done
+#15 DONE 3.1s
+[INFO] Built image: converter-spring:0a5b3c99
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name converter-spring-85889bc1 converter-spring:0a5b3c99
+01c29d22427b966be4d80913e6b7d9ca0dc85fedcc5ae89eb568375f0f7befe7
+[INFO] Started converter-spring-85889bc1, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T05:34:53.438Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : Starting ConverterApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/converter-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T05:34:53.442Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T05:34:54.210Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T05:34:54.214Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T05:34:54.214Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T05:34:54.236Z  INFO 19 --- [           main] o.a.c.c.C.[.[localhost].[/converter]     : Initializing Spring embedded WebApplicationContext
+2026-03-24T05:34:54.236Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 678 ms
+2026-03-24T05:34:54.529Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/converter'
+2026-03-24T05:34:54.542Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : Started ConverterApplication in 1.443 seconds (process running for 1.921)
+[INFO] Spring Boot application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T05:34:53.438Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : Starting ConverterApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/converter-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T05:34:53.442Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T05:34:54.210Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T05:34:54.214Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T05:34:54.214Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T05:34:54.236Z  INFO 19 --- [           main] o.a.c.c.C.[.[localhost].[/converter]     : Initializing Spring embedded WebApplicationContext
+2026-03-24T05:34:54.236Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 678 ms
+2026-03-24T05:34:54.529Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/converter'
+2026-03-24T05:34:54.542Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : Started ConverterApplication in 1.443 seconds (process running for 1.921)
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 21 items
+
+smoke.py::test_page_has_expected_label PASSED                            [  4%]
+smoke.py::test_form_has_amount_input PASSED                              [  9%]
+smoke.py::test_form_has_submit_button PASSED                             [ 14%]
+smoke.py::test_page_title_is_non_empty PASSED                            [ 19%]
+smoke.py::test_expected_conversions[1-104.34 yen-0.74 Euro] PASSED       [ 23%]
+smoke.py::test_expected_conversions[5-521.70 yen-3.66 Euro] PASSED       [ 28%]
+smoke.py::test_expected_conversions[10-1043.40 yen-7.31 Euro] PASSED     [ 33%]
+smoke.py::test_expected_conversions[50-5217.00 yen-36.52 Euro] PASSED    [ 38%]
+smoke.py::test_expected_conversions[100-10434.00 yen-73.04 Euro] PASSED  [ 42%]
+smoke.py::test_outline_yen_conversions[1-104.34] PASSED                  [ 47%]
+smoke.py::test_outline_yen_conversions[5-521.70] PASSED                  [ 52%]
+smoke.py::test_outline_yen_conversions[10-1043.40] PASSED                [ 57%]
+smoke.py::test_result_echoes_input_amount PASSED                         [ 61%]
+smoke.py::test_no_stack_trace_in_result PASSED                           [ 66%]
+smoke.py::test_page_title_is_non_empty_after_conversion PASSED           [ 71%]
+smoke.py::test_can_convert_twice_in_a_row PASSED                         [ 76%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[0] PASSED        [ 80%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[1000000] PASSED  [ 85%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[2.5] PASSED      [ 90%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[-1] PASSED       [ 95%]
+smoke.py::test_empty_submission_does_not_show_server_errors PASSED       [100%]
+
+============================== 21 passed in 2.19s ==============================
+=== TEST OK ===
+[INFO] === Container logs after test ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T05:34:53.438Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : Starting ConverterApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 19 (/app/target/converter-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T05:34:53.442Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T05:34:54.210Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T05:34:54.214Z  INFO 19 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T05:34:54.214Z  INFO 19 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T05:34:54.236Z  INFO 19 --- [           main] o.a.c.c.C.[.[localhost].[/converter]     : Initializing Spring embedded WebApplicationContext
+2026-03-24T05:34:54.236Z  INFO 19 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 678 ms
+2026-03-24T05:34:54.529Z  INFO 19 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/converter'
+2026-03-24T05:34:54.542Z  INFO 19 --- [           main] q.e.tutorial.ConverterApplication        : Started ConverterApplication in 1.443 seconds (process running for 1.921)
+2026-03-24T05:34:56.050Z  INFO 19 --- [nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/converter]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-24T05:34:56.051Z  INFO 19 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-24T05:34:56.051Z  INFO 19 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+docker rm -f converter-spring-85889bc1 >/dev/null 2>&1 || true
+docker rmi $(docker images -q converter-spring) 2>/dev/null
+Untagged: converter-spring:0a5b3c99
+Deleted: sha256:e5bfbcb24940913668361fe670e9e83b38090c99dc27a93cd97d6d8dfec71553
+make: [Makefile:73: test] Error 1 (ignored)
+docker image prune -f
+Total reclaimed space: 0B
+[INFO] Cleaned up container and image

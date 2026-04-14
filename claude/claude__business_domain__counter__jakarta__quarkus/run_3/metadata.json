@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "counter",
+  "layer": "business_domain",
+  "repeat": 3,
+  "source_framework": "jakarta",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 9,
+  "compile_ok": "FALSE",
+  "deploy_ok": "FALSE",
+  "tests_passed": 0,
+  "failure_reason": "Compilation errors detected in Maven build; Cannot deploy - compilation failed; Cannot test - deployment failed",
+  "failure_category": "deploy_dependency",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

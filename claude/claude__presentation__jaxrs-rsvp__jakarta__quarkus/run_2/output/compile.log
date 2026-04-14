@@ -1,0 +1,21 @@
+[ERROR] Failed to execute goal io.quarkus:quarkus-maven-plugin:3.6.4:build (default) on project rsvp: Failed to build quarkus application: io.quarkus.builder.BuildException: Build failure: Build failed due to errors
+[ERROR] 	[error]: Build step io.quarkus.resteasy.reactive.jaxb.deployment.ResteasyReactiveJaxbProcessor#registerClassesToBeBound threw an exception: jakarta.enterprise.inject.spi.DeploymentException: Cannot directly return collections or arrays using JAXB. You need to wrap it into a root element class. Problematic method is 'jakarta.tutorial.rsvp.ejb.StatusBean.getAllCurrentEvents'
+[ERROR] 	at io.quarkus.resteasy.reactive.jaxb.deployment.ResteasyReactiveJaxbProcessor.registerClassesToBeBound(ResteasyReactiveJaxbProcessor.java:100)
+[ERROR] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[ERROR] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+[ERROR] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[ERROR] 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+[ERROR] 	at io.quarkus.deployment.ExtensionLoader$3.execute(ExtensionLoader.java:849)
+[ERROR] 	at io.quarkus.builder.BuildContext.run(BuildContext.java:256)
+[ERROR] 	at org.jboss.threads.ContextHandler$1.runWith(ContextHandler.java:18)
+[ERROR] 	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2513)
+[ERROR] 	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1538)
+[ERROR] 	at java.base/java.lang.Thread.run(Thread.java:840)
+[ERROR] 	at org.jboss.threads.JBossThread.run(JBossThread.java:501)
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

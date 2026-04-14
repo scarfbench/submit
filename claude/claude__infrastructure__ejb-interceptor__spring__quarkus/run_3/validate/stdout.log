@@ -1,0 +1,3 @@
+docker build -f Dockerfile -t "interceptor-quarkus:latest" .
+[INFO] Built image: interceptor-quarkus:latest
+[INFO] Removing existing container

@@ -1,0 +1,6 @@
+docker logs "helloservice-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: helloservice-spring
+make: *** [Makefile:59: logs] Error 1

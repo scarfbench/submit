@@ -1,0 +1,44 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------< jakarta.examples.tutorial.ejb.interceptor:interceptor >--------
+[INFO] Building interceptor 10-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ interceptor ---
+[INFO] Deleting /home/bmcginn/git/final_conversions/conversions/agentic/claude/infrastructure/ejb-interceptor-jakarta-to-quarkus/run_3/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ interceptor ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- quarkus-maven-plugin:3.6.4:generate-code (default) @ interceptor ---
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ interceptor ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 2 source files with javac [debug target 11] to target/classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] 
+[INFO] --- quarkus-maven-plugin:3.6.4:generate-code-tests (default) @ interceptor ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ interceptor ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/bmcginn/git/final_conversions/conversions/agentic/claude/infrastructure/ejb-interceptor-jakarta-to-quarkus/run_3/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:testCompile (default-testCompile) @ interceptor ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0:test (default-test) @ interceptor ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ interceptor ---
+[INFO] Building jar: /home/bmcginn/git/final_conversions/conversions/agentic/claude/infrastructure/ejb-interceptor-jakarta-to-quarkus/run_3/target/interceptor.jar
+[INFO] 
+[INFO] --- quarkus-maven-plugin:3.6.4:build (default) @ interceptor ---
+[WARNING] [io.quarkus.config] Unrecognized configuration key "quarkus.myfaces.project-stage" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 1863ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.999 s
+[INFO] Finished at: 2025-11-15T06:44:35Z
+[INFO] ------------------------------------------------------------------------

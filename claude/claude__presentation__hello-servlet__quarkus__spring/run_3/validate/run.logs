@@ -1,0 +1,6 @@
+docker logs "hello-servlet-spring"
+
+
+--- stderr ---
+Error response from daemon: No such container: hello-servlet-spring
+make: *** [Makefile:32: logs] Error 1

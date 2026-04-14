@@ -1,0 +1,126 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.11kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 442B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 3.26MB 0.2s done
+#5 DONE 0.2s
+
+#6 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python         playwright==1.47.0         pytest==8.4.2         pytest-playwright==0.7.2
+#6 CACHED
+
+#7 [6/9] WORKDIR /app
+#7 CACHED
+
+#8 [7/9] COPY . .
+#8 CACHED
+
+#9 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#9 CACHED
+
+#10 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#10 CACHED
+
+#11 [5/9] RUN playwright install --with-deps chromium
+#11 CACHED
+
+#12 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests -Dquarkus.profile=dev
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:99c09b09305a6bbad943703a34a4e1dc065d8a8bea71b3d6c7de656bae73d3cc done
+#14 exporting config sha256:fc9b53bbc84017e239f93b9f950c6e9da4c463925147ab9d4ea2daa98bb05fbd done
+#14 exporting attestation manifest sha256:dc1ef21712479f151c20c8768574559dbf80893f7005fdde4a000b2ebd47f983 0.1s done
+#14 exporting manifest list sha256:8023c6fbdec842a2a3c513ffc1615a6684137f4afa7d067df99739e98f394dae
+#14 exporting manifest list sha256:8023c6fbdec842a2a3c513ffc1615a6684137f4afa7d067df99739e98f394dae 0.0s done
+#14 naming to docker.io/library/petclinic-quarkus:d1127326 done
+#14 unpacking to docker.io/library/petclinic-quarkus:d1127326 done
+#14 DONE 0.1s
+[INFO] Built image: petclinic-quarkus:d1127326
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name petclinic-quarkus-c7a0f73f petclinic-quarkus:d1127326
+6f38bb084aaf13008fc9bf31cae129cfba646791f195f61e800db7ec82e70eb7
+[INFO] Started petclinic-quarkus-c7a0f73f, waiting for app to start...
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:37:26,510 INFO  [io.quarkus] (main) spring-petclinic 3.5.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 2.108s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:37:26,511 INFO  [io.quarkus] (main) Profile dev activated. 
+2026-03-24 05:37:26,511 INFO  [io.quarkus] (main) Installed features: [agroal, cache, cdi, hibernate-orm, hibernate-validator, jdbc-h2, narayana-jta, qute, rest, rest-jackson, rest-qute, smallrye-context-propagation, smallrye-health, vertx, web-dependency-locator]
+[INFO] Application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:37:26,510 INFO  [io.quarkus] (main) spring-petclinic 3.5.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 2.108s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:37:26,511 INFO  [io.quarkus] (main) Profile dev activated. 
+2026-03-24 05:37:26,511 INFO  [io.quarkus] (main) Installed features: [agroal, cache, cdi, hibernate-orm, hibernate-validator, jdbc-h2, narayana-jta, qute, rest, rest-jackson, rest-qute, smallrye-context-propagation, smallrye-health, vertx, web-dependency-locator]
+[INFO] Running smoke tests inside container petclinic-quarkus-c7a0f73f...
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.2, pluggy-1.6.0 -- /opt/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /app/smoke
+configfile: pyproject.toml
+plugins: base-url-2.1.0, playwright-0.7.2
+collecting ... collected 13 items
+
+smoke.py::test_homepage_loads[chromium] PASSED                           [  7%]
+smoke.py::test_homepage_displays_welcome_panel[chromium] PASSED          [ 15%]
+smoke.py::test_homepage_has_welcome_text[chromium] PASSED                [ 23%]
+smoke.py::test_pages_load_without_errors[chromium] PASSED                [ 30%]
+smoke.py::test_page_titles_are_set[chromium] PASSED                      [ 38%]
+smoke.py::test_navigate_to_find_owners_page[chromium] PASSED             [ 46%]
+smoke.py::test_find_owners_page_has_search_form[chromium] PASSED         [ 53%]
+smoke.py::test_owner_search_returns_results[chromium] PASSED             [ 61%]
+smoke.py::test_owner_search_by_last_name[chromium] PASSED                [ 69%]
+smoke.py::test_navigate_to_veterinarians_page[chromium] PASSED           [ 76%]
+smoke.py::test_veterinarians_page_displays_table[chromium] PASSED        [ 84%]
+smoke.py::test_error_page_for_unknown_route[chromium] PASSED             [ 92%]
+smoke.py::test_rest_owners_json FAILED                                   [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_rest_owners_json _____________________________
+
+    def test_rest_owners_json():
+        """Scenario: GET /owners/api/list returns owners as JSON."""
+        r = requests.get(f"{BASE_URL}/owners/api/list")
+>       assert r.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404]>.status_code
+
+smoke.py:150: AssertionError
+=========================== short test summary info ============================
+FAILED smoke.py::test_rest_owners_json - assert 404 == 200
+======================== 1 failed, 12 passed in 10.22s =========================
+=== TEST FAIL ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:37:26,510 INFO  [io.quarkus] (main) spring-petclinic 3.5.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 2.108s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:37:26,511 INFO  [io.quarkus] (main) Profile dev activated. 
+2026-03-24 05:37:26,511 INFO  [io.quarkus] (main) Installed features: [agroal, cache, cdi, hibernate-orm, hibernate-validator, jdbc-h2, narayana-jta, qute, rest, rest-jackson, rest-qute, smallrye-context-propagation, smallrye-health, vertx, web-dependency-locator]
+make: *** [Makefile:54: test] Error 1

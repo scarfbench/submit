@@ -1,0 +1,540 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 1.01kB done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B 0.0s done
+#3 DONE 0.2s
+
+#4 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#5 CACHED
+
+#6 [ 5/10] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#8 CACHED
+
+#9 [ 6/10] WORKDIR /app
+#9 CACHED
+
+#10 [internal] load build context
+#10 transferring context: 156.85kB 0.0s done
+#10 DONE 0.3s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.3s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 60.6s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 2.394 [INFO] Scanning for projects...
+#13 3.923 [INFO] 
+#13 3.923 [INFO] ---------------< spring.examples.tutorial:helloservice >----------------
+#13 3.923 [INFO] Building helloservice 0.0.1-SNAPSHOT
+#13 3.923 [INFO]   from pom.xml
+#13 3.923 [INFO] --------------------------------[ jar ]---------------------------------
+#13 4.772 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpmime/4.5.14/httpmime-4.5.14.pom
+#13 5.090 Progress (1): 869 BProgress (1): 1.9 kBProgress (1): 4.0 kBProgress (1): 5.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpmime/4.5.14/httpmime-4.5.14.pom (5.1 kB at 13 kB/s)
+#13 5.250 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpmime/4.5.14/httpmime-4.5.14.jar
+#13 5.286 Progress (1): 0.9/42 kBProgress (1): 2.3/42 kBProgress (1): 3.6/42 kBProgress (1): 5.0/42 kBProgress (1): 6.4/42 kBProgress (1): 7.7/42 kBProgress (1): 9.1/42 kBProgress (1): 10/42 kB Progress (1): 12/42 kBProgress (1): 13/42 kBProgress (1): 15/42 kBProgress (1): 16/42 kBProgress (1): 17/42 kBProgress (1): 19/42 kBProgress (1): 20/42 kBProgress (1): 21/42 kBProgress (1): 23/42 kBProgress (1): 24/42 kBProgress (1): 26/42 kBProgress (1): 27/42 kBProgress (1): 28/42 kBProgress (1): 30/42 kBProgress (1): 31/42 kBProgress (1): 32/42 kBProgress (1): 34/42 kBProgress (1): 35/42 kBProgress (1): 36/42 kBProgress (1): 38/42 kBProgress (1): 39/42 kBProgress (1): 41/42 kBProgress (1): 42 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpmime/4.5.14/httpmime-4.5.14.jar (42 kB at 572 kB/s)
+#13 5.295 [INFO] 
+#13 5.295 [INFO] --- resources:3.3.1:resources (default-resources) @ helloservice ---
+#13 5.375 [INFO] Copying 2 resources from src/main/resources to target/classes
+#13 5.375 [INFO] 
+#13 5.375 [INFO] --- quarkus:3.17.4:generate-code (default) @ helloservice ---
+#13 5.580 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-deployment/3.17.4/quarkus-rest-deployment-3.17.4.pom
+#13 5.651 Progress (1): 2.9 kBProgress (1): 5.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-deployment/3.17.4/quarkus-rest-deployment-3.17.4.pom (5.5 kB at 72 kB/s)
+#13 5.699 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.17.4/resteasy-reactive-processor-3.17.4.pom
+#13 5.794 Progress (1): 2.0 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.17.4/resteasy-reactive-processor-3.17.4.pom (2.8 kB at 38 kB/s)
+#13 5.801 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.17.4/resteasy-reactive-common-processor-3.17.4.pom
+#13 5.833 Progress (1): 2.0 kBProgress (1): 2.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.17.4/resteasy-reactive-common-processor-3.17.4.pom (2.1 kB at 71 kB/s)
+#13 5.833 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.17.4/quarkus-vertx-http-deployment-3.17.4.pom
+#13 5.856 Progress (1): 2.5 kBProgress (1): 5.7 kBProgress (1): 6.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.17.4/quarkus-vertx-http-deployment-3.17.4.pom (6.7 kB at 280 kB/s)
+#13 5.862 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.17.4/quarkus-vertx-deployment-3.17.4.pom
+#13 5.893 Progress (1): 2.7 kBProgress (1): 3.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.17.4/quarkus-vertx-deployment-3.17.4.pom (3.5 kB at 134 kB/s)
+#13 5.899 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.17.4/quarkus-arc-deployment-3.17.4.pom
+#13 5.924 Progress (1): 2.1 kBProgress (1): 3.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.17.4/quarkus-arc-deployment-3.17.4.pom (3.1 kB at 114 kB/s)
+#13 5.945 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.17.4/quarkus-smallrye-context-propagation-spi-3.17.4.pom
+#13 5.957 Progress (1): 1.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.17.4/quarkus-smallrye-context-propagation-spi-3.17.4.pom (1.0 kB at 39 kB/s)
+#13 5.966 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.17.4/quarkus-vertx-http-dev-ui-spi-3.17.4.pom
+#13 6.002 Progress (1): 805 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.17.4/quarkus-vertx-http-dev-ui-spi-3.17.4.pom (805 B at 29 kB/s)
+#13 6.002 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.17.4/arc-processor-3.17.4.pom
+#13 6.039 Progress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.17.4/arc-processor-3.17.4.pom (1.9 kB at 48 kB/s)
+#13 6.042 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-test-supplement/3.17.4/quarkus-arc-test-supplement-3.17.4.pom
+#13 6.073 Progress (1): 833 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-test-supplement/3.17.4/quarkus-arc-test-supplement-3.17.4.pom (833 B at 26 kB/s)
+#13 6.077 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.17.4/quarkus-netty-deployment-3.17.4.pom
+#13 6.120 Progress (1): 1.9 kBProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.17.4/quarkus-netty-deployment-3.17.4.pom (2.0 kB at 61 kB/s)
+#13 6.122 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.17.4/quarkus-virtual-threads-deployment-3.17.4.pom
+#13 6.155 Progress (1): 1.9 kBProgress (1): 2.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.17.4/quarkus-virtual-threads-deployment-3.17.4.pom (2.1 kB at 68 kB/s)
+#13 6.157 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.17.4/quarkus-mutiny-deployment-3.17.4.pom
+#13 6.198 Progress (1): 2.0 kBProgress (1): 2.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.17.4/quarkus-mutiny-deployment-3.17.4.pom (2.2 kB at 54 kB/s)
+#13 6.206 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.17.4/quarkus-smallrye-context-propagation-deployment-3.17.4.pom
+#13 6.232 Progress (1): 2.0 kBProgress (1): 2.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.17.4/quarkus-smallrye-context-propagation-deployment-3.17.4.pom (2.3 kB at 85 kB/s)
+#13 6.237 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-spi/3.17.4/quarkus-jackson-spi-3.17.4.pom
+#13 6.266 Progress (1): 830 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-spi/3.17.4/quarkus-jackson-spi-3.17.4.pom (830 B at 30 kB/s)
+#13 6.269 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-parent/3.17.4/quarkus-jackson-parent-3.17.4.pom
+#13 6.306 Progress (1): 766 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-parent/3.17.4/quarkus-jackson-parent-3.17.4.pom (766 B at 26 kB/s)
+#13 6.319 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment-spi/3.17.4/quarkus-vertx-deployment-spi-3.17.4.pom
+#13 6.343 Progress (1): 904 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment-spi/3.17.4/quarkus-vertx-deployment-spi-3.17.4.pom (904 B at 32 kB/s)
+#13 6.359 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.17.4/quarkus-vertx-http-deployment-spi-3.17.4.pom
+#13 6.379 Progress (1): 957 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.17.4/quarkus-vertx-http-deployment-spi-3.17.4.pom (957 B at 34 kB/s)
+#13 6.391 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-tls-registry-deployment/3.17.4/quarkus-tls-registry-deployment-3.17.4.pom
+#13 6.426 Progress (1): 2.6 kBProgress (1): 3.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-tls-registry-deployment/3.17.4/quarkus-tls-registry-deployment-3.17.4.pom (3.5 kB at 117 kB/s)
+#13 6.426 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-credentials-deployment/3.17.4/quarkus-credentials-deployment-3.17.4.pom
+#13 6.460 Progress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-credentials-deployment/3.17.4/quarkus-credentials-deployment-3.17.4.pom (1.9 kB at 70 kB/s)
+#13 6.460 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.17.4/quarkus-kubernetes-spi-3.17.4.pom
+#13 6.486 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.17.4/quarkus-kubernetes-spi-3.17.4.pom (1.2 kB at 46 kB/s)
+#13 6.486 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-parent/3.17.4/quarkus-kubernetes-parent-3.17.4.pom
+#13 6.511 Progress (1): 834 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-parent/3.17.4/quarkus-kubernetes-parent-3.17.4.pom (834 B at 25 kB/s)
+#13 6.541 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.17.4/quarkus-security-spi-3.17.4.pom
+#13 6.552 Progress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.17.4/quarkus-security-spi-3.17.4.pom (1.7 kB at 76 kB/s)
+#13 6.556 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.17.4/quarkus-vertx-http-dev-ui-resources-3.17.4.pom
+#13 6.580 Progress (1): 2.1 kBProgress (1): 5.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.17.4/quarkus-vertx-http-dev-ui-resources-3.17.4.pom (5.4 kB at 217 kB/s)
+#13 6.593 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.pom
+#13 6.620 Progress (1): 1.4 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.pom (2.7 kB at 100 kB/s)
+#13 6.627 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.pom
+#13 6.651 Progress (1): 1.4 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.pom (3.2 kB at 104 kB/s)
+#13 6.658 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.7/vaadin-development-mode-detector-2.0.7.pom
+#13 6.739 Progress (1): 1.5 kBProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.7/vaadin-development-mode-detector-2.0.7.pom (2.6 kB at 46 kB/s)
+#13 6.739 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.pom
+#13 6.796 Progress (1): 1.6 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.pom (1.7 kB at 23 kB/s)
+#13 6.796 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.4.10/vaadin-webcomponents-24.4.10.pom
+#13 6.861 Progress (1): 1.6 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.4.10/vaadin-webcomponents-24.4.10.pom (3.2 kB at 133 kB/s)
+#13 6.861 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/3.2.1/lit-3.2.1.pom
+#13 6.861 Progress (1): 1.5 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/3.2.1/lit-3.2.1.pom (2.7 kB at 112 kB/s)
+#13 6.861 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/2.0.4/reactive-element-2.0.4.pom
+#13 6.870 Progress (1): 1.4 kBProgress (1): 2.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/2.0.4/reactive-element-2.0.4.pom (2.4 kB at 91 kB/s)
+#13 6.878 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.2.1/ssr-dom-shim-1.2.1.pom
+#13 6.909 Progress (1): 1.4 kBProgress (1): 2.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.2.1/ssr-dom-shim-1.2.1.pom (2.3 kB at 76 kB/s)
+#13 6.914 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/4.1.1/lit-element-4.1.1.pom
+#13 6.942 Progress (1): 1.4 kBProgress (1): 3.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/4.1.1/lit-element-4.1.1.pom (3.3 kB at 113 kB/s)
+#13 6.949 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/3.2.1/lit-html-3.2.1.pom
+#13 6.990 Progress (1): 1.6 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/3.2.1/lit-html-3.2.1.pom (2.7 kB at 90 kB/s)
+#13 6.990 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.7/trusted-types-2.0.7.pom
+#13 7.012 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.7/trusted-types-2.0.7.pom (1.3 kB at 50 kB/s)
+#13 7.014 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.pom
+#13 7.042 Progress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.pom (1.5 kB at 51 kB/s)
+#13 7.051 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.pom
+#13 7.072 Progress (1): 1.0 kBProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.pom (2.5 kB at 82 kB/s)
+#13 7.082 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.pom
+#13 7.108 Progress (1): 1.5 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.pom (1.7 kB at 53 kB/s)
+#13 7.111 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.pom
+#13 7.145 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.pom (1.2 kB at 42 kB/s)
+#13 7.145 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.5.1/echarts-5.5.1.pom
+#13 7.186 Progress (1): 1.4 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.5.1/echarts-5.5.1.pom (1.7 kB at 51 kB/s)
+#13 7.186 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.pom
+#13 7.209 Progress (1): 1.5 kBProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.pom (2.0 kB at 75 kB/s)
+#13 7.215 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.6.0/zrender-5.6.0.pom
+#13 7.233 Progress (1): 1.4 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.6.0/zrender-5.6.0.pom (3.2 kB at 124 kB/s)
+#13 7.236 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/codeblock/1.0.17/codeblock-1.0.17.pom
+#13 7.266 Progress (1): 1.5 kBProgress (1): 1.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/codeblock/1.0.17/codeblock-1.0.17.pom (1.8 kB at 53 kB/s)
+#13 7.272 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/qomponent/1.0.1/qomponent-1.0.1.pom
+#13 7.364 Progress (1): 1.6 kBProgress (1): 2.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/qomponent/1.0.1/qomponent-1.0.1.pom (2.2 kB at 60 kB/s)
+#13 7.364 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/markdown-it/14.1.0/markdown-it-14.1.0.pom
+#13 7.364 Progress (1): 1.4 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/markdown-it/14.1.0/markdown-it-14.1.0.pom (2.7 kB at 86 kB/s)
+#13 7.364 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/argparse/2.0.1/argparse-2.0.1.pom
+#13 7.373 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/argparse/2.0.1/argparse-2.0.1.pom (1.2 kB at 39 kB/s)
+#13 7.377 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/entities/4.5.0/entities-4.5.0.pom
+#13 7.400 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/entities/4.5.0/entities-4.5.0.pom (1.2 kB at 48 kB/s)
+#13 7.403 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/linkify-it/5.0.0/linkify-it-5.0.0.pom
+#13 7.442 Progress (1): 1.4 kBProgress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/linkify-it/5.0.0/linkify-it-5.0.0.pom (1.5 kB at 36 kB/s)
+#13 7.447 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/uc.micro/2.1.0/uc.micro-2.1.0.pom
+#13 7.713 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/uc.micro/2.1.0/uc.micro-2.1.0.pom (1.2 kB at 4.6 kB/s)
+#13 7.722 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/mdurl/2.0.0/mdurl-2.0.0.pom
+#13 7.755 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/mdurl/2.0.0/mdurl-2.0.0.pom (1.2 kB at 39 kB/s)
+#13 7.755 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/punycode.js/2.3.1/punycode.js-2.3.1.pom
+#13 7.832 Progress (1): 1.2 kBProgress (1): 1.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/punycode.js/2.3.1/punycode.js-2.3.1.pom (1.4 kB at 19 kB/s)
+#13 7.832 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.10.0/es-module-shims-1.10.0.pom
+#13 7.878 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.10.0/es-module-shims-1.10.0.pom (1.3 kB at 26 kB/s)
+#13 7.884 Downloading from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.11/importmap-1.0.11.pom
+#13 7.922 Progress (1): 1.3 kBProgress (1): 4.1 kBProgress (1): 7.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.11/importmap-1.0.11.pom (7.0 kB at 179 kB/s)
+#13 7.933 Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.17.2/jackson-bom-2.17.2.pom
+#13 8.022 Progress (1): 924 BProgress (1): 2.7 kBProgress (1): 8.1 kBProgress (1): 17 kB Progress (1): 19 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.17.2/jackson-bom-2.17.2.pom (19 kB at 210 kB/s)
+#13 8.043 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-server-spi-deployment/3.17.4/quarkus-rest-server-spi-deployment-3.17.4.pom
+#13 8.074 Progress (1): 954 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-server-spi-deployment/3.17.4/quarkus-rest-server-spi-deployment-3.17.4.pom (954 B at 31 kB/s)
+#13 8.078 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-spi-deployment/3.17.4/quarkus-rest-spi-deployment-3.17.4.pom
+#13 8.135 Progress (1): 896 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-spi-deployment/3.17.4/quarkus-rest-spi-deployment-3.17.4.pom (896 B at 16 kB/s)
+#13 8.141 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.17.4/quarkus-jaxrs-spi-deployment-3.17.4.pom
+#13 8.202 Progress (1): 774 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.17.4/quarkus-jaxrs-spi-deployment-3.17.4.pom (774 B at 13 kB/s)
+#13 8.202 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-parent/3.17.4/quarkus-jaxrs-spi-parent-3.17.4.pom
+#13 8.253 Progress (1): 718 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-parent/3.17.4/quarkus-jaxrs-spi-parent-3.17.4.pom (718 B at 14 kB/s)
+#13 8.300 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.17.4/quarkus-jsonp-deployment-3.17.4.pom
+#13 8.300 Progress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.17.4/quarkus-jsonp-deployment-3.17.4.pom (1.7 kB at 41 kB/s)
+#13 8.310 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-common-deployment/3.17.4/quarkus-rest-common-deployment-3.17.4.pom
+#13 8.340 Progress (1): 2.3 kBProgress (1): 3.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-common-deployment/3.17.4/quarkus-rest-common-deployment-3.17.4.pom (3.9 kB at 146 kB/s)
+#13 8.386 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.17.4/resteasy-reactive-common-processor-3.17.4.jar
+#13 8.398 Progress (1): 7.7/126 kBProgress (1): 16/126 kB Progress (1): 32/126 kBProgress (1): 48/126 kBProgress (1): 65/126 kBProgress (1): 81/126 kBProgress (1): 98/126 kBProgress (1): 114/126 kBProgress (1): 126 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.17.4/resteasy-reactive-common-processor-3.17.4.jar (126 kB at 3.9 MB/s)
+#13 8.405 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.17.4/resteasy-reactive-processor-3.17.4.jar
+#13 8.433 Progress (1): 7.7/154 kBProgress (1): 7.7/154 kBProgress (1): 24/154 kB Progress (1): 40/154 kBProgress (1): 57/154 kBProgress (1): 73/154 kBProgress (1): 90/154 kBProgress (1): 106/154 kBProgress (1): 122/154 kBProgress (1): 139/154 kBProgress (1): 154 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.17.4/resteasy-reactive-processor-3.17.4.jar (154 kB at 3.1 MB/s)
+#13 8.456 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.17.4/quarkus-netty-deployment-3.17.4.jar
+#13 8.487 Progress (1): 7.7/20 kBProgress (1): 16/20 kB Progress (1): 20 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.17.4/quarkus-netty-deployment-3.17.4.jar (20 kB at 726 kB/s)
+#13 8.487 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-spi/3.17.4/quarkus-jackson-spi-3.17.4.jar
+#13 8.538 Progress (1): 7.7/10.0 kBProgress (1): 10.0 kB                         Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson-spi/3.17.4/quarkus-jackson-spi-3.17.4.jar (10.0 kB at 221 kB/s)
+#13 8.538 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment-spi/3.17.4/quarkus-vertx-deployment-spi-3.17.4.jar
+#13 8.564 Progress (1): 7.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment-spi/3.17.4/quarkus-vertx-deployment-spi-3.17.4.jar (7.4 kB at 273 kB/s)
+#13 8.564 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.17.4/quarkus-vertx-deployment-3.17.4.jar
+#13 8.588 Progress (1): 3.4/48 kBProgress (1): 20/48 kB Progress (1): 36/48 kBProgress (1): 48 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.17.4/quarkus-vertx-deployment-3.17.4.jar (48 kB at 1.0 MB/s)
+#13 8.610 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.17.4/quarkus-vertx-http-deployment-spi-3.17.4.jar
+#13 8.634 Progress (1): 7.5/18 kBProgress (1): 18 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.17.4/quarkus-vertx-http-deployment-spi-3.17.4.jar (18 kB at 700 kB/s)
+#13 8.634 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.17.4/quarkus-smallrye-context-propagation-deployment-3.17.4.jar
+#13 8.677 Progress (1): 7.7/21 kBProgress (1): 16/21 kB Progress (1): 21 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.17.4/quarkus-smallrye-context-propagation-deployment-3.17.4.jar (21 kB at 864 kB/s)
+#13 8.677 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.17.4/quarkus-mutiny-deployment-3.17.4.jar
+#13 8.693 Progress (1): 3.4/8.2 kBProgress (1): 8.2 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.17.4/quarkus-mutiny-deployment-3.17.4.jar (8.2 kB at 295 kB/s)
+#13 8.693 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-tls-registry-deployment/3.17.4/quarkus-tls-registry-deployment-3.17.4.jar
+#13 8.711 Progress (1): 7.7/12 kBProgress (1): 12 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-tls-registry-deployment/3.17.4/quarkus-tls-registry-deployment-3.17.4.jar (12 kB at 463 kB/s)
+#13 8.715 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-credentials-deployment/3.17.4/quarkus-credentials-deployment-3.17.4.jar
+#13 8.739 Progress (1): 7.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-credentials-deployment/3.17.4/quarkus-credentials-deployment-3.17.4.jar (7.3 kB at 304 kB/s)
+#13 8.739 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.17.4/quarkus-kubernetes-spi-3.17.4.jar
+#13 8.769 Progress (1): 7.7/44 kBProgress (1): 16/44 kB Progress (1): 25/44 kBProgress (1): 41/44 kBProgress (1): 44 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.17.4/quarkus-kubernetes-spi-3.17.4.jar (44 kB at 1.6 MB/s)
+#13 8.769 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.jar
+#13 8.816 Progress (1): 7.7/248 kBProgress (1): 16/248 kB Progress (1): 24/248 kBProgress (1): 40/248 kBProgress (1): 57/248 kBProgress (1): 73/248 kBProgress (1): 90/248 kBProgress (1): 106/248 kBProgress (1): 122/248 kBProgress (1): 139/248 kBProgress (1): 155/248 kBProgress (1): 172/248 kBProgress (1): 188/248 kBProgress (1): 204/248 kBProgress (1): 221/248 kBProgress (1): 237/248 kBProgress (1): 248 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.jar (248 kB at 7.1 MB/s)
+#13 8.816 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.jar
+#13 8.857 Progress (1): 5.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.jar (5.2 kB at 216 kB/s)
+#13 8.857 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.4.10/vaadin-webcomponents-24.4.10.jar
+#13 8.857 Progress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.1/2.6 MBProgress (1): 0.2/2.6 MBProgress (1): 0.2/2.6 MBProgress (1): 0.2/2.6 MBProgress (1): 0.2/2.6 MBProgress (1): 0.2/2.6 MBProgress (1): 0.2/2.6 MBProgress (1): 0.3/2.6 MBProgress (1): 0.3/2.6 MBProgress (1): 0.3/2.6 MBProgress (1): 0.3/2.6 MBProgress (1): 0.3/2.6 MBProgress (1): 0.3/2.6 MBProgress (1): 0.4/2.6 MBProgress (1): 0.4/2.6 MBProgress (1): 0.4/2.6 MBProgress (1): 0.4/2.6 MBProgress (1): 0.4/2.6 MBProgress (1): 0.4/2.6 MBProgress (1): 0.5/2.6 MBProgress (1): 0.5/2.6 MBProgress (1): 0.5/2.6 MBProgress (1): 0.5/2.6 MBProgress (1): 0.5/2.6 MBProgress (1): 0.5/2.6 MBProgress (1): 0.6/2.6 MBProgress (1): 0.6/2.6 MBProgress (1): 0.6/2.6 MBProgress (1): 0.6/2.6 MBProgress (1): 0.6/2.6 MBProgress (1): 0.6/2.6 MBProgress (1): 0.7/2.6 MBProgress (1): 0.7/2.6 MBProgress (1): 0.7/2.6 MBProgress (1): 0.7/2.6 MBProgress (1): 0.7/2.6 MBProgress (1): 0.7/2.6 MBProgress (1): 0.7/2.6 MBProgress (1): 0.8/2.6 MBProgress (1): 0.8/2.6 MBProgress (1): 0.8/2.6 MBProgress (1): 0.8/2.6 MBProgress (1): 0.8/2.6 MBProgress (1): 0.8/2.6 MBProgress (1): 0.9/2.6 MBProgress (1): 0.9/2.6 MBProgress (1): 0.9/2.6 MBProgress (1): 0.9/2.6 MBProgress (1): 0.9/2.6 MBProgress (1): 0.9/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.0/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.1/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.2/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.3/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.4/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.5/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.6/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.7/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.8/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 1.9/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.0/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.1/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.2/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.3/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.4/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.5/2.6 MBProgress (1): 2.6 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.4.10/vaadin-webcomponents-24.4.10.jar (2.6 MB at 24 MB/s)
+#13 8.950 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.jar
+#13 8.963 Progress (1): 3.4/11 kBProgress (1): 11 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.jar (11 kB at 439 kB/s)
+#13 8.967 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.7/vaadin-development-mode-detector-2.0.7.jar
+#13 8.987 Progress (1): 7.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.7/vaadin-development-mode-detector-2.0.7.jar (7.5 kB at 324 kB/s)
+#13 8.988 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.jar
+#13 9.017 Progress (1): 3.4/198 kBProgress (1): 20/198 kB Progress (1): 33/198 kBProgress (1): 49/198 kBProgress (1): 66/198 kBProgress (1): 82/198 kBProgress (1): 98/198 kBProgress (1): 115/198 kBProgress (1): 131/198 kBProgress (1): 147/198 kBProgress (1): 164/198 kBProgress (1): 180/198 kBProgress (1): 197/198 kBProgress (1): 198 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.jar (198 kB at 7.1 MB/s)
+#13 9.017 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.jar
+#13 9.046 Progress (1): 7.7/151 kBProgress (1): 16/151 kB Progress (1): 32/151 kBProgress (1): 48/151 kBProgress (1): 65/151 kBProgress (1): 81/151 kBProgress (1): 98/151 kBProgress (1): 114/151 kBProgress (1): 130/151 kBProgress (1): 147/151 kBProgress (1): 151 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.jar (151 kB at 5.8 MB/s)
+#13 9.046 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.jar
+#13 9.074 Progress (1): 3.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.jar (3.6 kB at 128 kB/s)
+#13 9.074 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/3.2.1/lit-3.2.1.jar
+#13 9.121 Progress (1): 7.7/75 kBProgress (1): 12/75 kB Progress (1): 28/75 kBProgress (1): 44/75 kBProgress (1): 61/75 kBProgress (1): 75 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/3.2.1/lit-3.2.1.jar (75 kB at 2.3 MB/s)
+#13 9.121 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/2.0.4/reactive-element-2.0.4.jar
+#13 9.133 Progress (1): 7.7/285 kBProgress (1): 12/285 kB Progress (1): 29/285 kBProgress (1): 45/285 kBProgress (1): 61/285 kBProgress (1): 78/285 kBProgress (1): 94/285 kBProgress (1): 111/285 kBProgress (1): 127/285 kBProgress (1): 143/285 kBProgress (1): 160/285 kBProgress (1): 176/285 kBProgress (1): 193/285 kBProgress (1): 209/285 kBProgress (1): 225/285 kBProgress (1): 229/285 kBProgress (1): 246/285 kBProgress (1): 262/285 kBProgress (1): 279/285 kBProgress (1): 285 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/2.0.4/reactive-element-2.0.4.jar (285 kB at 8.6 MB/s)
+#13 9.151 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/4.1.1/lit-element-4.1.1.jar
+#13 9.201 Progress (1): 7.7/56 kBProgress (1): 8.2/56 kBProgress (1): 25/56 kB Progress (1): 41/56 kBProgress (1): 56 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/4.1.1/lit-element-4.1.1.jar (56 kB at 2.3 MB/s)
+#13 9.201 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/3.2.1/lit-html-3.2.1.jar
+#13 9.201 Progress (1): 7.4/589 kBProgress (1): 24/589 kB Progress (1): 40/589 kBProgress (1): 57/589 kBProgress (1): 65/589 kBProgress (1): 81/589 kBProgress (1): 98/589 kBProgress (1): 114/589 kBProgress (1): 130/589 kBProgress (1): 147/589 kBProgress (1): 163/589 kBProgress (1): 179/589 kBProgress (1): 196/589 kBProgress (1): 212/589 kBProgress (1): 213/589 kBProgress (1): 229/589 kBProgress (1): 246/589 kBProgress (1): 262/589 kBProgress (1): 279/589 kBProgress (1): 295/589 kBProgress (1): 311/589 kBProgress (1): 328/589 kBProgress (1): 344/589 kBProgress (1): 360/589 kBProgress (1): 377/589 kBProgress (1): 393/589 kBProgress (1): 410/589 kBProgress (1): 426/589 kBProgress (1): 442/589 kBProgress (1): 459/589 kBProgress (1): 475/589 kBProgress (1): 492/589 kBProgress (1): 508/589 kBProgress (1): 524/589 kBProgress (1): 541/589 kBProgress (1): 557/589 kBProgress (1): 573/589 kBProgress (1): 589 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/3.2.1/lit-html-3.2.1.jar (589 kB at 19 MB/s)
+#13 9.201 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.2.1/ssr-dom-shim-1.2.1.jar
+#13 9.227 Progress (1): 7.7/14 kBProgress (1): 14 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.2.1/ssr-dom-shim-1.2.1.jar (14 kB at 545 kB/s)
+#13 9.227 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.7/trusted-types-2.0.7.jar
+#13 9.247 Progress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.7/trusted-types-2.0.7.jar (3.2 kB at 140 kB/s)
+#13 9.249 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.jar
+#13 9.293 Progress (1): 6.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.jar (6.1 kB at 210 kB/s)
+#13 9.293 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.jar
+#13 9.307 Progress (1): 3.4/12 kBProgress (1): 12 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.jar (12 kB at 462 kB/s)
+#13 9.307 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.6.0/zrender-5.6.0.jar
+#13 9.350 Progress (1): 7.7/711 kBProgress (1): 16/711 kB Progress (1): 25/711 kBProgress (1): 41/711 kBProgress (1): 57/711 kBProgress (1): 74/711 kBProgress (1): 90/711 kBProgress (1): 106/711 kBProgress (1): 123/711 kBProgress (1): 131/711 kBProgress (1): 147/711 kBProgress (1): 164/711 kBProgress (1): 180/711 kBProgress (1): 197/711 kBProgress (1): 213/711 kBProgress (1): 229/711 kBProgress (1): 246/711 kBProgress (1): 262/711 kBProgress (1): 279/711 kBProgress (1): 295/711 kBProgress (1): 311/711 kBProgress (1): 328/711 kBProgress (1): 344/711 kBProgress (1): 360/711 kBProgress (1): 377/711 kBProgress (1): 393/711 kBProgress (1): 410/711 kBProgress (1): 426/711 kBProgress (1): 442/711 kBProgress (1): 459/711 kBProgress (1): 475/711 kBProgress (1): 492/711 kBProgress (1): 508/711 kBProgress (1): 524/711 kBProgress (1): 541/711 kBProgress (1): 557/711 kBProgress (1): 573/711 kBProgress (1): 590/711 kBProgress (1): 606/711 kBProgress (1): 623/711 kBProgress (1): 639/711 kBProgress (1): 655/711 kBProgress (1): 672/711 kBProgress (1): 688/711 kBProgress (1): 705/711 kBProgress (1): 711 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.6.0/zrender-5.6.0.jar (711 kB at 16 MB/s)
+#13 9.362 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.5.1/echarts-5.5.1.jar
+#13 9.381 Progress (1): 0/11 MBProgress (1): 0/11 MBProgress (1): 0/11 MBProgress (1): 0/11 MBProgress (1): 0.1/11 MBProgress (1): 0.1/11 MBProgress (1): 0.1/11 MBProgress (1): 0.1/11 MBProgress (1): 0.1/11 MBProgress (1): 0.1/11 MBProgress (1): 0.2/11 MBProgress (1): 0.2/11 MBProgress (1): 0.2/11 MBProgress (1): 0.2/11 MBProgress (1): 0.2/11 MBProgress (1): 0.2/11 MBProgress (1): 0.2/11 MBProgress (1): 0.3/11 MBProgress (1): 0.3/11 MBProgress (1): 0.3/11 MBProgress (1): 0.3/11 MBProgress (1): 0.3/11 MBProgress (1): 0.3/11 MBProgress (1): 0.4/11 MBProgress (1): 0.4/11 MBProgress (1): 0.4/11 MBProgress (1): 0.4/11 MBProgress (1): 0.4/11 MBProgress (1): 0.4/11 MBProgress (1): 0.5/11 MBProgress (1): 0.5/11 MBProgress (1): 0.5/11 MBProgress (1): 0.5/11 MBProgress (1): 0.5/11 MBProgress (1): 0.5/11 MBProgress (1): 0.6/11 MBProgress (1): 0.6/11 MBProgress (1): 0.6/11 MBProgress (1): 0.6/11 MBProgress (1): 0.6/11 MBProgress (1): 0.6/11 MBProgress (1): 0.7/11 MBProgress (1): 0.7/11 MBProgress (1): 0.7/11 MBProgress (1): 0.7/11 MBProgress (1): 0.7/11 MBProgress (1): 0.7/11 MBProgress (1): 0.8/11 MBProgress (1): 0.8/11 MBProgress (1): 0.8/11 MBProgress (1): 0.8/11 MBProgress (1): 0.8/11 MBProgress (1): 0.8/11 MBProgress (1): 0.9/11 MBProgress (1): 0.9/11 MBProgress (1): 0.9/11 MBProgress (1): 0.9/11 MBProgress (1): 0.9/11 MBProgress (1): 0.9/11 MBProgress (1): 0.9/11 MBProgress (1): 1.0/11 MBProgress (1): 1.0/11 MBProgress (1): 1.0/11 MBProgress (1): 1.0/11 MBProgress (1): 1.0/11 MBProgress (1): 1.0/11 MBProgress (1): 1.1/11 MBProgress (1): 1.1/11 MBProgress (1): 1.1/11 MBProgress (1): 1.1/11 MBProgress (1): 1.1/11 MBProgress (1): 1.1/11 MBProgress (1): 1.2/11 MBProgress (1): 1.2/11 MBProgress (1): 1.2/11 MBProgress (1): 1.2/11 MBProgress (1): 1.2/11 MBProgress (1): 1.2/11 MBProgress (1): 1.2/11 MBProgress (1): 1.3/11 MBProgress (1): 1.3/11 MBProgress (1): 1.3/11 MBProgress (1): 1.3/11 MBProgress (1): 1.3/11 MBProgress (1): 1.3/11 MBProgress (1): 1.4/11 MBProgress (1): 1.4/11 MBProgress (1): 1.4/11 MBProgress (1): 1.4/11 MBProgress (1): 1.4/11 MBProgress (1): 1.4/11 MBProgress (1): 1.5/11 MBProgress (1): 1.5/11 MBProgress (1): 1.5/11 MBProgress (1): 1.5/11 MBProgress (1): 1.5/11 MBProgress (1): 1.5/11 MBProgress (1): 1.6/11 MBProgress (1): 1.6/11 MBProgress (1): 1.6/11 MBProgress (1): 1.6/11 MBProgress (1): 1.6/11 MBProgress (1): 1.6/11 MBProgress (1): 1.7/11 MBProgress (1): 1.7/11 MBProgress (1): 1.7/11 MBProgress (1): 1.7/11 MBProgress (1): 1.7/11 MBProgress (1): 1.7/11 MBProgress (1): 1.8/11 MBProgress (1): 1.8/11 MBProgress (1): 1.8/11 MBProgress (1): 1.8/11 MBProgress (1): 1.8/11 MBProgress (1): 1.8/11 MBProgress (1): 1.9/11 MBProgress (1): 1.9/11 MBProgress (1): 1.9/11 MBProgress (1): 1.9/11 MBProgress (1): 1.9/11 MBProgress (1): 1.9/11 MBProgress (1): 2.0/11 MBProgress (1): 2.0/11 MBProgress (1): 2.0/11 MBProgress (1): 2.0/11 MBProgress (1): 2.0/11 MBProgress (1): 2.0/11 MBProgress (1): 2.1/11 MBProgress (1): 2.1/11 MBProgress (1): 2.1/11 MBProgress (1): 2.1/11 MBProgress (1): 2.1/11 MBProgress (1): 2.1/11 MBProgress (1): 2.2/11 MBProgress (1): 2.2/11 MBProgress (1): 2.2/11 MBProgress (1): 2.2/11 MBProgress (1): 2.2/11 MBProgress (1): 2.2/11 MBProgress (1): 2.2/11 MBProgress (1): 2.3/11 MBProgress (1): 2.3/11 MBProgress (1): 2.3/11 MBProgress (1): 2.3/11 MBProgress (1): 2.3/11 MBProgress (1): 2.3/11 MBProgress (1): 2.4/11 MBProgress (1): 2.4/11 MBProgress (1): 2.4/11 MBProgress (1): 2.4/11 MBProgress (1): 2.4/11 MBProgress (1): 2.4/11 MBProgress (1): 2.5/11 MBProgress (1): 2.5/11 MBProgress (1): 2.5/11 MBProgress (1): 2.5/11 MBProgress (1): 2.5/11 MBProgress (1): 2.5/11 MBProgress (1): 2.6/11 MBProgress (1): 2.6/11 MBProgress (1): 2.6/11 MBProgress (1): 2.6/11 MBProgress (1): 2.6/11 MBProgress (1): 2.6/11 MBProgress (1): 2.7/11 MBProgress (1): 2.7/11 MBProgress (1): 2.7/11 MBProgress (1): 2.7/11 MBProgress (1): 2.7/11 MBProgress (1): 2.7/11 MBProgress (1): 2.8/11 MBProgress (1): 2.8/11 MBProgress (1): 2.8/11 MBProgress (1): 2.8/11 MBProgress (1): 2.8/11 MBProgress (1): 2.8/11 MBProgress (1): 2.9/11 MBProgress (1): 2.9/11 MBProgress (1): 2.9/11 MBProgress (1): 2.9/11 MBProgress (1): 2.9/11 MBProgress (1): 2.9/11 MBProgress (1): 3.0/11 MBProgress (1): 3.0/11 MBProgress (1): 3.0/11 MBProgress (1): 3.0/11 MBProgress (1): 3.0/11 MBProgress (1): 3.0/11 MBProgress (1): 3.0/11 MBProgress (1): 3.1/11 MBProgress (1): 3.1/11 MBProgress (1): 3.1/11 MBProgress (1): 3.1/11 MBProgress (1): 3.1/11 MBProgress (1): 3.1/11 MBProgress (1): 3.2/11 MBProgress (1): 3.2/11 MBProgress (1): 3.2/11 MBProgress (1): 3.2/11 MBProgress (1): 3.2/11 MBProgress (1): 3.2/11 MBProgress (1): 3.3/11 MBProgress (1): 3.3/11 MBProgress (1): 3.3/11 MBProgress (1): 3.3/11 MBProgress (1): 3.3/11 MBProgress (1): 3.3/11 MBProgress (1): 3.4/11 MBProgress (1): 3.4/11 MBProgress (1): 3.4/11 MBProgress (1): 3.4/11 MBProgress (1): 3.4/11 MBProgress (1): 3.4/11 MBProgress (1): 3.5/11 MBProgress (1): 3.5/11 MBProgress (1): 3.5/11 MBProgress (1): 3.5/11 MBProgress (1): 3.5/11 MBProgress (1): 3.5/11 MBProgress (1): 3.6/11 MBProgress (1): 3.6/11 MBProgress (1): 3.6/11 MBProgress (1): 3.6/11 MBProgress (1): 3.6/11 MBProgress (1): 3.6/11 MBProgress (1): 3.7/11 MBProgress (1): 3.7/11 MBProgress (1): 3.7/11 MBProgress (1): 3.7/11 MBProgress (1): 3.7/11 MBProgress (1): 3.7/11 MBProgress (1): 3.7/11 MBProgress (1): 3.8/11 MBProgress (1): 3.8/11 MBProgress (1): 3.8/11 MBProgress (1): 3.8/11 MBProgress (1): 3.8/11 MBProgress (1): 3.8/11 MBProgress (1): 3.9/11 MBProgress (1): 3.9/11 MBProgress (1): 3.9/11 MBProgress (1): 3.9/11 MBProgress (1): 3.9/11 MBProgress (1): 3.9/11 MBProgress (1): 4.0/11 MBProgress (1): 4.0/11 MBProgress (1): 4.0/11 MBProgress (1): 4.0/11 MBProgress (1): 4.0/11 MBProgress (1): 4.0/11 MBProgress (1): 4.1/11 MBProgress (1): 4.1/11 MBProgress (1): 4.1/11 MBProgress (1): 4.1/11 MBProgress (1): 4.1/11 MBProgress (1): 4.1/11 MBProgress (1): 4.2/11 MBProgress (1): 4.2/11 MBProgress (1): 4.2/11 MBProgress (1): 4.2/11 MBProgress (1): 4.2/11 MBProgress (1): 4.2/11 MBProgress (1): 4.3/11 MBProgress (1): 4.3/11 MBProgress (1): 4.3/11 MBProgress (1): 4.3/11 MBProgress (1): 4.3/11 MBProgress (1): 4.3/11 MBProgress (1): 4.3/11 MBProgress (1): 4.4/11 MBProgress (1): 4.4/11 MBProgress (1): 4.4/11 MBProgress (1): 4.4/11 MBProgress (1): 4.4/11 MBProgress (1): 4.4/11 MBProgress (1): 4.5/11 MBProgress (1): 4.5/11 MBProgress (1): 4.5/11 MBProgress (1): 4.5/11 MBProgress (1): 4.5/11 MBProgress (1): 4.5/11 MBProgress (1): 4.6/11 MBProgress (1): 4.6/11 MBProgress (1): 4.6/11 MBProgress (1): 4.6/11 MBProgress (1): 4.6/11 MBProgress (1): 4.6/11 MBProgress (1): 4.7/11 MBProgress (1): 4.7/11 MBProgress (1): 4.7/11 MBProgress (1): 4.7/11 MBProgress (1): 4.7/11 MBProgress (1): 4.7/11 MBProgress (1): 4.8/11 MBProgress (1): 4.8/11 MBProgress (1): 4.8/11 MBProgress (1): 4.8/11 MBProgress (1): 4.8/11 MBProgress (1): 4.8/11 MBProgress (1): 4.8/11 MBProgress (1): 4.9/11 MBProgress (1): 4.9/11 MBProgress (1): 4.9/11 MBProgress (1): 4.9/11 MBProgress (1): 4.9/11 MBProgress (1): 4.9/11 MBProgress (1): 5.0/11 MBProgress (1): 5.0/11 MBProgress (1): 5.0/11 MBProgress (1): 5.0/11 MBProgress (1): 5.0/11 MBProgress (1): 5.0/11 MBProgress (1): 5.1/11 MBProgress (1): 5.1/11 MBProgress (1): 5.1/11 MBProgress (1): 5.1/11 MBProgress (1): 5.1/11 MBProgress (1): 5.1/11 MBProgress (1): 5.2/11 MBProgress (1): 5.2/11 MBProgress (1): 5.2/11 MBProgress (1): 5.2/11 MBProgress (1): 5.2/11 MBProgress (1): 5.2/11 MBProgress (1): 5.2/11 MBProgress (1): 5.3/11 MBProgress (1): 5.3/11 MBProgress (1): 5.3/11 MBProgress (1): 5.3/11 MBProgress (1): 5.3/11 MBProgress (1): 5.3/11 MBProgress (1): 5.4/11 MBProgress (1): 5.4/11 MBProgress (1): 5.4/11 MBProgress (1): 5.4/11 MBProgress (1): 5.4/11 MBProgress (1): 5.4/11 MBProgress (1): 5.5/11 MBProgress (1): 5.5/11 MBProgress (1): 5.5/11 MBProgress (1): 5.5/11 MBProgress (1): 5.5/11 MBProgress (1): 5.5/11 MBProgress (1): 5.6/11 MBProgress (1): 5.6/11 MBProgress (1): 5.6/11 MBProgress (1): 5.6/11 MBProgress (1): 5.6/11 MBProgress (1): 5.6/11 MBProgress (1): 5.7/11 MBProgress (1): 5.7/11 MBProgress (1): 5.7/11 MBProgress (1): 5.7/11 MBProgress (1): 5.7/11 MBProgress (1): 5.7/11 MBProgress (1): 5.8/11 MBProgress (1): 5.8/11 MBProgress (1): 5.8/11 MBProgress (1): 5.8/11 MBProgress (1): 5.8/11 MBProgress (1): 5.8/11 MBProgress (1): 5.9/11 MBProgress (1): 5.9/11 MBProgress (1): 5.9/11 MBProgress (1): 5.9/11 MBProgress (1): 5.9/11 MBProgress (1): 5.9/11 MBProgress (1): 6.0/11 MBProgress (1): 6.0/11 MBProgress (1): 6.0/11 MBProgress (1): 6.0/11 MBProgress (1): 6.0/11 MBProgress (1): 6.0/11 MBProgress (1): 6.1/11 MBProgress (1): 6.1/11 MBProgress (1): 6.1/11 MBProgress (1): 6.1/11 MBProgress (1): 6.1/11 MBProgress (1): 6.1/11 MBProgress (1): 6.2/11 MBProgress (1): 6.2/11 MBProgress (1): 6.2/11 MBProgress (1): 6.2/11 MBProgress (1): 6.2/11 MBProgress (1): 6.2/11 MBProgress (1): 6.2/11 MBProgress (1): 6.3/11 MBProgress (1): 6.3/11 MBProgress (1): 6.3/11 MBProgress (1): 6.3/11 MBProgress (1): 6.3/11 MBProgress (1): 6.3/11 MBProgress (1): 6.4/11 MBProgress (1): 6.4/11 MBProgress (1): 6.4/11 MBProgress (1): 6.4/11 MBProgress (1): 6.4/11 MBProgress (1): 6.4/11 MBProgress (1): 6.5/11 MBProgress (1): 6.5/11 MBProgress (1): 6.5/11 MBProgress (1): 6.5/11 MBProgress (1): 6.5/11 MBProgress (1): 6.5/11 MBProgress (1): 6.6/11 MBProgress (1): 6.6/11 MBProgress (1): 6.6/11 MBProgress (1): 6.6/11 MBProgress (1): 6.6/11 MBProgress (1): 6.6/11 MBProgress (1): 6.7/11 MBProgress (1): 6.7/11 MBProgress (1): 6.7/11 MBProgress (1): 6.7/11 MBProgress (1): 6.7/11 MBProgress (1): 6.7/11 MBProgress (1): 6.8/11 MBProgress (1): 6.8/11 MBProgress (1): 6.8/11 MBProgress (1): 6.8/11 MBProgress (1): 6.8/11 MBProgress (1): 6.8/11 MBProgress (1): 6.9/11 MBProgress (1): 6.9/11 MBProgress (1): 6.9/11 MBProgress (1): 6.9/11 MBProgress (1): 6.9/11 MBProgress (1): 6.9/11 MBProgress (1): 6.9/11 MBProgress (1): 7.0/11 MBProgress (1): 7.0/11 MBProgress (1): 7.0/11 MBProgress (1): 7.0/11 MBProgress (1): 7.0/11 MBProgress (1): 7.0/11 MBProgress (1): 7.1/11 MBProgress (1): 7.1/11 MBProgress (1): 7.1/11 MBProgress (1): 7.1/11 MBProgress (1): 7.1/11 MBProgress (1): 7.1/11 MBProgress (1): 7.2/11 MBProgress (1): 7.2/11 MBProgress (1): 7.2/11 MBProgress (1): 7.2/11 MBProgress (1): 7.2/11 MBProgress (1): 7.2/11 MBProgress (1): 7.2/11 MBProgress (1): 7.3/11 MBProgress (1): 7.3/11 MBProgress (1): 7.3/11 MBProgress (1): 7.3/11 MBProgress (1): 7.3/11 MBProgress (1): 7.3/11 MBProgress (1): 7.4/11 MBProgress (1): 7.4/11 MBProgress (1): 7.4/11 MBProgress (1): 7.4/11 MBProgress (1): 7.4/11 MBProgress (1): 7.4/11 MBProgress (1): 7.5/11 MBProgress (1): 7.5/11 MBProgress (1): 7.5/11 MBProgress (1): 7.5/11 MBProgress (1): 7.5/11 MBProgress (1): 7.5/11 MBProgress (1): 7.6/11 MBProgress (1): 7.6/11 MBProgress (1): 7.6/11 MBProgress (1): 7.6/11 MBProgress (1): 7.6/11 MBProgress (1): 7.6/11 MBProgress (1): 7.7/11 MBProgress (1): 7.7/11 MBProgress (1): 7.7/11 MBProgress (1): 7.7/11 MBProgress (1): 7.7/11 MBProgress (1): 7.7/11 MBProgress (1): 7.7/11 MBProgress (1): 7.8/11 MBProgress (1): 7.8/11 MBProgress (1): 7.8/11 MBProgress (1): 7.8/11 MBProgress (1): 7.8/11 MBProgress (1): 7.8/11 MBProgress (1): 7.9/11 MBProgress (1): 7.9/11 MBProgress (1): 7.9/11 MBProgress (1): 7.9/11 MBProgress (1): 7.9/11 MBProgress (1): 7.9/11 MBProgress (1): 7.9/11 MBProgress (1): 8.0/11 MBProgress (1): 8.0/11 MBProgress (1): 8.0/11 MBProgress (1): 8.0/11 MBProgress (1): 8.0/11 MBProgress (1): 8.0/11 MBProgress (1): 8.1/11 MBProgress (1): 8.1/11 MBProgress (1): 8.1/11 MBProgress (1): 8.1/11 MBProgress (1): 8.1/11 MBProgress (1): 8.1/11 MBProgress (1): 8.2/11 MBProgress (1): 8.2/11 MBProgress (1): 8.2/11 MBProgress (1): 8.2/11 MBProgress (1): 8.2/11 MBProgress (1): 8.2/11 MBProgress (1): 8.3/11 MBProgress (1): 8.3/11 MBProgress (1): 8.3/11 MBProgress (1): 8.3/11 MBProgress (1): 8.3/11 MBProgress (1): 8.3/11 MBProgress (1): 8.4/11 MBProgress (1): 8.4/11 MBProgress (1): 8.4/11 MBProgress (1): 8.4/11 MBProgress (1): 8.4/11 MBProgress (1): 8.4/11 MBProgress (1): 8.5/11 MBProgress (1): 8.5/11 MBProgress (1): 8.5/11 MBProgress (1): 8.5/11 MBProgress (1): 8.5/11 MBProgress (1): 8.5/11 MBProgress (1): 8.5/11 MBProgress (1): 8.6/11 MBProgress (1): 8.6/11 MBProgress (1): 8.6/11 MBProgress (1): 8.6/11 MBProgress (1): 8.6/11 MBProgress (1): 8.6/11 MBProgress (1): 8.7/11 MBProgress (1): 8.7/11 MBProgress (1): 8.7/11 MBProgress (1): 8.7/11 MBProgress (1): 8.7/11 MBProgress (1): 8.7/11 MBProgress (1): 8.8/11 MBProgress (1): 8.8/11 MBProgress (1): 8.8/11 MBProgress (1): 8.8/11 MBProgress (1): 8.8/11 MBProgress (1): 8.8/11 MBProgress (1): 8.9/11 MBProgress (1): 8.9/11 MBProgress (1): 8.9/11 MBProgress (1): 8.9/11 MBProgress (1): 8.9/11 MBProgress (1): 8.9/11 MBProgress (1): 9.0/11 MBProgress (1): 9.0/11 MBProgress (1): 9.0/11 MBProgress (1): 9.0/11 MBProgress (1): 9.0/11 MBProgress (1): 9.0/11 MBProgress (1): 9.1/11 MBProgress (1): 9.1/11 MBProgress (1): 9.1/11 MBProgress (1): 9.1/11 MBProgress (1): 9.1/11 MBProgress (1): 9.1/11 MBProgress (1): 9.1/11 MBProgress (1): 9.2/11 MBProgress (1): 9.2/11 MBProgress (1): 9.2/11 MBProgress (1): 9.2/11 MBProgress (1): 9.2/11 MBProgress (1): 9.2/11 MBProgress (1): 9.2/11 MBProgress (1): 9.3/11 MBProgress (1): 9.3/11 MBProgress (1): 9.3/11 MBProgress (1): 9.3/11 MBProgress (1): 9.3/11 MBProgress (1): 9.3/11 MBProgress (1): 9.4/11 MBProgress (1): 9.4/11 MBProgress (1): 9.4/11 MBProgress (1): 9.4/11 MBProgress (1): 9.4/11 MBProgress (1): 9.4/11 MBProgress (1): 9.5/11 MBProgress (1): 9.5/11 MBProgress (1): 9.5/11 MBProgress (1): 9.5/11 MBProgress (1): 9.5/11 MBProgress (1): 9.5/11 MBProgress (1): 9.6/11 MBProgress (1): 9.6/11 MBProgress (1): 9.6/11 MBProgress (1): 9.6/11 MBProgress (1): 9.6/11 MBProgress (1): 9.6/11 MBProgress (1): 9.7/11 MBProgress (1): 9.7/11 MBProgress (1): 9.7/11 MBProgress (1): 9.7/11 MBProgress (1): 9.7/11 MBProgress (1): 9.7/11 MBProgress (1): 9.8/11 MBProgress (1): 9.8/11 MBProgress (1): 9.8/11 MBProgress (1): 9.8/11 MBProgress (1): 9.8/11 MBProgress (1): 9.8/11 MBProgress (1): 9.9/11 MBProgress (1): 9.9/11 MBProgress (1): 9.9/11 MBProgress (1): 9.9/11 MBProgress (1): 9.9/11 MBProgress (1): 9.9/11 MBProgress (1): 10.0/11 MBProgress (1): 10.0/11 MBProgress (1): 10.0/11 MBProgress (1): 10/11 MB  Progress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 10/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11/11 MBProgress (1): 11 MB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.5.1/echarts-5.5.1.jar (11 MB at 53 MB/s)
+#13 9.565 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/codeblock/1.0.17/codeblock-1.0.17.jar
+#13 9.601 Progress (1): 0/1.2 MBProgress (1): 0/1.2 MBProgress (1): 0/1.2 MBProgress (1): 0/1.2 MBProgress (1): 0.1/1.2 MBProgress (1): 0.1/1.2 MBProgress (1): 0.1/1.2 MBProgress (1): 0.1/1.2 MBProgress (1): 0.1/1.2 MBProgress (1): 0.1/1.2 MBProgress (1): 0.1/1.2 MBProgress (1): 0.2/1.2 MBProgress (1): 0.2/1.2 MBProgress (1): 0.2/1.2 MBProgress (1): 0.2/1.2 MBProgress (1): 0.2/1.2 MBProgress (1): 0.2/1.2 MBProgress (1): 0.3/1.2 MBProgress (1): 0.3/1.2 MBProgress (1): 0.3/1.2 MBProgress (1): 0.3/1.2 MBProgress (1): 0.3/1.2 MBProgress (1): 0.3/1.2 MBProgress (1): 0.4/1.2 MBProgress (1): 0.4/1.2 MBProgress (1): 0.4/1.2 MBProgress (1): 0.4/1.2 MBProgress (1): 0.4/1.2 MBProgress (1): 0.4/1.2 MBProgress (1): 0.5/1.2 MBProgress (1): 0.5/1.2 MBProgress (1): 0.5/1.2 MBProgress (1): 0.5/1.2 MBProgress (1): 0.5/1.2 MBProgress (1): 0.5/1.2 MBProgress (1): 0.6/1.2 MBProgress (1): 0.6/1.2 MBProgress (1): 0.6/1.2 MBProgress (1): 0.6/1.2 MBProgress (1): 0.6/1.2 MBProgress (1): 0.6/1.2 MBProgress (1): 0.7/1.2 MBProgress (1): 0.7/1.2 MBProgress (1): 0.7/1.2 MBProgress (1): 0.7/1.2 MBProgress (1): 0.7/1.2 MBProgress (1): 0.7/1.2 MBProgress (1): 0.8/1.2 MBProgress (1): 0.8/1.2 MBProgress (1): 0.8/1.2 MBProgress (1): 0.8/1.2 MBProgress (1): 0.8/1.2 MBProgress (1): 0.8/1.2 MBProgress (1): 0.9/1.2 MBProgress (1): 0.9/1.2 MBProgress (1): 0.9/1.2 MBProgress (1): 0.9/1.2 MBProgress (1): 0.9/1.2 MBProgress (1): 0.9/1.2 MBProgress (1): 1.0/1.2 MBProgress (1): 1.0/1.2 MBProgress (1): 1.0/1.2 MBProgress (1): 1.0/1.2 MBProgress (1): 1.0/1.2 MBProgress (1): 1.0/1.2 MBProgress (1): 1.0/1.2 MBProgress (1): 1.1/1.2 MBProgress (1): 1.1/1.2 MBProgress (1): 1.1/1.2 MBProgress (1): 1.1/1.2 MBProgress (1): 1.1/1.2 MBProgress (1): 1.1/1.2 MBProgress (1): 1.2/1.2 MBProgress (1): 1.2/1.2 MBProgress (1): 1.2/1.2 MBProgress (1): 1.2/1.2 MBProgress (1): 1.2/1.2 MBProgress (1): 1.2 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/codeblock/1.0.17/codeblock-1.0.17.jar (1.2 MB at 26 MB/s)
+#13 9.613 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/qomponent/1.0.1/qomponent-1.0.1.jar
+#13 9.644 Progress (1): 0/3.4 MBProgress (1): 0/3.4 MBProgress (1): 0/3.4 MBProgress (1): 0/3.4 MBProgress (1): 0.1/3.4 MBProgress (1): 0.1/3.4 MBProgress (1): 0.1/3.4 MBProgress (1): 0.1/3.4 MBProgress (1): 0.1/3.4 MBProgress (1): 0.1/3.4 MBProgress (1): 0.2/3.4 MBProgress (1): 0.2/3.4 MBProgress (1): 0.2/3.4 MBProgress (1): 0.2/3.4 MBProgress (1): 0.2/3.4 MBProgress (1): 0.2/3.4 MBProgress (1): 0.2/3.4 MBProgress (1): 0.3/3.4 MBProgress (1): 0.3/3.4 MBProgress (1): 0.3/3.4 MBProgress (1): 0.3/3.4 MBProgress (1): 0.3/3.4 MBProgress (1): 0.3/3.4 MBProgress (1): 0.3/3.4 MBProgress (1): 0.4/3.4 MBProgress (1): 0.4/3.4 MBProgress (1): 0.4/3.4 MBProgress (1): 0.4/3.4 MBProgress (1): 0.4/3.4 MBProgress (1): 0.4/3.4 MBProgress (1): 0.5/3.4 MBProgress (1): 0.5/3.4 MBProgress (1): 0.5/3.4 MBProgress (1): 0.5/3.4 MBProgress (1): 0.5/3.4 MBProgress (1): 0.5/3.4 MBProgress (1): 0.6/3.4 MBProgress (1): 0.6/3.4 MBProgress (1): 0.6/3.4 MBProgress (1): 0.6/3.4 MBProgress (1): 0.6/3.4 MBProgress (1): 0.6/3.4 MBProgress (1): 0.7/3.4 MBProgress (1): 0.7/3.4 MBProgress (1): 0.7/3.4 MBProgress (1): 0.7/3.4 MBProgress (1): 0.7/3.4 MBProgress (1): 0.7/3.4 MBProgress (1): 0.8/3.4 MBProgress (1): 0.8/3.4 MBProgress (1): 0.8/3.4 MBProgress (1): 0.8/3.4 MBProgress (1): 0.8/3.4 MBProgress (1): 0.8/3.4 MBProgress (1): 0.9/3.4 MBProgress (1): 0.9/3.4 MBProgress (1): 0.9/3.4 MBProgress (1): 0.9/3.4 MBProgress (1): 0.9/3.4 MBProgress (1): 0.9/3.4 MBProgress (1): 1.0/3.4 MBProgress (1): 1.0/3.4 MBProgress (1): 1.0/3.4 MBProgress (1): 1.0/3.4 MBProgress (1): 1.0/3.4 MBProgress (1): 1.0/3.4 MBProgress (1): 1.0/3.4 MBProgress (1): 1.1/3.4 MBProgress (1): 1.1/3.4 MBProgress (1): 1.1/3.4 MBProgress (1): 1.1/3.4 MBProgress (1): 1.1/3.4 MBProgress (1): 1.1/3.4 MBProgress (1): 1.2/3.4 MBProgress (1): 1.2/3.4 MBProgress (1): 1.2/3.4 MBProgress (1): 1.2/3.4 MBProgress (1): 1.2/3.4 MBProgress (1): 1.2/3.4 MBProgress (1): 1.3/3.4 MBProgress (1): 1.3/3.4 MBProgress (1): 1.3/3.4 MBProgress (1): 1.3/3.4 MBProgress (1): 1.3/3.4 MBProgress (1): 1.3/3.4 MBProgress (1): 1.3/3.4 MBProgress (1): 1.4/3.4 MBProgress (1): 1.4/3.4 MBProgress (1): 1.4/3.4 MBProgress (1): 1.4/3.4 MBProgress (1): 1.4/3.4 MBProgress (1): 1.4/3.4 MBProgress (1): 1.5/3.4 MBProgress (1): 1.5/3.4 MBProgress (1): 1.5/3.4 MBProgress (1): 1.5/3.4 MBProgress (1): 1.5/3.4 MBProgress (1): 1.5/3.4 MBProgress (1): 1.6/3.4 MBProgress (1): 1.6/3.4 MBProgress (1): 1.6/3.4 MBProgress (1): 1.6/3.4 MBProgress (1): 1.6/3.4 MBProgress (1): 1.6/3.4 MBProgress (1): 1.7/3.4 MBProgress (1): 1.7/3.4 MBProgress (1): 1.7/3.4 MBProgress (1): 1.7/3.4 MBProgress (1): 1.7/3.4 MBProgress (1): 1.7/3.4 MBProgress (1): 1.8/3.4 MBProgress (1): 1.8/3.4 MBProgress (1): 1.8/3.4 MBProgress (1): 1.8/3.4 MBProgress (1): 1.8/3.4 MBProgress (1): 1.8/3.4 MBProgress (1): 1.9/3.4 MBProgress (1): 1.9/3.4 MBProgress (1): 1.9/3.4 MBProgress (1): 1.9/3.4 MBProgress (1): 1.9/3.4 MBProgress (1): 1.9/3.4 MBProgress (1): 2.0/3.4 MBProgress (1): 2.0/3.4 MBProgress (1): 2.0/3.4 MBProgress (1): 2.0/3.4 MBProgress (1): 2.0/3.4 MBProgress (1): 2.0/3.4 MBProgress (1): 2.1/3.4 MBProgress (1): 2.1/3.4 MBProgress (1): 2.1/3.4 MBProgress (1): 2.1/3.4 MBProgress (1): 2.1/3.4 MBProgress (1): 2.1/3.4 MBProgress (1): 2.2/3.4 MBProgress (1): 2.2/3.4 MBProgress (1): 2.2/3.4 MBProgress (1): 2.2/3.4 MBProgress (1): 2.2/3.4 MBProgress (1): 2.2/3.4 MBProgress (1): 2.2/3.4 MBProgress (1): 2.3/3.4 MBProgress (1): 2.3/3.4 MBProgress (1): 2.3/3.4 MBProgress (1): 2.3/3.4 MBProgress (1): 2.3/3.4 MBProgress (1): 2.3/3.4 MBProgress (1): 2.4/3.4 MBProgress (1): 2.4/3.4 MBProgress (1): 2.4/3.4 MBProgress (1): 2.4/3.4 MBProgress (1): 2.4/3.4 MBProgress (1): 2.4/3.4 MBProgress (1): 2.5/3.4 MBProgress (1): 2.5/3.4 MBProgress (1): 2.5/3.4 MBProgress (1): 2.5/3.4 MBProgress (1): 2.5/3.4 MBProgress (1): 2.5/3.4 MBProgress (1): 2.6/3.4 MBProgress (1): 2.6/3.4 MBProgress (1): 2.6/3.4 MBProgress (1): 2.6/3.4 MBProgress (1): 2.6/3.4 MBProgress (1): 2.6/3.4 MBProgress (1): 2.7/3.4 MBProgress (1): 2.7/3.4 MBProgress (1): 2.7/3.4 MBProgress (1): 2.7/3.4 MBProgress (1): 2.7/3.4 MBProgress (1): 2.7/3.4 MBProgress (1): 2.7/3.4 MBProgress (1): 2.8/3.4 MBProgress (1): 2.8/3.4 MBProgress (1): 2.8/3.4 MBProgress (1): 2.8/3.4 MBProgress (1): 2.8/3.4 MBProgress (1): 2.8/3.4 MBProgress (1): 2.9/3.4 MBProgress (1): 2.9/3.4 MBProgress (1): 2.9/3.4 MBProgress (1): 2.9/3.4 MBProgress (1): 2.9/3.4 MBProgress (1): 2.9/3.4 MBProgress (1): 3.0/3.4 MBProgress (1): 3.0/3.4 MBProgress (1): 3.0/3.4 MBProgress (1): 3.0/3.4 MBProgress (1): 3.0/3.4 MBProgress (1): 3.0/3.4 MBProgress (1): 3.1/3.4 MBProgress (1): 3.1/3.4 MBProgress (1): 3.1/3.4 MBProgress (1): 3.1/3.4 MBProgress (1): 3.1/3.4 MBProgress (1): 3.1/3.4 MBProgress (1): 3.2/3.4 MBProgress (1): 3.2/3.4 MBProgress (1): 3.2/3.4 MBProgress (1): 3.2/3.4 MBProgress (1): 3.2/3.4 MBProgress (1): 3.2/3.4 MBProgress (1): 3.3/3.4 MBProgress (1): 3.3/3.4 MBProgress (1): 3.3/3.4 MBProgress (1): 3.3/3.4 MBProgress (1): 3.3/3.4 MBProgress (1): 3.3/3.4 MBProgress (1): 3.4/3.4 MBProgress (1): 3.4/3.4 MBProgress (1): 3.4/3.4 MBProgress (1): 3.4/3.4 MBProgress (1): 3.4/3.4 MBProgress (1): 3.4 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/qomponent/1.0.1/qomponent-1.0.1.jar (3.4 MB at 45 MB/s)
+#13 9.699 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/markdown-it/14.1.0/markdown-it-14.1.0.jar
+#13 9.713 Progress (1): 7.7/244 kBProgress (1): 16/244 kB Progress (1): 32/244 kBProgress (1): 49/244 kBProgress (1): 61/244 kBProgress (1): 78/244 kBProgress (1): 94/244 kBProgress (1): 111/244 kBProgress (1): 127/244 kBProgress (1): 143/244 kBProgress (1): 160/244 kBProgress (1): 176/244 kBProgress (1): 193/244 kBProgress (1): 209/244 kBProgress (1): 225/244 kBProgress (1): 242/244 kBProgress (1): 244 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/markdown-it/14.1.0/markdown-it-14.1.0.jar (244 kB at 7.6 MB/s)
+#13 9.722 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/argparse/2.0.1/argparse-2.0.1.jar
+#13 9.748 Progress (1): 7.5/39 kBProgress (1): 24/39 kB Progress (1): 39 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/argparse/2.0.1/argparse-2.0.1.jar (39 kB at 1.5 MB/s)
+#13 9.752 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/entities/4.5.0/entities-4.5.0.jar
+#13 9.780 Progress (1): 7.7/98 kBProgress (1): 16/98 kB Progress (1): 32/98 kBProgress (1): 48/98 kBProgress (1): 65/98 kBProgress (1): 66/98 kBProgress (1): 82/98 kBProgress (1): 98/98 kBProgress (1): 98 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/entities/4.5.0/entities-4.5.0.jar (98 kB at 3.6 MB/s)
+#13 9.780 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/linkify-it/5.0.0/linkify-it-5.0.0.jar
+#13 9.804 Progress (1): 7.7/18 kBProgress (1): 16/18 kB Progress (1): 18 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/linkify-it/5.0.0/linkify-it-5.0.0.jar (18 kB at 738 kB/s)
+#13 9.806 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/mdurl/2.0.0/mdurl-2.0.0.jar
+#13 9.830 Progress (1): 7.7/15 kBProgress (1): 15 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/mdurl/2.0.0/mdurl-2.0.0.jar (15 kB at 601 kB/s)
+#13 9.831 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/punycode.js/2.3.1/punycode.js-2.3.1.jar
+#13 9.855 Progress (1): 7.7/12 kBProgress (1): 12 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/punycode.js/2.3.1/punycode.js-2.3.1.jar (12 kB at 491 kB/s)
+#13 9.863 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/uc.micro/2.1.0/uc.micro-2.1.0.jar
+#13 9.888 Progress (1): 4.1/8.7 kBProgress (1): 8.7 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/uc.micro/2.1.0/uc.micro-2.1.0.jar (8.7 kB at 311 kB/s)
+#13 9.888 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.10.0/es-module-shims-1.10.0.jar
+#13 9.912 Progress (1): 7.7/60 kBProgress (1): 12/60 kB Progress (1): 16/60 kBProgress (1): 33/60 kBProgress (1): 41/60 kBProgress (1): 49/60 kBProgress (1): 60 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.10.0/es-module-shims-1.10.0.jar (60 kB at 2.2 MB/s)
+#13 9.914 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.17.4/quarkus-vertx-http-dev-ui-resources-3.17.4.jar
+#13 9.983 Progress (1): 7.7/892 kBProgress (1): 16/892 kB Progress (1): 32/892 kBProgress (1): 48/892 kBProgress (1): 65/892 kBProgress (1): 81/892 kBProgress (1): 98/892 kBProgress (1): 114/892 kBProgress (1): 130/892 kBProgress (1): 147/892 kBProgress (1): 163/892 kBProgress (1): 179/892 kBProgress (1): 196/892 kBProgress (1): 212/892 kBProgress (1): 229/892 kBProgress (1): 245/892 kBProgress (1): 261/892 kBProgress (1): 278/892 kBProgress (1): 294/892 kBProgress (1): 311/892 kBProgress (1): 327/892 kBProgress (1): 343/892 kBProgress (1): 352/892 kBProgress (1): 368/892 kBProgress (1): 384/892 kBProgress (1): 401/892 kBProgress (1): 417/892 kBProgress (1): 434/892 kBProgress (1): 450/892 kBProgress (1): 466/892 kBProgress (1): 483/892 kBProgress (1): 499/892 kBProgress (1): 515/892 kBProgress (1): 532/892 kBProgress (1): 548/892 kBProgress (1): 565/892 kBProgress (1): 581/892 kBProgress (1): 597/892 kBProgress (1): 614/892 kBProgress (1): 630/892 kBProgress (1): 647/892 kBProgress (1): 663/892 kBProgress (1): 679/892 kBProgress (1): 696/892 kBProgress (1): 712/892 kBProgress (1): 728/892 kBProgress (1): 745/892 kBProgress (1): 761/892 kBProgress (1): 778/892 kBProgress (1): 794/892 kBProgress (1): 810/892 kBProgress (1): 827/892 kBProgress (1): 843/892 kBProgress (1): 860/892 kBProgress (1): 876/892 kBProgress (1): 892 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.17.4/quarkus-vertx-http-dev-ui-resources-3.17.4.jar (892 kB at 16 MB/s)
+#13 9.988 Downloading from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.11/importmap-1.0.11.jar
+#13 10.08 Progress (1): 7.5/9.0 kBProgress (1): 9.0 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.11/importmap-1.0.11.jar (9.0 kB at 148 kB/s)
+#13 10.08 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.17.4/quarkus-vertx-http-deployment-3.17.4.jar
+#13 10.08 Progress (1): 7.7/262 kBProgress (1): 16/262 kB Progress (1): 32/262 kBProgress (1): 48/262 kBProgress (1): 65/262 kBProgress (1): 81/262 kBProgress (1): 98/262 kBProgress (1): 114/262 kBProgress (1): 130/262 kBProgress (1): 147/262 kBProgress (1): 163/262 kBProgress (1): 179/262 kBProgress (1): 196/262 kBProgress (1): 212/262 kBProgress (1): 229/262 kBProgress (1): 245/262 kBProgress (1): 261/262 kBProgress (1): 262 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.17.4/quarkus-vertx-http-deployment-3.17.4.jar (262 kB at 8.5 MB/s)
+#13 10.09 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-spi-deployment/3.17.4/quarkus-rest-spi-deployment-3.17.4.jar
+#13 10.11 Progress (1): 7.7/32 kBProgress (1): 16/32 kB Progress (1): 32/32 kBProgress (1): 32 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-spi-deployment/3.17.4/quarkus-rest-spi-deployment-3.17.4.jar (32 kB at 1.2 MB/s)
+#13 10.12 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-server-spi-deployment/3.17.4/quarkus-rest-server-spi-deployment-3.17.4.jar
+#13 10.16 Progress (1): 7.7/14 kBProgress (1): 14 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-server-spi-deployment/3.17.4/quarkus-rest-server-spi-deployment-3.17.4.jar (14 kB at 463 kB/s)
+#13 10.16 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.17.4/quarkus-jaxrs-spi-deployment-3.17.4.jar
+#13 10.18 Progress (1): 7.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.17.4/quarkus-jaxrs-spi-deployment-3.17.4.jar (7.3 kB at 272 kB/s)
+#13 10.18 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.17.4/quarkus-security-spi-3.17.4.jar
+#13 10.21 Progress (1): 7.7/17 kBProgress (1): 16/17 kB Progress (1): 17 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.17.4/quarkus-security-spi-3.17.4.jar (17 kB at 687 kB/s)
+#13 10.21 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.17.4/quarkus-jsonp-deployment-3.17.4.jar
+#13 10.24 Progress (1): 7.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.17.4/quarkus-jsonp-deployment-3.17.4.jar (7.6 kB at 291 kB/s)
+#13 10.24 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-common-deployment/3.17.4/quarkus-rest-common-deployment-3.17.4.jar
+#13 10.26 Progress (1): 7.7/38 kBProgress (1): 16/38 kB Progress (1): 25/38 kBProgress (1): 38 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-common-deployment/3.17.4/quarkus-rest-common-deployment-3.17.4.jar (38 kB at 1.5 MB/s)
+#13 10.26 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.17.4/quarkus-virtual-threads-deployment-3.17.4.jar
+#13 10.35 Progress (1): 7.7/8.5 kBProgress (1): 8.5 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.17.4/quarkus-virtual-threads-deployment-3.17.4.jar (8.5 kB at 340 kB/s)
+#13 10.35 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-deployment/3.17.4/quarkus-rest-deployment-3.17.4.jar
+#13 10.35 Progress (1): 7.7/141 kBProgress (1): 12/141 kB Progress (1): 29/141 kBProgress (1): 45/141 kBProgress (1): 61/141 kBProgress (1): 78/141 kBProgress (1): 94/141 kBProgress (1): 111/141 kBProgress (1): 127/141 kBProgress (1): 141 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-deployment/3.17.4/quarkus-rest-deployment-3.17.4.jar (141 kB at 5.2 MB/s)
+#13 10.35 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.17.4/quarkus-smallrye-context-propagation-spi-3.17.4.jar
+#13 10.35 Progress (1): 7.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.17.4/quarkus-smallrye-context-propagation-spi-3.17.4.jar (7.7 kB at 307 kB/s)
+#13 10.35 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.17.4/quarkus-vertx-http-dev-ui-spi-3.17.4.jar
+#13 10.37 Progress (1): 4.1/33 kBProgress (1): 20/33 kB Progress (1): 33 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.17.4/quarkus-vertx-http-dev-ui-spi-3.17.4.jar (33 kB at 1.2 MB/s)
+#13 10.37 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.17.4/arc-processor-3.17.4.jar
+#13 10.42 Progress (1): 4.1/728 kBProgress (1): 20/728 kB Progress (1): 37/728 kBProgress (1): 53/728 kBProgress (1): 61/728 kBProgress (1): 78/728 kBProgress (1): 94/728 kBProgress (1): 111/728 kBProgress (1): 127/728 kBProgress (1): 143/728 kBProgress (1): 160/728 kBProgress (1): 176/728 kBProgress (1): 193/728 kBProgress (1): 209/728 kBProgress (1): 225/728 kBProgress (1): 242/728 kBProgress (1): 258/728 kBProgress (1): 274/728 kBProgress (1): 291/728 kBProgress (1): 307/728 kBProgress (1): 324/728 kBProgress (1): 340/728 kBProgress (1): 356/728 kBProgress (1): 373/728 kBProgress (1): 389/728 kBProgress (1): 406/728 kBProgress (1): 422/728 kBProgress (1): 438/728 kBProgress (1): 455/728 kBProgress (1): 471/728 kBProgress (1): 487/728 kBProgress (1): 504/728 kBProgress (1): 520/728 kBProgress (1): 537/728 kBProgress (1): 553/728 kBProgress (1): 569/728 kBProgress (1): 586/728 kBProgress (1): 590/728 kBProgress (1): 606/728 kBProgress (1): 623/728 kBProgress (1): 639/728 kBProgress (1): 655/728 kBProgress (1): 672/728 kBProgress (1): 688/728 kBProgress (1): 705/728 kBProgress (1): 721/728 kBProgress (1): 728 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.17.4/arc-processor-3.17.4.jar (728 kB at 5.1 MB/s)
+#13 10.52 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-test-supplement/3.17.4/quarkus-arc-test-supplement-3.17.4.jar
+#13 10.61 Progress (1): 3.4/8.1 kBProgress (1): 8.1 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-test-supplement/3.17.4/quarkus-arc-test-supplement-3.17.4.jar (8.1 kB at 166 kB/s)
+#13 10.61 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.17.4/quarkus-arc-deployment-3.17.4.jar
+#13 10.61 Progress (1): 7.7/288 kBProgress (1): 12/288 kB Progress (1): 29/288 kBProgress (1): 45/288 kBProgress (1): 61/288 kBProgress (1): 78/288 kBProgress (1): 94/288 kBProgress (1): 111/288 kBProgress (1): 127/288 kBProgress (1): 143/288 kBProgress (1): 160/288 kBProgress (1): 176/288 kBProgress (1): 193/288 kBProgress (1): 209/288 kBProgress (1): 225/288 kBProgress (1): 242/288 kBProgress (1): 258/288 kBProgress (1): 274/288 kBProgress (1): 288 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.17.4/quarkus-arc-deployment-3.17.4.jar (288 kB at 10 MB/s)
+#13 10.61 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/3.17.4/quarkus-bom-quarkus-platform-properties-3.17.4.properties
+#13 10.64 Progress (1): 743 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/3.17.4/quarkus-bom-quarkus-platform-properties-3.17.4.properties (743 B at 21 kB/s)
+#13 11.17 [INFO] 
+#13 11.17 [INFO] --- compiler:3.13.0:compile (default-compile) @ helloservice ---
+#13 11.34 [INFO] Recompiling the module because of changed source code.
+#13 11.34 [INFO] Compiling 6 source files with javac [debug release 17] to target/classes
+#13 12.10 [INFO] -------------------------------------------------------------
+#13 12.10 [ERROR] COMPILATION ERROR : 
+#13 12.10 [INFO] -------------------------------------------------------------
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceApplication.java:[3,32] package org.springframework.boot does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceApplication.java:[4,46] package org.springframework.boot.autoconfigure does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceApplication.java:[6,2] cannot find symbol
+#13 12.10   symbol: class SpringBootApplication
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[3,41] package jakarta.tutorial.helloservice.ejb does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[4,41] package jakarta.tutorial.helloservice.ejb does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[5,57] package org.springframework.ws.server.endpoint.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[6,57] package org.springframework.ws.server.endpoint.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[7,57] package org.springframework.ws.server.endpoint.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[8,57] package org.springframework.ws.server.endpoint.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[10,2] cannot find symbol
+#13 12.10   symbol: class Endpoint
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[18,54] cannot find symbol
+#13 12.10   symbol:   class SayHello
+#13 12.10   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[18,12] cannot find symbol
+#13 12.10   symbol:   class SayHelloResponse
+#13 12.10   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[3,44] package org.springframework.boot.web.servlet does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[4,35] package org.springframework.context does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[5,46] package org.springframework.context.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[6,46] package org.springframework.context.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[7,35] package org.springframework.core.io does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[8,48] package org.springframework.ws.config.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[9,45] package org.springframework.ws.transport.http does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[10,42] package org.springframework.ws.wsdl.wsdl11 does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[11,35] package org.springframework.xml.xsd does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[12,35] package org.springframework.xml.xsd does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[16,2] cannot find symbol
+#13 12.10   symbol: class EnableWs
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[17,2] cannot find symbol
+#13 12.10   symbol: class Configuration
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[22,13] cannot find symbol
+#13 12.10   symbol:   class ApplicationContext
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[21,12] cannot find symbol
+#13 12.10   symbol:   class ServletRegistrationBean
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[21,36] cannot find symbol
+#13 12.10   symbol:   class MessageDispatcherServlet
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[30,60] cannot find symbol
+#13 12.10   symbol:   class XsdSchema
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[30,12] cannot find symbol
+#13 12.10   symbol:   class DefaultWsdl11Definition
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[40,12] cannot find symbol
+#13 12.10   symbol:   class XsdSchema
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[18,39] cannot find symbol
+#13 12.10   symbol:   class RequestPayload
+#13 12.10   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[16,6] cannot find symbol
+#13 12.10   symbol:   class PayloadRoot
+#13 12.10   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[17,6] cannot find symbol
+#13 12.10   symbol:   class ResponsePayload
+#13 12.10   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[20,6] cannot find symbol
+#13 12.10   symbol:   class Bean
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[29,6] cannot find symbol
+#13 12.10   symbol:   class Bean
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[39,6] cannot find symbol
+#13 12.10   symbol:   class Bean
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceApplication.java:[10,9] cannot find symbol
+#13 12.10   symbol:   variable SpringApplication
+#13 12.10   location: class spring.examples.tutorial.helloservice.HelloServiceApplication
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[19,9] cannot find symbol
+#13 12.10   symbol:   class SayHelloResponse
+#13 12.10   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[19,41] cannot find symbol
+#13 12.10   symbol:   class SayHelloResponse
+#13 12.10   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[23,9] cannot find symbol
+#13 12.10   symbol:   class MessageDispatcherServlet
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[23,48] cannot find symbol
+#13 12.10   symbol:   class MessageDispatcherServlet
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[26,20] cannot find symbol
+#13 12.10   symbol:   class ServletRegistrationBean
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[31,9] cannot find symbol
+#13 12.10   symbol:   class DefaultWsdl11Definition
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[31,50] cannot find symbol
+#13 12.10   symbol:   class DefaultWsdl11Definition
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[41,20] cannot find symbol
+#13 12.10   symbol:   class SimpleXsdSchema
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[41,40] cannot find symbol
+#13 12.10   symbol:   class ClassPathResource
+#13 12.10   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [INFO] 46 errors 
+#13 12.10 [INFO] -------------------------------------------------------------
+#13 12.10 [INFO] ------------------------------------------------------------------------
+#13 12.10 [INFO] BUILD FAILURE
+#13 12.10 [INFO] ------------------------------------------------------------------------
+#13 12.10 [INFO] Total time:  9.748 s
+#13 12.10 [INFO] Finished at: 2026-03-24T02:36:15Z
+#13 12.10 [INFO] ------------------------------------------------------------------------
+#13 12.10 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project helloservice: Compilation failure: Compilation failure: 
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceApplication.java:[3,32] package org.springframework.boot does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceApplication.java:[4,46] package org.springframework.boot.autoconfigure does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceApplication.java:[6,2] cannot find symbol
+#13 12.10 [ERROR]   symbol: class SpringBootApplication
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[3,41] package jakarta.tutorial.helloservice.ejb does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[4,41] package jakarta.tutorial.helloservice.ejb does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[5,57] package org.springframework.ws.server.endpoint.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[6,57] package org.springframework.ws.server.endpoint.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[7,57] package org.springframework.ws.server.endpoint.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[8,57] package org.springframework.ws.server.endpoint.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[10,2] cannot find symbol
+#13 12.10 [ERROR]   symbol: class Endpoint
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[18,54] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class SayHello
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[18,12] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class SayHelloResponse
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[3,44] package org.springframework.boot.web.servlet does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[4,35] package org.springframework.context does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[5,46] package org.springframework.context.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[6,46] package org.springframework.context.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[7,35] package org.springframework.core.io does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[8,48] package org.springframework.ws.config.annotation does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[9,45] package org.springframework.ws.transport.http does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[10,42] package org.springframework.ws.wsdl.wsdl11 does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[11,35] package org.springframework.xml.xsd does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[12,35] package org.springframework.xml.xsd does not exist
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[16,2] cannot find symbol
+#13 12.10 [ERROR]   symbol: class EnableWs
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[17,2] cannot find symbol
+#13 12.10 [ERROR]   symbol: class Configuration
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[22,13] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class ApplicationContext
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[21,12] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class ServletRegistrationBean
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[21,36] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class MessageDispatcherServlet
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[30,60] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class XsdSchema
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[30,12] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class DefaultWsdl11Definition
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[40,12] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class XsdSchema
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[18,39] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class RequestPayload
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[16,6] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class PayloadRoot
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[17,6] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class ResponsePayload
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[20,6] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class Bean
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[29,6] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class Bean
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[39,6] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class Bean
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceApplication.java:[10,9] cannot find symbol
+#13 12.10 [ERROR]   symbol:   variable SpringApplication
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.HelloServiceApplication
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[19,9] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class SayHelloResponse
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/HelloServiceBean.java:[19,41] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class SayHelloResponse
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.HelloServiceBean
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[23,9] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class MessageDispatcherServlet
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[23,48] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class MessageDispatcherServlet
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[26,20] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class ServletRegistrationBean
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[31,9] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class DefaultWsdl11Definition
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[31,50] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class DefaultWsdl11Definition
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[41,20] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class SimpleXsdSchema
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[41,40] cannot find symbol
+#13 12.10 [ERROR]   symbol:   class ClassPathResource
+#13 12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+#13 12.10 [ERROR] -> [Help 1]
+#13 12.10 [ERROR] 
+#13 12.10 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#13 12.10 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#13 12.10 [ERROR] 
+#13 12.10 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#13 12.10 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+#13 ERROR: process "/bin/sh -c mvn package -DskipTests" did not complete successfully: exit code: 1
+------
+ > [ 9/10] RUN mvn package -DskipTests:
+12.10 [ERROR] /app/src/main/java/spring/examples/tutorial/helloservice/WebServiceConfig.java:[41,40] cannot find symbol
+12.10 [ERROR]   symbol:   class ClassPathResource
+12.10 [ERROR]   location: class spring.examples.tutorial.helloservice.WebServiceConfig
+12.10 [ERROR] -> [Help 1]
+12.10 [ERROR] 
+12.10 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+12.10 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+12.10 [ERROR] 
+12.10 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+12.10 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+------
+Dockerfile:28
+--------------------
+  26 |     
+  27 |     # Build application
+  28 | >>> RUN mvn package -DskipTests
+  29 |     
+  30 |     RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn package -DskipTests" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: helloservice-quarkus-01d094fa
+make: *** [Makefile:20: compile] Error 1

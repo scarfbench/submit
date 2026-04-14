@@ -1,0 +1,31 @@
+/*
+ * Copyright (c), Eclipse Foundation, Inc. and its licensors.
+ *
+ * All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Distribution License v1.0, which is available at
+ * https://www.eclipse.org/org/documents/edl-v10.php
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+package spring.tutorial.customer.config;
+
+import org.glassfish.jersey.server.ResourceConfig;
+import org.springframework.context.annotation.Configuration;
+import spring.tutorial.customer.resource.CustomerService;
+
+import jakarta.ws.rs.ApplicationPath;
+
+/**
+ * Jersey Configuration for JAX-RS resources
+ */
+@Configuration
+@ApplicationPath("/webapi")
+public class JerseyConfig extends ResourceConfig {
+
+    public JerseyConfig() {
+        // Register JAX-RS resource classes
+        register(CustomerService.class);
+    }
+}

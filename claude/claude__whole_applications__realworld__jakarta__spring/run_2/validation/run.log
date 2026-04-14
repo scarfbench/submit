@@ -1,0 +1,64 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.06kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:11-jdk-focal
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 442B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/eclipse-temurin:11-jdk-focal@sha256:9bc2bb1aed85522729cf6888b8712330e6fa457ec8b0ae2d4380f62e18c01ee9
+#4 resolve docker.io/library/eclipse-temurin:11-jdk-focal@sha256:9bc2bb1aed85522729cf6888b8712330e6fa457ec8b0ae2d4380f62e18c01ee9 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 316.19kB 0.1s done
+#5 DONE 0.1s
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [7/9] COPY . .
+#7 CACHED
+
+#8 [2/9] RUN apt-get update     && apt-get install -y --no-install-recommends curl python3 python3-venv     && rm -rf /var/lib/apt/lists/*     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#8 CACHED
+
+#9 [5/9] RUN playwright install --with-deps chromium
+#9 CACHED
+
+#10 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#10 CACHED
+
+#11 [6/9] WORKDIR /app
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN if [ -f gradlew ]; then chmod +x gradlew; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:281541208f7d1b69151e87a613338807fa37e9f0411920f1564c94e8a827c097 0.0s done
+#14 exporting config sha256:2797928a8a0adc58170ecddf214650ae20e275240618bf595d608fc10f38691f done
+#14 exporting attestation manifest sha256:f24bc95306cd3f28f7d739e5be95d6126efe18cef22880629a1f8fbb410cf46d
+#14 exporting attestation manifest sha256:f24bc95306cd3f28f7d739e5be95d6126efe18cef22880629a1f8fbb410cf46d 0.2s done
+#14 exporting manifest list sha256:1633508af117d649d5ffc9c90e11d9602f25320e46ed52c53d8fa7d26bc0e10b
+#14 exporting manifest list sha256:1633508af117d649d5ffc9c90e11d9602f25320e46ed52c53d8fa7d26bc0e10b 0.1s done
+#14 naming to docker.io/library/realworld-spring:d983fe44 done
+#14 unpacking to docker.io/library/realworld-spring:d983fe44 0.0s done
+#14 DONE 0.3s
+[INFO] Built image: realworld-spring:d983fe44
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name realworld-spring-aac580d9 realworld-spring:d983fe44
+acef0a04cba92b185a6fde3075b02c2b59291ba63e06e98c07bf9250a5a72894
+[INFO] Started realworld-spring-aac580d9, waiting for app to start...
+/__cacert_entrypoint.sh: line 114: /app/gradlew: No such file or directory

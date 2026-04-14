@@ -1,0 +1,6 @@
+docker logs "mood-quarkus"
+
+
+--- stderr ---
+Error response from daemon: No such container: mood-quarkus
+make: *** [Makefile:32: logs] Error 1

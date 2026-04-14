@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Status - Async Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .status-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .status-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        .back-link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Status</h1>
+
+    <div class="status-box">
+        <p class="status-text" th:text="${status}">Status message will appear here</p>
+    </div>
+
+    <a href="/" class="back-link">Send another email</a>
+</body>
+</html>

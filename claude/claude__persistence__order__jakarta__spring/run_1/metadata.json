@@ -1,0 +1,17 @@
+{
+  "status": "CONVERTED",
+  "agent": "claude",
+  "app": "order",
+  "layer": "persistence",
+  "repeat": 1,
+  "source_framework": "jakarta",
+  "target_framework": "spring",
+  "num_smoke_tests": 11,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 5,
+  "failure_reason": "6 failed, 0 errors, 5 passed out of 11 tests",
+  "failure_category": "test_failures",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

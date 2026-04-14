@@ -1,0 +1,157 @@
+package org.eclipse.cargotracker.interfaces.booking.web;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import org.eclipse.cargotracker.interfaces.booking.facade.BookingServiceFacade;
+import org.eclipse.cargotracker.interfaces.booking.facade.dto.Location;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+/**
+ * Handles booking cargo. Operates against a dedicated service facade, and could easily be rewritten
+ * as a thick client. Completely separated from the domain layer, unlike the tracking user
+ * interface.
+ *
+ * <p>In order to successfully keep the domain model shielded from user interface considerations,
+ * this approach is generally preferred to the one taken in the tracking controller. However, there
+ * is never any one perfect solution for all situations, so we've chosen to demonstrate two
+ * polarized ways to build user interfaces.
+ *
+ * <p>Migrated from JSF to Spring Boot. JSF-specific UI interactions have been removed.
+ */
+@Component("booking")
+@Scope("prototype")
+public class Booking implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  private static final long MIN_JOURNEY_DURATION = 1; // Journey should be 1 day minimum.
+
+  @Autowired private BookingServiceFacade bookingServiceFacade;
+
+  private LocalDate today = null;
+  private List<Location> locations;
+
+  private String originUnlocode;
+  private String originName;
+  private String destinationName;
+  private String destinationUnlocode;
+  private LocalDate arrivalDeadline;
+
+  private boolean bookable = false;
+  private long duration = -1;
+
+  @PostConstruct
+  public void init() {
+    today = LocalDate.now();
+    locations = bookingServiceFacade.listShippingLocations();
+  }
+
+  public List<Location> getLocations() {
+    List<Location> filteredLocations = new ArrayList<>();
+    String locationToRemove = null;
+
+    // Filter logic simplified - in JSF this used FacesContext to determine view
+    if (destinationUnlocode != null) {
+      locationToRemove = destinationUnlocode;
+    }
+
+    for (Location location : locations) {
+      if (!location.getUnLocode().equalsIgnoreCase(locationToRemove)) {
+        filteredLocations.add(location);
+      }
+    }
+
+    return filteredLocations;
+  }
+
+  public String getOriginUnlocode() {
+    return originUnlocode;
+  }
+
+  public void setOriginUnlocode(String originUnlocode) {
+    this.originUnlocode = originUnlocode;
+    this.originName =
+        locations
+            .stream()
+            .filter(location -> location.getUnLocode().equalsIgnoreCase(originUnlocode))
+            .findAny()
+            .get()
+            .getName();
+  }
+
+  public String getOriginName() {
+    return originName;
+  }
+
+  public String getDestinationUnlocode() {
+    return destinationUnlocode;
+  }
+
+  public void setDestinationUnlocode(String destinationUnlocode) {
+    this.destinationUnlocode = destinationUnlocode;
+    this.destinationName =
+        locations
+            .stream()
+            .filter(location -> location.getUnLocode().equalsIgnoreCase(destinationUnlocode))
+            .findAny()
+            .get()
+            .getName();
+  }
+
+  public String getDestinationName() {
+    return destinationName;
+  }
+
+  public LocalDate getToday() {
+    return today;
+  }
+
+  public LocalDate getArrivalDeadline() {
+    return arrivalDeadline;
+  }
+
+  public void setArrivalDeadline(LocalDate arrivalDeadline) {
+    this.arrivalDeadline = arrivalDeadline;
+  }
+
+  public long getDuration() {
+    return duration;
+  }
+
+  public boolean isBookable() {
+    return bookable;
+  }
+
+  public void deadlineUpdated() {
+    duration = ChronoUnit.DAYS.between(today, arrivalDeadline);
+
+    if (duration >= MIN_JOURNEY_DURATION) {
+      bookable = true;
+    } else {
+      bookable = false;
+    }
+
+    // PrimeFaces AJAX calls removed - would be handled by REST API in Spring Boot
+  }
+
+  public String register() {
+    if (!originUnlocode.equals(destinationUnlocode)) {
+      bookingServiceFacade.bookNewCargo(originUnlocode, destinationUnlocode, arrivalDeadline);
+    } else {
+      // Validation logic kept, but FacesMessage removed
+      return null;
+    }
+
+    return "/admin/dashboard.xhtml";
+  }
+
+  public String getReturnValue() {
+    return "/admin/dashboard.xhtml";
+  }
+}

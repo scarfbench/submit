@@ -1,0 +1,17 @@
+embed-server --std-out=echo
+
+batch
+
+# Add H2 datasource
+data-source add \
+    --name=AddressBookDS \
+    --jndi-name=java:jboss/datasources/AddressBookDS \
+    --driver-name=h2 \
+    --connection-url=jdbc:h2:mem:addressbook;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE \
+    --user-name=sa \
+    --password=sa \
+    --use-java-context=true
+
+run-batch
+
+stop-embedded-server

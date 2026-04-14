@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Encoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .messagecolor {
+            margin-top: 20px;
+        }
+        .error {
+            color: #d20005;
+        }
+        .info {
+            color: blue;
+        }
+        .result {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h2>String Encoder</h2>
+    <p>Enter a string and an integer, then click Encode.</p>
+    <p>Depending on which alternative is enabled, the coder bean
+        will either display the argument values or return a string that
+        shifts the letters in the original string by the value you
+        specify. The value must be between 0 and 26.</p>
+
+    <form th:action="@{/encode}" method="post" th:object="${coderBean}">
+        <p>
+            <label for="inputString">Enter a string: </label>
+            <input type="text" id="inputString" name="inputString" th:value="${coderBean.inputString}" />
+        </p>
+        <p>
+            <label for="transVal">Enter the number of letters to shift by: </label>
+            <input type="number" id="transVal" name="transVal" th:value="${coderBean.transVal}" min="0" max="26" />
+        </p>
+        <p>
+            <button type="submit">Encode</button>
+        </p>
+        <p>
+            <label for="outputString">Result: </label>
+            <span id="outputString" class="result" th:text="${coderBean.codedString}"></span>
+        </p>
+    </form>
+
+    <form th:action="@{/reset}" method="post">
+        <p>
+            <button type="submit">Reset</button>
+        </p>
+    </form>
+
+    <div class="messagecolor">
+        <!-- Error messages would be displayed here if validation fails -->
+        <div th:if="${#fields.hasErrors('coderBean.transVal')}" class="error">
+            <span th:errors="*{transVal}">Validation error</span>
+        </div>
+    </div>
+</body>
+</html>

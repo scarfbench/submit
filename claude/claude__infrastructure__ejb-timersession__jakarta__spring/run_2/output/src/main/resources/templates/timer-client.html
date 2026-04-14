@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Session Example - Spring Boot</title>
+</head>
+<body>
+    <h1>Timer page</h1>
+
+    <p>The last programmatic timeout was: <span th:text="${lastProgrammaticTimeout}">never</span>.</p>
+
+    <p>The last automatic timeout was: <span th:text="${lastAutomaticTimeout}">never</span></p>
+
+    <p>Set a programmatic timer here.</p>
+
+    <form action="/setTimer" method="post">
+        <button type="submit">Set Timer</button>
+        <button type="button" onclick="window.location.href='/'">Refresh</button>
+    </form>
+</body>
+</html>

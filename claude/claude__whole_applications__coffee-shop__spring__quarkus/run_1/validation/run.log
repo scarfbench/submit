@@ -1,0 +1,68 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.03kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 442B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 67.24MB 0.3s done
+#5 DONE 0.3s
+
+#6 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#9 CACHED
+
+#10 [5/9] RUN playwright install --with-deps chromium
+#10 CACHED
+
+#11 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#11 CACHED
+
+#12 [7/9] COPY . .
+#12 CACHED
+
+#13 [9/9] RUN mvn clean package -DskipTests -Dpmd.skip=true -Dspotbugs.skip=true
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:3224494b0e6b80d6f21c95026b0bcf5267586ffe97031130e91089fa9267df02 done
+#14 exporting config sha256:d573a28a28a270ed479672959818d2a16631c8255d0d3abbc72804c30a648346 done
+#14 exporting attestation manifest sha256:ca61967e8d858d811db0143fd305f484d15316f355f36ea72fbb43d4208b2db5 0.1s done
+#14 exporting manifest list sha256:c56c4eb1e060d97f488a5298b106b1e2dc2077150f91de7c4ec07d272db3c50f
+#14 exporting manifest list sha256:c56c4eb1e060d97f488a5298b106b1e2dc2077150f91de7c4ec07d272db3c50f 0.0s done
+#14 naming to docker.io/library/coffeeshop-quarkus:14598303 done
+#14 unpacking to docker.io/library/coffeeshop-quarkus:14598303 0.0s done
+#14 DONE 0.2s
+[INFO] Built image: coffeeshop-quarkus:14598303
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name coffeeshop-quarkus-25c8c1cf \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	-e QUARKUS_PROFILE=dev \
+	-e STREAM_URL=http://localhost:8080/dashboard/stream \
+	-e STORE_ID=ATLANTA \
+	coffeeshop-quarkus:14598303
+0adbbf5470eab1d6f59545e32e2ce87cee61383b92e0d878fdac661819d2b53a
+[INFO] Started coffeeshop-quarkus-25c8c1cf, waiting for app to start...
+Error: Unable to access jarfile target/quarkus-app/quarkus-run.jar

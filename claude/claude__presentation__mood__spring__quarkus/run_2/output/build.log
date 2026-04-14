@@ -1,0 +1,7 @@
+2025-12-02 04:20:09,225 INFO  [spr.tut.moo.web.SimpleServletListener] (main) Attribute added: jakarta.servlet.context.tempdir=/tmp
+2025-12-02 04:20:09,229 INFO  [spr.tut.moo.web.SimpleServletListener] (main) Context initialized
+2025-12-02 04:20:09,644 INFO  [io.quarkus] (main) mood 1.0.0 on JVM (powered by Quarkus 3.6.4) started in 2.295s. Listening on: http://localhost:8081
+2025-12-02 04:20:09,645 INFO  [io.quarkus] (main) Profile test activated. 
+2025-12-02 04:20:09,645 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy-reactive, servlet, smallrye-context-propagation, vertx]
+2025-12-02 04:20:10,956 INFO  [spr.tut.moo.web.SimpleServletListener] (main) Context destroyed
+2025-12-02 04:20:10,979 INFO  [io.quarkus] (main) mood stopped in 0.033s

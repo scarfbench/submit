@@ -1,0 +1,4 @@
+-- Initialize key generation table for DayTrader
+INSERT INTO KEYGENEJB (KEYNAME, KEYVAL) VALUES ('account', 0);
+INSERT INTO KEYGENEJB (KEYNAME, KEYVAL) VALUES ('holding', 0);
+INSERT INTO KEYGENEJB (KEYNAME, KEYVAL) VALUES ('order', 0);

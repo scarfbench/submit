@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" th:href="@{/css/default.css}">
+</head>
+<body>
+    <h2>To Do List</h2>
+    <form id="showlist">
+        <table border="1" cellpadding="5" summary="Things To Do">
+            <thead>
+                <tr>
+                    <th>Time Stamp</th>
+                    <th>Task</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="toDo : ${toDos}">
+                    <td th:text="${toDo.timeCreated}">Time Created</td>
+                    <td th:text="${toDo.taskText}">Task Text</td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(toDos)}">
+                    <td colspan="2">No tasks found</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <a th:href="@{/}">
+                <button type="button" id="back">Back</button>
+            </a>
+        </p>
+    </form>
+</body>
+</html>

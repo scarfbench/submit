@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "cart-spring":latest .
+[INFO] Built image: cart-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "cart-spring" "cart-spring":latest
+c57fdefd919011cf5bb2ef081ee0726158b1e74353ae80899c414d58ffbee849
+[INFO] Started cart-spring, waiting for app to start...
+### Check for build failure
+[ERROR] Container exited before success:
+Error response from daemon: No such container: cart-spring

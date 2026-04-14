@@ -1,0 +1,29 @@
+docker build -f Dockerfile -t "jaxrs-hello-spring:latest" .
+[INFO] Built image: jaxrs-hello-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "jaxrs-hello-spring" "jaxrs-hello-spring:latest"
+fdc18a5d485ac63af61f4b35e20586f47e508a872dfef87151b667cb3e687ec6
+[INFO] Started jaxrs-hello-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[INFO] BASE = http://localhost:8080
+[PASS] GET /helloworld -> 200 text/html
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__jaxrs-hello__quarkus__spring/run_3/output'
+docker rm -f "jaxrs-hello-spring"
+jaxrs-hello-spring
+[INFO] Container removed (if it existed)
+docker rmi "jaxrs-hello-spring:latest"
+Untagged: jaxrs-hello-spring:latest
+Deleted: sha256:2e908702f00cbbfafa736c91613113739b6cac4bb10ae340422394c9396305ed
+docker image prune -f
+Deleted Images:
+deleted: sha256:1bdf9cd4d45196b15727378d57987fecd55223294665eea81f993135d85c6933
+deleted: sha256:671d67b6b1303e4ddbcee018f25ef121b68e2922ad49e953fe45eaeff37cf0f8
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__jaxrs-hello__quarkus__spring/run_3/output'

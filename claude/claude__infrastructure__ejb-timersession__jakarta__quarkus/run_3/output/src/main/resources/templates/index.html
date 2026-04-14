@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Session - An EJB timer service session bean example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .success-message {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .info-box {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Timer Page</h1>
+
+        {#if message}
+        <div class="success-message">{message}</div>
+        {/if}
+
+        <div class="info-box">
+            <p><strong>Last programmatic timeout:</strong> {lastProgrammaticTimeout}</p>
+            <p><strong>Last automatic timeout:</strong> {lastAutomaticTimeout}</p>
+        </div>
+
+        <p>Set a programmatic timer here.</p>
+
+        <form method="post" action="/set-timer">
+            <button type="submit" class="button">Set Timer</button>
+            <button type="button" class="button" onclick="location.reload()">Refresh</button>
+        </form>
+
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
+            <p><em>This application demonstrates Quarkus Scheduler functionality (migrated from Jakarta EE EJB Timer Service).</em></p>
+        </div>
+    </div>
+</body>
+</html>

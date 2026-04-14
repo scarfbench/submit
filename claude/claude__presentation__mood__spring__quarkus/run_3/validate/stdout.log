@@ -1,0 +1,57 @@
+docker build -f Dockerfile -t "mood-quarkus:latest" .
+[INFO] Built image: mood-quarkus:latest
+### Run the container in detached mode
+docker run -d --name "mood-quarkus" "mood-quarkus:latest"
+7676c4bfc86b5b449ba5e90815af77f06f820990d1e9e37b1a32e46e2d4fe1d6
+[INFO] Started mood-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.
+[PASS] GET /report -> 200
+[WARN] Mood not found in response
+[PASS] Duke image displayed: duke waving
+[PASS] Valid HTML structure
+[WARN] Servlet title not found
+
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__mood__spring__quarkus/run_3/output'
+docker rm -f "mood-quarkus"
+mood-quarkus
+[INFO] Container removed (if it existed)
+docker rmi "mood-quarkus:latest"
+Untagged: mood-quarkus:latest
+Deleted: sha256:4af59148d28f2bb33e0fd3ccfd99fcb68da7f06e33c9b8e08a879d89cb7e3406
+docker image prune -f
+Deleted Images:
+deleted: sha256:35f94f22dc6310700bb518410dcfe91e2606e5e462fc2e05b5b6792e3c8e3e6e
+deleted: sha256:b8e1302dc125e7d570dfc5d1d633d0cb4d60774b9dd7f18029759503dab99fe6
+deleted: sha256:542f01fe1a9ff92b2797b5aed95f06ce49c737880b845888e362f2243b183c75
+deleted: sha256:87ff550e0450b34dc2654edc714dadf4a987ee97a2c207422f62c0a29a24d895
+deleted: sha256:24ac1604bfab3b7c3f9527aba6100f1880467e22d14f6222a69f29fd9e95c3db
+deleted: sha256:71e51529363342676358a4b66f09c37e844ada974b3b63baad0a0f5b5ce17d2c
+deleted: sha256:d574cfb91264445af9638b446208e69b6d99f0bb182fa74d713c02e2f5773136
+deleted: sha256:252fedd080a22715d2df7af264170370fa80a5e82b3fb75fc2cc732088677375
+deleted: sha256:c6e0cbfa2551084385167695e0d8ace338ee4069d7de44d7e7c0ef5bddd7ae4c
+deleted: sha256:3408c15aa21f8bd0c819d3d635ab46b5758fdb43dfe958be60af1cff3010e948
+deleted: sha256:bf3bc7e2027be2f3fee1a188a54aaa38d947449b1bf6949d9fe408631d47e406
+deleted: sha256:0dedbf4f28bbf4953526f07ee1fd257fa0e5c7eaf2a893b3d63373a7fba5b70a
+deleted: sha256:1e460565f757ae3f23a2e154cb0e111c95804bf190d827530919cb60aedd3ae3
+deleted: sha256:3a819d7cc6cb8b86d999a76b1e2f612741a28e89c7e19f04597c1ad24d8de213
+deleted: sha256:3202a48329479788e060cfd16784f782ee447f4759edc496c1f2bf5dedcc2d53
+deleted: sha256:cf590b4b641bdbd57504d2b038354caa989dec0e8c5b84fdd0b7cc3445479ec0
+deleted: sha256:cdf900f6e646ac38f415d1273773756a3272417187cbb4d77c233e9683d497cb
+deleted: sha256:f5190d452c12a9c5dfc06f72a87b138962add6c247b2223a7070321cb66145ce
+deleted: sha256:7d107439a9f9372ef5531fc693e283e7a7dfd1c7a15073f50d7b2ddd97fc1b39
+deleted: sha256:e021bacf8db2a89aba71924ad2a34dbde8cb45c1ea170192de64fc66d50651de
+deleted: sha256:7da20fda269c87e19e4207acee76bdc29e21dec412ef217f7138a511cbfc1eeb
+deleted: sha256:703be2f25f547218468ec3caa0c80c70a7f5a67cea83529ec2f3fbbf5fd5fb0f
+deleted: sha256:b25b635eacf9245b3cd39c0d4b85d26e00c2664db8c9cc0559220a593f3d26df
+deleted: sha256:af9ed3169d85430f13e5aba818ee5a0272dd1e115dc769a5fdaf10783d655d91
+deleted: sha256:99e8460a64d28f06233313162b2841b71ddf11eeae6d980962df3f9230d9d3ee
+deleted: sha256:d828a47042c3471c318a50501e48fd87208f2e7c608d6036b14632cd1a9fa749
+deleted: sha256:41f6d10385c3d9b5a414e426e498a79db097d8022d96a29a540f77af2380f54e
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__mood__spring__quarkus/run_3/output'

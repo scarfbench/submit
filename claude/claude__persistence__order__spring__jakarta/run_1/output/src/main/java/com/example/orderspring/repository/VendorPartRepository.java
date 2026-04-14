@@ -1,0 +1,46 @@
+package com.example.orderspring.repository;
+
+import com.example.orderspring.entity.VendorPart;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
+import java.util.List;
+
+@Stateless
+public class VendorPartRepository {
+
+    @PersistenceContext(unitName = "order-pu")
+    private EntityManager em;
+
+    public Double findAverageVendorPartPrice() {
+        return em.createQuery("SELECT AVG(vp.price) FROM VendorPart vp", Double.class)
+                 .getSingleResult();
+    }
+
+    public Double findTotalVendorPartPricePerVendor(int vendorId) {
+        return em.createQuery(
+                "SELECT SUM(vp.price) FROM VendorPart vp WHERE vp.vendor.vendorId = :id", Double.class)
+                .setParameter("id", vendorId)
+                .getSingleResult();
+    }
+
+    public List<VendorPart> findAllVendorParts() {
+        return em.createQuery("SELECT vp FROM VendorPart vp ORDER BY vp.vendorPartNumber", VendorPart.class)
+                 .getResultList();
+    }
+
+    public VendorPart save(VendorPart vendorPart) {
+        if (vendorPart.getVendorPartNumber() == null) {
+            em.persist(vendorPart);
+            return vendorPart;
+        }
+        VendorPart existing = em.find(VendorPart.class, vendorPart.getVendorPartNumber());
+        if (existing == null) {
+            em.persist(vendorPart);
+            return vendorPart;
+        } else {
+            return em.merge(vendorPart);
+        }
+    }
+}

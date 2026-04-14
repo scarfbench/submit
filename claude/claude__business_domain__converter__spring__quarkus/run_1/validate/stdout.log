@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "converter-quarkus":latest .
+[INFO] Built image: converter-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "converter-quarkus" "converter-quarkus":latest
+55ae86cfef51539cf7877189881bcced73fcc7502384e380c084e06d104e6544
+[INFO] Started converter-quarkus, waiting for app to start...
+### Check for startup failure or success
+[ERROR] Container exited before startup success:
+Error response from daemon: No such container: converter-quarkus
