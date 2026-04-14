@@ -1,0 +1,119 @@
+name: Scarf Validate
+
+# Stage 2 of 3. Triggered by completion of Scarf Package. Runs from the
+# default branch with access to HARNESS_TOKEN. The token is used ONLY to
+# clone the private harness, then scrubbed from the environment before any
+# PR-supplied code (make test / Docker build) runs.
+on:
+  workflow_run:
+    workflows: ["Scarf Package"]
+    types: [completed]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download submission payload
+        uses: actions/download-artifact@v4
+        with:
+          name: submission-payload
+          path: submissions
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout eval harness
+        uses: actions/checkout@v4
+        with:
+          repository: scarfbench/scarfbench-eval-harness
+          token: ${{ secrets.HARNESS_TOKEN }}
+          path: harness
+          ref: main
+          persist-credentials: false
+
+      - name: Scrub harness credentials
+        # Belt-and-suspenders: persist-credentials:false should already prevent
+        # the token from landing in .git/config, but ensure nothing lingers.
+        run: |
+          set -euo pipefail
+          rm -rf harness/.git
+          # Confirm no token leaked into the tree.
+          if grep -rq 'ghp_\|github_pat_' harness; then
+            echo "ERROR: token-like string found in harness checkout" >&2
+            exit 1
+          fi
+
+      - name: Install scarfbench-cli
+        run: |
+          curl --proto '=https' --tlsv1.2 -LsSf \
+            https://github.com/scarfbench/scarf/releases/latest/download/scarfbench-cli-installer.sh | sh
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+          scarf --version
+
+      - name: Discover conversion roots
+        id: discover
+        run: |
+          set -euo pipefail
+          mapfile -t dirs < <(
+            find submissions -type f -path '*/run_*/metadata.json' -printf '%h\n' \
+              | xargs -n1 dirname \
+              | sort -u
+          )
+          {
+            echo 'dirs<<EOF'
+            printf '%s\n' "${dirs[@]}"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+          echo "Found ${#dirs[@]} conversion root(s)"
+
+      - name: Validate (runs make test in Docker via scarf)
+        env:
+          DIRS: ${{ steps.discover.outputs.dirs }}
+        run: |
+          set -euo pipefail
+          while IFS= read -r dir; do
+            [ -z "$dir" ] && continue
+            echo "::group::$dir"
+            scarf validate \
+              --conversions-dir "$dir" \
+              --validations-dir harness \
+              --timeout 5
+            echo "::endgroup::"
+          done <<< "$DIRS"
+
+      - name: Generate leaderboard(s)
+        env:
+          DIRS: ${{ steps.discover.outputs.dirs }}
+        run: |
+          set -euo pipefail
+          while IFS= read -r dir; do
+            [ -z "$dir" ] && continue
+            echo "::group::Leaderboard for $dir"
+            scarf validate \
+              --conversions-dir "$dir" \
+              --validations-dir harness \
+              --dont-rerun \
+              --leaderboard-out
+            echo "::endgroup::"
+          done <<< "$DIRS"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: leaderboard
+          path: submissions/**/*__*.json
+          if-no-files-found: warn
+
+      - name: Forward PR metadata
+        run: |
+          mkdir -p pr-meta
+          cp submissions/.pr-meta/number pr-meta/number
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-meta
+          path: pr-meta/
+          if-no-files-found: error
