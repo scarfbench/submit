@@ -145,7 +145,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: submission-payload
-          path: .
+          path: submissions
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -170,6 +170,8 @@ jobs:
 
       - name: Overlay shard run.log files onto tree
         run: |
+          # shard-out contains paths like submissions/<vendor>/.../run_N/run.log
+          # rsync into ./ so it merges with the payload at submissions/
           if [ -d shard-out ]; then
             rsync -a shard-out/ ./
           fi
