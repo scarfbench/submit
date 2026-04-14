@@ -64,6 +64,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: scarfbench/scarfbench-eval-harness
+          token: ${{ secrets.HARNESS_TOKEN }}
           path: harness
           ref: main
 
@@ -133,6 +134,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: scarfbench/scarfbench-eval-harness
+          token: ${{ secrets.HARNESS_TOKEN }}
           path: harness
           ref: main
 
