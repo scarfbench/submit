@@ -1,0 +1,41 @@
+name: Reject PRs targeting main
+
+# Runs on the base branch's workflow file (main), so it cannot be bypassed
+# by modifications in the PR.
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  reject:
+    # Allow maintainers to still open PRs to main for infrastructure changes.
+    if: >-
+      github.event.pull_request.author_association != 'OWNER' &&
+      github.event.pull_request.author_association != 'MEMBER' &&
+      github.event.pull_request.author_association != 'COLLABORATOR'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const body = [
+              "Submissions must target the `submission` branch, not `main`.",
+              "",
+              "Please re-open this pull request with `submission` as the base branch.",
+              "You can use this pre-filled URL:",
+              "",
+              "```",
+              `https://github.com/${owner}/${repo}/compare/submission...${context.payload.pull_request.head.repo.owner.login}:${repo}:main?expand=1`,
+              "```",
+              "",
+              "See the repository README for full instructions.",
+            ].join('\n');
+            await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            await github.rest.issues.update({ owner, repo, issue_number, state: 'closed' });
