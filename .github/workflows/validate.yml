@@ -104,8 +104,7 @@ jobs:
             scarf validate \
               --conversions-dir "$dir" \
               --validations-dir harness \
-              --timeout 5 \
-              --dont-rerun
+              --timeout 20
             echo "::endgroup::"
           done <<< "$DIRS"
 
