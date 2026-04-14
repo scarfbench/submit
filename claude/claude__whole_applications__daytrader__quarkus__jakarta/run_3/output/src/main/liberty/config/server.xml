@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="DayTrader Jakarta EE">
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint" httpPort="8080" httpsPort="9443" host="*"/>
+
+    <basicRegistry id="basic" realm="BasicRealm"/>
+
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2-*.jar"/>
+    </library>
+
+    <dataSource id="DefaultDataSource" jndiName="jdbc/TradeDataSource">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties URL="jdbc:h2:mem:tradedb;DB_CLOSE_DELAY=-1" user="sa" password=""/>
+    </dataSource>
+
+    <webApplication location="daytrader.war" contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+</server>

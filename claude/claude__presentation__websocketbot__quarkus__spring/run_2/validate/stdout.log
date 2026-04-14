@@ -1,0 +1,53 @@
+docker build -f Dockerfile -t "websocketbot-spring:latest" .
+[INFO] Built image: websocketbot-spring:latest
+### Run the container in detached mode
+docker run -d --name "websocketbot-spring" "websocketbot-spring:latest"
+3687ee21b0328e13e11b61f3e6fd4e22b660c60c3b5d77049e671b8ec18ff2fc
+[INFO] Started websocketbot-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /index.html -> 200
+[PASS] HTML content valid
+[PASS] Join message successful
+[PASS] Duke greeting: Hi there!!
+
+--- Testing: 'How are you?' ---
+[PASS] Duke responded: I'm doing great, thank you!
+[PASS] Response contains expected content: 'great'
+
+--- Testing: 'How old are you?' ---
+[PASS] Duke responded: I'm 31 years old.
+[PASS] Response contains expected content: 'years old'
+
+--- Testing: 'When is your birthday?' ---
+[PASS] Duke responded: My birthday is on May 23rd. Thanks for asking!
+[PASS] Response contains expected content: 'May 23rd'
+
+--- Testing: 'What is your favorite color?' ---
+[PASS] Duke responded: My favorite color is blue. What's yours?
+[PASS] Response contains expected content: 'blue'
+
+--- Testing: 'What is your name?' ---
+[PASS] Duke responded: Sorry, I did not understand what you said. You can ask me how I'm doing today; how old I am; or what my favorite color is.
+[PASS] Response contains expected content: 'Sorry, I did not understand'
+
+--- Testing non-targeted message ---
+[PASS] No response to non-targeted message (as expected)
+
+[PASS] All bot functionality tests passed!
+[PASS] WebSocket functionality working
+
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__websocketbot__quarkus__spring/run_2/output'
+docker rm -f "websocketbot-spring"
+websocketbot-spring
+[INFO] Container removed (if it existed)
+docker rmi "websocketbot-spring:latest"
+Untagged: websocketbot-spring:latest
+Deleted: sha256:232727e0bc450a291932673a8d14e91c974a5068d2a7b97df6c1a300d1bab20b
+docker image prune -f
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__websocketbot__quarkus__spring/run_2/output'

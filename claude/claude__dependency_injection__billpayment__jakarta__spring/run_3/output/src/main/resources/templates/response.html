@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Payment: Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bill Payment: Result</h2>
+    <h3>
+        Amount Paid with
+        <span th:if="${paymentBean.paymentOption == 1}">Debit Card: </span>
+        <span th:if="${paymentBean.paymentOption == 2}">Credit Card: </span>
+        <span th:text="${#numbers.formatCurrency(paymentBean.value)}">$0.00</span>
+    </h3>
+
+    <form action="#" th:action="@{/}" method="get">
+        <p><button type="submit" id="back">Back</button></p>
+    </form>
+</body>
+</html>

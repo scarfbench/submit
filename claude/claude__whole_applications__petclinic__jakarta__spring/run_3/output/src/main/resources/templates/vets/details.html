@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}"></head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<div class="container">
+    <h1 th:text="${vet.lastName + ', ' + vet.firstName}">Vet</h1>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">Specialties</h5>
+            <span th:each="specialty : ${vet.specialtiesAsList}" class="badge bg-info me-1" th:text="${specialty.name}">Specialty</span>
+            <span th:if="${vet.nrOfSpecialties == 0}">none</span>
+        </div>
+    </div>
+    <a th:href="@{/vets}" class="btn btn-secondary mt-3">Back to Veterinarians</a>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

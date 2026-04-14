@@ -1,0 +1,61 @@
+<h2>Owner Information</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th th:text="${msg.name}">Name</th>
+        <td><b th:text="${owner.firstName + ' ' + owner.lastName}">Name</b></td>
+    </tr>
+    <tr>
+        <th th:text="${msg.address}">Address</th>
+        <td th:text="${owner.address}">Address</td>
+    </tr>
+    <tr>
+        <th th:text="${msg.city}">City</th>
+        <td th:text="${owner.city}">City</td>
+    </tr>
+    <tr>
+        <th th:text="${msg.telephone}">Telephone</th>
+        <td th:text="${owner.telephone}">Phone</td>
+    </tr>
+</table>
+
+<a th:href="'/petclinic/owners/' + ${owner.id} + '/edit'" class="btn btn-primary">Edit Owner</a>
+<a th:href="'/petclinic/owners/' + ${owner.id} + '/pets/new'" class="btn btn-primary">Add New Pet</a>
+
+<br /><br /><br />
+<div th:if="${owner.pets != null and !owner.pets.isEmpty()}">
+    <h2 th:text="${msg.pets_and_visits}">Pets and Visits</h2>
+
+    <table class="table table-striped">
+        <tr th:each="pet : ${owner.pets}">
+            <td valign="top">
+                <dl class="dl-horizontal">
+                    <dt th:text="${msg.name}">Name</dt>
+                    <dd th:text="${pet.name}">Pet name</dd>
+                    <dt th:text="${msg.birthdate}">Birthdate</dt>
+                    <dd th:text="${pet.birthDate}">Date</dd>
+                    <dt th:text="${msg.type}">Type</dt>
+                    <dd th:text="${pet.type != null ? pet.type.name : ''}">Type</dd>
+                </dl>
+            </td>
+            <td valign="top">
+                <table class="table-condensed">
+                    <thead>
+                        <tr>
+                            <th th:text="${msg.visit_date}">Visit Date</th>
+                            <th th:text="${msg.description}">Description</th>
+                        </tr>
+                        <tr>
+                            <td><a th:href="'/petclinic/owners/' + ${owner.id} + '/pets/' + ${pet.id} + '/edit'" th:text="${msg.edit_pet}">Edit Pet</a></td>
+                            <td><a th:href="'/petclinic/owners/' + ${owner.id} + '/pets/' + ${pet.id} + '/visits/new'" th:text="${msg.add_visit}">Add Visit</a></td>
+                        </tr>
+                    </thead>
+                    <tr th:each="visit : ${pet.sortedVisits}">
+                        <td th:text="${visit.date}">Date</td>
+                        <td th:text="${visit.description != null ? visit.description : ''}">Description</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

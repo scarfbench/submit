@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}"></head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<div class="container">
+    <h1 th:text="${petType.name}">Pet Type</h1>
+    <div class="card mt-3">
+        <div class="card-body">
+            <p><strong>ID:</strong> <span th:text="${petType.id}"></span></p>
+            <p><strong>Name:</strong> <span th:text="${petType.name}"></span></p>
+        </div>
+    </div>
+    <a th:href="@{/petTypes}" class="btn btn-secondary mt-3">Back to Pet Types</a>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

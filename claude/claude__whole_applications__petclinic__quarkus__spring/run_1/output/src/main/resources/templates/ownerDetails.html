@@ -1,0 +1,76 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:replace="~{fragments/layout :: head}" />
+</head>
+<body>
+  <nav th:replace="~{fragments/layout :: navbar}"></nav>
+  <div class="container-fluid">
+    <div class="container xd-container">
+      <h2>Owner Information</h2>
+
+      <table class="table table-striped">
+        <tr>
+          <th>Name</th>
+          <td><b th:text="${owner.firstName} + ' ' + ${owner.lastName}"></b></td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <td th:text="${owner.address}"></td>
+        </tr>
+        <tr>
+          <th>City</th>
+          <td th:text="${owner.city}"></td>
+        </tr>
+        <tr>
+          <th>Telephone</th>
+          <td th:text="${owner.telephone}"></td>
+        </tr>
+      </table>
+
+      <a th:href="@{/owners/{id}/edit(id=${owner.id})}" class="btn btn-primary">Edit Owner</a>
+      <a th:href="@{/owners/{id}/pets/new(id=${owner.id})}" class="btn btn-primary">Add New Pet</a>
+
+      <br /><br /><br />
+
+      <div th:if="${owner.pets != null and !owner.pets.isEmpty()}">
+        <h2>Pets and Visits</h2>
+
+        <table class="table table-striped">
+          <tr th:each="pet : ${owner.pets}">
+            <td valign="top">
+              <dl class="dl-horizontal">
+                <dt>Name</dt>
+                <dd th:text="${pet.name}"></dd>
+                <dt>Birthdate</dt>
+                <dd th:text="${pet.formattedBirthDate}"></dd>
+                <dt>Type</dt>
+                <dd th:text="${pet.type != null ? pet.type.name : ''}"></dd>
+              </dl>
+            </td>
+            <td valign="top">
+              <table class="table-condensed">
+                <thead>
+                  <tr>
+                    <th>Visit Date</th>
+                    <th>Description</th>
+                  </tr>
+                  <tr>
+                    <td><a th:href="@{/owners/{ownerId}/pets/{petId}/edit(ownerId=${owner.id},petId=${pet.id})}">Edit Pet</a></td>
+                    <td><a th:href="@{/owners/{ownerId}/pets/{petId}/visits/new(ownerId=${owner.id},petId=${pet.id})}">Add Visit</a></td>
+                  </tr>
+                </thead>
+                <tr th:each="visit : ${pet.sortedVisits}">
+                  <td th:text="${visit.formattedDate}"></td>
+                  <td th:text="${visit.description != null ? visit.description : ''}"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

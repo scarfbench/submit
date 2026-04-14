@@ -1,0 +1,64 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 41.56kB done
+#5 DONE 0.0s
+
+#6 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#7 CACHED
+
+#8 [5/9] RUN playwright install --with-deps chromium
+#8 CACHED
+
+#9 [6/9] WORKDIR /app
+#9 CACHED
+
+#10 [7/9] COPY . .
+#10 CACHED
+
+#11 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#11 CACHED
+
+#12 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:4615d0a8e6c74edd43ffc28f66032121fc96e1a582fa36f41e4c3417d87a7acc done
+#14 exporting config sha256:36f5c612abb7b426a6f294eae8cd245faaea7ab4ecfc6bcb0ec8180c44cec81e done
+#14 exporting attestation manifest sha256:9a11afaa3b4e8359344903367056fa0ebba6470202c7f0594752cd537428b6d0 0.1s done
+#14 exporting manifest list sha256:148794f32dbe7e6bbb94360c6fd57e2fb5bf6560887ec23d9a228bba6f7eda70
+#14 exporting manifest list sha256:148794f32dbe7e6bbb94360c6fd57e2fb5bf6560887ec23d9a228bba6f7eda70 0.0s done
+#14 naming to docker.io/library/timersession-spring:7ea5ce69 done
+#14 unpacking to docker.io/library/timersession-spring:7ea5ce69 done
+#14 DONE 0.2s
+[INFO] Built image: timersession-spring:7ea5ce69
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name timersession-spring-7286a2c4 timersession-spring:7ea5ce69
+aa48cb7647ecb674afeac1d2b7c899140694361d488a78d448a04a1a9f4be736
+[INFO] Started timersession-spring-7286a2c4, waiting for app to start...
+no main manifest attribute, in target/timersession-quarkus-1.0.0-SNAPSHOT.jar

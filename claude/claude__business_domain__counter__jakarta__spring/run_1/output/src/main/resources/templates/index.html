@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Application</title>
+    <link rel="stylesheet" th:href="@{/css/default.css}">
+</head>
+<body>
+    <h1>This page has been accessed <span th:text="${hitCount}">0</span> time(s).</h1>
+    <p>Hooray!</p>
+</body>
+</html>

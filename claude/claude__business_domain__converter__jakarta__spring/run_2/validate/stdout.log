@@ -1,0 +1,11 @@
+docker build -f Dockerfile -t "converter-spring":latest .
+[INFO] Built image: converter-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "converter-spring" "converter-spring":latest
+826d968dbd52fe06a4f4b4d34d11f465d986bd23212172c73871528a7571028a
+[INFO] Started converter-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+---[ 00:50:49 - Smoke test ]---

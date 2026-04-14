@@ -1,0 +1,29 @@
+/*
+ * Copyright (c), Eclipse Foundation, Inc. and its licensors.
+ *
+ * All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Distribution License v1.0, which is available at
+ * https://www.eclipse.org/org/documents/edl-v10.php
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+package jakarta.tutorial.billpayment.payment;
+
+import jakarta.tutorial.billpayment.event.PaymentEvent;
+
+/**
+ * Spring event wrapper for Credit payment events.
+ */
+public class CreditPaymentEvent {
+    private final PaymentEvent paymentEvent;
+
+    public CreditPaymentEvent(PaymentEvent paymentEvent) {
+        this.paymentEvent = paymentEvent;
+    }
+
+    public PaymentEvent getPaymentEvent() {
+        return paymentEvent;
+    }
+}

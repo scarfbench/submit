@@ -1,0 +1,214 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 970B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.1s
+
+#4 [5/9] RUN playwright install --with-deps chromium
+#4 CACHED
+
+#5 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#5 CACHED
+
+#6 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 192.86kB done
+#10 DONE 0.0s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 DONE 0.3s
+
+#13 [ 9/10] RUN mvn dependency:go-offline -q
+#13 DONE 24.9s
+
+#14 [10/10] RUN mvn package -DskipTests
+#14 0.835 [INFO] Scanning for projects...
+#14 0.866 [INFO] 
+#14 0.866 [INFO] ----------------< quarkus.examples.tutorial:converter >-----------------
+#14 0.866 [INFO] Building converter 1.0.0-SNAPSHOT
+#14 0.866 [INFO]   from pom.xml
+#14 0.866 [INFO] --------------------------------[ war ]---------------------------------
+#14 1.034 [INFO] 
+#14 1.034 [INFO] --- resources:3.3.1:resources (default-resources) @ converter ---
+#14 1.113 [INFO] Copying 1 resource from src/main/resources to target/classes
+#14 1.115 [INFO] 
+#14 1.115 [INFO] --- compiler:3.14.0:compile (default-compile) @ converter ---
+#14 1.182 [INFO] Recompiling the module because of changed source code.
+#14 1.187 [INFO] Compiling 3 source files with javac [debug parameters release 17] to target/classes
+#14 1.564 [INFO] 
+#14 1.564 [INFO] --- resources:3.3.1:testResources (default-testResources) @ converter ---
+#14 1.566 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#14 1.566 [INFO] 
+#14 1.566 [INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ converter ---
+#14 1.568 [INFO] No sources to compile
+#14 1.568 [INFO] 
+#14 1.569 [INFO] --- surefire:3.5.3:test (default-test) @ converter ---
+#14 1.646 [INFO] Tests are skipped.
+#14 1.646 [INFO] 
+#14 1.647 [INFO] --- war:3.4.0:war (default-war) @ converter ---
+#14 1.800 [INFO] Packaging webapp
+#14 1.801 [INFO] Assembling webapp [converter] in [/app/target/converter]
+#14 1.804 [INFO] Processing war project
+#14 1.823 [INFO] Building war: /app/target/converter.war
+#14 1.849 [INFO] ------------------------------------------------------------------------
+#14 1.849 [INFO] BUILD SUCCESS
+#14 1.849 [INFO] ------------------------------------------------------------------------
+#14 1.849 [INFO] Total time:  1.022 s
+#14 1.849 [INFO] Finished at: 2026-03-24T02:50:55Z
+#14 1.849 [INFO] ------------------------------------------------------------------------
+#14 DONE 1.9s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 1.5s done
+#15 exporting manifest sha256:2630ca39869a2f6256a7fdd6093b443a4c4a7e74508bcc1102b10ac0cd4bfa61 0.0s done
+#15 exporting config sha256:fc2ad3873130d05569ab1a7a01b0d66daf38b4a63760f0d7de7c4e0ceb595d3f 0.0s done
+#15 exporting attestation manifest sha256:c6255646ae2e2477ef3e194d9adb90660b6f14a7ef449a0ccf82556fa76925c1
+#15 exporting attestation manifest sha256:c6255646ae2e2477ef3e194d9adb90660b6f14a7ef449a0ccf82556fa76925c1 0.1s done
+#15 exporting manifest list sha256:310d78136c8cc1141545f0946ad564304fc2b5b096f5239815b02c9072d22b15 0.0s done
+#15 naming to docker.io/library/converter-liberty:6252de4f
+#15 naming to docker.io/library/converter-liberty:6252de4f done
+#15 unpacking to docker.io/library/converter-liberty:6252de4f
+#15 unpacking to docker.io/library/converter-liberty:6252de4f 0.4s done
+#15 DONE 2.1s
+[INFO] Built image: converter-liberty:6252de4f
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name converter-liberty-e14c5189 converter-liberty:6252de4f
+f7a871eecb008d927b5532d8614079833a4928a6dc85b415b73c5b53502846f8
+[INFO] Started converter-liberty-e14c5189, waiting for app to start...
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 3.1 kBProgress (1): 7.7 kBProgress (1): 12 kB Progress (1): 17 kBProgress (1): 20 kBProgress (1): 21 kBProgress (2): 21 kB | 4.6 kBProgress (2): 21 kB | 9.7 kBProgress (2): 21 kB | 14 kB                            Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (14 kB at 68 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (21 kB at 91 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.pom
+Progress (1): 759 BProgress (1): 1.8 kBProgress (1): 4.4 kBProgress (1): 7.8 kBProgress (1): 9.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.pom (9.1 kB at 233 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/34/maven-plugins-34.pom
+Progress (1): 757 BProgress (1): 1.7 kBProgress (1): 3.7 kBProgress (1): 6.9 kBProgress (1): 8.5 kBProgress (1): 11 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/34/maven-plugins-34.pom (11 kB at 281 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.jar
+Progress (1): 0.9/41 kBProgress (1): 2.3/41 kBProgress (1): 3.6/41 kBProgress (1): 5.0/41 kBProgress (1): 6.4/41 kBProgress (1): 7.7/41 kBProgress (1): 9.1/41 kBProgress (1): 10/41 kB Progress (1): 12/41 kBProgress (1): 13/41 kBProgress (1): 15/41 kBProgress (1): 16/41 kBProgress (1): 17/41 kBProgress (1): 19/41 kBProgress (1): 20/41 kBProgress (1): 21/41 kBProgress (1): 23/41 kBProgress (1): 24/41 kBProgress (1): 25/41 kBProgress (1): 27/41 kBProgress (1): 28/41 kBProgress (1): 30/41 kBProgress (1): 31/41 kBProgress (1): 32/41 kBProgress (1): 34/41 kBProgress (1): 35/41 kBProgress (1): 36/41 kBProgress (1): 38/41 kBProgress (1): 39/41 kBProgress (1): 41 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.jar (41 kB at 1.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.pom
+Progress (1): 744 BProgress (1): 2.1 kBProgress (1): 4.8 kBProgress (1): 8.3 kBProgress (1): 10 kB Progress (1): 14 kBProgress (1): 15 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.pom (15 kB at 400 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom
+Progress (1): 773 BProgress (1): 2.4 kBProgress (1): 4.9 kBProgress (1): 7.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom (7.4 kB at 189 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.jar
+Progress (1): 3.8/240 kBProgress (1): 8.0/240 kBProgress (1): 12/240 kB Progress (1): 16/240 kBProgress (1): 21/240 kBProgress (1): 25/240 kBProgress (1): 29/240 kBProgress (1): 33/240 kBProgress (1): 37/240 kBProgress (1): 41/240 kBProgress (1): 46/240 kBProgress (1): 50/240 kBProgress (1): 54/240 kBProgress (1): 58/240 kBProgress (1): 63/240 kBProgress (1): 67/240 kBProgress (1): 71/240 kBProgress (1): 75/240 kBProgress (1): 79/240 kBProgress (1): 84/240 kBProgress (1): 88/240 kBProgress (1): 92/240 kBProgress (1): 96/240 kBProgress (1): 101/240 kBProgress (1): 105/240 kBProgress (1): 109/240 kBProgress (1): 113/240 kBProgress (1): 117/240 kBProgress (1): 122/240 kBProgress (1): 126/240 kBProgress (1): 130/240 kBProgress (1): 134/240 kBProgress (1): 139/240 kBProgress (1): 143/240 kBProgress (1): 147/240 kBProgress (1): 160/240 kBProgress (1): 176/240 kBProgress (1): 193/240 kBProgress (1): 209/240 kBProgress (1): 225/240 kBProgress (1): 240 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.jar (240 kB at 3.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.pom
+Progress (1): 806 BProgress (1): 3.6 kBProgress (1): 6.6 kBProgress (1): 9.2 kBProgress (1): 9.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.pom (9.8 kB at 328 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/3.0.1/maven-release-3.0.1.pom
+Progress (1): 805 BProgress (1): 2.5 kBProgress (1): 4.2 kBProgress (1): 11 kB Progress (1): 11 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/3.0.1/maven-release-3.0.1.pom (11 kB at 329 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.jar
+Progress (1): 7.7/61 kBProgress (1): 12/61 kB Progress (1): 28/61 kBProgress (1): 44/61 kBProgress (1): 61/61 kBProgress (1): 61 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.jar (61 kB at 1.6 MB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.982 s
+[INFO] Finished at: 2026-03-24T02:51:00Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] No plugin found for prefix 'liberty' in the current project and in the plugin groups [org.apache.maven.plugins, org.codehaus.mojo] available from the repositories [local (/root/.m2/repository), central (https://repo.maven.apache.org/maven2)] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/NoPluginFoundForPrefixException
+\[ERROR\] Build failed in container:
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 3.1 kBProgress (1): 7.7 kBProgress (1): 12 kB Progress (1): 17 kBProgress (1): 20 kBProgress (1): 21 kBProgress (2): 21 kB | 4.6 kBProgress (2): 21 kB | 9.7 kBProgress (2): 21 kB | 14 kB                            Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (14 kB at 68 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (21 kB at 91 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.pom
+Progress (1): 759 BProgress (1): 1.8 kBProgress (1): 4.4 kBProgress (1): 7.8 kBProgress (1): 9.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.pom (9.1 kB at 233 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/34/maven-plugins-34.pom
+Progress (1): 757 BProgress (1): 1.7 kBProgress (1): 3.7 kBProgress (1): 6.9 kBProgress (1): 8.5 kBProgress (1): 11 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/34/maven-plugins-34.pom (11 kB at 281 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.jar
+Progress (1): 0.9/41 kBProgress (1): 2.3/41 kBProgress (1): 3.6/41 kBProgress (1): 5.0/41 kBProgress (1): 6.4/41 kBProgress (1): 7.7/41 kBProgress (1): 9.1/41 kBProgress (1): 10/41 kB Progress (1): 12/41 kBProgress (1): 13/41 kBProgress (1): 15/41 kBProgress (1): 16/41 kBProgress (1): 17/41 kBProgress (1): 19/41 kBProgress (1): 20/41 kBProgress (1): 21/41 kBProgress (1): 23/41 kBProgress (1): 24/41 kBProgress (1): 25/41 kBProgress (1): 27/41 kBProgress (1): 28/41 kBProgress (1): 30/41 kBProgress (1): 31/41 kBProgress (1): 32/41 kBProgress (1): 34/41 kBProgress (1): 35/41 kBProgress (1): 36/41 kBProgress (1): 38/41 kBProgress (1): 39/41 kBProgress (1): 41 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.jar (41 kB at 1.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.pom
+Progress (1): 744 BProgress (1): 2.1 kBProgress (1): 4.8 kBProgress (1): 8.3 kBProgress (1): 10 kB Progress (1): 14 kBProgress (1): 15 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.pom (15 kB at 400 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom
+Progress (1): 773 BProgress (1): 2.4 kBProgress (1): 4.9 kBProgress (1): 7.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom (7.4 kB at 189 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.jar
+Progress (1): 3.8/240 kBProgress (1): 8.0/240 kBProgress (1): 12/240 kB Progress (1): 16/240 kBProgress (1): 21/240 kBProgress (1): 25/240 kBProgress (1): 29/240 kBProgress (1): 33/240 kBProgress (1): 37/240 kBProgress (1): 41/240 kBProgress (1): 46/240 kBProgress (1): 50/240 kBProgress (1): 54/240 kBProgress (1): 58/240 kBProgress (1): 63/240 kBProgress (1): 67/240 kBProgress (1): 71/240 kBProgress (1): 75/240 kBProgress (1): 79/240 kBProgress (1): 84/240 kBProgress (1): 88/240 kBProgress (1): 92/240 kBProgress (1): 96/240 kBProgress (1): 101/240 kBProgress (1): 105/240 kBProgress (1): 109/240 kBProgress (1): 113/240 kBProgress (1): 117/240 kBProgress (1): 122/240 kBProgress (1): 126/240 kBProgress (1): 130/240 kBProgress (1): 134/240 kBProgress (1): 139/240 kBProgress (1): 143/240 kBProgress (1): 147/240 kBProgress (1): 160/240 kBProgress (1): 176/240 kBProgress (1): 193/240 kBProgress (1): 209/240 kBProgress (1): 225/240 kBProgress (1): 240 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.jar (240 kB at 3.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.pom
+Progress (1): 806 BProgress (1): 3.6 kBProgress (1): 6.6 kBProgress (1): 9.2 kBProgress (1): 9.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.pom (9.8 kB at 328 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/3.0.1/maven-release-3.0.1.pom
+Progress (1): 805 BProgress (1): 2.5 kBProgress (1): 4.2 kBProgress (1): 11 kB Progress (1): 11 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/3.0.1/maven-release-3.0.1.pom (11 kB at 329 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.jar
+Progress (1): 7.7/61 kBProgress (1): 12/61 kB Progress (1): 28/61 kBProgress (1): 44/61 kBProgress (1): 61/61 kBProgress (1): 61 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.jar (61 kB at 1.6 MB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.982 s
+[INFO] Finished at: 2026-03-24T02:51:00Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] No plugin found for prefix 'liberty' in the current project and in the plugin groups [org.apache.maven.plugins, org.codehaus.mojo] available from the repositories [local (/root/.m2/repository), central (https://repo.maven.apache.org/maven2)] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/NoPluginFoundForPrefixException
+=== DEPLOY FAIL ===
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 3.1 kBProgress (1): 7.7 kBProgress (1): 12 kB Progress (1): 17 kBProgress (1): 20 kBProgress (1): 21 kBProgress (2): 21 kB | 4.6 kBProgress (2): 21 kB | 9.7 kBProgress (2): 21 kB | 14 kB                            Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (14 kB at 68 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (21 kB at 91 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.pom
+Progress (1): 759 BProgress (1): 1.8 kBProgress (1): 4.4 kBProgress (1): 7.8 kBProgress (1): 9.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.pom (9.1 kB at 233 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/34/maven-plugins-34.pom
+Progress (1): 757 BProgress (1): 1.7 kBProgress (1): 3.7 kBProgress (1): 6.9 kBProgress (1): 8.5 kBProgress (1): 11 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/34/maven-plugins-34.pom (11 kB at 281 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.jar
+Progress (1): 0.9/41 kBProgress (1): 2.3/41 kBProgress (1): 3.6/41 kBProgress (1): 5.0/41 kBProgress (1): 6.4/41 kBProgress (1): 7.7/41 kBProgress (1): 9.1/41 kBProgress (1): 10/41 kB Progress (1): 12/41 kBProgress (1): 13/41 kBProgress (1): 15/41 kBProgress (1): 16/41 kBProgress (1): 17/41 kBProgress (1): 19/41 kBProgress (1): 20/41 kBProgress (1): 21/41 kBProgress (1): 23/41 kBProgress (1): 24/41 kBProgress (1): 25/41 kBProgress (1): 27/41 kBProgress (1): 28/41 kBProgress (1): 30/41 kBProgress (1): 31/41 kBProgress (1): 32/41 kBProgress (1): 34/41 kBProgress (1): 35/41 kBProgress (1): 36/41 kBProgress (1): 38/41 kBProgress (1): 39/41 kBProgress (1): 41 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/3.1.0/maven-antrun-plugin-3.1.0.jar (41 kB at 1.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.pom
+Progress (1): 744 BProgress (1): 2.1 kBProgress (1): 4.8 kBProgress (1): 8.3 kBProgress (1): 10 kB Progress (1): 14 kBProgress (1): 15 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.pom (15 kB at 400 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom
+Progress (1): 773 BProgress (1): 2.4 kBProgress (1): 4.9 kBProgress (1): 7.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom (7.4 kB at 189 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.jar
+Progress (1): 3.8/240 kBProgress (1): 8.0/240 kBProgress (1): 12/240 kB Progress (1): 16/240 kBProgress (1): 21/240 kBProgress (1): 25/240 kBProgress (1): 29/240 kBProgress (1): 33/240 kBProgress (1): 37/240 kBProgress (1): 41/240 kBProgress (1): 46/240 kBProgress (1): 50/240 kBProgress (1): 54/240 kBProgress (1): 58/240 kBProgress (1): 63/240 kBProgress (1): 67/240 kBProgress (1): 71/240 kBProgress (1): 75/240 kBProgress (1): 79/240 kBProgress (1): 84/240 kBProgress (1): 88/240 kBProgress (1): 92/240 kBProgress (1): 96/240 kBProgress (1): 101/240 kBProgress (1): 105/240 kBProgress (1): 109/240 kBProgress (1): 113/240 kBProgress (1): 117/240 kBProgress (1): 122/240 kBProgress (1): 126/240 kBProgress (1): 130/240 kBProgress (1): 134/240 kBProgress (1): 139/240 kBProgress (1): 143/240 kBProgress (1): 147/240 kBProgress (1): 160/240 kBProgress (1): 176/240 kBProgress (1): 193/240 kBProgress (1): 209/240 kBProgress (1): 225/240 kBProgress (1): 240 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.jar (240 kB at 3.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.pom
+Progress (1): 806 BProgress (1): 3.6 kBProgress (1): 6.6 kBProgress (1): 9.2 kBProgress (1): 9.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.pom (9.8 kB at 328 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/3.0.1/maven-release-3.0.1.pom
+Progress (1): 805 BProgress (1): 2.5 kBProgress (1): 4.2 kBProgress (1): 11 kB Progress (1): 11 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/3.0.1/maven-release-3.0.1.pom (11 kB at 329 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.jar
+Progress (1): 7.7/61 kBProgress (1): 12/61 kB Progress (1): 28/61 kBProgress (1): 44/61 kBProgress (1): 61/61 kBProgress (1): 61 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/3.0.1/maven-release-plugin-3.0.1.jar (61 kB at 1.6 MB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.982 s
+[INFO] Finished at: 2026-03-24T02:51:00Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] No plugin found for prefix 'liberty' in the current project and in the plugin groups [org.apache.maven.plugins, org.codehaus.mojo] available from the repositories [local (/root/.m2/repository), central (https://repo.maven.apache.org/maven2)] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/NoPluginFoundForPrefixException
+make: *** [Makefile:24: deploy] Error 1

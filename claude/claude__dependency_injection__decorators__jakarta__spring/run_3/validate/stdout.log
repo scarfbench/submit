@@ -1,0 +1,12 @@
+docker build -f Dockerfile -t "decorators-spring:latest" .
+[INFO] Built image: decorators-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "decorators-spring" "decorators-spring:latest"
+dc8a27cf8869e4d91df8341c29d9b55d68281e21d6f477e7c8a370aeee1d7475
+[INFO] Started decorators-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+### Confirm the HTTP endpoint is reachable from inside the container
+[INFO] Spring Boot application started and ready.
+---[ 01:08:53 - Smoke test ]---

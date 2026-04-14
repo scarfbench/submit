@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "ejb-timersession",
+  "layer": "infrastructure",
+  "repeat": 3,
+  "source_framework": "quarkus",
+  "target_framework": "jakarta",
+  "num_smoke_tests": 6,
+  "compile_ok": "FALSE",
+  "deploy_ok": "FALSE",
+  "tests_passed": 0,
+  "failure_reason": "Maven plugin not found - wrong framework build tool used; Cannot deploy - compilation failed; Cannot test - deployment failed",
+  "failure_category": "deploy_dependency",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

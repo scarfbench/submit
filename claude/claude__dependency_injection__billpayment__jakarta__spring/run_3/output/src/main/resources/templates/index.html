@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Payment Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .messagecolor {
+            margin-top: 10px;
+        }
+        .error {
+            color: #d20005;
+        }
+        .info {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h3>Bill Payment Options</h3>
+    <p>Enter an amount, select Debit Card or Credit Card, then click Pay.</p>
+
+    <form action="#" th:action="@{/pay}" th:object="${paymentBean}" method="post">
+        <p>
+            <label for="amt">Amount: $</label>
+            <input type="text" id="amt" th:field="*{value}" maxlength="15" required />
+        </p>
+
+        <label for="opt">Options:</label>
+        <div id="opt">
+            <input type="radio" id="debit" th:field="*{paymentOption}" value="1" />
+            <label for="debit">Debit Card</label>
+            <br/>
+            <input type="radio" id="credit" th:field="*{paymentOption}" value="2" />
+            <label for="credit">Credit Card</label>
+        </div>
+
+        <p><button type="submit" id="submit">Pay</button></p>
+    </form>
+
+    <form action="#" th:action="@{/reset}" method="post">
+        <p><button type="submit">Reset</button></p>
+    </form>
+
+    <div class="messagecolor">
+        <div th:if="${#fields.hasErrors('*')}" class="error">
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Error</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

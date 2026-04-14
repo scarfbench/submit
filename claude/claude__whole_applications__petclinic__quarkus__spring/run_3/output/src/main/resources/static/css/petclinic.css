@@ -1,0 +1,14 @@
+/* PetClinic CSS - Minimal styling */
+body { font-family: 'Varela Round', sans-serif; }
+.navbar-dark { background-color: #34302D; }
+.navbar-brand span { display: inline-block; width: 200px; height: 61px; }
+.container.xd-container { padding: 20px; }
+.table-striped { width: 100%; }
+.form-horizontal { max-width: 800px; margin: 0 auto; }
+.form-group { margin-bottom: 15px; }
+.control-label { font-weight: bold; }
+.btn-primary { background-color: #34302D; border-color: #34302D; }
+.btn-primary:hover { background-color: #524a44; border-color: #524a44; }
+h2 { margin-bottom: 20px; }
+.has-error { color: #a94442; }
+.help-inline { color: #a94442; font-size: 0.9em; }

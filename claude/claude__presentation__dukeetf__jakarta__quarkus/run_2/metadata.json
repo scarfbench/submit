@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "dukeetf",
+  "layer": "presentation",
+  "repeat": 2,
+  "source_framework": "jakarta",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 4,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 3,
+  "failure_reason": "1 failed, 0 errors, 3 passed out of 4 tests",
+  "failure_category": "test_failures",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

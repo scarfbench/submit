@@ -1,0 +1,92 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.09kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.1s
+
+#4 [5/9] RUN playwright install --with-deps chromium
+#4 CACHED
+
+#5 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#5 CACHED
+
+#6 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 393.15kB done
+#10 DONE 0.0s
+
+#11 [ 7/13] COPY pom.xml .
+#11 DONE 0.1s
+
+#12 [ 8/13] COPY cart-ejb/pom.xml cart-ejb/
+#12 DONE 0.1s
+
+#13 [ 9/13] COPY cart-web/pom.xml cart-web/
+#13 DONE 0.1s
+
+#14 [10/13] RUN mvn dependency:go-offline -q
+#14 2.668 [ERROR] [ERROR] Some problems were encountered while processing the POMs:
+#14 2.668 [ERROR] Child module /app/cart-app of /app/pom.xml does not exist @ 
+#14 2.668 [ERROR] Child module /app/cart-appclient of /app/pom.xml does not exist @ 
+#14 2.668 [ERROR] Child module /app/cart-common of /app/pom.xml does not exist @ 
+#14 2.668 [ERROR] Child module /app/cart-service of /app/pom.xml does not exist @ 
+#14 2.668  @ 
+#14 2.668 [ERROR] The build could not read 1 project -> [Help 1]
+#14 2.668 [ERROR]   
+#14 2.668 [ERROR]   The project quarkus.examples.tutorial.cart:parent:1.0.0-SNAPSHOT (/app/pom.xml) has 4 errors
+#14 2.668 [ERROR]     Child module /app/cart-app of /app/pom.xml does not exist
+#14 2.668 [ERROR]     Child module /app/cart-appclient of /app/pom.xml does not exist
+#14 2.668 [ERROR]     Child module /app/cart-common of /app/pom.xml does not exist
+#14 2.668 [ERROR]     Child module /app/cart-service of /app/pom.xml does not exist
+#14 2.668 [ERROR] 
+#14 2.668 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#14 2.668 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#14 2.668 [ERROR] 
+#14 2.668 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#14 2.668 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+#14 ERROR: process "/bin/sh -c mvn dependency:go-offline -q" did not complete successfully: exit code: 1
+------
+ > [10/13] RUN mvn dependency:go-offline -q:
+2.668 [ERROR]     Child module /app/cart-app of /app/pom.xml does not exist
+2.668 [ERROR]     Child module /app/cart-appclient of /app/pom.xml does not exist
+2.668 [ERROR]     Child module /app/cart-common of /app/pom.xml does not exist
+2.668 [ERROR]     Child module /app/cart-service of /app/pom.xml does not exist
+2.668 [ERROR] 
+2.668 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+2.668 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+2.668 [ERROR] 
+2.668 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+2.668 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+------
+Dockerfile:27
+--------------------
+  25 |     COPY cart-ejb/pom.xml cart-ejb/
+  26 |     COPY cart-web/pom.xml cart-web/
+  27 | >>> RUN mvn dependency:go-offline -q
+  28 |     
+  29 |     # Build application
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn dependency:go-offline -q" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: cart-spring-1ed16ef4
+make: *** [Makefile:20: compile] Error 1

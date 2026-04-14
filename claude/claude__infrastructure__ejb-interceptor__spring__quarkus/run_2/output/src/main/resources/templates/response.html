@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interceptor example response</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .message {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .info {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interceptor Example Response</h1>
+    <div class="message">
+        <p>Hello, {name}.</p>
+    </div>
+    <div class="info">
+        <strong>Note:</strong> The name was processed by the HelloInterceptor,
+        which converted it to lowercase before storing it in the bean.
+    </div>
+    <form action="/" method="get">
+        <button type="submit">Back</button>
+    </form>
+</body>
+</html>

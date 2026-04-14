@@ -1,0 +1,143 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 966B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 184.33kB 0.0s done
+#5 DONE 0.1s
+
+#6 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#8 CACHED
+
+#9 [ 5/10] RUN playwright install --with-deps chromium
+#9 CACHED
+
+#10 [ 6/10] WORKDIR /app
+#10 CACHED
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 20.3s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 2.318 [INFO] Scanning for projects...
+#13 2.377 [INFO] 
+#13 2.377 [INFO] ----------------< spring.examples.tutorial:standalone >-----------------
+#13 2.377 [INFO] Building standalone 0.0.1-SNAPSHOT
+#13 2.377 [INFO]   from pom.xml
+#13 2.377 [INFO] --------------------------------[ jar ]---------------------------------
+#13 2.706 [INFO] 
+#13 2.707 [INFO] --- resources:3.3.1:resources (default-resources) @ standalone ---
+#13 2.830 [INFO] Copying 2 resources from src/main/resources to target/classes
+#13 2.837 [INFO] 
+#13 2.837 [INFO] --- compiler:3.11.0:compile (default-compile) @ standalone ---
+#13 2.956 [INFO] Changes detected - recompiling the module! :source
+#13 2.958 [INFO] Compiling 3 source files with javac [debug target 17] to target/classes
+#13 3.514 [INFO] Annotation processing is enabled because one or more processors were found
+#13 3.514   on the class path. A future release of javac may disable annotation processing
+#13 3.514   unless at least one processor is specified by name (-processor), or a search
+#13 3.514   path is specified (--processor-path, --processor-module-path), or annotation
+#13 3.514   processing is enabled explicitly (-proc:only, -proc:full).
+#13 3.514   Use -Xlint:-options to suppress this message.
+#13 3.514   Use -proc:none to disable annotation processing.
+#13 3.515 [INFO] -------------------------------------------------------------
+#13 3.515 [WARNING] COMPILATION WARNING : 
+#13 3.515 [INFO] -------------------------------------------------------------
+#13 3.515 [WARNING] system modules path not set in conjunction with -source 17
+#13 3.515 [INFO] 1 warning
+#13 3.515 [INFO] -------------------------------------------------------------
+#13 3.515 [INFO] -------------------------------------------------------------
+#13 3.515 [ERROR] COMPILATION ERROR : 
+#13 3.515 [INFO] -------------------------------------------------------------
+#13 3.515 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[3,52] package org.springframework.beans.factory.annotation does not exist
+#13 3.515 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[4,32] package org.springframework.http does not exist
+#13 3.515 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[9,2] cannot find symbol
+#13 3.515   symbol: class RestController
+#13 3.515 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[19,12] cannot find symbol
+#13 3.515   symbol:   class ResponseEntity
+#13 3.515   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.515 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[5,1] package org.springframework.web.bind.annotation does not exist
+#13 3.515 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[12,6] cannot find symbol
+#13 3.515   symbol:   class Autowired
+#13 3.515   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.515 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[18,6] cannot find symbol
+#13 3.515   symbol:   class GetMapping
+#13 3.515   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.515 [INFO] 7 errors 
+#13 3.515 [INFO] -------------------------------------------------------------
+#13 3.516 [INFO] ------------------------------------------------------------------------
+#13 3.516 [INFO] BUILD FAILURE
+#13 3.516 [INFO] ------------------------------------------------------------------------
+#13 3.518 [INFO] Total time:  1.232 s
+#13 3.518 [INFO] Finished at: 2026-03-24T06:50:36Z
+#13 3.518 [INFO] ------------------------------------------------------------------------
+#13 3.520 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project standalone: Compilation failure: Compilation failure: 
+#13 3.520 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[3,52] package org.springframework.beans.factory.annotation does not exist
+#13 3.520 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[4,32] package org.springframework.http does not exist
+#13 3.520 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[9,2] cannot find symbol
+#13 3.520 [ERROR]   symbol: class RestController
+#13 3.520 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[19,12] cannot find symbol
+#13 3.520 [ERROR]   symbol:   class ResponseEntity
+#13 3.520 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.520 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[5,1] package org.springframework.web.bind.annotation does not exist
+#13 3.520 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[12,6] cannot find symbol
+#13 3.520 [ERROR]   symbol:   class Autowired
+#13 3.520 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.520 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[18,6] cannot find symbol
+#13 3.520 [ERROR]   symbol:   class GetMapping
+#13 3.520 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.520 [ERROR] -> [Help 1]
+#13 3.520 [ERROR] 
+#13 3.520 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#13 3.520 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#13 3.520 [ERROR] 
+#13 3.520 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#13 3.521 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+#13 ERROR: process "/bin/sh -c mvn package -DskipTests" did not complete successfully: exit code: 1
+------
+ > [ 9/10] RUN mvn package -DskipTests:
+3.520 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[18,6] cannot find symbol
+3.520 [ERROR]   symbol:   class GetMapping
+3.520 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+3.520 [ERROR] -> [Help 1]
+3.520 [ERROR] 
+3.520 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+3.520 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+3.520 [ERROR] 
+3.520 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+3.521 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+------
+Dockerfile:26
+--------------------
+  24 |     
+  25 |     # Build application
+  26 | >>> RUN mvn package -DskipTests
+  27 |     
+  28 |     RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn package -DskipTests" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: standalone-liberty-1af23fad
+make: *** [Makefile:10: compile] Error 1

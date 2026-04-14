@@ -1,0 +1,71 @@
+docker build -f Dockerfile -t "hello-servlet-spring:latest" .
+[INFO] Built image: hello-servlet-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "hello-servlet-spring" "hello-servlet-spring:latest"
+ebdcd09a4789fa85c11e8b21101d5be3c556abdc41e8f32c07d4075fcbcc32b4
+[INFO] Started hello-servlet-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /greeting?name=… -> 200, contains 'SmokeUser'
+[PASS] GET /greeting (no name) -> 400
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__hello-servlet__quarkus__spring/run_1/output'
+docker rm -f "hello-servlet-spring"
+hello-servlet-spring
+[INFO] Container removed (if it existed)
+docker rmi "hello-servlet-spring:latest"
+Untagged: hello-servlet-spring:latest
+Deleted: sha256:dc9c91aac29a733dbed8b263a187741840d1b2123afa7f999d3ec58fb84b0748
+docker image prune -f
+Deleted Images:
+deleted: sha256:c64552f23588bf906603437fa2fa9ed231916726065d72d6946023a2c9e62d7d
+deleted: sha256:9e7b432324a89dcfcc44348384b8b633ffe442c7fafb1c96c337b129ed2895a1
+deleted: sha256:1203fdc77642905dfc1e1559012a2f5797542d3bd7f0987cc291d2a341997e22
+deleted: sha256:65759c7fdb6e508788ba9dc6acc7a610515ef9bf89a61138d2634c72803c9352
+deleted: sha256:622749238ae496f04fce49f7dac7c97388d318909a5c6178a3feca034d212b9c
+deleted: sha256:a11529e3f0a1d35fc582bb3c92a603a03d98e0683447966ed35dd944f7d86ebb
+deleted: sha256:30c55dd76d2c7601a5ff4e3716e8285beff2cf714d35651d3095d330d8533e5b
+deleted: sha256:7bf83073f6b5490d7038118179e49610a73fd7a5668aa30f71237bdcbe0bf3de
+deleted: sha256:61f3055bb6d082e8bd5531827a9adfe86d00527f0b55faa5245ceda4823f8606
+deleted: sha256:0ad02f347bf508d75e21b3c75d6a06b8eb23e0c684420d8a35cd9ef2845848ef
+deleted: sha256:8c09e8070dae13aa26138ae0b96fd6bbd4026509d5169e1f26eb87f50fd387a8
+deleted: sha256:9227c3fb127f54b76a3845d08c59d7937a710d29aba34f36f103e5efe4a91fc7
+deleted: sha256:694345c3a893dfdbeaa30de4f06df0577e29d3aef82c7be7f080515b8adcd0fe
+deleted: sha256:f5fdbcb66550767cf66f4ca5979164ed68f6e52ea4ed6930dbf0e1da2bb48844
+deleted: sha256:c671aa6523947829d8e9511212a2ed2304d72cb899df1e81996ba40dbe5a60f7
+deleted: sha256:70cacb4ea9ff90a2e5deea38728dcd17692c9107153efb5cb48260cc51938a56
+deleted: sha256:ed3a52ec04a02b854c3be580a5437f6434b92be72d16c6627f95d46330db0c8a
+deleted: sha256:ec46a48ea9fa89aad39d8a2cd936d74ac7b0625b66727f64470851e3d8556984
+deleted: sha256:654cbf67ae859321b34b16af46514d2ddf656591f9521f7404beead6523fc2a0
+deleted: sha256:3a7ee44e13b20e1506a08e947fca335935e5c9062a48276be2ec2e72fafa15c3
+deleted: sha256:964c9354baafdbf2ca1367f2ca19b0a2e035f4c60c7983c0079e13e588abedce
+deleted: sha256:693b58b70f1bd3e009e3ad813a065e97d57a6f1cc2cb5f27ffe1ccae2da46972
+deleted: sha256:90ea587249259183dcc0d9bb5c63120646db65a27eacb990351da4c39521474e
+deleted: sha256:dbcfec5f06f31041fc6f37dbca4d0f2ea581ba0783cfa63278dc2454ec843940
+deleted: sha256:ea37cd342a0780ab842062a96768ed302cb649317bf020e1fd88dc081b62c39e
+deleted: sha256:14a9812ed22c4534c6abd6fc035408f151aaa34d1809e9f7e9166f93d69f2cfb
+deleted: sha256:97e6138df1e82191d4fbe8961eb1907fb91135772f1e52f1d9f55cc28962cf0b
+deleted: sha256:63e1024f2436bd11703efc42fe38d11b32a56bc4492d4e60ee46c1479747b999
+deleted: sha256:585e4cb4112b6f07850cd6729378d78b82867b89f85f5d16e540450558c4dfa2
+deleted: sha256:47591ebac5a25fec8311f616a406d72922bb4a2f48684f2915ce27038baa118f
+deleted: sha256:e12603a3e7af4e3c616cd4ec7af44a51c034485b99d0be510f3b2873b87921ce
+deleted: sha256:d0bb226a0ea7b8bb62a1ffff826169ad7f42e70073ba067ef732b31091290b5e
+deleted: sha256:1926c15db064dce1a7dc67fb194914378fb40931b07e32bc180a4318acdcbfcf
+deleted: sha256:86b8bada9b2868c35cd8288f14b883d857a4990dbe8b81189a0f470a5a8c3221
+deleted: sha256:1540aaca15d159bd74aee30dd6f02afd9570f573ec0287d56b9a44d7b7f52779
+deleted: sha256:22bfd954b81a1c0618c2393dbe2cba9822135b8f45c253b3863fd0e029622d95
+deleted: sha256:3ddf28a70c52f19dfee532984f50005d0df7f040b1cb38543ddd8e4a9717cb43
+deleted: sha256:820123c91e50ab313c10be0f324427388a9e97cf1bdcb023d63f3da4b92237c1
+deleted: sha256:369bdf1dd28f69852cc3dcb350259b3141ae26c6e9397e0ffa98a352ca1699ad
+deleted: sha256:168397db286014414a37962bd91851bd19be767c0aceda4985e38af54469f5bf
+deleted: sha256:124e93e92d9304e7f1937167d0b854130ebb6404b684f552a329131ffcc8ec06
+deleted: sha256:0eb14d26a4d23ee14bbc2eff6d6869bf7d4ff33f03e817c7a63f2ba4aa1784da
+deleted: sha256:e6ad294f6298f1decdcf7b263c32a7eaf09d0e386a41f1269fcb8de754170872
+deleted: sha256:196863830fd15d7a28d6d65821481eb1b9cf075d1c0ef7b5c7e338dba29f2736
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__hello-servlet__quarkus__spring/run_1/output'

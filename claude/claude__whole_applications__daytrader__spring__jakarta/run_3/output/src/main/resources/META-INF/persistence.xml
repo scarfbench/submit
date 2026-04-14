@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/jakartaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/persistence_3_1.xsd"
+             version="3.1">
+
+    <persistence-unit transaction-type="JTA" name="daytrader">
+        <jta-data-source>jdbc/TradeDataSource</jta-data-source>
+        <class>com.ibm.websphere.samples.daytrader.entities.AccountDataBean</class>
+        <class>com.ibm.websphere.samples.daytrader.entities.AccountProfileDataBean</class>
+        <class>com.ibm.websphere.samples.daytrader.entities.HoldingDataBean</class>
+        <class>com.ibm.websphere.samples.daytrader.entities.OrderDataBean</class>
+        <class>com.ibm.websphere.samples.daytrader.entities.QuoteDataBean</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <shared-cache-mode>NONE</shared-cache-mode>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
+        </properties>
+    </persistence-unit>
+</persistence>

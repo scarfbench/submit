@@ -1,0 +1,63 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#4 CACHED
+
+#5 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#5 CACHED
+
+#6 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#6 CACHED
+
+#7 [5/9] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 7.07MB 0.3s done
+#10 DONE 0.3s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:6dca4fe7554154e1800d28ee0f26c697bcad78c3eb2735c3d9e46b6a877e4154 done
+#14 exporting config sha256:9b79887a14b00c2491de1d666dd7459087da425b702e01cdebe5d6d06f1b4fb4 done
+#14 exporting attestation manifest sha256:3730cf9a99b15e1873b6070ba84701b12e9fcb774f2608d2b76cc3843c7ea099 0.1s done
+#14 exporting manifest list sha256:80926c889f8208cb66bd69d8b7b393119db668adc813cd1c30aaffbc9ec5e67d
+#14 exporting manifest list sha256:80926c889f8208cb66bd69d8b7b393119db668adc813cd1c30aaffbc9ec5e67d 0.1s done
+#14 naming to docker.io/library/daytrader-spring:6275a242 0.0s done
+#14 unpacking to docker.io/library/daytrader-spring:6275a242 0.0s done
+#14 DONE 0.2s
+[INFO] Built image: daytrader-spring:6275a242
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name daytrader-spring-7f288449 daytrader-spring:6275a242
+8f25e7ca4973603ad19481b4155ae4e25012581bd4ef1b650947b9224f759256
+[INFO] Started daytrader-spring-7f288449, waiting for app to start...
+Error: Unable to access jarfile target/*.jar

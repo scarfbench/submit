@@ -1,0 +1,549 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 996B done
+#1 DONE 0.6s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 442B 0.1s done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#5 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#5 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.1s done
+#5 DONE 0.3s
+
+#4 [internal] load build context
+#4 transferring context: 89.93kB 0.0s done
+#4 DONE 0.1s
+
+#6 [6/9] WORKDIR /app
+#6 CACHED
+
+#7 [7/9] COPY . .
+#7 CACHED
+
+#8 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#8 CACHED
+
+#9 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#9 CACHED
+
+#10 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#10 CACHED
+
+#11 [5/9] RUN playwright install --with-deps chromium
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:59a005d22003c83c704317221a75c07d2dee48786f3584f688002b6939c1858d done
+#14 exporting config sha256:01118ab4064e9b7ca9a2de77cb71ecbcd16be7a4d5d4f3db2ca282ebc9031893 0.0s done
+#14 exporting attestation manifest sha256:eb6f35bf3de558009e446dac6f42d786f4b51239433833c28b8101203ec80e6f
+#14 exporting attestation manifest sha256:eb6f35bf3de558009e446dac6f42d786f4b51239433833c28b8101203ec80e6f 0.1s done
+#14 exporting manifest list sha256:6fb2fbe1eb533288ba9566f8b076a63e741d97abd6807490796aa74f274576be 0.1s done
+#14 naming to docker.io/library/roster-quarkus:37e279c4
+#14 naming to docker.io/library/roster-quarkus:37e279c4 0.0s done
+#14 unpacking to docker.io/library/roster-quarkus:37e279c4 0.1s done
+#14 DONE 0.5s
+[INFO] Built image: roster-quarkus:37e279c4
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name roster-quarkus-6fea0662 roster-quarkus:37e279c4
+a114f68e19f69bf50c51c981da262007757df05855f1b8917f024a4de20ea333
+[INFO] Started roster-quarkus-6fea0662, waiting for app to start...
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 06:51:00,066 INFO  [ros.req.DataInitializer] (main) Canonical leagues seeded successfully
+2026-03-24 06:51:00,135 INFO  [io.quarkus] (main) roster 1.0.0 on JVM (powered by Quarkus 3.17.8) started in 1.819s. Listening on: http://0.0.0.0:8080
+2026-03-24 06:51:00,135 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 06:51:00,136 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+[INFO] Quarkus application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 06:51:00,066 INFO  [ros.req.DataInitializer] (main) Canonical leagues seeded successfully
+2026-03-24 06:51:00,135 INFO  [io.quarkus] (main) roster 1.0.0 on JVM (powered by Quarkus 3.17.8) started in 1.819s. Listening on: http://0.0.0.0:8080
+2026-03-24 06:51:00,135 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 06:51:00,136 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 25 items
+
+smoke.py::test_application_is_running FAILED                             [  4%]
+smoke.py::test_canonical_leagues_seeded FAILED                           [  8%]
+smoke.py::test_create_summer_league FAILED                               [ 12%]
+smoke.py::test_create_winter_league FAILED                               [ 16%]
+smoke.py::test_invalid_sport_rejected FAILED                             [ 20%]
+smoke.py::test_remove_league FAILED                                      [ 24%]
+smoke.py::test_create_team_in_league FAILED                              [ 28%]
+smoke.py::test_get_team_details FAILED                                   [ 32%]
+smoke.py::test_get_teams_of_league FAILED                                [ 36%]
+smoke.py::test_remove_team FAILED                                        [ 40%]
+smoke.py::test_create_player FAILED                                      [ 44%]
+smoke.py::test_add_player_to_team FAILED                                 [ 48%]
+smoke.py::test_drop_player_from_team FAILED                              [ 52%]
+smoke.py::test_remove_player FAILED                                      [ 56%]
+smoke.py::test_players_by_position FAILED                                [ 60%]
+smoke.py::test_players_salary_higher_than FAILED                         [ 64%]
+smoke.py::test_players_by_salary_range FAILED                            [ 68%]
+smoke.py::test_players_by_league FAILED                                  [ 72%]
+smoke.py::test_players_by_sport FAILED                                   [ 76%]
+smoke.py::test_players_by_city FAILED                                    [ 80%]
+smoke.py::test_players_not_on_team FAILED                                [ 84%]
+smoke.py::test_leagues_of_player FAILED                                  [ 88%]
+smoke.py::test_sports_of_player FAILED                                   [ 92%]
+smoke.py::test_health_live PASSED                                        [ 96%]
+smoke.py::test_health_ready PASSED                                       [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_application_is_running __________________________
+
+    def test_application_is_running():
+        """Application should be accessible."""
+        status, _ = http("GET", "/league/L1")
+>       assert status == 200
+E       assert 404 == 200
+
+smoke.py:133: AssertionError
+________________________ test_canonical_leagues_seeded _________________________
+
+    def test_canonical_leagues_seeded():
+        """Scenario: Canonical leagues are seeded on startup."""
+        for lid, name, sport in [
+            ("L1", "Mountain", "Soccer"),
+            ("L2", "Valley", "Basketball"),
+            ("L3", "Foothills", "Soccer"),
+            ("L4", "Alpine", "Snowboarding"),
+        ]:
+>           data = json_get(f"/league/{lid}")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/league/L1', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /league/L1 returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+__________________________ test_create_summer_league ___________________________
+
+    def test_create_summer_league():
+        """Scenario: Create a summer league (swimming is a summer sport)."""
+        status, _ = http("POST", "/league", body={"id": "L5", "name": "Coastal", "sport": "Swimming"})
+>       assert status in [200, 204], f"Create summer league failed: {status}"
+E       AssertionError: Create summer league failed: 404
+E       assert 404 in [200, 204]
+
+smoke.py:154: AssertionError
+__________________________ test_create_winter_league ___________________________
+
+    def test_create_winter_league():
+        """Scenario: Create a winter league (skiing is a winter sport)."""
+        status, _ = http("POST", "/league", body={"id": "L6", "name": "Nordic", "sport": "Skiing"})
+>       assert status in [200, 204], f"Create winter league failed: {status}"
+E       AssertionError: Create winter league failed: 404
+E       assert 404 in [200, 204]
+
+smoke.py:164: AssertionError
+_________________________ test_invalid_sport_rejected __________________________
+
+    def test_invalid_sport_rejected():
+        """Scenario: Invalid sport throws IncorrectSportException."""
+        status, _ = http("POST", "/league", body={"id": "LX", "name": "Bad", "sport": "Cricket"})
+>       assert status == 400, f"Expected 400 for invalid sport, got {status}"
+E       AssertionError: Expected 400 for invalid sport, got 404
+E       assert 404 == 400
+
+smoke.py:174: AssertionError
+______________________________ test_remove_league ______________________________
+
+    def test_remove_league():
+        """Scenario: Remove a league."""
+        # Create a disposable league
+        http("POST", "/league", body={"id": "LDEL", "name": "Disposable", "sport": "Soccer"})
+        status, _ = http("DELETE", "/league/LDEL")
+>       assert status in [200, 204], f"Remove league failed: {status}"
+E       AssertionError: Remove league failed: 404
+E       assert 404 in [200, 204]
+
+smoke.py:183: AssertionError
+__________________________ test_create_team_in_league __________________________
+
+    def test_create_team_in_league():
+        """Scenario: Create a team in a league."""
+        status, _ = http("POST", "/team/league/L1", body={"id": "T10", "name": "Eagles", "city": "Denver"})
+>       assert status in [200, 204], f"Create team failed: {status}"
+E       AssertionError: Create team failed: 404
+E       assert 404 in [200, 204]
+
+smoke.py:198: AssertionError
+____________________________ test_get_team_details _____________________________
+
+    def test_get_team_details():
+        """Scenario: Get team details by ID."""
+>       data = json_get("/team/T1")
+               ^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:208: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/team/T1', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /team/T1 returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+___________________________ test_get_teams_of_league ___________________________
+
+    def test_get_teams_of_league():
+        """Scenario: Get teams of a league."""
+>       teams = json_get("/league/L1/teams")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:217: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/league/L1/teams', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /league/L1/teams returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+_______________________________ test_remove_team _______________________________
+
+    def test_remove_team():
+        """Scenario: Remove a team drops all player associations."""
+        # Create a temp team and player
+        http("POST", "/team/league/L2", body={"id": "TDEL", "name": "Temp", "city": "Nowhere"})
+        http("POST", "/player", body={"id": "PDEL", "name": "Temp Player", "position": "sub", "salary": "100"},
+             content_type="application/x-www-form-urlencoded")
+        http("POST", "/player/PDEL/team/TDEL", body="")
+    
+        status, _ = http("DELETE", "/team/TDEL")
+>       assert status in [200, 204], f"Remove team failed: {status}"
+E       AssertionError: Remove team failed: 404
+E       assert 404 in [200, 204]
+
+smoke.py:234: AssertionError
+______________________________ test_create_player ______________________________
+
+    def test_create_player():
+        """Scenario: Create a new player."""
+>       data = json_get("/player/P1")
+               ^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:251: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/player/P1', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /player/P1 returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+___________________________ test_add_player_to_team ____________________________
+
+    def test_add_player_to_team():
+        """Scenario: Add a player to a team."""
+>       players = json_get("/team/T1/players")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:261: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/team/T1/players', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /team/T1/players returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+__________________________ test_drop_player_from_team __________________________
+
+    def test_drop_player_from_team():
+        """Scenario: Drop a player from a team."""
+        # Create a temp player on T2
+        http("POST", "/player", body={"id": "PDROP", "name": "Dropper", "position": "sub", "salary": "100"},
+             content_type="application/x-www-form-urlencoded")
+        http("POST", "/player/PDROP/team/T2", body="")
+    
+        status, _ = http("DELETE", "/player/PDROP/team/T2")
+>       assert status in [200, 204], f"Drop player failed: {status}"
+E       AssertionError: Drop player failed: 404
+E       assert 404 in [200, 204]
+
+smoke.py:275: AssertionError
+______________________________ test_remove_player ______________________________
+
+    def test_remove_player():
+        """Scenario: Remove a player from the system."""
+        http("POST", "/player", body={"id": "PREM", "name": "Removable", "position": "sub", "salary": "100"},
+             content_type="application/x-www-form-urlencoded")
+        http("POST", "/player/PREM/team/T1", body="")
+    
+        status, _ = http("DELETE", "/player/PREM")
+>       assert status in [200, 204], f"Remove player failed: {status}"
+E       AssertionError: Remove player failed: 404
+E       assert 404 in [200, 204]
+
+smoke.py:292: AssertionError
+___________________________ test_players_by_position ___________________________
+
+    def test_players_by_position():
+        """Scenario: Get players by position."""
+>       players = json_get("/players/position/forward")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:306: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/players/position/forward', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /players/position/forward returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+_______________________ test_players_salary_higher_than ________________________
+
+    def test_players_salary_higher_than():
+        """Scenario: Get players with salary higher than a named player."""
+>       players = json_get("/players/salary/higher/Alice")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:320: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/players/salary/higher/Alice', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /players/salary/higher/Alice returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+_________________________ test_players_by_salary_range _________________________
+
+    def test_players_by_salary_range():
+        """Scenario: Get players by salary range."""
+>       players = json_get("/players/salary/range", query={"low": "40000", "high": "60000"})
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:330: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/players/salary/range', query = {'high': '60000', 'low': '40000'}
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /players/salary/range returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+____________________________ test_players_by_league ____________________________
+
+    def test_players_by_league():
+        """Scenario: Get players by league ID."""
+>       players = json_get("/players/league/L1")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/players/league/L1', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /players/league/L1 returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+____________________________ test_players_by_sport _____________________________
+
+    def test_players_by_sport():
+        """Scenario: Get players by sport."""
+>       players = json_get("/players/sport/Soccer")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:353: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/players/sport/Soccer', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /players/sport/Soccer returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+_____________________________ test_players_by_city _____________________________
+
+    def test_players_by_city():
+        """Scenario: Get players by city."""
+>       players = json_get("/players/city/Visalia")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:365: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/players/city/Visalia', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /players/city/Visalia returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+___________________________ test_players_not_on_team ___________________________
+
+    def test_players_not_on_team():
+        """Scenario: Get players not on any team."""
+>       players = json_get("/players/not-on-team")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:372: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/players/not-on-team', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /players/not-on-team returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+____________________________ test_leagues_of_player ____________________________
+
+    def test_leagues_of_player():
+        """Scenario: Get leagues of a specific player."""
+>       leagues = json_get("/player/P1/leagues")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:386: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/player/P1/leagues', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /player/P1/leagues returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+____________________________ test_sports_of_player _____________________________
+
+    def test_sports_of_player():
+        """Scenario: Get sports of a specific player."""
+>       sports = json_get("/player/P1/sports")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:397: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/player/P1/sports', query = None
+
+    def json_get(path, query=None):
+        """GET JSON and parse the response."""
+        status, body = http("GET", path, query=query)
+>       assert status == 200, f"GET {path} returned {status}: {body}"
+E       AssertionError: GET /player/P1/sports returned 404: <html><body><h1>Resource not found</h1></body></html>
+E       assert 404 == 200
+
+smoke.py:69: AssertionError
+=========================== short test summary info ============================
+FAILED smoke.py::test_application_is_running - assert 404 == 200
+FAILED smoke.py::test_canonical_leagues_seeded - AssertionError: GET /league/...
+FAILED smoke.py::test_create_summer_league - AssertionError: Create summer le...
+FAILED smoke.py::test_create_winter_league - AssertionError: Create winter le...
+FAILED smoke.py::test_invalid_sport_rejected - AssertionError: Expected 400 f...
+FAILED smoke.py::test_remove_league - AssertionError: Remove league failed: 404
+FAILED smoke.py::test_create_team_in_league - AssertionError: Create team fai...
+FAILED smoke.py::test_get_team_details - AssertionError: GET /team/T1 returne...
+FAILED smoke.py::test_get_teams_of_league - AssertionError: GET /league/L1/te...
+FAILED smoke.py::test_remove_team - AssertionError: Remove team failed: 404
+FAILED smoke.py::test_create_player - AssertionError: GET /player/P1 returned...
+FAILED smoke.py::test_add_player_to_team - AssertionError: GET /team/T1/playe...
+FAILED smoke.py::test_drop_player_from_team - AssertionError: Drop player fai...
+FAILED smoke.py::test_remove_player - AssertionError: Remove player failed: 404
+FAILED smoke.py::test_players_by_position - AssertionError: GET /players/posi...
+FAILED smoke.py::test_players_salary_higher_than - AssertionError: GET /playe...
+FAILED smoke.py::test_players_by_salary_range - AssertionError: GET /players/...
+FAILED smoke.py::test_players_by_league - AssertionError: GET /players/league...
+FAILED smoke.py::test_players_by_sport - AssertionError: GET /players/sport/S...
+FAILED smoke.py::test_players_by_city - AssertionError: GET /players/city/Vis...
+FAILED smoke.py::test_players_not_on_team - AssertionError: GET /players/not-...
+FAILED smoke.py::test_leagues_of_player - AssertionError: GET /player/P1/leag...
+FAILED smoke.py::test_sports_of_player - AssertionError: GET /player/P1/sport...
+========================= 23 failed, 2 passed in 0.33s =========================
+=== TEST FAIL ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 06:51:00,066 INFO  [ros.req.DataInitializer] (main) Canonical leagues seeded successfully
+2026-03-24 06:51:00,135 INFO  [io.quarkus] (main) roster 1.0.0 on JVM (powered by Quarkus 3.17.8) started in 1.819s. Listening on: http://0.0.0.0:8080
+2026-03-24 06:51:00,135 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 06:51:00,136 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+make: *** [Makefile:52: test] Error 1

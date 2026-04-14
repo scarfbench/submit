@@ -1,0 +1,1031 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.01kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#4 CACHED
+
+#5 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#5 CACHED
+
+#6 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#6 CACHED
+
+#7 [5/9] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 167.87kB done
+#10 DONE 0.0s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 26.3s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 0.847 [INFO] Scanning for projects...
+#13 1.496 [INFO] 
+#13 1.496 [INFO] -------------< jakarta.examples.tutorial.ejb:helloservice >-------------
+#13 1.496 [INFO] Building helloservice 10-SNAPSHOT
+#13 1.498 [INFO]   from pom.xml
+#13 1.498 [INFO] --------------------------------[ jar ]---------------------------------
+#13 1.701 [INFO] 
+#13 1.701 [INFO] --- resources:3.3.1:resources (default-resources) @ helloservice ---
+#13 1.756 [INFO] Copying 2 resources from src/main/resources to target/classes
+#13 1.758 [INFO] 
+#13 1.758 [INFO] --- quarkus:3.6.4:generate-code (default) @ helloservice ---
+#13 1.973 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-deployment/3.6.4/quarkus-resteasy-reactive-deployment-3.6.4.pom
+#13 7.232 Progress (1): 3.0 kBProgress (1): 5.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-deployment/3.6.4/quarkus-resteasy-reactive-deployment-3.6.4.pom (5.4 kB at 1.0 kB/s)
+#13 7.249 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.6.4/resteasy-reactive-processor-3.6.4.pom
+#13 7.294 Progress (1): 2.0 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.6.4/resteasy-reactive-processor-3.6.4.pom (2.8 kB at 60 kB/s)
+#13 7.300 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.6.4/resteasy-reactive-common-processor-3.6.4.pom
+#13 7.330 Progress (1): 2.0 kBProgress (1): 2.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.6.4/resteasy-reactive-common-processor-3.6.4.pom (2.1 kB at 66 kB/s)
+#13 7.334 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.6.4/quarkus-vertx-http-deployment-3.6.4.pom
+#13 7.359 Progress (1): 2.3 kBProgress (1): 5.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.6.4/quarkus-vertx-http-deployment-3.6.4.pom (5.1 kB at 197 kB/s)
+#13 7.375 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.6.4/quarkus-vertx-deployment-3.6.4.pom
+#13 7.399 Progress (1): 2.4 kBProgress (1): 2.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.6.4/quarkus-vertx-deployment-3.6.4.pom (2.9 kB at 122 kB/s)
+#13 7.405 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.6.4/quarkus-arc-deployment-3.6.4.pom
+#13 7.430 Progress (1): 2.0 kBProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.6.4/quarkus-arc-deployment-3.6.4.pom (2.5 kB at 101 kB/s)
+#13 7.439 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.6.4/quarkus-smallrye-context-propagation-spi-3.6.4.pom
+#13 7.466 Progress (1): 1.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.6.4/quarkus-smallrye-context-propagation-spi-3.6.4.pom (1.0 kB at 39 kB/s)
+#13 7.474 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.6.4/quarkus-vertx-http-dev-ui-spi-3.6.4.pom
+#13 7.500 Progress (1): 804 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.6.4/quarkus-vertx-http-dev-ui-spi-3.6.4.pom (804 B at 29 kB/s)
+#13 7.507 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.6.4/arc-processor-3.6.4.pom
+#13 7.539 Progress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.6.4/arc-processor-3.6.4.pom (1.9 kB at 58 kB/s)
+#13 7.543 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.6.4/quarkus-netty-deployment-3.6.4.pom
+#13 7.570 Progress (1): 1.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.6.4/quarkus-netty-deployment-3.6.4.pom (1.6 kB at 58 kB/s)
+#13 7.583 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.6.4/quarkus-virtual-threads-deployment-3.6.4.pom
+#13 7.612 Progress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.6.4/quarkus-virtual-threads-deployment-3.6.4.pom (1.7 kB at 59 kB/s)
+#13 7.624 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.6.4/quarkus-mutiny-deployment-3.6.4.pom
+#13 7.653 Progress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.6.4/quarkus-mutiny-deployment-3.6.4.pom (2.0 kB at 64 kB/s)
+#13 7.659 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.6.4/quarkus-smallrye-context-propagation-deployment-3.6.4.pom
+#13 7.683 Progress (1): 2.0 kBProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.6.4/quarkus-smallrye-context-propagation-deployment-3.6.4.pom (2.0 kB at 82 kB/s)
+#13 7.693 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.6.4/quarkus-vertx-http-deployment-spi-3.6.4.pom
+#13 7.720 Progress (1): 825 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.6.4/quarkus-vertx-http-deployment-spi-3.6.4.pom (825 B at 31 kB/s)
+#13 7.727 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.6.4/quarkus-kubernetes-spi-3.6.4.pom
+#13 7.750 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.6.4/quarkus-kubernetes-spi-3.6.4.pom (1.2 kB at 50 kB/s)
+#13 7.753 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-parent/3.6.4/quarkus-kubernetes-parent-3.6.4.pom
+#13 7.780 Progress (1): 833 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-parent/3.6.4/quarkus-kubernetes-parent-3.6.4.pom (833 B at 29 kB/s)
+#13 7.792 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.6.4/quarkus-vertx-http-dev-ui-resources-3.6.4.pom
+#13 7.819 Progress (1): 2.1 kBProgress (1): 4.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.6.4/quarkus-vertx-http-dev-ui-resources-3.6.4.pom (4.0 kB at 144 kB/s)
+#13 7.825 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.pom
+#13 7.873 Progress (1): 1.4 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.pom (2.7 kB at 56 kB/s)
+#13 7.878 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.pom
+#13 7.901 Progress (1): 1.4 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.pom (3.2 kB at 129 kB/s)
+#13 7.904 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.6/vaadin-development-mode-detector-2.0.6.pom
+#13 7.929 Progress (1): 1.5 kBProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.6/vaadin-development-mode-detector-2.0.6.pom (2.6 kB at 104 kB/s)
+#13 7.931 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.pom
+#13 7.958 Progress (1): 1.6 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.pom (1.7 kB at 61 kB/s)
+#13 7.960 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.1.10/vaadin-webcomponents-24.1.10.pom
+#13 7.986 Progress (1): 1.6 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.1.10/vaadin-webcomponents-24.1.10.pom (3.2 kB at 123 kB/s)
+#13 7.990 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.pom
+#13 8.011 Progress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.pom (1.5 kB at 67 kB/s)
+#13 8.012 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/2.8.0/lit-2.8.0.pom
+#13 8.035 Progress (1): 1.5 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/2.8.0/lit-2.8.0.pom (2.8 kB at 121 kB/s)
+#13 8.037 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/1.6.3/reactive-element-1.6.3.pom
+#13 8.063 Progress (1): 1.4 kBProgress (1): 2.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/1.6.3/reactive-element-1.6.3.pom (2.4 kB at 88 kB/s)
+#13 8.066 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.1.1/ssr-dom-shim-1.1.1.pom
+#13 8.090 Progress (1): 1.4 kBProgress (1): 2.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.1.1/ssr-dom-shim-1.1.1.pom (2.3 kB at 95 kB/s)
+#13 8.092 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/3.3.3/lit-element-3.3.3.pom
+#13 8.124 Progress (1): 1.4 kBProgress (1): 3.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/3.3.3/lit-element-3.3.3.pom (3.4 kB at 106 kB/s)
+#13 8.127 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/2.8.0/lit-html-2.8.0.pom
+#13 8.148 Progress (1): 1.6 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/2.8.0/lit-html-2.8.0.pom (2.8 kB at 128 kB/s)
+#13 8.151 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.4/trusted-types-2.0.4.pom
+#13 8.172 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.4/trusted-types-2.0.4.pom (1.3 kB at 55 kB/s)
+#13 8.176 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.pom
+#13 8.204 Progress (1): 1.0 kBProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.pom (2.5 kB at 88 kB/s)
+#13 8.206 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.pom
+#13 8.231 Progress (1): 1.5 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.pom (1.7 kB at 65 kB/s)
+#13 8.234 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.pom
+#13 8.261 Progress (1): 1.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.pom (1.2 kB at 45 kB/s)
+#13 8.263 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.4.3/echarts-5.4.3.pom
+#13 8.297 Progress (1): 1.4 kBProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.4.3/echarts-5.4.3.pom (2.5 kB at 75 kB/s)
+#13 8.299 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.pom
+#13 8.352 Progress (1): 1.5 kBProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.pom (2.0 kB at 38 kB/s)
+#13 8.356 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.4.4/zrender-5.4.4.pom
+#13 8.397 Progress (1): 1.5 kBProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.4.4/zrender-5.4.4.pom (3.0 kB at 70 kB/s)
+#13 8.402 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vanillawc/wc-codemirror/2.1.0/wc-codemirror-2.1.0.pom
+#13 8.431 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vanillawc/wc-codemirror/2.1.0/wc-codemirror-2.1.0.pom (1.3 kB at 41 kB/s)
+#13 8.433 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.8.1/es-module-shims-1.8.1.pom
+#13 8.456 Progress (1): 1.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.8.1/es-module-shims-1.8.1.pom (1.3 kB at 53 kB/s)
+#13 8.458 Downloading from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.10/importmap-1.0.10.pom
+#13 8.482 Progress (1): 1.4 kBProgress (1): 3.6 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.10/importmap-1.0.10.pom (5.6 kB at 235 kB/s)
+#13 8.484 Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.15.2/jackson-bom-2.15.2.pom
+#13 8.538 Progress (1): 931 BProgress (1): 2.7 kBProgress (1): 8.1 kBProgress (1): 17 kB Progress (1): 18 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.15.2/jackson-bom-2.15.2.pom (18 kB at 327 kB/s)
+#13 8.545 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-server-spi-deployment/3.6.4/quarkus-resteasy-reactive-server-spi-deployment-3.6.4.pom
+#13 8.570 Progress (1): 1.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-server-spi-deployment/3.6.4/quarkus-resteasy-reactive-server-spi-deployment-3.6.4.pom (1.0 kB at 37 kB/s)
+#13 8.576 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-spi-deployment/3.6.4/quarkus-resteasy-reactive-spi-deployment-3.6.4.pom
+#13 8.602 Progress (1): 934 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-spi-deployment/3.6.4/quarkus-resteasy-reactive-spi-deployment-3.6.4.pom (934 B at 36 kB/s)
+#13 8.609 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.6.4/quarkus-jaxrs-spi-deployment-3.6.4.pom
+#13 8.633 Progress (1): 773 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.6.4/quarkus-jaxrs-spi-deployment-3.6.4.pom (773 B at 32 kB/s)
+#13 8.634 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-parent/3.6.4/quarkus-jaxrs-spi-parent-3.6.4.pom
+#13 8.657 Progress (1): 717 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-parent/3.6.4/quarkus-jaxrs-spi-parent-3.6.4.pom (717 B at 30 kB/s)
+#13 8.663 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.6.4/quarkus-security-spi-3.6.4.pom
+#13 8.690 Progress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.6.4/quarkus-security-spi-3.6.4.pom (1.5 kB at 53 kB/s)
+#13 8.695 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.6.4/quarkus-jsonp-deployment-3.6.4.pom
+#13 8.718 Progress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.6.4/quarkus-jsonp-deployment-3.6.4.pom (1.5 kB at 62 kB/s)
+#13 8.723 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-common-deployment/3.6.4/quarkus-resteasy-reactive-common-deployment-3.6.4.pom
+#13 8.749 Progress (1): 2.3 kBProgress (1): 3.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-common-deployment/3.6.4/quarkus-resteasy-reactive-common-deployment-3.6.4.pom (3.8 kB at 139 kB/s)
+#13 8.784 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jaxb-deployment/3.6.4/quarkus-resteasy-reactive-jaxb-deployment-3.6.4.pom
+#13 8.811 Progress (1): 2.2 kBProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jaxb-deployment/3.6.4/quarkus-resteasy-reactive-jaxb-deployment-3.6.4.pom (2.6 kB at 90 kB/s)
+#13 8.858 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxb-deployment/3.6.4/quarkus-jaxb-deployment-3.6.4.pom
+#13 8.889 Progress (1): 2.0 kBProgress (1): 2.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxb-deployment/3.6.4/quarkus-jaxb-deployment-3.6.4.pom (2.3 kB at 71 kB/s)
+#13 8.895 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxp-deployment/3.6.4/quarkus-jaxp-deployment-3.6.4.pom
+#13 8.921 Progress (1): 1.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxp-deployment/3.6.4/quarkus-jaxp-deployment-3.6.4.pom (1.5 kB at 55 kB/s)
+#13 8.940 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.6.4/resteasy-reactive-common-processor-3.6.4.jar
+#13 8.962 Progress (1): 7.7/126 kBProgress (1): 16/126 kB Progress (1): 29/126 kBProgress (1): 45/126 kBProgress (1): 61/126 kBProgress (1): 78/126 kBProgress (1): 94/126 kBProgress (1): 111/126 kBProgress (1): 126 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-processor/3.6.4/resteasy-reactive-common-processor-3.6.4.jar (126 kB at 3.4 MB/s)
+#13 8.982 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.6.4/resteasy-reactive-processor-3.6.4.jar
+#13 9.004 Progress (1): 7.7/145 kBProgress (1): 16/145 kB Progress (1): 25/145 kBProgress (1): 41/145 kBProgress (1): 57/145 kBProgress (1): 74/145 kBProgress (1): 90/145 kBProgress (1): 106/145 kBProgress (1): 123/145 kBProgress (1): 139/145 kBProgress (1): 145 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-processor/3.6.4/resteasy-reactive-processor-3.6.4.jar (145 kB at 4.3 MB/s)
+#13 9.014 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.6.4/quarkus-netty-deployment-3.6.4.jar
+#13 9.040 Progress (1): 7.7/16 kBProgress (1): 16 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty-deployment/3.6.4/quarkus-netty-deployment-3.6.4.jar (16 kB at 589 kB/s)
+#13 9.044 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.6.4/quarkus-vertx-deployment-3.6.4.jar
+#13 9.068 Progress (1): 7.7/46 kBProgress (1): 16/46 kB Progress (1): 25/46 kBProgress (1): 41/46 kBProgress (1): 46 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-deployment/3.6.4/quarkus-vertx-deployment-3.6.4.jar (46 kB at 1.9 MB/s)
+#13 9.070 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.6.4/quarkus-vertx-http-deployment-spi-3.6.4.jar
+#13 9.092 Progress (1): 6.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment-spi/3.6.4/quarkus-vertx-http-deployment-spi-3.6.4.jar (6.5 kB at 284 kB/s)
+#13 9.095 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.6.4/quarkus-smallrye-context-propagation-deployment-3.6.4.jar
+#13 9.122 Progress (1): 7.7/17 kBProgress (1): 12/17 kB Progress (1): 17 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-deployment/3.6.4/quarkus-smallrye-context-propagation-deployment-3.6.4.jar (17 kB at 573 kB/s)
+#13 9.124 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.6.4/quarkus-mutiny-deployment-3.6.4.jar
+#13 9.145 Progress (1): 4.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny-deployment/3.6.4/quarkus-mutiny-deployment-3.6.4.jar (4.3 kB at 195 kB/s)
+#13 9.146 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.6.4/quarkus-kubernetes-spi-3.6.4.jar
+#13 9.169 Progress (1): 4.1/35 kBProgress (1): 20/35 kB Progress (1): 35 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-kubernetes-spi/3.6.4/quarkus-kubernetes-spi-3.6.4.jar (35 kB at 1.4 MB/s)
+#13 9.172 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.jar
+#13 9.198 Progress (1): 16/248 kBProgress (1): 33/248 kBProgress (1): 49/248 kBProgress (1): 66/248 kBProgress (1): 82/248 kBProgress (1): 98/248 kBProgress (1): 115/248 kBProgress (1): 131/248 kBProgress (1): 147/248 kBProgress (1): 164/248 kBProgress (1): 180/248 kBProgress (1): 197/248 kBProgress (1): 213/248 kBProgress (1): 229/248 kBProgress (1): 246/248 kBProgress (1): 248 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/router/1.7.5/router-1.7.5.jar (248 kB at 6.9 MB/s)
+#13 9.209 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.jar
+#13 9.234 Progress (1): 5.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/path-to-regexp/2.4.0/path-to-regexp-2.4.0.jar (5.2 kB at 207 kB/s)
+#13 9.237 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.1.10/vaadin-webcomponents-24.1.10.jar
+#13 9.261 Progress (1): 0/2.2 MBProgress (1): 0/2.2 MBProgress (1): 0/2.2 MBProgress (1): 0/2.2 MBProgress (1): 0/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.1/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.2/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.3/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.4/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.5/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.6/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.7/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.8/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 0.9/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.0/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.1/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.2/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.3/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.4/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.5/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.6/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.7/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.8/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 1.9/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.0/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.1/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2/2.2 MBProgress (1): 2.2 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/mvnpm/vaadin-webcomponents/24.1.10/vaadin-webcomponents-24.1.10.jar (2.2 MB at 27 MB/s)
+#13 9.322 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.jar
+#13 9.349 Progress (1): 4.1/11 kBProgress (1): 11 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-usage-statistics/2.1.2/vaadin-usage-statistics-2.1.2.jar (11 kB at 407 kB/s)
+#13 9.352 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.6/vaadin-development-mode-detector-2.0.6.jar
+#13 9.375 Progress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vaadin/vaadin-development-mode-detector/2.0.6/vaadin-development-mode-detector-2.0.6.jar (2.8 kB at 119 kB/s)
+#13 9.377 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.jar
+#13 9.402 Progress (1): 7.7/198 kBProgress (1): 16/198 kB Progress (1): 32/198 kBProgress (1): 48/198 kBProgress (1): 65/198 kBProgress (1): 81/198 kBProgress (1): 98/198 kBProgress (1): 114/198 kBProgress (1): 115/198 kBProgress (1): 131/198 kBProgress (1): 147/198 kBProgress (1): 164/198 kBProgress (1): 180/198 kBProgress (1): 197/198 kBProgress (1): 198 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/polymer/polymer/3.5.1/polymer-3.5.1.jar (198 kB at 6.8 MB/s)
+#13 9.408 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.jar
+#13 9.433 Progress (1): 7.7/151 kBProgress (1): 16/151 kB Progress (1): 29/151 kBProgress (1): 45/151 kBProgress (1): 61/151 kBProgress (1): 66/151 kBProgress (1): 82/151 kBProgress (1): 98/151 kBProgress (1): 115/151 kBProgress (1): 131/151 kBProgress (1): 147/151 kBProgress (1): 151 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/webcomponents/shadycss/1.11.2/shadycss-1.11.2.jar (151 kB at 5.4 MB/s)
+#13 9.436 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.jar
+#13 9.461 Progress (1): 3.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/open-wc/dedupe-mixin/1.4.0/dedupe-mixin-1.4.0.jar (3.6 kB at 143 kB/s)
+#13 9.461 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/2.8.0/lit-2.8.0.jar
+#13 9.486 Progress (1): 7.7/70 kBProgress (1): 7.7/70 kBProgress (1): 24/70 kB Progress (1): 40/70 kBProgress (1): 57/70 kBProgress (1): 70 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit/2.8.0/lit-2.8.0.jar (70 kB at 2.7 MB/s)
+#13 9.488 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/1.6.3/reactive-element-1.6.3.jar
+#13 9.513 Progress (1): 7.7/254 kBProgress (1): 16/254 kB Progress (1): 29/254 kBProgress (1): 45/254 kBProgress (1): 61/254 kBProgress (1): 78/254 kBProgress (1): 94/254 kBProgress (1): 111/254 kBProgress (1): 127/254 kBProgress (1): 143/254 kBProgress (1): 160/254 kBProgress (1): 176/254 kBProgress (1): 193/254 kBProgress (1): 209/254 kBProgress (1): 225/254 kBProgress (1): 242/254 kBProgress (1): 254 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit/reactive-element/1.6.3/reactive-element-1.6.3.jar (254 kB at 8.8 MB/s)
+#13 9.520 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/3.3.3/lit-element-3.3.3.jar
+#13 9.545 Progress (1): 7.7/60 kBProgress (1): 16/60 kB Progress (1): 25/60 kBProgress (1): 41/60 kBProgress (1): 57/60 kBProgress (1): 60 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element/3.3.3/lit-element-3.3.3.jar (60 kB at 2.3 MB/s)
+#13 9.546 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/2.8.0/lit-html-2.8.0.jar
+#13 9.570 Progress (1): 7.7/594 kBProgress (1): 16/594 kB Progress (1): 32/594 kBProgress (1): 48/594 kBProgress (1): 65/594 kBProgress (1): 81/594 kBProgress (1): 98/594 kBProgress (1): 114/594 kBProgress (1): 130/594 kBProgress (1): 131/594 kBProgress (1): 147/594 kBProgress (1): 164/594 kBProgress (1): 180/594 kBProgress (1): 197/594 kBProgress (1): 213/594 kBProgress (1): 229/594 kBProgress (1): 246/594 kBProgress (1): 262/594 kBProgress (1): 279/594 kBProgress (1): 295/594 kBProgress (1): 311/594 kBProgress (1): 328/594 kBProgress (1): 344/594 kBProgress (1): 360/594 kBProgress (1): 377/594 kBProgress (1): 393/594 kBProgress (1): 410/594 kBProgress (1): 426/594 kBProgress (1): 442/594 kBProgress (1): 459/594 kBProgress (1): 475/594 kBProgress (1): 492/594 kBProgress (1): 508/594 kBProgress (1): 524/594 kBProgress (1): 541/594 kBProgress (1): 557/594 kBProgress (1): 573/594 kBProgress (1): 590/594 kBProgress (1): 594 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-html/2.8.0/lit-html-2.8.0.jar (594 kB at 20 MB/s)
+#13 9.578 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.1.1/ssr-dom-shim-1.1.1.jar
+#13 9.600 Progress (1): 7.7/11 kBProgress (1): 11 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/lit-labs/ssr-dom-shim/1.1.1/ssr-dom-shim-1.1.1.jar (11 kB at 493 kB/s)
+#13 9.602 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.4/trusted-types-2.0.4.jar
+#13 9.627 Progress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/types/trusted-types/2.0.4/trusted-types-2.0.4.jar (3.2 kB at 134 kB/s)
+#13 9.627 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.jar
+#13 9.649 Progress (1): 6.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/lit-element-state/1.7.0/lit-element-state-1.7.0.jar (6.1 kB at 253 kB/s)
+#13 9.655 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.jar
+#13 9.680 Progress (1): 7.7/12 kBProgress (1): 12 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/tslib/2.3.0/tslib-2.3.0.jar (12 kB at 398 kB/s)
+#13 9.683 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.4.4/zrender-5.4.4.jar
+#13 9.706 Progress (1): 7.7/676 kBProgress (1): 12/676 kB Progress (1): 28/676 kBProgress (1): 44/676 kBProgress (1): 61/676 kBProgress (1): 77/676 kBProgress (1): 93/676 kBProgress (1): 110/676 kBProgress (1): 126/676 kBProgress (1): 143/676 kBProgress (1): 159/676 kBProgress (1): 175/676 kBProgress (1): 180/676 kBProgress (1): 197/676 kBProgress (1): 213/676 kBProgress (1): 217/676 kBProgress (1): 233/676 kBProgress (1): 246/676 kBProgress (1): 262/676 kBProgress (1): 279/676 kBProgress (1): 295/676 kBProgress (1): 311/676 kBProgress (1): 328/676 kBProgress (1): 344/676 kBProgress (1): 360/676 kBProgress (1): 377/676 kBProgress (1): 393/676 kBProgress (1): 410/676 kBProgress (1): 426/676 kBProgress (1): 442/676 kBProgress (1): 459/676 kBProgress (1): 475/676 kBProgress (1): 492/676 kBProgress (1): 508/676 kBProgress (1): 524/676 kBProgress (1): 541/676 kBProgress (1): 557/676 kBProgress (1): 573/676 kBProgress (1): 590/676 kBProgress (1): 606/676 kBProgress (1): 623/676 kBProgress (1): 639/676 kBProgress (1): 655/676 kBProgress (1): 672/676 kBProgress (1): 676 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/zrender/5.4.4/zrender-5.4.4.jar (676 kB at 21 MB/s)
+#13 9.721 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.4.3/echarts-5.4.3.jar
+#13 9.745 Progress (1): 0/8.6 MBProgress (1): 0/8.6 MBProgress (1): 0/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.1/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.2/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.3/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.4/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.5/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.6/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.7/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.8/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 0.9/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.0/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.1/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.2/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.3/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.4/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.5/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.6/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.7/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.8/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 1.9/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.0/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.1/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.2/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.3/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.4/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.5/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.6/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.7/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.8/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 2.9/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.0/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.1/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.2/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.3/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.4/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.5/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.6/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.7/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.8/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 3.9/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.0/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.1/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.2/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.3/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.4/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.5/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.6/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.7/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.8/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 4.9/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.0/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.1/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.2/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.3/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.4/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.5/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.6/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.7/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.8/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 5.9/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.0/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.1/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.2/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.3/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.4/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.5/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.6/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.7/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.8/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 6.9/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.0/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.1/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.2/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.3/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.4/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.5/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.6/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.7/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.8/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 7.9/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.0/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.1/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.2/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.3/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.4/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.5/8.6 MBProgress (1): 8.6/8.6 MBProgress (1): 8.6/8.6 MBProgress (1): 8.6 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/echarts/5.4.3/echarts-5.4.3.jar (8.6 MB at 56 MB/s)
+#13 9.876 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vanillawc/wc-codemirror/2.1.0/wc-codemirror-2.1.0.jar
+#13 9.899 Progress (1): 7.7/586 kBProgress (1): 16/586 kB Progress (1): 29/586 kBProgress (1): 45/586 kBProgress (1): 61/586 kBProgress (1): 78/586 kBProgress (1): 94/586 kBProgress (1): 111/586 kBProgress (1): 127/586 kBProgress (1): 143/586 kBProgress (1): 160/586 kBProgress (1): 176/586 kBProgress (1): 193/586 kBProgress (1): 209/586 kBProgress (1): 225/586 kBProgress (1): 242/586 kBProgress (1): 258/586 kBProgress (1): 274/586 kBProgress (1): 291/586 kBProgress (1): 307/586 kBProgress (1): 324/586 kBProgress (1): 340/586 kBProgress (1): 356/586 kBProgress (1): 373/586 kBProgress (1): 389/586 kBProgress (1): 393/586 kBProgress (1): 410/586 kBProgress (1): 426/586 kBProgress (1): 442/586 kBProgress (1): 459/586 kBProgress (1): 475/586 kBProgress (1): 492/586 kBProgress (1): 508/586 kBProgress (1): 524/586 kBProgress (1): 541/586 kBProgress (1): 557/586 kBProgress (1): 573/586 kBProgress (1): 586 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/at/vanillawc/wc-codemirror/2.1.0/wc-codemirror-2.1.0.jar (586 kB at 18 MB/s)
+#13 9.909 Downloading from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.8.1/es-module-shims-1.8.1.jar
+#13 9.933 Progress (1): 7.7/54 kBProgress (1): 16/54 kB Progress (1): 24/54 kBProgress (1): 40/54 kBProgress (1): 54 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/mvnpm/es-module-shims/1.8.1/es-module-shims-1.8.1.jar (54 kB at 2.2 MB/s)
+#13 9.935 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.6.4/quarkus-vertx-http-dev-ui-resources-3.6.4.jar
+#13 9.960 Progress (1): 7.7/704 kBProgress (1): 16/704 kB Progress (1): 25/704 kBProgress (1): 41/704 kBProgress (1): 57/704 kBProgress (1): 74/704 kBProgress (1): 90/704 kBProgress (1): 106/704 kBProgress (1): 123/704 kBProgress (1): 139/704 kBProgress (1): 147/704 kBProgress (1): 164/704 kBProgress (1): 180/704 kBProgress (1): 197/704 kBProgress (1): 213/704 kBProgress (1): 229/704 kBProgress (1): 246/704 kBProgress (1): 262/704 kBProgress (1): 279/704 kBProgress (1): 295/704 kBProgress (1): 311/704 kBProgress (1): 328/704 kBProgress (1): 344/704 kBProgress (1): 360/704 kBProgress (1): 377/704 kBProgress (1): 393/704 kBProgress (1): 410/704 kBProgress (1): 426/704 kBProgress (1): 442/704 kBProgress (1): 459/704 kBProgress (1): 475/704 kBProgress (1): 492/704 kBProgress (1): 508/704 kBProgress (1): 524/704 kBProgress (1): 541/704 kBProgress (1): 557/704 kBProgress (1): 573/704 kBProgress (1): 590/704 kBProgress (1): 606/704 kBProgress (1): 623/704 kBProgress (1): 639/704 kBProgress (1): 655/704 kBProgress (1): 672/704 kBProgress (1): 688/704 kBProgress (1): 704 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-resources/3.6.4/quarkus-vertx-http-dev-ui-resources-3.6.4.jar (704 kB at 19 MB/s)
+#13 9.973 Downloading from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.10/importmap-1.0.10.jar
+#13 9.997 Progress (1): 7.7/8.0 kBProgress (1): 8.0 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/mvnpm/importmap/1.0.10/importmap-1.0.10.jar (8.0 kB at 334 kB/s)
+#13 9.999 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.6.4/quarkus-vertx-http-deployment-3.6.4.jar
+#13 10.02 Progress (1): 7.7/179 kBProgress (1): 16/179 kB Progress (1): 29/179 kBProgress (1): 45/179 kBProgress (1): 61/179 kBProgress (1): 78/179 kBProgress (1): 94/179 kBProgress (1): 111/179 kBProgress (1): 127/179 kBProgress (1): 143/179 kBProgress (1): 160/179 kBProgress (1): 176/179 kBProgress (1): 179 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-deployment/3.6.4/quarkus-vertx-http-deployment-3.6.4.jar (179 kB at 7.5 MB/s)
+#13 10.02 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-spi-deployment/3.6.4/quarkus-resteasy-reactive-spi-deployment-3.6.4.jar
+#13 10.05 Progress (1): 7.7/28 kBProgress (1): 12/28 kB Progress (1): 28 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-spi-deployment/3.6.4/quarkus-resteasy-reactive-spi-deployment-3.6.4.jar (28 kB at 925 kB/s)
+#13 10.05 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-server-spi-deployment/3.6.4/quarkus-resteasy-reactive-server-spi-deployment-3.6.4.jar
+#13 10.08 Progress (1): 7.7/8.5 kBProgress (1): 8.5 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-server-spi-deployment/3.6.4/quarkus-resteasy-reactive-server-spi-deployment-3.6.4.jar (8.5 kB at 388 kB/s)
+#13 10.08 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.6.4/quarkus-jaxrs-spi-deployment-3.6.4.jar
+#13 10.10 Progress (1): 3.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxrs-spi-deployment/3.6.4/quarkus-jaxrs-spi-deployment-3.6.4.jar (3.3 kB at 141 kB/s)
+#13 10.10 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.6.4/quarkus-security-spi-3.6.4.jar
+#13 10.12 Progress (1): 6.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-spi/3.6.4/quarkus-security-spi-3.6.4.jar (6.3 kB at 286 kB/s)
+#13 10.12 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.6.4/quarkus-jsonp-deployment-3.6.4.jar
+#13 10.15 Progress (1): 3.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp-deployment/3.6.4/quarkus-jsonp-deployment-3.6.4.jar (3.8 kB at 164 kB/s)
+#13 10.15 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-common-deployment/3.6.4/quarkus-resteasy-reactive-common-deployment-3.6.4.jar
+#13 10.17 Progress (1): 7.7/34 kBProgress (1): 16/34 kB Progress (1): 32/34 kBProgress (1): 34 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-common-deployment/3.6.4/quarkus-resteasy-reactive-common-deployment-3.6.4.jar (34 kB at 1.4 MB/s)
+#13 10.17 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.6.4/quarkus-virtual-threads-deployment-3.6.4.jar
+#13 10.19 Progress (1): 4.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads-deployment/3.6.4/quarkus-virtual-threads-deployment-3.6.4.jar (4.5 kB at 204 kB/s)
+#13 10.19 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-deployment/3.6.4/quarkus-resteasy-reactive-deployment-3.6.4.jar
+#13 10.22 Progress (1): 7.7/131 kBProgress (1): 8.2/131 kBProgress (1): 25/131 kB Progress (1): 41/131 kBProgress (1): 57/131 kBProgress (1): 74/131 kBProgress (1): 90/131 kBProgress (1): 98/131 kBProgress (1): 115/131 kBProgress (1): 131 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-deployment/3.6.4/quarkus-resteasy-reactive-deployment-3.6.4.jar (131 kB at 5.2 MB/s)
+#13 10.22 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.6.4/quarkus-smallrye-context-propagation-spi-3.6.4.jar
+#13 10.24 Progress (1): 3.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.6.4/quarkus-smallrye-context-propagation-spi-3.6.4.jar (3.6 kB at 157 kB/s)
+#13 10.25 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.6.4/quarkus-vertx-http-dev-ui-spi-3.6.4.jar
+#13 10.27 Progress (1): 7.5/26 kBProgress (1): 24/26 kB Progress (1): 26 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.6.4/quarkus-vertx-http-dev-ui-spi-3.6.4.jar (26 kB at 1.2 MB/s)
+#13 10.27 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.6.4/arc-processor-3.6.4.jar
+#13 10.29 Progress (1): 7.7/656 kBProgress (1): 16/656 kB Progress (1): 32/656 kBProgress (1): 48/656 kBProgress (1): 65/656 kBProgress (1): 66/656 kBProgress (1): 82/656 kBProgress (1): 98/656 kBProgress (1): 115/656 kBProgress (1): 131/656 kBProgress (1): 147/656 kBProgress (1): 164/656 kBProgress (1): 180/656 kBProgress (1): 197/656 kBProgress (1): 213/656 kBProgress (1): 229/656 kBProgress (1): 246/656 kBProgress (1): 262/656 kBProgress (1): 279/656 kBProgress (1): 295/656 kBProgress (1): 311/656 kBProgress (1): 328/656 kBProgress (1): 344/656 kBProgress (1): 360/656 kBProgress (1): 377/656 kBProgress (1): 393/656 kBProgress (1): 410/656 kBProgress (1): 426/656 kBProgress (1): 442/656 kBProgress (1): 459/656 kBProgress (1): 475/656 kBProgress (1): 492/656 kBProgress (1): 508/656 kBProgress (1): 524/656 kBProgress (1): 541/656 kBProgress (1): 557/656 kBProgress (1): 573/656 kBProgress (1): 590/656 kBProgress (1): 606/656 kBProgress (1): 623/656 kBProgress (1): 639/656 kBProgress (1): 655/656 kBProgress (1): 656 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.6.4/arc-processor-3.6.4.jar (656 kB at 23 MB/s)
+#13 10.30 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.6.4/quarkus-arc-deployment-3.6.4.jar
+#13 10.32 Progress (1): 7.7/266 kBProgress (1): 16/266 kB Progress (1): 25/266 kBProgress (1): 41/266 kBProgress (1): 57/266 kBProgress (1): 74/266 kBProgress (1): 90/266 kBProgress (1): 106/266 kBProgress (1): 123/266 kBProgress (1): 139/266 kBProgress (1): 147/266 kBProgress (1): 164/266 kBProgress (1): 180/266 kBProgress (1): 197/266 kBProgress (1): 213/266 kBProgress (1): 229/266 kBProgress (1): 246/266 kBProgress (1): 262/266 kBProgress (1): 266 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.6.4/quarkus-arc-deployment-3.6.4.jar (266 kB at 11 MB/s)
+#13 10.33 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxp-deployment/3.6.4/quarkus-jaxp-deployment-3.6.4.jar
+#13 10.35 Progress (1): 5.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxp-deployment/3.6.4/quarkus-jaxp-deployment-3.6.4.jar (5.5 kB at 230 kB/s)
+#13 10.35 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxb-deployment/3.6.4/quarkus-jaxb-deployment-3.6.4.jar
+#13 10.37 Progress (1): 4.1/19 kBProgress (1): 19 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jaxb-deployment/3.6.4/quarkus-jaxb-deployment-3.6.4.jar (19 kB at 760 kB/s)
+#13 10.38 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jaxb-deployment/3.6.4/quarkus-resteasy-reactive-jaxb-deployment-3.6.4.jar
+#13 10.41 Progress (1): 7.7/9.5 kBProgress (1): 9.5 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-resteasy-reactive-jaxb-deployment/3.6.4/quarkus-resteasy-reactive-jaxb-deployment-3.6.4.jar (9.5 kB at 328 kB/s)
+#13 10.41 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/3.6.4/quarkus-bom-quarkus-platform-properties-3.6.4.properties
+#13 10.44 Progress (1): 731 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/3.6.4/quarkus-bom-quarkus-platform-properties-3.6.4.properties (731 B at 21 kB/s)
+#13 10.84 [INFO] 
+#13 10.84 [INFO] --- compiler:3.11.0:compile (default-compile) @ helloservice ---
+#13 10.94 [INFO] Changes detected - recompiling the module! :source
+#13 10.94 [INFO] Compiling 1 source file with javac [debug release 11] to target/classes
+#13 11.30 [INFO] 
+#13 11.30 [INFO] --- quarkus:3.6.4:generate-code-tests (default) @ helloservice ---
+#13 11.78 [INFO] 
+#13 11.78 [INFO] --- resources:3.3.1:testResources (default-testResources) @ helloservice ---
+#13 11.79 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 11.79 [INFO] 
+#13 11.79 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ helloservice ---
+#13 11.79 [INFO] No sources to compile
+#13 11.79 [INFO] 
+#13 11.79 [INFO] --- surefire:3.0.0:test (default-test) @ helloservice ---
+#13 11.90 [INFO] Tests are skipped.
+#13 11.90 [INFO] 
+#13 11.90 [INFO] --- jar:3.4.1:jar (default-jar) @ helloservice ---
+#13 12.07 [INFO] Building jar: /app/target/helloservice.jar
+#13 12.08 [INFO] 
+#13 12.08 [INFO] --- quarkus:3.6.4:build (default) @ helloservice ---
+#13 13.81 [INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 1719ms
+#13 13.81 [INFO] ------------------------------------------------------------------------
+#13 13.81 [INFO] BUILD SUCCESS
+#13 13.81 [INFO] ------------------------------------------------------------------------
+#13 13.81 [INFO] Total time:  12.974 s
+#13 13.81 [INFO] Finished at: 2026-03-24T03:17:10Z
+#13 13.81 [INFO] ------------------------------------------------------------------------
+#13 DONE 13.9s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 0.3s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 2.3s done
+#15 exporting manifest sha256:b502eb3af099b52486e2408a8fe3fce849124a9e54c4b6ef63e05d238114a593 0.0s done
+#15 exporting config sha256:fdfdff75e5922c5d7a2d03fe1d9d763ef6a488612a56026b0e827d5160348381 0.0s done
+#15 exporting attestation manifest sha256:3978258c0713c215f51df1503ff322a6b17aa69dbd814b1193f1256c2cef7ab0 0.1s done
+#15 exporting manifest list sha256:fa8131d608ad552178ae121bd8a449b6276b6696fbaf7a6a734770033cd99c50
+#15 exporting manifest list sha256:fa8131d608ad552178ae121bd8a449b6276b6696fbaf7a6a734770033cd99c50 0.0s done
+#15 naming to docker.io/library/helloservice-quarkus:e351a476 done
+#15 unpacking to docker.io/library/helloservice-quarkus:e351a476
+#15 unpacking to docker.io/library/helloservice-quarkus:e351a476 0.7s done
+#15 DONE 3.2s
+[INFO] Built image: helloservice-quarkus:e351a476
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name helloservice-quarkus-425a38e7 helloservice-quarkus:e351a476
+014dde64887293cb93b1628ec76eab5f8aaf0e192790585ecb936041d31ba705
+[INFO] Started helloservice-quarkus-425a38e7, waiting for app to start...
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+03:17:15 INFO  [io.quarkus] (main) helloservice 10-SNAPSHOT on JVM (powered by Quarkus 3.6.4) started in 0.454s. Listening on: http://0.0.0.0:8080
+03:17:15 INFO  [io.quarkus] (main) Profile prod activated. 
+03:17:15 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy-reactive, resteasy-reactive-jaxb, smallrye-context-propagation, vertx]
+[INFO] Quarkus application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+03:17:15 INFO  [io.quarkus] (main) helloservice 10-SNAPSHOT on JVM (powered by Quarkus 3.6.4) started in 0.454s. Listening on: http://0.0.0.0:8080
+03:17:15 INFO  [io.quarkus] (main) Profile prod activated. 
+03:17:15 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy-reactive, resteasy-reactive-jaxb, smallrye-context-propagation, vertx]
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 17 items
+
+smoke.py::test_named_greetings[John] FAILED                              [  5%]
+smoke.py::test_named_greetings[Jane] FAILED                              [ 11%]
+smoke.py::test_named_greetings[World] FAILED                             [ 17%]
+smoke.py::test_named_greetings[Alice] FAILED                             [ 23%]
+smoke.py::test_named_greetings[Mary Jane] FAILED                         [ 29%]
+smoke.py::test_outline_greetings[John] FAILED                            [ 35%]
+smoke.py::test_outline_greetings[Jane] FAILED                            [ 41%]
+smoke.py::test_outline_greetings[Alice] FAILED                           [ 47%]
+smoke.py::test_outline_greetings[Bob] FAILED                             [ 52%]
+smoke.py::test_outline_greetings[World] FAILED                           [ 58%]
+smoke.py::test_response_is_non_empty_xml_document FAILED                 [ 64%]
+smoke.py::test_response_contains_envelope_and_body FAILED                [ 70%]
+smoke.py::test_response_contains_helloservice_namespace FAILED           [ 76%]
+smoke.py::test_response_does_not_contain_fault FAILED                    [ 82%]
+smoke.py::test_wsdl_is_accessible FAILED                                 [ 88%]
+smoke.py::test_valid_request_returns_http_200 FAILED                     [ 94%]
+smoke.py::test_response_content_type_is_xml FAILED                       [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_named_greetings[John] __________________________
+
+name = 'John'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "World", "Alice", "Mary Jane"])
+    def test_named_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d8131623470>
+fp = <http.client.HTTPResponse object at 0x7d813167f8b0>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d8131628fe0>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+__________________________ test_named_greetings[Jane] __________________________
+
+name = 'Jane'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "World", "Alice", "Mary Jane"])
+    def test_named_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162bbf0>
+fp = <http.client.HTTPResponse object at 0x7d813162bfd0>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162af30>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+_________________________ test_named_greetings[World] __________________________
+
+name = 'World'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "World", "Alice", "Mary Jane"])
+    def test_named_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162b9b0>
+fp = <http.client.HTTPResponse object at 0x7d813162ba60>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162be00>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+_________________________ test_named_greetings[Alice] __________________________
+
+name = 'Alice'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "World", "Alice", "Mary Jane"])
+    def test_named_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162d070>
+fp = <http.client.HTTPResponse object at 0x7d813162d480>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162ee70>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+_______________________ test_named_greetings[Mary Jane] ________________________
+
+name = 'Mary Jane'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "World", "Alice", "Mary Jane"])
+    def test_named_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162dfd0>
+fp = <http.client.HTTPResponse object at 0x7d813162ef80>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162fe00>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+_________________________ test_outline_greetings[John] _________________________
+
+name = 'John'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "Alice", "Bob", "World"])
+    def test_outline_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162bf50>
+fp = <http.client.HTTPResponse object at 0x7d813162b910>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162baa0>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+_________________________ test_outline_greetings[Jane] _________________________
+
+name = 'Jane'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "Alice", "Bob", "World"])
+    def test_outline_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162a570>
+fp = <http.client.HTTPResponse object at 0x7d813162bb50>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162f1a0>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+________________________ test_outline_greetings[Alice] _________________________
+
+name = 'Alice'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "Alice", "Bob", "World"])
+    def test_outline_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162fa70>
+fp = <http.client.HTTPResponse object at 0x7d813162ccd0>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162cf20>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+_________________________ test_outline_greetings[Bob] __________________________
+
+name = 'Bob'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "Alice", "Bob", "World"])
+    def test_outline_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162fce0>
+fp = <http.client.HTTPResponse object at 0x7d813162ff40>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d81314b6210>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+________________________ test_outline_greetings[World] _________________________
+
+name = 'World'
+
+    @pytest.mark.parametrize("name", ["John", "Jane", "Alice", "Bob", "World"])
+    def test_outline_greetings(name: str):
+>       _, body, _ = _post_soap(name)
+                     ^^^^^^^^^^^^^^^^
+
+smoke.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d81314b4c20>
+fp = <http.client.HTTPResponse object at 0x7d81314b53c0>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d81314b6450>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+___________________ test_response_is_non_empty_xml_document ____________________
+
+    def test_response_is_non_empty_xml_document():
+>       _, body, _ = _post_soap("John")
+                     ^^^^^^^^^^^^^^^^^^
+
+smoke.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d81314b5a30>
+fp = <http.client.HTTPResponse object at 0x7d81314b6710>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d81314b75c0>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+___________________ test_response_contains_envelope_and_body ___________________
+
+    def test_response_contains_envelope_and_body():
+>       _, body, _ = _post_soap("John")
+                     ^^^^^^^^^^^^^^^^^^
+
+smoke.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813162f920>
+fp = <http.client.HTTPResponse object at 0x7d813162fe50>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162faa0>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+________________ test_response_contains_helloservice_namespace _________________
+
+    def test_response_contains_helloservice_namespace():
+>       _, body, _ = _post_soap("John")
+                     ^^^^^^^^^^^^^^^^^^
+
+smoke.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d8131628680>
+fp = <http.client.HTTPResponse object at 0x7d813162b580>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813162ad20>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+_____________________ test_response_does_not_contain_fault _____________________
+
+    def test_response_does_not_contain_fault():
+>       _, body, _ = _post_soap("John")
+                     ^^^^^^^^^^^^^^^^^^
+
+smoke.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d81314b6ae0>
+fp = <http.client.HTTPResponse object at 0x7d81314b5360>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d81314b7890>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+___________________________ test_wsdl_is_accessible ____________________________
+
+    def test_wsdl_is_accessible():
+>       status, body, _ = _get_wsdl()
+                          ^^^^^^^^^^^
+
+smoke.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:46: in _get_wsdl
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d81314b5cd0>
+fp = <http.client.HTTPResponse object at 0x7d81314b4fd0>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d81314b5670>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+_____________________ test_valid_request_returns_http_200 ______________________
+
+    def test_valid_request_returns_http_200():
+>       status, _, _ = _post_soap("John")
+                       ^^^^^^^^^^^^^^^^^^
+
+smoke.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813164c620>
+fp = <http.client.HTTPResponse object at 0x7d813164d600>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813164dd00>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+______________________ test_response_content_type_is_xml _______________________
+
+    def test_response_content_type_is_xml():
+>       _, _, headers = _post_soap("John")
+                        ^^^^^^^^^^^^^^^^^^
+
+smoke.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:36: in _post_soap
+    with urllib.request.urlopen(request, timeout=10) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+/usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x7d8131621340>
+req = <urllib.request.Request object at 0x7d813164e570>
+fp = <http.client.HTTPResponse object at 0x7d813164ec20>, code = 404
+msg = 'Not Found', hdrs = <http.client.HTTPMessage object at 0x7d813164ff50>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 404: Not Found
+
+/usr/lib/python3.12/urllib/request.py:639: HTTPError
+=========================== short test summary info ============================
+FAILED smoke.py::test_named_greetings[John] - urllib.error.HTTPError: HTTP Er...
+FAILED smoke.py::test_named_greetings[Jane] - urllib.error.HTTPError: HTTP Er...
+FAILED smoke.py::test_named_greetings[World] - urllib.error.HTTPError: HTTP E...
+FAILED smoke.py::test_named_greetings[Alice] - urllib.error.HTTPError: HTTP E...
+FAILED smoke.py::test_named_greetings[Mary Jane] - urllib.error.HTTPError: HT...
+FAILED smoke.py::test_outline_greetings[John] - urllib.error.HTTPError: HTTP ...
+FAILED smoke.py::test_outline_greetings[Jane] - urllib.error.HTTPError: HTTP ...
+FAILED smoke.py::test_outline_greetings[Alice] - urllib.error.HTTPError: HTTP...
+FAILED smoke.py::test_outline_greetings[Bob] - urllib.error.HTTPError: HTTP E...
+FAILED smoke.py::test_outline_greetings[World] - urllib.error.HTTPError: HTTP...
+FAILED smoke.py::test_response_is_non_empty_xml_document - urllib.error.HTTPE...
+FAILED smoke.py::test_response_contains_envelope_and_body - urllib.error.HTTP...
+FAILED smoke.py::test_response_contains_helloservice_namespace - urllib.error...
+FAILED smoke.py::test_response_does_not_contain_fault - urllib.error.HTTPErro...
+FAILED smoke.py::test_wsdl_is_accessible - urllib.error.HTTPError: HTTP Error...
+FAILED smoke.py::test_valid_request_returns_http_200 - urllib.error.HTTPError...
+FAILED smoke.py::test_response_content_type_is_xml - urllib.error.HTTPError: ...
+============================== 17 failed in 0.91s ==============================
+=== TEST FAIL ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+03:17:15 INFO  [io.quarkus] (main) helloservice 10-SNAPSHOT on JVM (powered by Quarkus 3.6.4) started in 0.454s. Listening on: http://0.0.0.0:8080
+03:17:15 INFO  [io.quarkus] (main) Profile prod activated. 
+03:17:15 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy-reactive, resteasy-reactive-jaxb, smallrye-context-propagation, vertx]
+make: *** [Makefile:68: test] Error 1

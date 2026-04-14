@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Roster Jakarta EE Application">
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>webProfile-10.0</feature>
+        <feature>mpHealth-4.0</feature>
+    </featureManager>
+
+    <!-- HTTP endpoint -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443"
+                  host="*" />
+
+    <!-- H2 JDBC driver as a shared library -->
+    <library id="h2Lib">
+        <file name="${server.config.dir}/lib/h2.jar"/>
+    </library>
+
+    <!-- Default DataSource (for JPA default persistence unit) -->
+    <dataSource id="DefaultDataSource" jndiName="jdbc/rosterDS">
+        <jdbcDriver libraryRef="h2Lib"
+                    javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"/>
+        <properties URL="jdbc:h2:mem:roster;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+                    user="sa"
+                    password=""/>
+    </dataSource>
+
+    <!-- Application configuration -->
+    <webApplication location="roster.war" contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+</server>

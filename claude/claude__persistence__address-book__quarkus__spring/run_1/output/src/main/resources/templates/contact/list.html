@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List</title>
+    <link rel="stylesheet" th:href="@{/css/jsfcrud.css}"/>
+</head>
+<body>
+    <h1>List</h1>
+
+    <div th:if="${successMessage}" style="color: green;">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" style="color: #d20005;">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <p th:if="${#lists.isEmpty(contacts)}">(No Contact Items Found)</p>
+
+    <div th:if="${!#lists.isEmpty(contacts)}">
+        <table border="0" cellpadding="2" cellspacing="0" rules="all" style="border:solid 1px">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Birthday</th>
+                    <th>Home Phone</th>
+                    <th>Mobile Phone</th>
+                    <th>Email</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item, iterStat : ${contacts}"
+                    th:class="${iterStat.odd ? 'jsfcrud_odd_row' : 'jsfcrud_even_row'}">
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.lastName}"></td>
+                    <td th:text="${item.firstName}"></td>
+                    <td th:text="${item.birthday != null ? #dates.format(item.birthday, 'MM/dd/yyyy') : ''}"></td>
+                    <td th:text="${item.homePhone}"></td>
+                    <td th:text="${item.mobilePhone}"></td>
+                    <td th:text="${item.email}"></td>
+                    <td>
+                        <a th:href="@{/contacts/{id}(id=${item.id})}">View</a>
+                        <a th:href="@{/contacts/{id}/edit(id=${item.id})}">Edit</a>
+                        <form th:action="@{/contacts/{id}/delete(id=${item.id})}" method="post" style="display:inline;">
+                            <button type="submit" style="background:none;border:none;color:black;cursor:pointer;text-decoration:underline;font-size:small;padding:0;">Destroy</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br/>
+        <span th:if="${hasPrevious}">
+            <a th:href="@{/contacts(page=${currentPage - 1})}">Previous</a>&nbsp;
+        </span>
+        <span th:if="${hasNext}">
+            <a th:href="@{/contacts(page=${currentPage + 1})}">Next</a>&nbsp;
+        </span>
+    </div>
+
+    <br/>
+    <a th:href="@{/contacts/new}">Create New Contact</a>
+    <br/><br/>
+    <a th:href="@{/}">Index</a>
+</body>
+</html>

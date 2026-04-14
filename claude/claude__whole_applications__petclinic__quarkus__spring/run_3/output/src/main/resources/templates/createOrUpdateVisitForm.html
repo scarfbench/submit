@@ -1,0 +1,71 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{:: #body-content})}">
+<body>
+<div id="body-content">
+<h2>
+    <span th:unless="${visit != null}">New </span>Visit
+</h2>
+<b>Pet</b>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Birthdate</th>
+            <th>Type</th>
+            <th>Owner</th>
+        </tr>
+    </thead>
+    <tr>
+        <td th:text="${pet.name}">Name</td>
+        <td th:text="${pet.birthDate}">Birthdate</td>
+        <td th:text="${pet.type != null ? pet.type.name : ''}">Type</td>
+        <td th:text="${pet.owner.firstName + ' ' + pet.owner.lastName}">Owner</td>
+    </tr>
+</table>
+<form class="form-horizontal" method="post">
+    <div class="form-group has-feedback">
+        <div class="form-group" th:classappend="${errors != null and errors.containsKey('date')} ? 'has-error' : ''">
+            <label class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-10">
+                <div>
+                    <input class="form-control" type="text" placeholder="YYYY-MM-DD"
+                        id="date" name="date" th:value="${visit != null and visit.date != null ? visit.date : ''}"/>
+                </div>
+                <span th:if="${errors != null and errors.containsKey('date')}"
+                      class="help-inline" th:text="${errors.get('date')}"></span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${errors != null and errors.containsKey('description')} ? 'has-error' : ''">
+            <label class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+                <div>
+                    <input class="form-control" type="text" id="description" name="description"
+                           th:value="${visit != null and visit.description != null ? visit.description : ''}" />
+                </div>
+                <span th:if="${errors != null and errors.containsKey('description')}"
+                      class="help-inline" th:text="${errors.get('description')}"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="hidden" name="petId" value="1" />
+            <button class="btn btn-primary" type="submit">Add Visit</button>
+        </div>
+    </div>
+</form>
+<br />
+<b>Previous Visits</b>
+<table class="table table-striped">
+    <tr>
+        <th>Date</th>
+        <th>Description</th>
+    </tr>
+    <tr th:if="${pet.sortedVisits != null}" th:each="v : ${pet.sortedVisits}">
+        <td th:text="${v.date}">Date</td>
+        <td th:text="${v.description}">Description</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

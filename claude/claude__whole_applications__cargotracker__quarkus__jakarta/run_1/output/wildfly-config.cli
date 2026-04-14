@@ -1,0 +1,12 @@
+# WildFly configuration script for Cargo Tracker
+# Runs before deployment
+
+# Add H2 datasource
+/subsystem=datasources/data-source=CargoTrackerDS:add(jndi-name="java:jboss/datasources/CargoTrackerDS", connection-url="jdbc:h2:file:./cargo-tracker-data/cargo-tracker-database;AUTO_SERVER=TRUE", driver-name=h2, user-name=sa, password="")
+
+# Add JMS Queues
+jms-queue add --queue-address=CargoHandledQueue --entries=java:/jms/queue/CargoHandledQueue
+jms-queue add --queue-address=DeliveredCargoQueue --entries=java:/jms/queue/DeliveredCargoQueue
+jms-queue add --queue-address=HandlingEventRegistrationAttemptQueue --entries=java:/jms/queue/HandlingEventRegistrationAttemptQueue
+jms-queue add --queue-address=MisdirectedCargoQueue --entries=java:/jms/queue/MisdirectedCargoQueue
+jms-queue add --queue-address=RejectedRegistrationAttemptsQueue --entries=java:/jms/queue/RejectedRegistrationAttemptsQueue

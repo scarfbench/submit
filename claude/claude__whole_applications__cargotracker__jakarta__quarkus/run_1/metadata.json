@@ -1,0 +1,17 @@
+{
+  "status": "CONVERTED",
+  "agent": "claude",
+  "app": "cargotracker",
+  "layer": "whole_applications",
+  "repeat": 1,
+  "source_framework": "jakarta",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 34,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 4,
+  "failure_reason": "29 failed, 0 errors, 4 passed out of 33 tests",
+  "failure_category": "test_failures",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

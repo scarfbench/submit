@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interceptor example response</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .response {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="submit"] {
+            padding: 5px 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interceptor Example Response</h1>
+    <div class="response">
+        Hello, {name ?: 'Guest'}.
+    </div>
+    <form action="/" method="get">
+        <input type="submit" value="Back" />
+    </form>
+</body>
+</html>

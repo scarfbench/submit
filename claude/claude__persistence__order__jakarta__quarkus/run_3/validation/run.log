@@ -1,0 +1,1534 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.00kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 442B done
+#3 DONE 0.0s
+
+#4 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 93.69kB 0.0s done
+#5 DONE 0.1s
+
+#6 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [5/9] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#9 CACHED
+
+#10 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest aiohttp
+#10 CACHED
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 0.0s done
+#14 exporting manifest sha256:57735a0d491f6adde7782576370ce633185a1a692a0310971872091ca6fc0eee done
+#14 exporting config sha256:6d67c96e011d92b2db1ef70304d61f74cb295798da06f812b18570cc390532e6 0.0s done
+#14 exporting attestation manifest sha256:cccf9b96544eead139984f6ed8d52f00a9dc07fa37d568e8f9b6cad8f18ca262
+#14 exporting attestation manifest sha256:cccf9b96544eead139984f6ed8d52f00a9dc07fa37d568e8f9b6cad8f18ca262 0.3s done
+#14 exporting manifest list sha256:1d8f1bfa3dcd7bcb49f3f3c69535b9bafb6ad03742451a10a479c7fa3a3d5082
+#14 exporting manifest list sha256:1d8f1bfa3dcd7bcb49f3f3c69535b9bafb6ad03742451a10a479c7fa3a3d5082 0.1s done
+#14 naming to docker.io/library/order-quarkus:8ba7b67d 0.1s done
+#14 unpacking to docker.io/library/order-quarkus:8ba7b67d
+#14 unpacking to docker.io/library/order-quarkus:8ba7b67d 0.0s done
+#14 DONE 0.7s
+[INFO] Built image: order-quarkus:8ba7b67d
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name order-quarkus-faa5bc6f order-quarkus:8ba7b67d
+133b4f0308adb58f90cceb93b9b6e44b42e510dde81ea38bdf9da4ea93e3d0b5
+[INFO] Started order-quarkus-faa5bc6f, waiting for app to start...
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_CUSTOMERORDER cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_LINEITEM cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_PART cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_PART_DETAIL cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_SEQUENCE_GENERATOR cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_VENDOR cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_VENDOR_PART cascade 
+Hibernate: 
+    create table PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount integer not null,
+        orderId integer not null,
+        status char(1) not null,
+        lastUpdate timestamp(6),
+        shipmentInfo varchar(255),
+        primary key (orderId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_LINEITEM (
+        ORDERID integer not null,
+        itemId integer not null,
+        quantity integer not null,
+        VENDORPARTNUMBER bigint,
+        primary key (ORDERID, itemId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_PART (
+        BOMREVISION integer,
+        revision integer not null,
+        revisionDate date,
+        BOMPARTNUMBER varchar(255),
+        description varchar(255),
+        partNumber varchar(255) not null,
+        primary key (revision, partNumber)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION integer not null,
+        PARTNUMBER varchar(255) not null,
+        drawing blob,
+        specification clob,
+        primary key (REVISION, PARTNUMBER)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE bigint,
+        GEN_KEY varchar(255) not null,
+        primary key (GEN_KEY)
+    )
+Hibernate: 
+    insert into PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) values ('VENDOR_PART_ID',0)
+Hibernate: 
+    create table PERSISTENCE_ORDER_VENDOR (
+        vendorId integer not null,
+        VENDORNAME varchar(255),
+        address varchar(255),
+        contact varchar(255),
+        phone varchar(255),
+        primary key (vendorId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION integer,
+        VENDORID integer,
+        price float(53) not null,
+        vendorPartNumber bigint not null,
+        PARTNUMBER varchar(255),
+        description varchar(255),
+        primary key (vendorPartNumber),
+        unique (PARTNUMBER, PARTREVISION)
+    )
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_LINEITEM 
+       add constraint FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       foreign key (ORDERID) 
+       references PERSISTENCE_ORDER_CUSTOMERORDER
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_LINEITEM 
+       add constraint FK9wag1aaxyy4736nlu91njalf9 
+       foreign key (VENDORPARTNUMBER) 
+       references PERSISTENCE_ORDER_VENDOR_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_PART 
+       add constraint FK450q3m77lfuyw40lo8ygobiju 
+       foreign key (BOMREVISION, BOMPARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_PART_DETAIL 
+       add constraint FKtalx1tlrdyfl68xyu0aa3wo6e 
+       foreign key (REVISION, PARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_VENDOR_PART 
+       add constraint FKfo34wr4is2kfuky5gnkpxpb2f 
+       foreign key (PARTREVISION, PARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_VENDOR_PART 
+       add constraint FKidt1tr7k5h46m5pqjt92fpisl 
+       foreign key (VENDORID) 
+       references PERSISTENCE_ORDER_VENDOR
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 03:35:57,411 INFO  [ord.ejb.RequestBean] (main) Created part 1234-5678-01-1
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Persisted part 1234-5678-01-1
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Created part 9876-4321-02-2
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Persisted part 9876-4321-02-2
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Created part 5456-6789-03-3
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Persisted part 5456-6789-03-3
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Created part ABCD-XYZW-FF-5
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Persisted part ABCD-XYZW-FF-5
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Created part SDFG-ERTY-BN-7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Persisted part SDFG-ERTY-BN-7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Part number: 1234-5678-01
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Part revision: 1
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) Part found: 1234-5678-01
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part number: 9876-4321-02
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part revision: 2
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part found: 9876-4321-02
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part number: 5456-6789-03
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part revision: 3
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) Part found: 5456-6789-03
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) Part number: ABCD-XYZW-FF
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) Part revision: 5
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) Part found: ABCD-XYZW-FF
+Hibernate: 
+    select
+        tbl.GEN_VALUE 
+    from
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    where
+        tbl.GEN_KEY=? for update
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    set
+        GEN_VALUE=?  
+    where
+        GEN_VALUE=? 
+        and GEN_KEY=?
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+2026-03-24 03:35:57,682 INFO  [io.quarkus] (main) order 10-SNAPSHOT on JVM (powered by Quarkus 3.8.4) started in 2.479s. Listening on: http://0.0.0.0:8080
+2026-03-24 03:35:57,682 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 03:35:57,684 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, narayana-jta, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, smallrye-health, vertx]
+[INFO] Quarkus application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_CUSTOMERORDER cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_LINEITEM cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_PART cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_PART_DETAIL cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_SEQUENCE_GENERATOR cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_VENDOR cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_VENDOR_PART cascade 
+Hibernate: 
+    create table PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount integer not null,
+        orderId integer not null,
+        status char(1) not null,
+        lastUpdate timestamp(6),
+        shipmentInfo varchar(255),
+        primary key (orderId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_LINEITEM (
+        ORDERID integer not null,
+        itemId integer not null,
+        quantity integer not null,
+        VENDORPARTNUMBER bigint,
+        primary key (ORDERID, itemId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_PART (
+        BOMREVISION integer,
+        revision integer not null,
+        revisionDate date,
+        BOMPARTNUMBER varchar(255),
+        description varchar(255),
+        partNumber varchar(255) not null,
+        primary key (revision, partNumber)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION integer not null,
+        PARTNUMBER varchar(255) not null,
+        drawing blob,
+        specification clob,
+        primary key (REVISION, PARTNUMBER)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE bigint,
+        GEN_KEY varchar(255) not null,
+        primary key (GEN_KEY)
+    )
+Hibernate: 
+    insert into PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) values ('VENDOR_PART_ID',0)
+Hibernate: 
+    create table PERSISTENCE_ORDER_VENDOR (
+        vendorId integer not null,
+        VENDORNAME varchar(255),
+        address varchar(255),
+        contact varchar(255),
+        phone varchar(255),
+        primary key (vendorId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION integer,
+        VENDORID integer,
+        price float(53) not null,
+        vendorPartNumber bigint not null,
+        PARTNUMBER varchar(255),
+        description varchar(255),
+        primary key (vendorPartNumber),
+        unique (PARTNUMBER, PARTREVISION)
+    )
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_LINEITEM 
+       add constraint FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       foreign key (ORDERID) 
+       references PERSISTENCE_ORDER_CUSTOMERORDER
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_LINEITEM 
+       add constraint FK9wag1aaxyy4736nlu91njalf9 
+       foreign key (VENDORPARTNUMBER) 
+       references PERSISTENCE_ORDER_VENDOR_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_PART 
+       add constraint FK450q3m77lfuyw40lo8ygobiju 
+       foreign key (BOMREVISION, BOMPARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_PART_DETAIL 
+       add constraint FKtalx1tlrdyfl68xyu0aa3wo6e 
+       foreign key (REVISION, PARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_VENDOR_PART 
+       add constraint FKfo34wr4is2kfuky5gnkpxpb2f 
+       foreign key (PARTREVISION, PARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_VENDOR_PART 
+       add constraint FKidt1tr7k5h46m5pqjt92fpisl 
+       foreign key (VENDORID) 
+       references PERSISTENCE_ORDER_VENDOR
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 03:35:57,411 INFO  [ord.ejb.RequestBean] (main) Created part 1234-5678-01-1
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Persisted part 1234-5678-01-1
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Created part 9876-4321-02-2
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Persisted part 9876-4321-02-2
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Created part 5456-6789-03-3
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Persisted part 5456-6789-03-3
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Created part ABCD-XYZW-FF-5
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Persisted part ABCD-XYZW-FF-5
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Created part SDFG-ERTY-BN-7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Persisted part SDFG-ERTY-BN-7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Part number: 1234-5678-01
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Part revision: 1
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) Part found: 1234-5678-01
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part number: 9876-4321-02
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part revision: 2
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part found: 9876-4321-02
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part number: 5456-6789-03
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part revision: 3
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) Part found: 5456-6789-03
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) Part number: ABCD-XYZW-FF
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) Part revision: 5
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) Part found: ABCD-XYZW-FF
+Hibernate: 
+    select
+        tbl.GEN_VALUE 
+    from
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    where
+        tbl.GEN_KEY=? for update
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    set
+        GEN_VALUE=?  
+    where
+        GEN_VALUE=? 
+        and GEN_KEY=?
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+2026-03-24 03:35:57,682 INFO  [io.quarkus] (main) order 10-SNAPSHOT on JVM (powered by Quarkus 3.8.4) started in 2.479s. Listening on: http://0.0.0.0:8080
+2026-03-24 03:35:57,682 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 03:35:57,684 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, narayana-jta, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, smallrye-health, vertx]
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 7 items
+
+smoke.py::test_orders_page_loads FAILED                                  [ 14%]
+smoke.py::test_orders_table_in_html FAILED                               [ 28%]
+smoke.py::test_playwright_orders_table FAILED                            [ 42%]
+smoke.py::test_order_deletion PASSED                                     [ 57%]
+smoke.py::test_vendor_search_no_results PASSED                           [ 71%]
+smoke.py::test_add_line_item PASSED                                      [ 85%]
+smoke.py::test_parts_listed PASSED                                       [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_orders_page_loads ____________________________
+
+    def test_orders_page_loads():
+        """Orders page should load with expected content."""
+>       body = asyncio.run(_wait_and_get("/orders"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:835: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+smoke.py:829: in _wait_and_get
+    await wait_for_http(session, "localhost", 8082, START_TIMEOUT)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <aiohttp.client.ClientSession object at 0x7747a0895d30>
+host = 'localhost', port = 8082, timeout = 90
+
+    async def wait_for_http(session: aiohttp.ClientSession, host: str, port: int, timeout: int):
+        """Wait for HTTP server to become available"""
+        url = f"http://{host}:{port}/orders"
+        end = time.time() + timeout
+        while time.time() < end:
+            try:
+                async with session.get(url, timeout=aiohttp.ClientTimeout(total=5)) as response:
+                    vprint(f"[DEBUG] HTTP {response.status} from {url}")
+                    if response.status == 200:
+                        print(f"[PASS] Successfully connected to {url}")
+                        return
+                    else:
+                        vprint(f"[DEBUG] Non-200 response: {response.status} from {url}")
+            except (aiohttp.ClientError, asyncio.TimeoutError) as e:
+                vprint(f"[DEBUG] Waiting for {url}, error: {str(e)}")
+            await asyncio.sleep(0.5)
+>       raise TimeoutError(f"Timed out waiting for HTTP port {port} after {timeout}s")
+E       TimeoutError: Timed out waiting for HTTP port 8082 after 90s
+
+smoke.py:180: TimeoutError
+__________________________ test_orders_table_in_html ___________________________
+
+    def test_orders_table_in_html():
+        """Orders table should be present in HTML."""
+>       body = asyncio.run(_wait_and_get("/orders"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:841: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+smoke.py:829: in _wait_and_get
+    await wait_for_http(session, "localhost", 8082, START_TIMEOUT)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <aiohttp.client.ClientSession object at 0x7747a05807d0>
+host = 'localhost', port = 8082, timeout = 90
+
+    async def wait_for_http(session: aiohttp.ClientSession, host: str, port: int, timeout: int):
+        """Wait for HTTP server to become available"""
+        url = f"http://{host}:{port}/orders"
+        end = time.time() + timeout
+        while time.time() < end:
+            try:
+                async with session.get(url, timeout=aiohttp.ClientTimeout(total=5)) as response:
+                    vprint(f"[DEBUG] HTTP {response.status} from {url}")
+                    if response.status == 200:
+                        print(f"[PASS] Successfully connected to {url}")
+                        return
+                    else:
+                        vprint(f"[DEBUG] Non-200 response: {response.status} from {url}")
+            except (aiohttp.ClientError, asyncio.TimeoutError) as e:
+                vprint(f"[DEBUG] Waiting for {url}, error: {str(e)}")
+            await asyncio.sleep(0.5)
+>       raise TimeoutError(f"Timed out waiting for HTTP port {port} after {timeout}s")
+E       TimeoutError: Timed out waiting for HTTP port 8082 after 90s
+
+smoke.py:180: TimeoutError
+_________________________ test_playwright_orders_table _________________________
+
+    def test_playwright_orders_table():
+        """Orders table should display via Playwright."""
+        if not PLAYWRIGHT_AVAILABLE:
+            pytest.skip("Playwright not available")
+>       assert asyncio.run(run_playwright_tests()), "Playwright tests failed"
+E       AssertionError: Playwright tests failed
+E       assert False
+E        +  where False = <function run at 0x7747a187dda0>(<coroutine object run_playwright_tests at 0x7747a024a680>)
+E        +    where <function run at 0x7747a187dda0> = asyncio.run
+E        +    and   <coroutine object run_playwright_tests at 0x7747a024a680> = run_playwright_tests()
+
+smoke.py:849: AssertionError
+----------------------------- Captured stdout call -----------------------------
+[INFO] Running Playwright tests with chromium browser (headless=True)
+
+[INFO] Testing orders table UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Orders table UI test failed: Page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8082/orders
+Call log:
+navigating to "http://localhost:8082/orders", waiting until "load"
+
+=========================== short test summary info ============================
+FAILED smoke.py::test_orders_page_loads - TimeoutError: Timed out waiting for...
+FAILED smoke.py::test_orders_table_in_html - TimeoutError: Timed out waiting ...
+FAILED smoke.py::test_playwright_orders_table - AssertionError: Playwright te...
+=================== 3 failed, 4 passed in 182.59s (0:03:02) ====================
+=== TEST FAIL ===
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_CUSTOMERORDER cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_LINEITEM cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_PART cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_PART_DETAIL cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_SEQUENCE_GENERATOR cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_VENDOR cascade 
+Hibernate: 
+    drop table if exists PERSISTENCE_ORDER_VENDOR_PART cascade 
+Hibernate: 
+    create table PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount integer not null,
+        orderId integer not null,
+        status char(1) not null,
+        lastUpdate timestamp(6),
+        shipmentInfo varchar(255),
+        primary key (orderId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_LINEITEM (
+        ORDERID integer not null,
+        itemId integer not null,
+        quantity integer not null,
+        VENDORPARTNUMBER bigint,
+        primary key (ORDERID, itemId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_PART (
+        BOMREVISION integer,
+        revision integer not null,
+        revisionDate date,
+        BOMPARTNUMBER varchar(255),
+        description varchar(255),
+        partNumber varchar(255) not null,
+        primary key (revision, partNumber)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION integer not null,
+        PARTNUMBER varchar(255) not null,
+        drawing blob,
+        specification clob,
+        primary key (REVISION, PARTNUMBER)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE bigint,
+        GEN_KEY varchar(255) not null,
+        primary key (GEN_KEY)
+    )
+Hibernate: 
+    insert into PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) values ('VENDOR_PART_ID',0)
+Hibernate: 
+    create table PERSISTENCE_ORDER_VENDOR (
+        vendorId integer not null,
+        VENDORNAME varchar(255),
+        address varchar(255),
+        contact varchar(255),
+        phone varchar(255),
+        primary key (vendorId)
+    )
+Hibernate: 
+    create table PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION integer,
+        VENDORID integer,
+        price float(53) not null,
+        vendorPartNumber bigint not null,
+        PARTNUMBER varchar(255),
+        description varchar(255),
+        primary key (vendorPartNumber),
+        unique (PARTNUMBER, PARTREVISION)
+    )
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_LINEITEM 
+       add constraint FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       foreign key (ORDERID) 
+       references PERSISTENCE_ORDER_CUSTOMERORDER
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_LINEITEM 
+       add constraint FK9wag1aaxyy4736nlu91njalf9 
+       foreign key (VENDORPARTNUMBER) 
+       references PERSISTENCE_ORDER_VENDOR_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_PART 
+       add constraint FK450q3m77lfuyw40lo8ygobiju 
+       foreign key (BOMREVISION, BOMPARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_PART_DETAIL 
+       add constraint FKtalx1tlrdyfl68xyu0aa3wo6e 
+       foreign key (REVISION, PARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_VENDOR_PART 
+       add constraint FKfo34wr4is2kfuky5gnkpxpb2f 
+       foreign key (PARTREVISION, PARTNUMBER) 
+       references PERSISTENCE_ORDER_PART
+Hibernate: 
+    alter table if exists PERSISTENCE_ORDER_VENDOR_PART 
+       add constraint FKidt1tr7k5h46m5pqjt92fpisl 
+       foreign key (VENDORID) 
+       references PERSISTENCE_ORDER_VENDOR
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 03:35:57,411 INFO  [ord.ejb.RequestBean] (main) Created part 1234-5678-01-1
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Persisted part 1234-5678-01-1
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Created part 9876-4321-02-2
+2026-03-24 03:35:57,436 INFO  [ord.ejb.RequestBean] (main) Persisted part 9876-4321-02-2
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Created part 5456-6789-03-3
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Persisted part 5456-6789-03-3
+2026-03-24 03:35:57,437 INFO  [ord.ejb.RequestBean] (main) Created part ABCD-XYZW-FF-5
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Persisted part ABCD-XYZW-FF-5
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Created part SDFG-ERTY-BN-7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Persisted part SDFG-ERTY-BN-7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Part number: 1234-5678-01
+2026-03-24 03:35:57,438 INFO  [ord.ejb.RequestBean] (main) Part revision: 1
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) Part found: 1234-5678-01
+2026-03-24 03:35:57,440 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part number: 9876-4321-02
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part revision: 2
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part found: 9876-4321-02
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part number: 5456-6789-03
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) Part revision: 3
+2026-03-24 03:35:57,441 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) Part found: 5456-6789-03
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) BOM revision: 7
+2026-03-24 03:35:57,442 INFO  [ord.ejb.RequestBean] (main) Part number: ABCD-XYZW-FF
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) Part revision: 5
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 03:35:57,443 INFO  [ord.ejb.RequestBean] (main) Part found: ABCD-XYZW-FF
+Hibernate: 
+    select
+        tbl.GEN_VALUE 
+    from
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    where
+        tbl.GEN_KEY=? for update
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    set
+        GEN_VALUE=?  
+    where
+        GEN_VALUE=? 
+        and GEN_KEY=?
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,492 INFO  [ord.ejb.RequestBean] (main) Found order ID 1,111
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+2026-03-24 03:35:57,493 INFO  [ord.ejb.RequestBean] (main) Found order ID 4,312
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_PART 
+    set
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    where
+        partNumber=? 
+        and revision=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+Hibernate: 
+    update
+        PERSISTENCE_ORDER_VENDOR_PART 
+    set
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    where
+        vendorPartNumber=?
+2026-03-24 03:35:57,682 INFO  [io.quarkus] (main) order 10-SNAPSHOT on JVM (powered by Quarkus 3.8.4) started in 2.479s. Listening on: http://0.0.0.0:8080
+2026-03-24 03:35:57,682 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 03:35:57,684 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, narayana-jta, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, smallrye-health, vertx]
+make: *** [Makefile:52: test] Error 1

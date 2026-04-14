@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="petclinicPU" transaction-type="JTA">
+        <jta-data-source>java:jboss/datasources/PetClinicDS</jta-data-source>
+
+        <class>org.quarkus.samples.petclinic.model.Person</class>
+        <class>org.quarkus.samples.petclinic.owner.Owner</class>
+        <class>org.quarkus.samples.petclinic.owner.Pet</class>
+        <class>org.quarkus.samples.petclinic.owner.PetType</class>
+        <class>org.quarkus.samples.petclinic.vet.Vet</class>
+        <class>org.quarkus.samples.petclinic.vet.Specialty</class>
+        <class>org.quarkus.samples.petclinic.visit.Visit</class>
+
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="import.sql"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

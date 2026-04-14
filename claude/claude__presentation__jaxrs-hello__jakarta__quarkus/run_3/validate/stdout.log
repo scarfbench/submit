@@ -1,0 +1,9 @@
+docker build -f Dockerfile -t "jaxrs-hello-quarkus:latest" .
+[INFO] Built image: jaxrs-hello-quarkus:latest
+### Run the container in detached mode
+docker run -d --name "jaxrs-hello-quarkus" "jaxrs-hello-quarkus:latest"
+d31b207fe70c54c126c5d518e45c2a6b1aaf68607a29d7c47b5bf17415d80d78
+[INFO] Started jaxrs-hello-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.

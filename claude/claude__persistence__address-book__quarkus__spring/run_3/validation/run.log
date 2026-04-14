@@ -1,0 +1,103 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [5/9] RUN playwright install --with-deps chromium
+#4 CACHED
+
+#5 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#5 CACHED
+
+#6 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#6 CACHED
+
+#7 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 442B 0.0s done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 79.22kB done
+#10 DONE 0.0s
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:fd69509c3855ba6121e5faf2fa3484e69db866059a07aa226249e4301928b1c0 done
+#14 exporting config sha256:c37581d2607fed3fbf0752371830eb113b0dd660e7d04f9fdf8aa2373f0f45ec done
+#14 exporting attestation manifest sha256:852acb199068cf89525a509d6efcdbb591891a11873cbd168cff0e3e938a72dd
+#14 exporting attestation manifest sha256:852acb199068cf89525a509d6efcdbb591891a11873cbd168cff0e3e938a72dd 0.1s done
+#14 exporting manifest list sha256:60caaf624548e07b1396a624876b2d3b36020cf79fecb028169789925d250fe4 0.0s done
+#14 naming to docker.io/library/address-book-spring:cffddcbf
+#14 naming to docker.io/library/address-book-spring:cffddcbf done
+#14 unpacking to docker.io/library/address-book-spring:cffddcbf 0.0s done
+#14 DONE 0.2s
+[INFO] Built image: address-book-spring:cffddcbf
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name address-book-spring-29f845c7 address-book-spring:cffddcbf
+cf551ace8855bbb8f9cdf3bc75fb866536076c1db45c5cbea55dbf46c39f2e14
+[INFO] Started address-book-spring-29f845c7, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-03-24T03:36:14.226Z  INFO 20 --- [           main] c.e.addressbook.AddressBookApplication   : Starting AddressBookApplication v1.0.0-SNAPSHOT using Java 21.0.10 with PID 20 (/app/target/address-book-spring-1.0.0-SNAPSHOT.jar started by root in /app)
+2026-03-24T03:36:14.351Z  INFO 20 --- [           main] c.e.addressbook.AddressBookApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T03:36:15.476Z  INFO 20 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-24T03:36:15.508Z  INFO 20 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 1 JPA repository interface.
+2026-03-24T03:36:16.151Z  INFO 20 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T03:36:16.170Z  INFO 20 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T03:36:16.170Z  INFO 20 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-03-24T03:36:16.218Z  INFO 20 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T03:36:16.219Z  INFO 20 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1815 ms
+2026-03-24T03:36:16.332Z  INFO 20 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-24T03:36:16.586Z  INFO 20 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:addressbook user=SA
+2026-03-24T03:36:16.587Z  INFO 20 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-24T03:36:16.592Z  INFO 20 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:addressbook'
+2026-03-24T03:36:16.769Z  INFO 20 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-24T03:36:16.829Z  INFO 20 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-24T03:36:16.857Z  INFO 20 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-24T03:36:17.082Z  INFO 20 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-24T03:36:17.134Z  WARN 20 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-24T03:36:17.839Z  INFO 20 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table contact (id bigint not null, birthday date, email varchar(255), first_name varchar(255), home_phone varchar(255), last_name varchar(255), mobile_phone varchar(255), primary key (id))
+Hibernate: create sequence contact_seq start with 1 increment by 50
+2026-03-24T03:36:17.880Z  INFO 20 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T03:36:18.551Z  WARN 20 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-24T03:36:18.590Z  INFO 20 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-03-24T03:36:19.178Z  INFO 20 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-03-24T03:36:19.235Z  INFO 20 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T03:36:19.259Z  INFO 20 --- [           main] c.e.addressbook.AddressBookApplication   : Started AddressBookApplication in 5.645 seconds (process running for 6.163)
+2026-03-24T12:13:42.453Z  INFO 20 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-24T12:13:42.615Z  INFO 20 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-24T12:13:42.660Z  INFO 20 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

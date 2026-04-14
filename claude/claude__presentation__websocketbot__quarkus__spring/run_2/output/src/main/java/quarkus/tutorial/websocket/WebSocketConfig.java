@@ -1,0 +1,26 @@
+/*
+ * Copyright (c), Eclipse Foundation, Inc. and its licensors.
+ * SPDX-License-License: BSD-3-Clause
+ */
+package quarkus.tutorial.websocket;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+
+@Configuration
+@EnableWebSocket
+public class WebSocketConfig {
+
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
+    }
+}

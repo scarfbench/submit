@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}"></head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<div class="container">
+    <h1>Welcome to the Petclinic</h1>
+    <p class="lead">This is a Spring Boot application migrated from Jakarta EE 10.</p>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-users"></i> Owners</h5>
+                    <p class="card-text">Manage pet owners</p>
+                    <a th:href="@{/owners}" class="btn btn-primary">View Owners</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-user-md"></i> Veterinarians</h5>
+                    <p class="card-text">Manage veterinarians</p>
+                    <a th:href="@{/vets}" class="btn btn-primary">View Vets</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-paw"></i> Pet Types</h5>
+                    <p class="card-text">Manage pet types</p>
+                    <a th:href="@{/petTypes}" class="btn btn-primary">View Pet Types</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

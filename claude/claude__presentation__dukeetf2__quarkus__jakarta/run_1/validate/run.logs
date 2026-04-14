@@ -1,0 +1,6 @@
+docker logs "dukeetf2-jakarta"
+
+
+--- stderr ---
+Error response from daemon: No such container: dukeetf2-jakarta
+make: *** [Makefile:31: logs] Error 1

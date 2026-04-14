@@ -1,0 +1,1115 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 987B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#4 CACHED
+
+#5 [5/9] RUN playwright install --with-deps chromium
+#5 CACHED
+
+#6 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B 0.0s done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 213.25kB 0.1s done
+#10 DONE 0.1s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 22.3s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 2.138 [INFO] Scanning for projects...
+#13 2.366 [INFO] 
+#13 2.367 [INFO] --------------< jakarta.examples.tutorial.ejb:converter >---------------
+#13 2.367 [INFO] Building converter 10-SNAPSHOT
+#13 2.367 [INFO]   from pom.xml
+#13 2.367 [INFO] --------------------------------[ jar ]---------------------------------
+#13 2.783 Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+#13 2.984 Progress (1): 0.9/65 kBProgress (1): 2.3/65 kBProgress (1): 3.6/65 kBProgress (1): 5.0/65 kBProgress (1): 6.4/65 kBProgress (1): 7.7/65 kBProgress (1): 9.1/65 kBProgress (1): 10/65 kB Progress (1): 12/65 kBProgress (1): 13/65 kBProgress (1): 15/65 kBProgress (1): 16/65 kBProgress (1): 17/65 kBProgress (1): 19/65 kBProgress (1): 20/65 kBProgress (1): 21/65 kBProgress (1): 23/65 kBProgress (1): 24/65 kBProgress (1): 25/65 kBProgress (1): 26/65 kBProgress (1): 27/65 kBProgress (1): 29/65 kBProgress (1): 30/65 kBProgress (1): 31/65 kBProgress (1): 33/65 kBProgress (1): 34/65 kBProgress (1): 36/65 kBProgress (1): 37/65 kBProgress (1): 38/65 kBProgress (1): 40/65 kBProgress (1): 41/65 kBProgress (1): 42/65 kBProgress (1): 44/65 kBProgress (1): 45/65 kBProgress (1): 46/65 kBProgress (1): 48/65 kBProgress (1): 49/65 kBProgress (1): 51/65 kBProgress (1): 52/65 kBProgress (1): 53/65 kBProgress (1): 55/65 kBProgress (1): 59/65 kBProgress (1): 63/65 kBProgress (1): 65 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar (65 kB at 287 kB/s)
+#13 3.003 [INFO] 
+#13 3.004 [INFO] --- resources:3.3.1:resources (default-resources) @ converter ---
+#13 3.115 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 3.119 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 3.120 [INFO] 
+#13 3.120 [INFO] --- compiler:3.11.0:compile (default-compile) @ converter ---
+#13 3.209 [INFO] Changes detected - recompiling the module! :source
+#13 3.209 [INFO] Compiling 3 source files with javac [debug release 17] to target/classes
+#13 3.699 [INFO] 
+#13 3.699 [INFO] --- resources:3.3.1:testResources (default-testResources) @ converter ---
+#13 3.701 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 3.701 [INFO] 
+#13 3.701 [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ converter ---
+#13 3.704 [INFO] No sources to compile
+#13 3.704 [INFO] 
+#13 3.704 [INFO] --- surefire:3.1.2:test (default-test) @ converter ---
+#13 3.866 [INFO] Tests are skipped.
+#13 3.866 [INFO] 
+#13 3.866 [INFO] --- jar:3.3.0:jar (default-jar) @ converter ---
+#13 3.993 [INFO] Building jar: /app/target/converter.jar
+#13 4.046 [INFO] 
+#13 4.046 [INFO] --- spring-boot:3.2.0:repackage (repackage) @ converter ---
+#13 4.236 [INFO] Replacing main artifact /app/target/converter.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 4.237 [INFO] The original artifact has been renamed to /app/target/converter.jar.original
+#13 4.237 [INFO] ------------------------------------------------------------------------
+#13 4.237 [INFO] BUILD SUCCESS
+#13 4.237 [INFO] ------------------------------------------------------------------------
+#13 4.238 [INFO] Total time:  2.111 s
+#13 4.238 [INFO] Finished at: 2026-03-24T05:31:56Z
+#13 4.238 [INFO] ------------------------------------------------------------------------
+#13 DONE 4.3s
+
+#14 [10/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#14 DONE 1.2s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 2.9s done
+#15 exporting manifest sha256:3e23c311961ba65084af001dbe83a1f72b60d3ae10bfe32ec9efcce702b837f7
+#15 exporting manifest sha256:3e23c311961ba65084af001dbe83a1f72b60d3ae10bfe32ec9efcce702b837f7 0.1s done
+#15 exporting config sha256:485cf5a26900a3cdf77e0ddfea88fcd5f25c640f2238e13976a4c9c0c2198f7d 0.1s done
+#15 exporting attestation manifest sha256:b59a4600ec604103aa29013914beb94a5d457550d5cec3799eed5932389dac90
+#15 exporting attestation manifest sha256:b59a4600ec604103aa29013914beb94a5d457550d5cec3799eed5932389dac90 0.2s done
+#15 exporting manifest list sha256:347987b2f46b7d3dc7165fbdab51b9d92ac1b6a1fba78ad9550d77bb18f69869
+#15 exporting manifest list sha256:347987b2f46b7d3dc7165fbdab51b9d92ac1b6a1fba78ad9550d77bb18f69869 0.2s done
+#15 naming to docker.io/library/converter-spring:731350a9
+#15 naming to docker.io/library/converter-spring:731350a9 0.0s done
+#15 unpacking to docker.io/library/converter-spring:731350a9
+#15 unpacking to docker.io/library/converter-spring:731350a9 1.1s done
+#15 DONE 4.8s
+[INFO] Built image: converter-spring:731350a9
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name converter-spring-3ae97bd6 converter-spring:731350a9
+24944027fac63c57cf508aa9e924bbc46be304377d57d7fd0d80ceade49b979f
+[INFO] Started converter-spring-3ae97bd6, waiting for app to start...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T05:32:06.195Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Starting ConverterApplication v10-SNAPSHOT using Java 21.0.10 with PID 20 (/app/target/converter.jar started by root in /app)
+2026-03-24T05:32:06.196Z DEBUG 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-24T05:32:06.197Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T05:32:06.926Z  INFO 20 --- [converter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T05:32:06.931Z  INFO 20 --- [converter] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T05:32:06.931Z  INFO 20 --- [converter] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T05:32:06.946Z  INFO 20 --- [converter] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T05:32:06.947Z  INFO 20 --- [converter] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 703 ms
+2026-03-24T05:32:07.240Z  WARN 20 --- [converter] [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-03-24T05:32:07.274Z  INFO 20 --- [converter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T05:32:07.281Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Started ConverterApplication in 1.481 seconds (process running for 1.816)
+[INFO] Spring Boot application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T05:32:06.195Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Starting ConverterApplication v10-SNAPSHOT using Java 21.0.10 with PID 20 (/app/target/converter.jar started by root in /app)
+2026-03-24T05:32:06.196Z DEBUG 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-24T05:32:06.197Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T05:32:06.926Z  INFO 20 --- [converter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T05:32:06.931Z  INFO 20 --- [converter] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T05:32:06.931Z  INFO 20 --- [converter] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T05:32:06.946Z  INFO 20 --- [converter] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T05:32:06.947Z  INFO 20 --- [converter] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 703 ms
+2026-03-24T05:32:07.240Z  WARN 20 --- [converter] [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-03-24T05:32:07.274Z  INFO 20 --- [converter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T05:32:07.281Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Started ConverterApplication in 1.481 seconds (process running for 1.816)
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 21 items
+
+smoke.py::test_page_has_expected_label FAILED                            [  4%]
+smoke.py::test_form_has_amount_input FAILED                              [  9%]
+smoke.py::test_form_has_submit_button FAILED                             [ 14%]
+smoke.py::test_page_title_is_non_empty FAILED                            [ 19%]
+smoke.py::test_expected_conversions[1-104.34 yen-0.74 Euro] FAILED       [ 23%]
+smoke.py::test_expected_conversions[5-521.70 yen-3.66 Euro] FAILED       [ 28%]
+smoke.py::test_expected_conversions[10-1043.40 yen-7.31 Euro] FAILED     [ 33%]
+smoke.py::test_expected_conversions[50-5217.00 yen-36.52 Euro] FAILED    [ 38%]
+smoke.py::test_expected_conversions[100-10434.00 yen-73.04 Euro] FAILED  [ 42%]
+smoke.py::test_outline_yen_conversions[1-104.34] FAILED                  [ 47%]
+smoke.py::test_outline_yen_conversions[5-521.70] FAILED                  [ 52%]
+smoke.py::test_outline_yen_conversions[10-1043.40] FAILED                [ 57%]
+smoke.py::test_result_echoes_input_amount FAILED                         [ 61%]
+smoke.py::test_no_stack_trace_in_result FAILED                           [ 66%]
+smoke.py::test_page_title_is_non_empty_after_conversion FAILED           [ 71%]
+smoke.py::test_can_convert_twice_in_a_row FAILED                         [ 76%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[0] FAILED        [ 80%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[1000000] FAILED  [ 85%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[2.5] FAILED      [ 90%]
+smoke.py::test_problem_inputs_do_not_show_server_errors[-1] FAILED       [ 95%]
+smoke.py::test_empty_submission_does_not_show_server_errors FAILED       [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_page_has_expected_label _________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_page_has_expected_label(page: Page):
+>       assert "Enter a dollar amount to convert:" in page.content()
+E       assert 'Enter a dollar amount to convert:' in '<html><head></head><body><h1>Whitelabel Error Page</h1><p>This application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id="created">Tue Mar 24 05:32:09 UTC 2026</div><div>There was an unexpected error (type=Not Found, status=404).</div></body></html>'
+E        +  where '<html><head></head><body><h1>Whitelabel Error Page</h1><p>This application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id="created">Tue Mar 24 05:32:09 UTC 2026</div><div>There was an unexpected error (type=Not Found, status=404).</div></body></html>' = content()
+E        +    where content = <Page url='http://localhost:8080/converter'>.content
+
+smoke.py:52: AssertionError
+__________________________ test_form_has_amount_input __________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_form_has_amount_input(page: Page):
+>       assert page.get_by_title("Amount").is_visible()
+E       assert False
+E        +  where False = is_visible()
+E        +    where is_visible = <Locator frame=<Frame name= url='http://localhost:8080/converter'> selector='internal:attr=[title="Amount"i]'>.is_visible
+E        +      where <Locator frame=<Frame name= url='http://localhost:8080/converter'> selector='internal:attr=[title="Amount"i]'> = get_by_title('Amount')
+E        +        where get_by_title = <Page url='http://localhost:8080/converter'>.get_by_title
+
+smoke.py:56: AssertionError
+_________________________ test_form_has_submit_button __________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_form_has_submit_button(page: Page):
+>       assert page.get_by_role("button", name="Submit").is_visible()
+E       assert False
+E        +  where False = is_visible()
+E        +    where is_visible = <Locator frame=<Frame name= url='http://localhost:8080/converter'> selector='internal:role=button[name="Submit"i]'>.is_visible
+E        +      where <Locator frame=<Frame name= url='http://localhost:8080/converter'> selector='internal:role=button[name="Submit"i]'> = get_by_role('button', name='Submit')
+E        +        where get_by_role = <Page url='http://localhost:8080/converter'>.get_by_role
+
+smoke.py:60: AssertionError
+_________________________ test_page_title_is_non_empty _________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_page_title_is_non_empty(page: Page):
+>       assert page.title() != ""
+E       AssertionError: assert '' != ''
+E        +  where '' = title()
+E        +    where title = <Page url='http://localhost:8080/converter'>.title
+
+smoke.py:64: AssertionError
+______________ test_expected_conversions[1-104.34 yen-0.74 Euro] _______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '1'
+yen_text = '104.34 yen', euro_text = '0.74 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5abbec0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+______________ test_expected_conversions[5-521.70 yen-3.66 Euro] _______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '5'
+yen_text = '521.70 yen', euro_text = '3.66 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8c220>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_____________ test_expected_conversions[10-1043.40 yen-7.31 Euro] ______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '10'
+yen_text = '1043.40 yen', euro_text = '7.31 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8de40>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_____________ test_expected_conversions[50-5217.00 yen-36.52 Euro] _____________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '50'
+yen_text = '5217.00 yen', euro_text = '36.52 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8e520>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+____________ test_expected_conversions[100-10434.00 yen-73.04 Euro] ____________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '100'
+yen_text = '10434.00 yen', euro_text = '73.04 Euro'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text", "euro_text"),
+        [
+            ("1", "104.34 yen", "0.74 Euro"),
+            ("5", "521.70 yen", "3.66 Euro"),
+            ("10", "1043.40 yen", "7.31 Euro"),
+            ("50", "5217.00 yen", "36.52 Euro"),
+            ("100", "10434.00 yen", "73.04 Euro"),
+        ],
+    )
+    def test_expected_conversions(page: Page, amount: str, yen_text: str, euro_text: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8dd00>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+____________________ test_outline_yen_conversions[1-104.34] ____________________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '1'
+yen_text = '104.34'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text"),
+        [("1", "104.34"), ("5", "521.70"), ("10", "1043.40")],
+    )
+    def test_outline_yen_conversions(page: Page, amount: str, yen_text: str):
+>       assert f"{yen_text} yen" in _submit(page, amount)
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8f1a0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+____________________ test_outline_yen_conversions[5-521.70] ____________________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '5'
+yen_text = '521.70'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text"),
+        [("1", "104.34"), ("5", "521.70"), ("10", "1043.40")],
+    )
+    def test_outline_yen_conversions(page: Page, amount: str, yen_text: str):
+>       assert f"{yen_text} yen" in _submit(page, amount)
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8f7e0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+___________________ test_outline_yen_conversions[10-1043.40] ___________________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '10'
+yen_text = '1043.40'
+
+    @pytest.mark.parametrize(
+        ("amount", "yen_text"),
+        [("1", "104.34"), ("5", "521.70"), ("10", "1043.40")],
+    )
+    def test_outline_yen_conversions(page: Page, amount: str, yen_text: str):
+>       assert f"{yen_text} yen" in _submit(page, amount)
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8fce0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_______________________ test_result_echoes_input_amount ________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_result_echoes_input_amount(page: Page):
+>       assert "5" in _submit(page, "5")
+                      ^^^^^^^^^^^^^^^^^^
+
+smoke.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8ede0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+________________________ test_no_stack_trace_in_result _________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_no_stack_trace_in_result(page: Page):
+>       content = _submit(page, "5")
+                  ^^^^^^^^^^^^^^^^^^
+
+smoke.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8c4a0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+________________ test_page_title_is_non_empty_after_conversion _________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_page_title_is_non_empty_after_conversion(page: Page):
+>       _submit(page, "5")
+
+smoke.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8ef20>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_______________________ test_can_convert_twice_in_a_row ________________________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_can_convert_twice_in_a_row(page: Page):
+>       _submit(page, "5")
+
+smoke.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5a9c9a0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+_______________ test_problem_inputs_do_not_show_server_errors[0] _______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '0'
+
+    @pytest.mark.parametrize("amount", ["0", "1000000", "2.5", "-1"])
+    def test_problem_inputs_do_not_show_server_errors(page: Page, amount: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8cfe0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+____________ test_problem_inputs_do_not_show_server_errors[1000000] ____________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '1000000'
+
+    @pytest.mark.parametrize("amount", ["0", "1000000", "2.5", "-1"])
+    def test_problem_inputs_do_not_show_server_errors(page: Page, amount: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5b8fec0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+______________ test_problem_inputs_do_not_show_server_errors[2.5] ______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '2.5'
+
+    @pytest.mark.parametrize("amount", ["0", "1000000", "2.5", "-1"])
+    def test_problem_inputs_do_not_show_server_errors(page: Page, amount: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5a9cea0>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+______________ test_problem_inputs_do_not_show_server_errors[-1] _______________
+
+page = <Page url='http://localhost:8080/converter'>, amount = '-1'
+
+    @pytest.mark.parametrize("amount", ["0", "1000000", "2.5", "-1"])
+    def test_problem_inputs_do_not_show_server_errors(page: Page, amount: str):
+>       content = _submit(page, amount)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:38: in _submit
+    page.get_by_title("Amount").fill(amount)
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5a9d120>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+______________ test_empty_submission_does_not_show_server_errors _______________
+
+page = <Page url='http://localhost:8080/converter'>
+
+    def test_empty_submission_does_not_show_server_errors(page: Page):
+>       content = _submit_empty(page)
+                  ^^^^^^^^^^^^^^^^^^^
+
+smoke.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+smoke.py:45: in _submit_empty
+    page.get_by_title("Amount").fill("")
+/opt/venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:15449: in fill
+    self._sync(
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_locator.py:208: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:527: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7ee9a6875580>
+cb = <function Channel.send.<locals>.<lambda> at 0x7ee9a5a9d620>
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+E           Call log:
+E           waiting for get_by_title("Amount")
+
+/opt/venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:514: TimeoutError
+=========================== short test summary info ============================
+FAILED smoke.py::test_page_has_expected_label - assert 'Enter a dollar amount...
+FAILED smoke.py::test_form_has_amount_input - assert False
+FAILED smoke.py::test_form_has_submit_button - assert False
+FAILED smoke.py::test_page_title_is_non_empty - AssertionError: assert '' != ''
+FAILED smoke.py::test_expected_conversions[1-104.34 yen-0.74 Euro] - playwrig...
+FAILED smoke.py::test_expected_conversions[5-521.70 yen-3.66 Euro] - playwrig...
+FAILED smoke.py::test_expected_conversions[10-1043.40 yen-7.31 Euro] - playwr...
+FAILED smoke.py::test_expected_conversions[50-5217.00 yen-36.52 Euro] - playw...
+FAILED smoke.py::test_expected_conversions[100-10434.00 yen-73.04 Euro] - pla...
+FAILED smoke.py::test_outline_yen_conversions[1-104.34] - playwright._impl._e...
+FAILED smoke.py::test_outline_yen_conversions[5-521.70] - playwright._impl._e...
+FAILED smoke.py::test_outline_yen_conversions[10-1043.40] - playwright._impl....
+FAILED smoke.py::test_result_echoes_input_amount - playwright._impl._errors.T...
+FAILED smoke.py::test_no_stack_trace_in_result - playwright._impl._errors.Tim...
+FAILED smoke.py::test_page_title_is_non_empty_after_conversion - playwright._...
+FAILED smoke.py::test_can_convert_twice_in_a_row - playwright._impl._errors.T...
+FAILED smoke.py::test_problem_inputs_do_not_show_server_errors[0] - playwrigh...
+FAILED smoke.py::test_problem_inputs_do_not_show_server_errors[1000000] - pla...
+FAILED smoke.py::test_problem_inputs_do_not_show_server_errors[2.5] - playwri...
+FAILED smoke.py::test_problem_inputs_do_not_show_server_errors[-1] - playwrig...
+FAILED smoke.py::test_empty_submission_does_not_show_server_errors - playwrig...
+======================== 21 failed in 512.44s (0:08:32) ========================
+=== TEST FAIL ===
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-24T05:32:06.195Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Starting ConverterApplication v10-SNAPSHOT using Java 21.0.10 with PID 20 (/app/target/converter.jar started by root in /app)
+2026-03-24T05:32:06.196Z DEBUG 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-24T05:32:06.197Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-03-24T05:32:06.926Z  INFO 20 --- [converter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-24T05:32:06.931Z  INFO 20 --- [converter] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-24T05:32:06.931Z  INFO 20 --- [converter] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-24T05:32:06.946Z  INFO 20 --- [converter] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-24T05:32:06.947Z  INFO 20 --- [converter] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 703 ms
+2026-03-24T05:32:07.240Z  WARN 20 --- [converter] [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-03-24T05:32:07.274Z  INFO 20 --- [converter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-24T05:32:07.281Z  INFO 20 --- [converter] [           main] j.t.converter.ConverterApplication       : Started ConverterApplication in 1.481 seconds (process running for 1.816)
+2026-03-24T05:32:09.604Z  INFO 20 --- [converter] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-24T05:32:09.604Z  INFO 20 --- [converter] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-24T05:32:09.606Z  INFO 20 --- [converter] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+make: *** [Makefile:68: test] Error 1

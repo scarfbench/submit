@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "counter-spring":latest .
+[INFO] Built image: counter-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "counter-spring" "counter-spring":latest
+3e65f34e056bb59050a5424169b94b75dc0eb0c41809ae65336962452bdb842a
+[INFO] Started counter-spring, waiting for app to start...
+### Check for build failure
+[ERROR] Container exited before success:
+Error response from daemon: No such container: counter-spring

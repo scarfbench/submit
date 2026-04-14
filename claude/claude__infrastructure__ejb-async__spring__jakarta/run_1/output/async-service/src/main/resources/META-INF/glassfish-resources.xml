@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
+    "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+    <mail-resource jndi-name="java:jboss/mail/Default"
+                   object-type="user"
+                   store-protocol="imap"
+                   store-protocol-class="com.sun.mail.imap.IMAPStore"
+                   transport-protocol="smtp"
+                   transport-protocol-class="com.sun.mail.smtp.SMTPTransport"
+                   host="localhost"
+                   user="jack"
+                   from="jack@localhost"
+                   debug="false">
+        <property name="mail.smtp.port" value="3025"/>
+        <property name="mail.smtp.auth" value="true"/>
+        <property name="mail.smtp.starttls.enable" value="false"/>
+        <property name="mail.smtp.password" value="changeMe"/>
+    </mail-resource>
+</resources>

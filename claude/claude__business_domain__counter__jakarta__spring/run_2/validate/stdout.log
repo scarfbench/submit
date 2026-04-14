@@ -1,0 +1,3 @@
+docker build -f Dockerfile -t "counter-spring":latest .
+[INFO] Built image: counter-spring:latest
+[INFO] Removing existing container

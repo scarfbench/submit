@@ -1,0 +1,170 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.01kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#4 CACHED
+
+#5 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#5 CACHED
+
+#6 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [5/9] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B 0.0s done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 161.67kB done
+#10 DONE 0.0s
+
+#11 [ 7/10] COPY . .
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN mvn dependency:go-offline -q
+#12 DONE 25.6s
+
+#13 [ 9/10] RUN mvn package -DskipTests
+#13 1.216 [INFO] Scanning for projects...
+#13 2.156 [INFO] 
+#13 2.156 [INFO] ----------------< spring.examples.tutorial:standalone >-----------------
+#13 2.156 [INFO] Building standalone 0.0.1-SNAPSHOT
+#13 2.156 [INFO]   from pom.xml
+#13 2.156 [INFO] --------------------------------[ jar ]---------------------------------
+#13 2.301 [INFO] 
+#13 2.301 [INFO] --- resources:3.3.1:resources (default-resources) @ standalone ---
+#13 2.385 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 2.387 [INFO] 
+#13 2.387 [INFO] --- quarkus:3.17.0:generate-code (default) @ standalone ---
+#13 2.619 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.17.0/quarkus-arc-deployment-3.17.0.pom
+#13 2.810 Progress (1): 2.1 kBProgress (1): 3.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.17.0/quarkus-arc-deployment-3.17.0.pom (3.1 kB at 16 kB/s)
+#13 2.832 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.17.0/quarkus-smallrye-context-propagation-spi-3.17.0.pom
+#13 2.862 Progress (1): 1.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.17.0/quarkus-smallrye-context-propagation-spi-3.17.0.pom (1.0 kB at 32 kB/s)
+#13 2.865 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-parent/3.17.0/quarkus-smallrye-context-propagation-parent-3.17.0.pom
+#13 2.890 Progress (1): 808 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-parent/3.17.0/quarkus-smallrye-context-propagation-parent-3.17.0.pom (808 B at 32 kB/s)
+#13 2.900 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.17.0/quarkus-vertx-http-dev-ui-spi-3.17.0.pom
+#13 2.927 Progress (1): 805 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.17.0/quarkus-vertx-http-dev-ui-spi-3.17.0.pom (805 B at 29 kB/s)
+#13 2.930 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-parent/3.17.0/quarkus-vertx-http-parent-3.17.0.pom
+#13 2.957 Progress (1): 991 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-parent/3.17.0/quarkus-vertx-http-parent-3.17.0.pom (991 B at 34 kB/s)
+#13 2.965 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.17.0/arc-processor-3.17.0.pom
+#13 3.006 Progress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.17.0/arc-processor-3.17.0.pom (1.9 kB at 51 kB/s)
+#13 3.007 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-test-supplement/3.17.0/quarkus-arc-test-supplement-3.17.0.pom
+#13 3.033 Progress (1): 833 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-test-supplement/3.17.0/quarkus-arc-test-supplement-3.17.0.pom (833 B at 32 kB/s)
+#13 3.080 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.17.0/quarkus-smallrye-context-propagation-spi-3.17.0.jar
+#13 3.102 Progress (1): 0.9/7.7 kBProgress (1): 2.3/7.7 kBProgress (1): 3.4/7.7 kBProgress (1): 4.7/7.7 kBProgress (1): 6.1/7.7 kBProgress (1): 7.5/7.7 kBProgress (1): 7.7 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation-spi/3.17.0/quarkus-smallrye-context-propagation-spi-3.17.0.jar (7.7 kB at 334 kB/s)
+#13 3.104 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.17.0/quarkus-vertx-http-dev-ui-spi-3.17.0.jar
+#13 3.128 Progress (1): 0.9/33 kBProgress (1): 2.3/33 kBProgress (1): 3.6/33 kBProgress (1): 5.0/33 kBProgress (1): 6.4/33 kBProgress (1): 7.7/33 kBProgress (1): 9.1/33 kBProgress (1): 10/33 kB Progress (1): 12/33 kBProgress (1): 13/33 kBProgress (1): 15/33 kBProgress (1): 16/33 kBProgress (1): 17/33 kBProgress (1): 19/33 kBProgress (1): 20/33 kBProgress (1): 21/33 kBProgress (1): 23/33 kBProgress (1): 24/33 kBProgress (1): 26/33 kBProgress (1): 27/33 kBProgress (1): 31/33 kBProgress (1): 33 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http-dev-ui-spi/3.17.0/quarkus-vertx-http-dev-ui-spi-3.17.0.jar (33 kB at 1.3 MB/s)
+#13 3.132 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.17.0/arc-processor-3.17.0.jar
+#13 3.155 Progress (1): 3.8/728 kBProgress (1): 8.0/728 kBProgress (1): 12/728 kB Progress (1): 16/728 kBProgress (1): 21/728 kBProgress (1): 25/728 kBProgress (1): 29/728 kBProgress (1): 33/728 kBProgress (1): 37/728 kBProgress (1): 41/728 kBProgress (1): 46/728 kBProgress (1): 50/728 kBProgress (1): 54/728 kBProgress (1): 58/728 kBProgress (1): 63/728 kBProgress (1): 67/728 kBProgress (1): 71/728 kBProgress (1): 75/728 kBProgress (1): 79/728 kBProgress (1): 84/728 kBProgress (1): 88/728 kBProgress (1): 92/728 kBProgress (1): 96/728 kBProgress (1): 101/728 kBProgress (1): 105/728 kBProgress (1): 109/728 kBProgress (1): 113/728 kBProgress (1): 117/728 kBProgress (1): 122/728 kBProgress (1): 126/728 kBProgress (1): 130/728 kBProgress (1): 134/728 kBProgress (1): 139/728 kBProgress (1): 143/728 kBProgress (1): 147/728 kBProgress (1): 151/728 kBProgress (1): 156/728 kBProgress (1): 160/728 kBProgress (1): 176/728 kBProgress (1): 193/728 kBProgress (1): 209/728 kBProgress (1): 225/728 kBProgress (1): 242/728 kBProgress (1): 258/728 kBProgress (1): 274/728 kBProgress (1): 291/728 kBProgress (1): 307/728 kBProgress (1): 324/728 kBProgress (1): 340/728 kBProgress (1): 356/728 kBProgress (1): 373/728 kBProgress (1): 389/728 kBProgress (1): 406/728 kBProgress (1): 422/728 kBProgress (1): 438/728 kBProgress (1): 455/728 kBProgress (1): 471/728 kBProgress (1): 487/728 kBProgress (1): 504/728 kBProgress (1): 508/728 kBProgress (1): 524/728 kBProgress (1): 541/728 kBProgress (1): 557/728 kBProgress (1): 573/728 kBProgress (1): 590/728 kBProgress (1): 606/728 kBProgress (1): 623/728 kBProgress (1): 639/728 kBProgress (1): 655/728 kBProgress (1): 672/728 kBProgress (1): 688/728 kBProgress (1): 705/728 kBProgress (1): 721/728 kBProgress (1): 728 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/arc/arc-processor/3.17.0/arc-processor-3.17.0.jar (728 kB at 9.2 MB/s)
+#13 3.211 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-test-supplement/3.17.0/quarkus-arc-test-supplement-3.17.0.jar
+#13 3.239 Progress (1): 7.7/8.1 kBProgress (1): 8.1 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-test-supplement/3.17.0/quarkus-arc-test-supplement-3.17.0.jar (8.1 kB at 312 kB/s)
+#13 3.239 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.17.0/quarkus-arc-deployment-3.17.0.jar
+#13 3.274 Progress (1): 7.7/288 kBProgress (1): 16/288 kB Progress (1): 25/288 kBProgress (1): 41/288 kBProgress (1): 57/288 kBProgress (1): 74/288 kBProgress (1): 90/288 kBProgress (1): 106/288 kBProgress (1): 123/288 kBProgress (1): 139/288 kBProgress (1): 156/288 kBProgress (1): 172/288 kBProgress (1): 188/288 kBProgress (1): 205/288 kBProgress (1): 221/288 kBProgress (1): 238/288 kBProgress (1): 254/288 kBProgress (1): 270/288 kBProgress (1): 287/288 kBProgress (1): 288 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc-deployment/3.17.0/quarkus-arc-deployment-3.17.0.jar (288 kB at 6.5 MB/s)
+#13 3.284 Downloading from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/3.17.0/quarkus-bom-quarkus-platform-properties-3.17.0.properties
+#13 3.346 Progress (1): 743 B                   Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/3.17.0/quarkus-bom-quarkus-platform-properties-3.17.0.properties (743 B at 12 kB/s)
+#13 3.480 [INFO] 
+#13 3.480 [INFO] --- compiler:3.13.0:compile (default-compile) @ standalone ---
+#13 3.557 [INFO] Recompiling the module because of changed source code.
+#13 3.561 [INFO] Compiling 3 source files with javac [debug parameters target 17] to target/classes
+#13 3.967 [INFO] -------------------------------------------------------------
+#13 3.967 [WARNING] COMPILATION WARNING : 
+#13 3.967 [INFO] -------------------------------------------------------------
+#13 3.967 [WARNING] system modules path not set in conjunction with -source 17
+#13 3.967 [INFO] 1 warning
+#13 3.968 [INFO] -------------------------------------------------------------
+#13 3.968 [INFO] -------------------------------------------------------------
+#13 3.968 [ERROR] COMPILATION ERROR : 
+#13 3.968 [INFO] -------------------------------------------------------------
+#13 3.968 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[3,52] package org.springframework.beans.factory.annotation does not exist
+#13 3.968 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[4,32] package org.springframework.http does not exist
+#13 3.968 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[9,2] cannot find symbol
+#13 3.968   symbol: class RestController
+#13 3.968 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[19,12] cannot find symbol
+#13 3.968   symbol:   class ResponseEntity
+#13 3.968   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.968 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[5,1] package org.springframework.web.bind.annotation does not exist
+#13 3.968 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[12,6] cannot find symbol
+#13 3.968   symbol:   class Autowired
+#13 3.968   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.968 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[18,6] cannot find symbol
+#13 3.968   symbol:   class GetMapping
+#13 3.968   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.968 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[20,16] cannot find symbol
+#13 3.968   symbol:   variable ResponseEntity
+#13 3.968   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.968 [INFO] 8 errors 
+#13 3.968 [INFO] -------------------------------------------------------------
+#13 3.969 [INFO] ------------------------------------------------------------------------
+#13 3.969 [INFO] BUILD FAILURE
+#13 3.969 [INFO] ------------------------------------------------------------------------
+#13 3.969 [INFO] Total time:  2.763 s
+#13 3.969 [INFO] Finished at: 2026-03-24T04:08:22Z
+#13 3.970 [INFO] ------------------------------------------------------------------------
+#13 3.981 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project standalone: Compilation failure: Compilation failure: 
+#13 3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[3,52] package org.springframework.beans.factory.annotation does not exist
+#13 3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[4,32] package org.springframework.http does not exist
+#13 3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[9,2] cannot find symbol
+#13 3.981 [ERROR]   symbol: class RestController
+#13 3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[19,12] cannot find symbol
+#13 3.981 [ERROR]   symbol:   class ResponseEntity
+#13 3.981 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[5,1] package org.springframework.web.bind.annotation does not exist
+#13 3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[12,6] cannot find symbol
+#13 3.981 [ERROR]   symbol:   class Autowired
+#13 3.981 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[18,6] cannot find symbol
+#13 3.981 [ERROR]   symbol:   class GetMapping
+#13 3.981 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[20,16] cannot find symbol
+#13 3.981 [ERROR]   symbol:   variable ResponseEntity
+#13 3.981 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+#13 3.981 [ERROR] -> [Help 1]
+#13 3.981 [ERROR] 
+#13 3.981 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#13 3.981 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#13 3.981 [ERROR] 
+#13 3.981 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#13 3.981 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+#13 ERROR: process "/bin/sh -c mvn package -DskipTests" did not complete successfully: exit code: 1
+------
+ > [ 9/10] RUN mvn package -DskipTests:
+3.981 [ERROR] /app/src/main/java/spring/examples/tutorial/standalone/controller/GreetController.java:[20,16] cannot find symbol
+3.981 [ERROR]   symbol:   variable ResponseEntity
+3.981 [ERROR]   location: class spring.examples.tutorial.standalone.controller.GreetController
+3.981 [ERROR] -> [Help 1]
+3.981 [ERROR] 
+3.981 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+3.981 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+3.981 [ERROR] 
+3.981 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+3.981 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+------
+Dockerfile:28
+--------------------
+  26 |     
+  27 |     # Build application
+  28 | >>> RUN mvn package -DskipTests
+  29 |     
+  30 |     RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c mvn package -DskipTests" did not complete successfully: exit code: 1
+=== COMPILE FAIL ===
+Error response from daemon: No such container: standalone-quarkus-7fc73683
+make: *** [Makefile:20: compile] Error 1

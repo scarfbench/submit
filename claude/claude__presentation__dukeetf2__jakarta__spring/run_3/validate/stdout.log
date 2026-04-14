@@ -1,0 +1,25 @@
+docker build -f Dockerfile -t "dukeetf2-spring:latest" .
+[INFO] Built image: dukeetf2-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "dukeetf2-spring" "dukeetf2-spring:latest"
+0a04752f34424751be7e8ecd7250a9f9c037ccd686477216ae8a7d5678dae1a1
+[INFO] Started dukeetf2-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /index.html -> 200
+[WARN] GET /css/default.css -> 404
+[PASS] WS changes over 5s: 99.96/298424 -> 100.10/297744
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__dukeetf2__jakarta__spring/run_3/output'
+docker rm -f "dukeetf2-spring"
+dukeetf2-spring
+[INFO] Container removed (if it existed)
+docker rmi "dukeetf2-spring:latest"
+Untagged: dukeetf2-spring:latest
+Deleted: sha256:9abdd33dab71277f32ab475aecf83f1c126e0357ec6c047a5e1640feae2e6d75
+docker image prune -f
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__dukeetf2__jakarta__spring/run_3/output'

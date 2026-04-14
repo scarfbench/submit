@@ -1,0 +1,6 @@
+docker logs "decorators-quarkus"
+
+
+--- stderr ---
+Error response from daemon: can not get logs from container which is dead or marked for removal
+make: *** [Makefile:47: logs] Error 1

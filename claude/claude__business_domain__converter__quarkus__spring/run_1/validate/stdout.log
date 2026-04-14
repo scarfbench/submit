@@ -1,0 +1,38 @@
+docker build -f Dockerfile -t "converter-spring":latest .
+[INFO] Built image: converter-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "converter-spring" "converter-spring":latest
+81d9f9ca4806b31e84ae5a3320047116ef687536750cca6398cb97bf90c34a26
+[INFO] Started converter-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+---[ 00:36:27 - Smoke test ]---
+[PASS] Page loaded successfully and contains expected text.
+[PASS] Convertion displayed correctly.
+Summary: 2/2 tests passed.
+---[ 00:36:28 - Smoke test complete ]---
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__business_domain__converter__quarkus__spring/run_1/output'
+docker rm -f "converter-spring"
+converter-spring
+[INFO] Container removed (if it existed)
+docker rmi "converter-spring":latest
+Untagged: converter-spring:latest
+Deleted: sha256:76c91135c40cb3a4b7ad01972810a767a3bcf614afe44d7fc6c10ad6ec65281b
+docker image prune -f
+Deleted Images:
+deleted: sha256:ac7987bad19aa9ebf31e9fa0df55c46ef988a9118a5f6c06552d57451b855070
+deleted: sha256:5cfc92ec42b05a5072f6cde3179aa3133c09f54aac5a5241acde623b9b138fab
+deleted: sha256:b69d679759a56c5419d3d80d285be3696af37e8d53169c217343ccf41b0e64ac
+deleted: sha256:31a793407233eefb81bb3b1b91da3d5c242b8832018b63bd2abf226a170c3d19
+deleted: sha256:f1911f4f77286f82cb166ef0c3935c16f5e110621df394970800879fe74c9cbf
+deleted: sha256:7bbccc0b88a401e04f275cc93e4087e17a7a22263c98cb4bdf7ac33cfcdd3110
+deleted: sha256:76b2a2ce0414824e73734de88195dc402acfa03448552d1a38c4df363bf58b5c
+deleted: sha256:a72e3b73a7e1532bed62ca00c95e9c6f271936a323a4f280d085adf8cd245ad5
+deleted: sha256:4dfc241788cc2a215f3c108d5d8d60ce900e62c5cfb916b463c25d3ccc22a444
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__business_domain__converter__quarkus__spring/run_1/output'

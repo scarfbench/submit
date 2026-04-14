@@ -1,0 +1,25 @@
+-- DayTrader Database Initialization Script
+-- This script populates the database with initial test data
+
+-- KEYGENEJB table is auto-created by JPA @TableGenerator annotations
+-- No need to manually create or populate it
+
+-- Insert sample quotes
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:0', 'S0 Incorporated', 0.0, 100.00, 100.00, 100.00, 100.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:1', 'S1 Incorporated', 0.0, 200.00, 200.00, 200.00, 200.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:2', 'S2 Incorporated', 0.0, 150.00, 150.00, 150.00, 150.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:3', 'S3 Incorporated', 0.0, 50.00, 50.00, 50.00, 50.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:4', 'S4 Incorporated', 0.0, 300.00, 300.00, 300.00, 300.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:5', 'S5 Incorporated', 0.0, 120.00, 120.00, 120.00, 120.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:6', 'S6 Incorporated', 0.0, 180.00, 180.00, 180.00, 180.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:7', 'S7 Incorporated', 0.0, 90.00, 90.00, 90.00, 90.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:8', 'S8 Incorporated', 0.0, 250.00, 250.00, 250.00, 250.00, 0.0);
+INSERT INTO quoteejb (SYMBOL, COMPANYNAME, VOLUME, PRICE, OPEN1, LOW, HIGH, CHANGE1) VALUES ('s:9', 'S9 Incorporated', 0.0, 175.00, 175.00, 175.00, 175.00, 0.0);
+
+-- Insert sample account profiles
+INSERT INTO accountprofileejb (USERID, PASSWD, FULLNAME, ADDRESS, EMAIL, CREDITCARD) VALUES ('uid:0', 'xxx', 'User 0', '123 Main St', 'user0@example.com', '1111-2222-3333-4444');
+INSERT INTO accountprofileejb (USERID, PASSWD, FULLNAME, ADDRESS, EMAIL, CREDITCARD) VALUES ('uid:1', 'xxx', 'User 1', '456 Oak Ave', 'user1@example.com', '2222-3333-4444-5555');
+
+-- Insert sample accounts (use negative IDs to avoid TableGenerator collision - generator starts at positive IDs)
+INSERT INTO accountejb (ACCOUNTID, LOGINCOUNT, LOGOUTCOUNT, LASTLOGIN, CREATIONDATE, BALANCE, OPENBALANCE, PROFILE_USERID) VALUES (-1, 0, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100000.00, 100000.00, 'uid:0');
+INSERT INTO accountejb (ACCOUNTID, LOGINCOUNT, LOGOUTCOUNT, LASTLOGIN, CREATIONDATE, BALANCE, OPENBALANCE, PROFILE_USERID) VALUES (-2, 0, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100000.00, 100000.00, 'uid:1');

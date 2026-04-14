@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "jaxrs-hello-spring:latest" .
+[INFO] Built image: jaxrs-hello-spring:latest
+### Run the container in detached mode
+docker run -d --name "jaxrs-hello-spring" "jaxrs-hello-spring:latest"
+e8bb567a5eb536a2d8737ac8c1b9b2dd047535af1ac91f92cc388e02caa1638b
+[INFO] Started jaxrs-hello-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[INFO] BASE = http://localhost:8080

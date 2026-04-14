@@ -1,0 +1,42 @@
+{#include layout.html}
+{#body}
+  <h2>Veterinarians</h2>
+
+  <table id="vets" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Specialties</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#for vet in listVets}
+      <tr>
+        <td>{vet.firstName} {vet.lastName}</td>
+        <td>
+          {#if vet.nrOfSpecialties == 0}
+            none
+          {#else}
+            {#for specialty in vet.specialties}{specialty.name} {/for}
+          {/if}
+        </td>
+      </tr>
+      {/for}
+    </tbody>
+  </table>
+  {#if totalPages > 1}
+  <div>
+    <span>Pages:</span>
+    <span>[</span>
+    {#for i in pages}
+      {#if currentPage != i}
+        <a href="/vets.html?page={i}">{i}</a>
+      {#else}
+        <span>{i}</span>
+      {/if}
+    {/for}
+    <span>]&nbsp;</span>
+  </div>
+  {/if}
+{/body}
+{/include}

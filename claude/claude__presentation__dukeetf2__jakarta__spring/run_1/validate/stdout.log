@@ -1,0 +1,9 @@
+docker build -f Dockerfile -t "dukeetf2-spring:latest" .
+[INFO] Built image: dukeetf2-spring:latest
+### Run the container in detached mode
+docker run -d --name "dukeetf2-spring" "dukeetf2-spring:latest"
+51eadc9261555783f608f1300d3b4fcc14c704258c811cdb7ce81f0a5b669edf
+[INFO] Started dukeetf2-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.

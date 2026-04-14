@@ -1,0 +1,68 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.69kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [ 1/10] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 442B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 4.27MB 0.1s done
+#5 DONE 0.1s
+
+#6 [5/9] RUN playwright install --with-deps chromium
+#6 CACHED
+
+#7 [ 6/10] RUN curl -L -o /tmp/artemis.tar.gz "https://archive.apache.org/dist/activemq/activemq-artemis/2.31.2/apache-artemis-2.31.2-bin.tar.gz"     && mkdir -p /opt/artemis     && tar xzf /tmp/artemis.tar.gz -C /opt/artemis --strip-components=1     && rm /tmp/artemis.tar.gz     && /opt/artemis/bin/artemis create /var/lib/artemis-broker        --user quarkus --password quarkus --allow-anonymous --no-web --silent
+#7 CACHED
+
+#8 [ 7/10] WORKDIR /app
+#8 CACHED
+
+#9 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#9 CACHED
+
+#10 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#10 CACHED
+
+#11 [ 9/10] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#11 CACHED
+
+#12 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#12 CACHED
+
+#13 [ 8/10] COPY . .
+#13 CACHED
+
+#14 [10/10] RUN mvn clean install -DskipTests
+#14 CACHED
+
+#15 exporting to image
+#15 exporting layers done
+#15 exporting manifest sha256:d98fd371bebf03fe85e6e2bb609f00fa215feab7e3f493d99d00bc729fb13f6d done
+#15 exporting config sha256:3c5479208a83e762f4e0b89577503fe46ffabdb81995cc087e22b18dde37c09a done
+#15 exporting attestation manifest sha256:bcbb9928bb468974199ae0113cfc3b4d37a8ed1c514cbb4f680976595039576d 0.1s done
+#15 exporting manifest list sha256:5a0edcbc807285614125875c2aac01886a21948ebf98083a9ca522747c822a85
+#15 exporting manifest list sha256:5a0edcbc807285614125875c2aac01886a21948ebf98083a9ca522747c822a85 0.0s done
+#15 naming to docker.io/library/cargo-tracker-quarkus:b82cda7a done
+#15 unpacking to docker.io/library/cargo-tracker-quarkus:b82cda7a done
+#15 DONE 0.1s
+[INFO] Built image: cargo-tracker-quarkus:b82cda7a
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name cargo-tracker-quarkus-ad66592c cargo-tracker-quarkus:b82cda7a
+67de40dec400177364cba5eaf734fb079e21f2d87651058de29823910de142ca
+[INFO] Started cargo-tracker-quarkus-ad66592c, waiting for app to start...
+Starting artemis-service
+artemis-service is now running (26)
+Error: Unable to access jarfile target/quarkus-app/quarkus-run.jar

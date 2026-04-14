@@ -1,0 +1,1 @@
+# Pre-boot commands - empty since resources are defined in web.xml

@@ -1,0 +1,37 @@
+docker build -f Dockerfile -t "mood-quarkus:latest" .
+[INFO] Built image: mood-quarkus:latest
+### Run the container in detached mode
+docker run -d --name "mood-quarkus" "mood-quarkus:latest"
+d5203dff0c45aed3308030060dbd87ef5e1d2789154517050dd3ab3f79cad4ca
+[INFO] Started mood-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.
+[PASS] GET /report -> 200
+[WARN] Mood not found in response
+[PASS] Duke image displayed: duke waving
+[PASS] Valid HTML structure
+[WARN] Servlet title not found
+
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__mood__spring__quarkus/run_2/output'
+docker rm -f "mood-quarkus"
+mood-quarkus
+[INFO] Container removed (if it existed)
+docker rmi "mood-quarkus:latest"
+Untagged: mood-quarkus:latest
+Deleted: sha256:3818703f8f71ab1d96cd29dce462124a270c7c87aa7d3350019926c76fa65af8
+docker image prune -f
+Deleted Images:
+deleted: sha256:70188df411ec7fb57fa7f5de486c86ce94e2749b5e4d306fbc7eec1d94286300
+deleted: sha256:e5b7d934af9151713374c6a8d65eed80d9c930eac2f41cd7eb86bbd027043fbe
+deleted: sha256:8ba3f528fcdf62bf0ee872ed4c0bc34d108083336d01ef8f5df47b401a09d612
+deleted: sha256:4e7a6da4bd5a584e83c24dd29cab51e865a9a12d2f82319b6b8fb62075346269
+deleted: sha256:b3789d1d33870dfb09dd3f5a7c63cd42b34dae1558c0b0d391c0754439342d3e
+deleted: sha256:0fe47bb6a7266c894bcf915421902c0ab1ac490ef01192d5c1376fb857fc2c84
+deleted: sha256:221de3540dc8616fb94d4ba3712bfc2970327297e0a2c393d81f85aeef7d3e56
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__mood__spring__quarkus/run_2/output'

@@ -1,0 +1,17 @@
+{
+  "status": "CONVERTED",
+  "agent": "claude",
+  "app": "daytrader",
+  "layer": "whole_applications",
+  "repeat": 1,
+  "source_framework": "spring",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 30,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 2,
+  "failure_reason": "9 failed, 17 errors, 2 passed out of 28 tests",
+  "failure_category": "test_failures",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

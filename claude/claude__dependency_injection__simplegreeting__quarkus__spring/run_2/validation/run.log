@@ -1,0 +1,65 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 971B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.0s done
+#3 DONE 0.1s
+
+#4 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#4 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.1s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 63.74kB 0.1s done
+#5 DONE 0.1s
+
+#6 [6/9] WORKDIR /app
+#6 CACHED
+
+#7 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#7 CACHED
+
+#8 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#8 CACHED
+
+#9 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#9 CACHED
+
+#10 [7/9] COPY . .
+#10 CACHED
+
+#11 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#11 CACHED
+
+#12 [5/9] RUN playwright install --with-deps chromium
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:6573bdc42ce0daf433fb2da6eee574112a9b9d5c9df157ec48f198ebcca18ed3 done
+#14 exporting config sha256:79d50352720911e5e9bb042c2c76ec6e2a2427003da198c4f52061a63eaf1216 0.0s done
+#14 exporting attestation manifest sha256:f78e7b55f577ad56ff8ce1dd63d7f4f5d0defdc2217ccc38763cc6e41bb939cc
+#14 exporting attestation manifest sha256:f78e7b55f577ad56ff8ce1dd63d7f4f5d0defdc2217ccc38763cc6e41bb939cc 0.1s done
+#14 exporting manifest list sha256:79cfc9bb0eb72a94d1ddf27f794d80f39d9c2804d7f40fd82155c4fd1606b0be 0.1s done
+#14 naming to docker.io/library/simplegreeting-spring:b9bd24e1
+#14 naming to docker.io/library/simplegreeting-spring:b9bd24e1 0.0s done
+#14 unpacking to docker.io/library/simplegreeting-spring:b9bd24e1 0.0s done
+#14 DONE 0.3s
+[INFO] Built image: simplegreeting-spring:b9bd24e1
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name simplegreeting-spring-91caef33 simplegreeting-spring:b9bd24e1
+78f3a921bea1c52b62c569f5d7e3f28f79db2689ae3e45001d68022194b12c97
+[INFO] Started simplegreeting-spring-91caef33, waiting for app to start...
+no main manifest attribute, in target/simplegreeting-1.0.0-SNAPSHOT.jar

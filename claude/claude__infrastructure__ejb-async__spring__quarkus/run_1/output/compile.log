@@ -1,0 +1,27 @@
+[ERROR] Failed to execute goal io.quarkus.platform:quarkus-maven-plugin:3.17.7:build (default) on project async-service: Failed to build quarkus application: io.quarkus.builder.BuildException: Build failure: Build failed due to errors
+[ERROR] 	[error]: Build step io.quarkus.deployment.execannotations.ExecutionModelAnnotationsProcessor#check threw an exception: java.lang.IllegalStateException: 
+[ERROR] Wrong usage(s) of @RunOnVirtualThread found:
+[ERROR] 	- springboot.tutorial.async.ejb.MailerService.sendMessage(java.lang.String)
+[ERROR] The @Blocking, @NonBlocking and @RunOnVirtualThread annotations may only be used on "entrypoint" methods (methods invoked by various frameworks in Quarkus)
+[ERROR] Using the @Blocking, @NonBlocking and @RunOnVirtualThread annotations on methods that can only be invoked by application code is invalid
+[ERROR] 	at io.quarkus.deployment.execannotations.ExecutionModelAnnotationsProcessor.check(ExecutionModelAnnotationsProcessor.java:55)
+[ERROR] 	at java.base/java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:732)
+[ERROR] 	at io.quarkus.deployment.ExtensionLoader$3.execute(ExtensionLoader.java:856)
+[ERROR] 	at io.quarkus.builder.BuildContext.run(BuildContext.java:256)
+[ERROR] 	at org.jboss.threads.ContextHandler$1.runWith(ContextHandler.java:18)
+[ERROR] 	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2675)
+[ERROR] 	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2654)
+[ERROR] 	at org.jboss.threads.EnhancedQueueExecutor.runThreadBody(EnhancedQueueExecutor.java:1627)
+[ERROR] 	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1594)
+[ERROR] 	at java.base/java.lang.Thread.run(Thread.java:840)
+[ERROR] 	at org.jboss.threads.JBossThread.run(JBossThread.java:499)
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :async-service

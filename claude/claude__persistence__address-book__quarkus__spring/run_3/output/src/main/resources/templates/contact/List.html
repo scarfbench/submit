@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List</title>
+    <link rel="stylesheet" th:href="@{/css/jsfcrud.css}"/>
+</head>
+<body>
+    <h1>List</h1>
+    <p>
+        <div th:if="${successMessage}" style="color: green;" th:text="${successMessage}"></div>
+        <div th:if="${errorMessage}" style="color: #d20005;" th:text="${errorMessage}"></div>
+
+        <span th:if="${#lists.isEmpty(contacts)}">(No Contact Items Found)</span>
+
+        <div th:if="${!#lists.isEmpty(contacts)}">
+            <span th:text="${currentPage * pageSize + 1} + '..' + ${currentPage * pageSize + contacts.size()} + '/' + ${totalItems}"></span>&nbsp;
+            <a th:if="${hasPrevious}" th:href="@{/contact/List(page=${currentPage - 1})}">
+                Previous <span th:text="${pageSize}"></span>
+            </a>&nbsp;
+            <a th:if="${hasNext}" th:href="@{/contact/List(page=${currentPage + 1})}">
+                Next <span th:text="${pageSize}"></span>
+            </a>&nbsp;
+
+            <table border="0" cellpadding="2" cellspacing="0" rules="all" style="border:solid 1px">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Birthday</th>
+                        <th>Home Phone</th>
+                        <th>Mobile Phone</th>
+                        <th>Email</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item, iterStat : ${contacts}" th:class="${iterStat.odd ? 'jsfcrud_odd_row' : 'jsfcrud_even_row'}">
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.lastName}"></td>
+                        <td th:text="${item.firstName}"></td>
+                        <td th:text="${item.birthday != null ? #dates.format(item.birthday, 'MM/dd/yyyy') : ''}"></td>
+                        <td th:text="${item.homePhone}"></td>
+                        <td th:text="${item.mobilePhone}"></td>
+                        <td th:text="${item.email}"></td>
+                        <td>
+                            <a th:href="@{/contact/View/{id}(id=${item.id})}">View</a>
+                            <a th:href="@{/contact/Edit/{id}(id=${item.id})}">Edit</a>
+                            <form th:action="@{/contact/Delete/{id}(id=${item.id})}" method="post" style="display:inline">
+                                <button type="submit" style="background:none;border:none;color:black;cursor:pointer;text-decoration:underline;font-size:small;padding:0;">Destroy</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <a th:href="@{/contact/Create}">Create New Contact</a>
+        <br/><br/>
+        <a th:href="@{/}">Index</a>
+    </p>
+</body>
+</html>

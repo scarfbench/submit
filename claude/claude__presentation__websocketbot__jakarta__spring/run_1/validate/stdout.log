@@ -1,0 +1,73 @@
+docker build -f Dockerfile -t "websocketbot-spring:latest" .
+[INFO] Built image: websocketbot-spring:latest
+### Run the container in detached mode
+docker run -d --name "websocketbot-spring" "websocketbot-spring:latest"
+04bae45986a7541ace0050b85f91e9ae7727b2f183d4e731a09a1abbbbb7799b
+[INFO] Started websocketbot-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /index.html -> 200
+[PASS] HTML content valid
+[PASS] Join message successful
+[PASS] Duke greeting: Hi there!!
+
+--- Testing: 'How are you?' ---
+[PASS] Duke responded: I'm doing great, thank you!
+[PASS] Response contains expected content: 'great'
+
+--- Testing: 'How old are you?' ---
+[PASS] Duke responded: I'm 31 years old.
+[PASS] Response contains expected content: 'years old'
+
+--- Testing: 'When is your birthday?' ---
+[PASS] Duke responded: My birthday is on May 23rd. Thanks for asking!
+[PASS] Response contains expected content: 'May 23rd'
+
+--- Testing: 'What is your favorite color?' ---
+[PASS] Duke responded: My favorite color is blue. What's yours?
+[PASS] Response contains expected content: 'blue'
+
+--- Testing: 'What is your name?' ---
+[PASS] Duke responded: Sorry, I did not understand what you said. You can ask me how I'm doing today; how old I am; or what my favorite color is.
+[PASS] Response contains expected content: 'Sorry, I did not understand'
+
+--- Testing non-targeted message ---
+[PASS] No response to non-targeted message (as expected)
+
+[PASS] All bot functionality tests passed!
+[PASS] WebSocket functionality working
+
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__websocketbot__jakarta__spring/run_1/output'
+docker rm -f "websocketbot-spring"
+websocketbot-spring
+[INFO] Container removed (if it existed)
+docker rmi "websocketbot-spring:latest"
+Untagged: websocketbot-spring:latest
+Deleted: sha256:63d5f22c7b30194462c26ec1cd871ce6ce30f3f4445448271bf2a289449332a5
+docker image prune -f
+Deleted Images:
+deleted: sha256:bfeff6e0e8574d673fbf5ed1334af8970b5b89ab4327018e851800a7638f9a37
+deleted: sha256:de479729479da81b68f9478dc92e9d4291bb7573883e6ea639fc627f633a0095
+deleted: sha256:6745cd237c0c5c91b72ac3b76768c52ae882032de5a1784ec2e7c2f6ef7e26f8
+deleted: sha256:5c4e8ac32ff1366a0d6599a6512c4fcc37a051ac5729c26c884d3be5901ad861
+deleted: sha256:64dd9a686b69fa15166bbd811302a979e5b2cb73654afb4c4b6699ebc27df4b5
+deleted: sha256:741df0376cb5dc4cb02ee2500126a771530a4116917f09e78b4fbc6f41ee72bb
+deleted: sha256:042bb8cd2bedabe435360be74a264486621e1f4a37c2179149bfb7953c3ed457
+deleted: sha256:8c916e8034634af275ef998f7c44056ddf04560220f4873e730cb92c3570f9ee
+deleted: sha256:e0c64c2e39c039caae743b38e0f14098e1842af34c1d5b5704e52f524f31bf8f
+deleted: sha256:2b373ea78e7de3f4521f8e57dccf66d508149a15ba0e2ac3b7cef992cfe2d041
+deleted: sha256:d1a9503c4afd1e568b0e984e92e81ea4ed28a48e912da8fd1979dfaa29b459a3
+deleted: sha256:3bc9a29b029c8204216e90e67d782c103ed55b880dc4250bd15b91f271b7a559
+deleted: sha256:ce08ad7dc06b1c4607c59a9ae1909169ae96ca3cb561350be0244e1542adc25d
+deleted: sha256:ac4f6ac21e1b02f7fc29f6021b0796aa169450b5f128983e88e53373da5e698f
+deleted: sha256:79b9d79725aba9a5bd95c7207bcb3b09307b3582ba076864ae2d37e96d1b0099
+deleted: sha256:bc3d6668dbf2cec0c3fd076f05286ba47c04ac1f5e72a62443c1095b71e8447f
+deleted: sha256:286675ec4f3a538ffa3332423acaa0a1fb74b69aacd0c23e5ecda1609fa87772
+deleted: sha256:d3d82440836cf00d67008c7ef10e0ada40241742dad3498f95ad32c0e6c9a551
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__websocketbot__jakarta__spring/run_1/output'

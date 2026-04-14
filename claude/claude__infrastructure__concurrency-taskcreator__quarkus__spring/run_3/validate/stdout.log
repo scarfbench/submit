@@ -1,0 +1,36 @@
+docker build -f Dockerfile -t "taskcreator-springboot:latest" .
+[INFO] Built image: taskcreator-springboot:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "taskcreator-springboot" "taskcreator-springboot:latest"
+bda8328f13c587e526ebe2a4389a8eafc1ac9ea8216d5e1bda022a4135b5063b
+[INFO] Started taskcreator-springboot, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+POST http://localhost:9080/taskcreator/taskinfo :: 00:43:53 - Smoke test
+RESP 200
+
+[PASS] POST /taskinfo -> 200
+Using base URL: http://localhost:9080/taskcreator
+POST http://localhost:9080/taskcreator/taskinfo :: 00:43:53 - Smoke test
+RESP 200
+
+[PASS] POST /taskinfo -> 200
+GET http://localhost:9080/taskcreator/taskinfo
+RESP 405
+{"timestamp":"2026-02-17T00:43:53.659+00:00","status":405,"error":"Method Not Allowed","path":"/taskcreator/taskinfo"}
+[PASS] GET /taskinfo -> 405 (Method Not Allowed)
+[PASS] Smoke tests complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__infrastructure__concurrency-taskcreator__quarkus__spring/run_3/output'
+docker rm -f "taskcreator-springboot"
+taskcreator-springboot
+[INFO] Container removed (if it existed)
+docker rmi "taskcreator-springboot:latest"
+Untagged: taskcreator-springboot:latest
+Deleted: sha256:f2eb94fb61375eca68849ada82be8abd9ce9f24c9ea1678d26a854f6c680d4d7
+docker image prune -f
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__infrastructure__concurrency-taskcreator__quarkus__spring/run_3/output'

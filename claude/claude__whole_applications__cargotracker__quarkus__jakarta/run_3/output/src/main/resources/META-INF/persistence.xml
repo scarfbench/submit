@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0">
+    <persistence-unit name="cargo-tracker-pu" transaction-type="JTA">
+        <jta-data-source>java:app/jdbc/CargoTrackerDatabase</jta-data-source>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="META-INF/import.sql"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+  <persistence-unit name="CargoTrackerUnit" transaction-type="JTA">
+    <jta-data-source>java:app/jdbc/CargoTrackerDatabase</jta-data-source>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <properties>
+      <!-- Schema generation -->
+      <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="jakarta.persistence.sql-load-script-source" value="META-INF/import.sql"/>
+
+      <!-- EclipseLink properties (Payara default JPA provider) -->
+      <property name="eclipselink.logging.level" value="FINE"/>
+      <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform"/>
+    </properties>
+  </persistence-unit>
+</persistence>

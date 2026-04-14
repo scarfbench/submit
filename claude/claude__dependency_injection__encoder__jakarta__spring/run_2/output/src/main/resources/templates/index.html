@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Encoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .error {
+            color: #d20005;
+        }
+        .result {
+            color: blue;
+        }
+        form {
+            margin-top: 20px;
+        }
+        p {
+            margin: 10px 0;
+        }
+        input[type="text"], input[type="number"] {
+            margin-left: 10px;
+            padding: 5px;
+        }
+        button {
+            margin: 10px 5px 10px 0;
+            padding: 5px 15px;
+        }
+    </style>
+</head>
+<body>
+    <h2>String Encoder</h2>
+    <p>Enter a string and an integer, then click Encode.</p>
+    <p>Depending on which alternative is enabled, the coder bean
+        will either display the argument values or return a string that
+        shifts the letters in the original string by the value you
+        specify. The value must be between 0 and 26.</p>
+
+    <form th:action="@{/encode}" th:object="${coderForm}" method="post">
+        <p>
+            <label for="inputString">Enter a string:</label>
+            <input type="text" id="inputString" th:field="*{inputString}" />
+        </p>
+        <p>
+            <label for="transVal">Enter the number of letters to shift by:</label>
+            <input type="number" id="transVal" th:field="*{transVal}" />
+            <span th:if="${#fields.hasErrors('transVal')}"
+                  th:errors="*{transVal}"
+                  class="error"></span>
+        </p>
+        <p>
+            <button type="submit">Encode</button>
+        </p>
+        <p th:if="${coderForm.codedString != null and !coderForm.codedString.isEmpty()}">
+            <label>Result:</label>
+            <span class="result" th:text="${coderForm.codedString}"></span>
+        </p>
+    </form>
+
+    <form th:action="@{/reset}" method="post">
+        <button type="submit">Reset</button>
+    </form>
+</body>
+</html>

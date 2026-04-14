@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "counter-quarkus":latest .
+[INFO] Built image: counter-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "counter-quarkus" "counter-quarkus":latest
+b4a86a3bc5beb2bd01b10ecaf69f3d1a142d193f33b60dd2e935511a5a52676a
+[INFO] Started counter-quarkus, waiting for app to start...
+### Check for startup failure or success
+[ERROR] Container exited before startup success:
+Error response from daemon: can not get logs from container which is dead or marked for removal

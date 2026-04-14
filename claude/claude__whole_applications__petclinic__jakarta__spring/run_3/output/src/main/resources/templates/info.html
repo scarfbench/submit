@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}"></head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<div class="container">
+    <h1>Information</h1>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">About the Petclinic Application</h5>
+            <p>This application has been migrated from Jakarta EE 10 to Spring Boot 3.</p>
+            <p>It demonstrates a typical CRUD application with the following entities:</p>
+            <ul>
+                <li><strong>Owners</strong> - Pet owners with contact information</li>
+                <li><strong>Pets</strong> - Pets belonging to owners</li>
+                <li><strong>Pet Types</strong> - Types/breeds of pets</li>
+                <li><strong>Visits</strong> - Veterinary visits for pets</li>
+                <li><strong>Veterinarians</strong> - Vets with specialties</li>
+                <li><strong>Specialties</strong> - Medical specialties of vets</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

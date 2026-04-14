@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "converter-spring":latest .
+[INFO] Built image: converter-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "converter-spring" "converter-spring":latest
+0c9f13c5e37b60a6b3169eacd59ec025281e8ec733589cc03cc11e1b36caaa8f
+[INFO] Started converter-spring, waiting for app to start...
+### Check for build failure
+[ERROR] Container exited before success:
+Error response from daemon: can not get logs from container which is dead or marked for removal

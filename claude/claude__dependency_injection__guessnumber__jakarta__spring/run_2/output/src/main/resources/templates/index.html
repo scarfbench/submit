@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess My Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .game-info {
+            color: black;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .game-info span {
+            color: blue;
+        }
+        .game-panel {
+            border: 1px solid #ccc;
+            padding: 20px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        .game-panel input[type="number"] {
+            width: 60px;
+            font-size: 18px;
+            padding: 5px;
+        }
+        .game-panel button {
+            font-size: 18px;
+            padding: 5px 15px;
+            margin-left: 10px;
+        }
+        .message {
+            color: #d20005;
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .error-message {
+            color: #d20005;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess My Number</h1>
+
+    <div class="game-info">
+        <p>I'm thinking of a number from
+        <span th:text="${userNumberBean.minimum}">0</span>
+        to
+        <span th:text="${userNumberBean.maximum}">100</span>.
+        You have
+        <span th:text="${userNumberBean.remainingGuesses}">10</span>
+        guesses.</p>
+    </div>
+
+    <div class="game-panel">
+        <form th:action="@{/guess}" method="post">
+            <label for="inputGuess">Number:</label>
+            <input type="number"
+                   id="inputGuess"
+                   name="userNumber"
+                   th:value="${userNumberBean.userNumber}"
+                   required
+                   th:disabled="${userNumberBean.number == userNumberBean.userNumber or userNumberBean.remainingGuesses <= 0}" />
+            <button type="submit"
+                    id="GuessButton"
+                    th:disabled="${userNumberBean.number == userNumberBean.userNumber or userNumberBean.remainingGuesses <= 0}">
+                Guess
+            </button>
+        </form>
+
+        <form th:action="@{/reset}" method="post" style="display: inline;">
+            <button type="submit" id="RestartButton">Reset</button>
+        </form>
+
+        <div class="message" th:if="${userNumberBean.message != null and userNumberBean.message != ''}" th:text="${userNumberBean.message}"></div>
+    </div>
+</body>
+</html>

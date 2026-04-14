@@ -1,0 +1,59 @@
+docker build -f Dockerfile -t "jaxrs-hello-quarkus:latest" .
+[INFO] Built image: jaxrs-hello-quarkus:latest
+### Run the container in detached mode
+docker run -d --name "jaxrs-hello-quarkus" "jaxrs-hello-quarkus:latest"
+8830ed596e696fc90332e0c36862e0c1555b1126dd4bc6acfeff0b3389a937b5
+[INFO] Started jaxrs-hello-quarkus, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Quarkus application started and ready.
+[INFO] BASE = http://localhost:8080
+[PASS] GET /helloworld -> 200 text/html
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__jaxrs-hello__spring__quarkus/run_2/output'
+docker rm -f "jaxrs-hello-quarkus"
+jaxrs-hello-quarkus
+[INFO] Container removed (if it existed)
+docker rmi "jaxrs-hello-quarkus:latest"
+Untagged: jaxrs-hello-quarkus:latest
+Deleted: sha256:c6ef83a9c34cadc9493590d3daaf30d06ba18315f28a85fe37ceb35e11dad34f
+docker image prune -f
+Deleted Images:
+deleted: sha256:8729a55bc92302281fc81da3705489e31bff27cba4b14cb6e8781db76c5bcd1e
+deleted: sha256:e25be04f6685c9a10fae5d169034b82e031e37282d7bd5fefaba5bce14cd596a
+deleted: sha256:0086f5c5bc9a369037f3a0256fcfc35f6faa23562689359fa025f92c40d1312b
+deleted: sha256:76d9c4fa51d61e95016222449a7e54b89eddd7c9fb4f64b12e9db155211176e8
+deleted: sha256:a8df24d231a4eb0bb1b8deb793f30400607cbe1c4e474a94d5ce4b22ab8cd343
+deleted: sha256:d56f0e0bce2d15073ca057764c34ba6846299db1a5e6dfddce3188b9af420e22
+deleted: sha256:9b83967663e6825bdd63713469ff1196c0be0eedba6e0bceff581553b51d9282
+deleted: sha256:61447a98e92e66aaf61783467ac2550a5abb1b797ac7e6305b63a319d07e4f24
+deleted: sha256:967392a19e4e2bb26e81740c89eb3164a7d2c9fa96698533b915d746961bb505
+deleted: sha256:469df69414a9d29bd622e37745b2880a3b89684f9da700096567eb25c5ffc4d5
+deleted: sha256:fd08b5b7ea652c5a513f944216664e12dac027b0961f6dbe884d52d44d044c7f
+deleted: sha256:329b1abc7d285ada60b45f527d3fef6867ba2f31474839f6191361d2642e19a9
+deleted: sha256:ddf9198989641aea45b86922b373195d89984b21a5eb464cd0fc26716a360842
+deleted: sha256:a4e9f434cd4eb58f8c0a008934549f3f41a8e8ba4a0b5150aefe4363ec8a176d
+deleted: sha256:f29736b74471f185dc3dd300202d6c4983600f7eb9d431ed68d4c07ae3831178
+deleted: sha256:7a267c1cc6533b579e7c0b3aa6a46e47e8f9c65bebc2b9dedbf27b493f968ae4
+deleted: sha256:610b09225b3e01c55a1022af1def6ee6cc66ced7d5605c367139c5827670ccd2
+deleted: sha256:436252a74b9965a92dbfa1e29f4371966bc3898cede3f41cad467a071e871ce1
+deleted: sha256:97e76258e3e046171423af6468623fbba4a3d403b90b76166f98df407484d409
+deleted: sha256:9de5e4e4df86526eb8e9ebd61d9a93cdb92fad6a8c4b15dfd5675fb8ac6bdb5c
+deleted: sha256:25d9d6571fe6a8724838fe2a9a99c49bdb7de9ad48809fc680999435af4a46ee
+deleted: sha256:9798ced3ed754a65d10d25fc6ec953258e8407f4b37c8807056d9968ecb70323
+deleted: sha256:cef5a998fabbcbb8c1f508b0fd04b45307e7a241a588713786353c7172403f86
+deleted: sha256:06e9f65ee08fc75d4c75be8c837530a543521083f7d81fc59a6f85a784b511b1
+deleted: sha256:f8429cfb3c549b5759026e425f3036646ed22414967969960c9bd9d0219000cf
+deleted: sha256:b3354461d112753e01188e20df02e6df6f45fdf5d20343950fe88aea242a9e88
+deleted: sha256:d8d1a7d46d6674e147c861da6a1e3ff7e640000514734871a07e026895f9cdb2
+deleted: sha256:791ec4327a962de2f01881f377cdc1f353274316b99bc527db57a32b0fdc9de8
+deleted: sha256:71a4526abff9c108f098590c39dbf481548302e3a8b71e6131cafaac594d6486
+deleted: sha256:85cc5b1ed0bd06fa87e6a2d3687059c96ab9e4d3801531f3cf7021de7e1b1091
+deleted: sha256:9a34381235cac7d33dd653cd7ddde30fe64b404b0990fbb6ddcc7e743b1e1d0e
+deleted: sha256:75a6e4da7f908a9126f878850672a459ff860a2d4141f343ecbf5acafa1ebbb2
+deleted: sha256:2bbdc640f39ad753b51731c7b85ccae24a43228ae29d878a33baed6bdc0b8faf
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__jaxrs-hello__spring__quarkus/run_2/output'

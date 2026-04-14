@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="https://jakarta.ee/xml/ns/jakartaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd"
+              version="4.0">
+
+    <navigation-rule>
+        <from-view-id>/order.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>lineItem</from-outcome>
+            <to-view-id>/lineItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>order</from-outcome>
+            <to-view-id>/order.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/lineItem.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>order</from-outcome>
+            <to-view-id>/order.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>lineItem</from-outcome>
+            <to-view-id>/lineItem.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Async Mail – Response</title>
+</h:head>
+
+<h:body>
+    <div>
+        <strong>Status:</strong>
+        <h:outputText value="#{mailerManagedBean.status}" />
+    </div>
+    <p>
+        <h:link outcome="response" value="Refresh" /> |
+        <h:link outcome="index" value="Back" />
+    </p>
+</h:body>
+
+</html>

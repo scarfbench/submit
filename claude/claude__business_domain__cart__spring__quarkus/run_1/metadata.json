@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "cart",
+  "layer": "business_domain",
+  "repeat": 1,
+  "source_framework": "spring",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 8,
+  "compile_ok": "UNK",
+  "deploy_ok": "UNK",
+  "tests_passed": null,
+  "failure_reason": "No clear compile outcome found in logs; No clear deploy outcome found",
+  "failure_category": "unknown",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

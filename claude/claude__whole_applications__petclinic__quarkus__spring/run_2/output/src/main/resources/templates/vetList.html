@@ -1,0 +1,35 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:replace="~{fragments/layout :: head}" />
+</head>
+<body>
+  <th:block th:replace="~{fragments/layout :: navbar}" />
+  <div class="container-fluid">
+    <div class="container xd-container">
+      <h2>Veterinarians</h2>
+
+      <table id="vets" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Specialties</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="vet : ${vets}">
+            <td th:text="${vet.firstName + ' ' + vet.lastName}"></td>
+            <td>
+              <span th:each="s : ${vet.specialties}">
+                <span th:text="${s.name}"></span>&nbsp;
+              </span>
+              <span th:if="${vet.nrOfSpecialties == 0}">None</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <th:block th:replace="~{fragments/layout :: scripts}" />
+</body>
+</html>

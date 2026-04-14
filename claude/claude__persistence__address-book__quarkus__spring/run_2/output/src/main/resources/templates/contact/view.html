@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>View Contact</title>
+    <link rel="stylesheet" th:href="@{/css/jsfcrud.css}"/>
+</head>
+<body>
+    <h1>View</h1>
+
+    <div th:if="${message}" style="color: green;">
+        <p th:text="${message}"></p>
+    </div>
+
+    <table>
+        <tr>
+            <td><strong>Id:</strong></td>
+            <td th:text="${contact.id}"></td>
+        </tr>
+        <tr>
+            <td><strong>First Name:</strong></td>
+            <td th:text="${contact.firstName}"></td>
+        </tr>
+        <tr>
+            <td><strong>Last Name:</strong></td>
+            <td th:text="${contact.lastName}"></td>
+        </tr>
+        <tr>
+            <td><strong>Birthday:</strong></td>
+            <td th:text="${contact.birthday != null} ? ${#dates.format(contact.birthday, 'MM/dd/yyyy')} : ''"></td>
+        </tr>
+        <tr>
+            <td><strong>Home Phone:</strong></td>
+            <td th:text="${contact.homePhone}"></td>
+        </tr>
+        <tr>
+            <td><strong>Mobile Phone:</strong></td>
+            <td th:text="${contact.mobilePhone}"></td>
+        </tr>
+        <tr>
+            <td><strong>Email:</strong></td>
+            <td th:text="${contact.email}"></td>
+        </tr>
+    </table>
+    <br/>
+    <form th:action="@{/contacts/{id}/delete(id=${contact.id})}" method="post" style="display:inline;">
+        <button type="submit" style="background:none;border:none;color:black;cursor:pointer;text-decoration:underline;font-size:small;">Destroy</button>
+    </form>
+    <br/><br/>
+    <a th:href="@{/contacts/{id}/edit(id=${contact.id})}">Edit</a>
+    <br/>
+    <a th:href="@{/contacts/create}">Create New Contact</a>
+    <br/>
+    <a th:href="@{/contacts}">Show All Contact Items</a>
+    <br/><br/>
+    <a th:href="@{/}">Index</a>
+</body>
+</html>

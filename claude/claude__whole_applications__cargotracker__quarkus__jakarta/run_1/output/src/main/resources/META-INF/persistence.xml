@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/jakartaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="cargo-tracker-pu" transaction-type="JTA">
+        <jta-data-source>java:jboss/datasources/CargoTrackerDS</jta-data-source>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="import.sql"/>
+        </properties>
+    </persistence-unit>
+</persistence>

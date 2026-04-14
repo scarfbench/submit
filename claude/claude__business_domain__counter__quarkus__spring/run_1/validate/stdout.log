@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "counter-spring":latest .
+[INFO] Built image: counter-spring:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "counter-spring" "counter-spring":latest
+3f0d2e8322bd7321ea72646b153cf95c06a7e36d8cc869babac9a793b9eec745
+[INFO] Started counter-spring, waiting for app to start...
+### Check for build failure
+[ERROR] Container exited before success:
+Error response from daemon: can not get logs from container which is dead or marked for removal

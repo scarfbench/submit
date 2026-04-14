@@ -1,0 +1,18 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "fileupload",
+  "layer": "presentation",
+  "repeat": 2,
+  "source_framework": "jakarta",
+  "target_framework": "spring",
+  "num_smoke_tests": 6,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": null,
+  "failure_reason": "App deployed but no test results found in log",
+  "failure_category": "no_test_output",
+  "inconclusive": true,
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

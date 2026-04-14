@@ -1,0 +1,45 @@
+{#include layout.html}
+{#body}
+  <h2>{#if isNew}New Owner{#else}Owner{/if}</h2>
+  <form action="{#if isNew}/owners/new{#else}/owners/{owner.id}/edit{/if}" method="post" class="form-horizontal">
+    {#if errors??}
+    <div class="alert alert-danger">{errors}</div>
+    {/if}
+    <div class="form-group has-feedback">
+      <label class="col-sm-2 control-label">First Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="firstName" value="{owner.firstName ?: ''}" />
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label class="col-sm-2 control-label">Last Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="lastName" value="{owner.lastName ?: ''}" />
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label class="col-sm-2 control-label">Address</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="address" value="{owner.address ?: ''}" />
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label class="col-sm-2 control-label">City</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="city" value="{owner.city ?: ''}" />
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label class="col-sm-2 control-label">Telephone</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="telephone" value="{owner.telephone ?: ''}" />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary" type="submit">{#if isNew}Add Owner{#else}Update Owner{/if}</button>
+      </div>
+    </div>
+  </form>
+{/body}
+{/include}

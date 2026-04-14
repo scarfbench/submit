@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:replace="~{fragments/layout :: head}" />
+</head>
+<body>
+  <th:block th:replace="~{fragments/layout :: navbar}" />
+  <div class="container-fluid">
+    <div class="container xd-container">
+      <h2>Welcome</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <img class="img-responsive" th:src="@{/images/pets.png}"/>
+          <h2>Error</h2>
+          <p>Something happened...</p>
+          <p th:if="${message}" th:text="${message}"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <th:block th:replace="~{fragments/layout :: scripts}" />
+</body>
+</html>

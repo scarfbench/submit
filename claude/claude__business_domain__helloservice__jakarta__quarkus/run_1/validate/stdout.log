@@ -1,0 +1,10 @@
+docker build -f Dockerfile -t "helloservice-quarkus":latest .
+[INFO] Built image: helloservice-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "helloservice-quarkus" "helloservice-quarkus":latest
+e9e684f6a14bd6cac78abd48a914380e5ac5ada4c0bbfd4be9933fbd07793bf3
+[INFO] Started helloservice-quarkus, waiting for app to start...
+### Check for startup failure or success
+[INFO] Quarkus application started and ready.
+❌ HTTP error 404: Not Found

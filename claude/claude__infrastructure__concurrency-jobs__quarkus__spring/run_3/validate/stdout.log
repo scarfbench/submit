@@ -1,0 +1,9 @@
+docker build -f Dockerfile -t "jobs-springboot:latest" .
+[INFO] Built image: jobs-springboot:latest
+### Run the container in detached mode
+docker run -d --name "jobs-springboot" "jobs-springboot:latest"
+a1102de3c35c56c18dbdffeaf7284c937ce1c03353964881eb3956c9019005f9
+[INFO] Started jobs-springboot, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.

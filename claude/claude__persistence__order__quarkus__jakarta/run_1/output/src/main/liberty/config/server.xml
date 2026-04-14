@@ -1,0 +1,29 @@
+<server description="Order Jakarta Application">
+
+    <featureManager>
+        <feature>webProfile-10.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="8080"
+                  httpsPort="9443"/>
+
+    <!-- H2 JDBC library -->
+    <library id="h2Lib">
+        <fileset dir="${server.config.dir}/lib" includes="h2-*.jar"/>
+    </library>
+
+    <!-- DataSource configuration using H2 in-memory -->
+    <dataSource id="DefaultDataSource" jndiName="jdbc/orderDS" type="javax.sql.DataSource">
+        <jdbcDriver libraryRef="h2Lib"/>
+        <properties url="jdbc:h2:mem:order;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+                    user="sa"
+                    password=""/>
+    </dataSource>
+
+    <!-- Application configuration -->
+    <webApplication location="order-jakarta.war" contextRoot="/">
+        <classloader commonLibraryRef="h2Lib"/>
+    </webApplication>
+
+</server>

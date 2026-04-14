@@ -1,0 +1,127 @@
+/**
+ * (C) Copyright IBM Corporation 2015.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.ibm.websphere.samples.daytrader.web.prims;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import com.ibm.websphere.samples.daytrader.util.Log;
+
+/**
+ *
+ * PingJSONP tests JSON generating and parsing 
+ *
+ */
+
+@WebServlet(name = "PingJSONPStreaming", urlPatterns = { "/servlet/PingJSONPStreaming" })
+public class PingJSONPStreaming extends HttpServlet {
+
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -5348806619121122708L;
+    private static String initTime;
+    private static int hitCount;
+
+    /**
+     * forwards post requests to the doGet method Creation date: (11/6/2000
+     * 10:52:39 AM)
+     *
+     * @param res
+     *            javax.servlet.http.HttpServletRequest
+     * @param res2
+     *            javax.servlet.http.HttpServletResponse
+     */
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        doGet(req, res);
+    }
+
+    /**
+     * this is the main method of the servlet that will service all get
+     * requests.
+     *
+     * @param request
+     *            HttpServletRequest
+     * @param responce
+     *            HttpServletResponce
+     **/
+    @Override
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        try {
+            res.setContentType("text/html");
+
+            ServletOutputStream out = res.getOutputStream();
+
+            hitCount++;
+
+            // Simple JSON generation
+            String generatedJSON = "{\"initTime\":\"" + escapeJson(initTime) + "\",\"hitCount\":" + hitCount + "}";
+
+            // Simple JSON parsing to demonstrate round-trip
+            StringBuilder parsedJSON = new StringBuilder();
+            parsedJSON.append("initTime:").append(initTime).append(" ");
+            parsedJSON.append("hitCount:").append(hitCount).append(" ");
+
+            out.println("<html><head><title>Ping JSONP</title></head>"
+                    + "<body><HR><BR><FONT size=\"+2\" color=\"#000066\">Ping JSONP</FONT><BR>Generated JSON: " + generatedJSON + "<br>Parsed JSON: " + parsedJSON + "</body></html>");
+        } catch (Exception e) {
+            Log.error(e, "PingJSONP.doGet(...): general exception caught");
+            res.sendError(500, e.toString());
+
+        }
+    }
+
+    /**
+     * returns a string of information about the servlet
+     *
+     * @return info String: contains info about the servlet
+     **/
+    @Override
+    public String getServletInfo() {
+        return "Basic JSON generation and parsing in a servlet";
+    }
+
+    /**
+     * called when the class is loaded to initialize the servlet
+     *
+     * @param config
+     *            ServletConfig:
+     **/
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        initTime = new java.util.Date().toString();
+        hitCount = 0;
+    }
+
+    private String escapeJson(String value) {
+        if (value == null) return "";
+        return value.replace("\\", "\\\\")
+                   .replace("\"", "\\\"")
+                   .replace("\n", "\\n")
+                   .replace("\r", "\\r")
+                   .replace("\t", "\\t");
+    }
+}

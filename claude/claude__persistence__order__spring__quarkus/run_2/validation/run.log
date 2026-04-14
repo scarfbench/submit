@@ -1,0 +1,4250 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.00kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.6s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.1s done
+#3 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 442B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 121.27kB 0.0s done
+#5 DONE 0.0s
+
+#6 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#6 CACHED
+
+#7 [5/9] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [6/9] WORKDIR /app
+#8 CACHED
+
+#9 [7/9] COPY . .
+#9 CACHED
+
+#10 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#10 CACHED
+
+#11 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#11 CACHED
+
+#12 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest aiohttp
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:2a44bdb979e4b1e6870f54f2953fd61d9de686cb321c7f603f738f1befa4e0c6 0.0s done
+#14 exporting config sha256:99f54d381e4dfce0f4e76310beec5c15b2a34338c0d0b4fbfa2aa24d15ae30c4 0.0s done
+#14 exporting attestation manifest sha256:580a04a7928fd182f4f171de13be28f3fcaa510e5641422fc55e88e7763c6e71
+#14 exporting attestation manifest sha256:580a04a7928fd182f4f171de13be28f3fcaa510e5641422fc55e88e7763c6e71 0.1s done
+#14 exporting manifest list sha256:13b409318146e8d6784d92749089d505051e42c7619a0e565496985e99e3c859
+#14 exporting manifest list sha256:13b409318146e8d6784d92749089d505051e42c7619a0e565496985e99e3c859 0.1s done
+#14 naming to docker.io/library/order-quarkus:2743b47d 0.0s done
+#14 unpacking to docker.io/library/order-quarkus:2743b47d 0.0s done
+#14 DONE 0.4s
+[INFO] Built image: order-quarkus:2743b47d
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name order-quarkus-61775af3 order-quarkus:2743b47d
+d93a158dc765de5c6279bac4e64b930047ce761d5b5a23086b6093c3c38c759f
+[INFO] Started order-quarkus-61775af3, waiting for app to start...
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:07:44,969 INFO  [org.apa.myf.web.MyFacesContainerInitializer] (main) Using org.apache.myfaces.webapp.MyFacesContainerInitializer
+2026-03-24 05:07:45,361 INFO  [org.apa.myf.uti.ExternalSpecifications] (main) MyFaces Core Bean Validation support disabled
+2026-03-24 05:07:45,401 INFO  [org.pri.web.PostConstructApplicationEventListener] (main) Running on PrimeFaces 14.0.0
+2026-03-24 05:07:45,404 INFO  [org.apa.myf.vie.fac.ViewPoolProcessor] (main) org.apache.myfaces.CACHE_EL_EXPRESSIONS web config parameter is set to "noCache". To enable view pooling this param must be set to "alwaysRecompile". View Pooling disabled.
+2026-03-24 05:07:45,405 INFO  [org.apa.myf.web.FacesInitializerImpl] (main) MyFaces Core has started, it took [431] ms.
+2026-03-24 05:07:45,680 WARN  [io.qua.run.log.LoggingSetupRecorder] (main) Log level TRACE for category 'org.hibernate.type.descriptor.sql' set below minimum logging level DEBUG, promoting it to DEBUG. Set the build time configuration property 'quarkus.log.category."org.hibernate.type.descriptor.sql".min-level' to 'TRACE' to avoid this warning
+2026-03-24 05:07:46,430 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HT_PERSISTENCE_ORDER_PART(revision [34minteger[0m [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HT_PERSISTENCE_ORDER_PART(revision [34minteger[0m [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+2026-03-24 05:07:46,436 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HTE_PERSISTENCE_ORDER_PART(BOMREVISION [34minteger[0m, revision [34minteger[0m [34mnot[0m [34mnull[0m, revision [34minteger[0m, revisionDate [34mdate[0m, BOMPARTNUMBER [34mvarchar[0m(255), description [34mvarchar[0m(255), partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255), drawing [34mblob[0m, specification [34mclob[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HTE_PERSISTENCE_ORDER_PART(BOMREVISION [34minteger[0m, revision [34minteger[0m [34mnot[0m [34mnull[0m, revision [34minteger[0m, revisionDate [34mdate[0m, BOMPARTNUMBER [34mvarchar[0m(255), description [34mvarchar[0m(255), partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255), drawing [34mblob[0m, specification [34mclob[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_CUSTOMERORDER [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_CUSTOMERORDER [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART [34mcascade[0m 
+2026-03-24 05:07:47,010 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount [34minteger[0m [34mnot[0m [34mnull[0m,
+        orderId [34minteger[0m [34mnot[0m [34mnull[0m,
+        status [34mchar[0m(1) [34mnot[0m [34mnull[0m,
+        lastUpdate [34mtimestamp[0m(6),
+        shipmentInfo [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (orderId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount [34minteger[0m [34mnot[0m [34mnull[0m,
+        orderId [34minteger[0m [34mnot[0m [34mnull[0m,
+        status [34mchar[0m(1) [34mnot[0m [34mnull[0m,
+        lastUpdate [34mtimestamp[0m(6),
+        shipmentInfo [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (orderId)
+    )
+2026-03-24 05:07:47,011 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_LINEITEM (
+        ORDERID [34minteger[0m [34mnot[0m [34mnull[0m,
+        itemId [34minteger[0m [34mnot[0m [34mnull[0m,
+        quantity [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORPARTNUMBER [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (ORDERID, itemId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_LINEITEM (
+        ORDERID [34minteger[0m [34mnot[0m [34mnull[0m,
+        itemId [34minteger[0m [34mnot[0m [34mnull[0m,
+        quantity [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORPARTNUMBER [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (ORDERID, itemId)
+    )
+2026-03-24 05:07:47,012 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART (
+        BOMREVISION [34minteger[0m,
+        revision [34minteger[0m [34mnot[0m [34mnull[0m,
+        revisionDate [34mdate[0m,
+        BOMPARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (revision, partNumber)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART (
+        BOMREVISION [34minteger[0m,
+        revision [34minteger[0m [34mnot[0m [34mnull[0m,
+        revisionDate [34mdate[0m,
+        BOMPARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (revision, partNumber)
+    )
+2026-03-24 05:07:47,013 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION [34minteger[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        drawing [34mblob[0m,
+        specification [34mclob[0m,
+        [34mprimary[0m [34mkey[0m (REVISION, PARTNUMBER)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION [34minteger[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        drawing [34mblob[0m,
+        specification [34mclob[0m,
+        [34mprimary[0m [34mkey[0m (REVISION, PARTNUMBER)
+    )
+2026-03-24 05:07:47,014 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE [34mbigint[0m,
+        GEN_KEY [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (GEN_KEY)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE [34mbigint[0m,
+        GEN_KEY [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (GEN_KEY)
+    )
+2026-03-24 05:07:47,014 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34minsert[0m [34minto[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) [34mvalues[0m ([36m'VENDOR_PART_ID'[0m,0)
+[35m[Hibernate][0m 
+    [34minsert[0m [34minto[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) [34mvalues[0m ([36m'VENDOR_PART_ID'[0m,0)
+2026-03-24 05:07:47,016 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR (
+        vendorId [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORNAME [34mvarchar[0m(255),
+        address [34mvarchar[0m(255),
+        contact [34mvarchar[0m(255),
+        phone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR (
+        vendorId [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORNAME [34mvarchar[0m(255),
+        address [34mvarchar[0m(255),
+        contact [34mvarchar[0m(255),
+        phone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorId)
+    )
+2026-03-24 05:07:47,024 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION [34minteger[0m,
+        VENDORID [34minteger[0m,
+        price [34mfloat[0m(53) [34mnot[0m [34mnull[0m,
+        vendorPartNumber [34mbigint[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorPartNumber),
+        [34munique[0m (PARTNUMBER, PARTREVISION)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION [34minteger[0m,
+        VENDORID [34minteger[0m,
+        price [34mfloat[0m(53) [34mnot[0m [34mnull[0m,
+        vendorPartNumber [34mbigint[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorPartNumber),
+        [34munique[0m (PARTNUMBER, PARTREVISION)
+    )
+2026-03-24 05:07:47,025 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       [34mforeign[0m [34mkey[0m (ORDERID) 
+       [34mreferences[0m PERSISTENCE_ORDER_CUSTOMERORDER
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       [34mforeign[0m [34mkey[0m (ORDERID) 
+       [34mreferences[0m PERSISTENCE_ORDER_CUSTOMERORDER
+2026-03-24 05:07:47,031 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK9wag1aaxyy4736nlu91njalf9 
+       [34mforeign[0m [34mkey[0m (VENDORPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK9wag1aaxyy4736nlu91njalf9 
+       [34mforeign[0m [34mkey[0m (VENDORPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR_PART
+2026-03-24 05:07:47,032 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART 
+       [34madd[0m [34mconstraint[0m FK450q3m77lfuyw40lo8ygobiju 
+       [34mforeign[0m [34mkey[0m (BOMREVISION, BOMPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART 
+       [34madd[0m [34mconstraint[0m FK450q3m77lfuyw40lo8ygobiju 
+       [34mforeign[0m [34mkey[0m (BOMREVISION, BOMPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,033 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL 
+       [34madd[0m [34mconstraint[0m FKtalx1tlrdyfl68xyu0aa3wo6e 
+       [34mforeign[0m [34mkey[0m (REVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL 
+       [34madd[0m [34mconstraint[0m FKtalx1tlrdyfl68xyu0aa3wo6e 
+       [34mforeign[0m [34mkey[0m (REVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,034 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKfo34wr4is2kfuky5gnkpxpb2f 
+       [34mforeign[0m [34mkey[0m (PARTREVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKfo34wr4is2kfuky5gnkpxpb2f 
+       [34mforeign[0m [34mkey[0m (PARTREVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,035 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKidt1tr7k5h46m5pqjt92fpisl 
+       [34mforeign[0m [34mkey[0m (VENDORID) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKidt1tr7k5h46m5pqjt92fpisl 
+       [34mforeign[0m [34mkey[0m (VENDORID) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR
+2026-03-24 05:07:47,090 INFO  [ord.ser.OrderService] (main) Created part 1234-5678-01-1
+2026-03-24 05:07:47,121 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,169 INFO  [ord.ser.OrderService] (main) Persisted part 1234-5678-01-1
+2026-03-24 05:07:47,170 INFO  [ord.ser.OrderService] (main) Created part 9876-4321-02-2
+2026-03-24 05:07:47,170 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,172 INFO  [ord.ser.OrderService] (main) Persisted part 9876-4321-02-2
+2026-03-24 05:07:47,172 INFO  [ord.ser.OrderService] (main) Created part 5456-6789-03-3
+2026-03-24 05:07:47,172 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Persisted part 5456-6789-03-3
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Created part ABCD-XYZW-FF-5
+2026-03-24 05:07:47,173 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Persisted part ABCD-XYZW-FF-5
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Created part SDFG-ERTY-BN-7
+2026-03-24 05:07:47,174 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Persisted part SDFG-ERTY-BN-7
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Part number: 1234-5678-01
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Part revision: 1
+2026-03-24 05:07:47,175 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,175 INFO  [ord.ser.OrderService] (main) Part found: 1234-5678-01
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part number: 9876-4321-02
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part revision: 2
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part found: 9876-4321-02
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part number: 5456-6789-03
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part revision: 3
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part found: 5456-6789-03
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part number: ABCD-XYZW-FF
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part revision: 5
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part found: ABCD-XYZW-FF
+2026-03-24 05:07:47,180 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+2026-03-24 05:07:47,181 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+2026-03-24 05:07:47,184 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        tbl.GEN_VALUE 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    [34mwhere[0m
+        tbl.GEN_KEY=? [34mfor[0m [34mupdate[0m
+[35m[Hibernate][0m 
+    [34mselect[0m
+        tbl.GEN_VALUE 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    [34mwhere[0m
+        tbl.GEN_KEY=? [34mfor[0m [34mupdate[0m
+2026-03-24 05:07:47,185 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    [34mset[0m
+        GEN_VALUE=?  
+    [34mwhere[0m
+        GEN_VALUE=? 
+        [34mand[0m GEN_KEY=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    [34mset[0m
+        GEN_VALUE=?  
+    [34mwhere[0m
+        GEN_VALUE=? 
+        [34mand[0m GEN_KEY=?
+2026-03-24 05:07:47,191 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,192 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,195 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,195 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,196 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,196 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,198 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,198 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,199 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,200 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,200 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,201 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,201 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,201 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,202 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,202 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,212 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,214 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,216 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,216 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,218 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,218 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,220 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,220 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,221 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,221 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,222 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,223 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,224 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,225 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,227 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,232 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,233 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,233 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,234 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,234 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,235 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,236 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,237 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,237 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,297 INFO  [io.quarkus] (main) order-quarkus 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 3.373s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:07:47,298 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 05:07:47,298 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, myfaces, narayana-jta, resteasy, resteasy-jackson, servlet, smallrye-context-propagation, vertx, websockets, websockets-client]
+[INFO] Quarkus application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:07:44,969 INFO  [org.apa.myf.web.MyFacesContainerInitializer] (main) Using org.apache.myfaces.webapp.MyFacesContainerInitializer
+2026-03-24 05:07:45,361 INFO  [org.apa.myf.uti.ExternalSpecifications] (main) MyFaces Core Bean Validation support disabled
+2026-03-24 05:07:45,401 INFO  [org.pri.web.PostConstructApplicationEventListener] (main) Running on PrimeFaces 14.0.0
+2026-03-24 05:07:45,404 INFO  [org.apa.myf.vie.fac.ViewPoolProcessor] (main) org.apache.myfaces.CACHE_EL_EXPRESSIONS web config parameter is set to "noCache". To enable view pooling this param must be set to "alwaysRecompile". View Pooling disabled.
+2026-03-24 05:07:45,405 INFO  [org.apa.myf.web.FacesInitializerImpl] (main) MyFaces Core has started, it took [431] ms.
+2026-03-24 05:07:45,680 WARN  [io.qua.run.log.LoggingSetupRecorder] (main) Log level TRACE for category 'org.hibernate.type.descriptor.sql' set below minimum logging level DEBUG, promoting it to DEBUG. Set the build time configuration property 'quarkus.log.category."org.hibernate.type.descriptor.sql".min-level' to 'TRACE' to avoid this warning
+2026-03-24 05:07:46,430 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HT_PERSISTENCE_ORDER_PART(revision [34minteger[0m [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HT_PERSISTENCE_ORDER_PART(revision [34minteger[0m [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+2026-03-24 05:07:46,436 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HTE_PERSISTENCE_ORDER_PART(BOMREVISION [34minteger[0m, revision [34minteger[0m [34mnot[0m [34mnull[0m, revision [34minteger[0m, revisionDate [34mdate[0m, BOMPARTNUMBER [34mvarchar[0m(255), description [34mvarchar[0m(255), partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255), drawing [34mblob[0m, specification [34mclob[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HTE_PERSISTENCE_ORDER_PART(BOMREVISION [34minteger[0m, revision [34minteger[0m [34mnot[0m [34mnull[0m, revision [34minteger[0m, revisionDate [34mdate[0m, BOMPARTNUMBER [34mvarchar[0m(255), description [34mvarchar[0m(255), partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255), drawing [34mblob[0m, specification [34mclob[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_CUSTOMERORDER [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_CUSTOMERORDER [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART [34mcascade[0m 
+2026-03-24 05:07:47,010 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount [34minteger[0m [34mnot[0m [34mnull[0m,
+        orderId [34minteger[0m [34mnot[0m [34mnull[0m,
+        status [34mchar[0m(1) [34mnot[0m [34mnull[0m,
+        lastUpdate [34mtimestamp[0m(6),
+        shipmentInfo [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (orderId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount [34minteger[0m [34mnot[0m [34mnull[0m,
+        orderId [34minteger[0m [34mnot[0m [34mnull[0m,
+        status [34mchar[0m(1) [34mnot[0m [34mnull[0m,
+        lastUpdate [34mtimestamp[0m(6),
+        shipmentInfo [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (orderId)
+    )
+2026-03-24 05:07:47,011 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_LINEITEM (
+        ORDERID [34minteger[0m [34mnot[0m [34mnull[0m,
+        itemId [34minteger[0m [34mnot[0m [34mnull[0m,
+        quantity [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORPARTNUMBER [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (ORDERID, itemId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_LINEITEM (
+        ORDERID [34minteger[0m [34mnot[0m [34mnull[0m,
+        itemId [34minteger[0m [34mnot[0m [34mnull[0m,
+        quantity [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORPARTNUMBER [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (ORDERID, itemId)
+    )
+2026-03-24 05:07:47,012 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART (
+        BOMREVISION [34minteger[0m,
+        revision [34minteger[0m [34mnot[0m [34mnull[0m,
+        revisionDate [34mdate[0m,
+        BOMPARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (revision, partNumber)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART (
+        BOMREVISION [34minteger[0m,
+        revision [34minteger[0m [34mnot[0m [34mnull[0m,
+        revisionDate [34mdate[0m,
+        BOMPARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (revision, partNumber)
+    )
+2026-03-24 05:07:47,013 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION [34minteger[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        drawing [34mblob[0m,
+        specification [34mclob[0m,
+        [34mprimary[0m [34mkey[0m (REVISION, PARTNUMBER)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION [34minteger[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        drawing [34mblob[0m,
+        specification [34mclob[0m,
+        [34mprimary[0m [34mkey[0m (REVISION, PARTNUMBER)
+    )
+2026-03-24 05:07:47,014 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE [34mbigint[0m,
+        GEN_KEY [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (GEN_KEY)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE [34mbigint[0m,
+        GEN_KEY [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (GEN_KEY)
+    )
+2026-03-24 05:07:47,014 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34minsert[0m [34minto[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) [34mvalues[0m ([36m'VENDOR_PART_ID'[0m,0)
+[35m[Hibernate][0m 
+    [34minsert[0m [34minto[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) [34mvalues[0m ([36m'VENDOR_PART_ID'[0m,0)
+2026-03-24 05:07:47,016 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR (
+        vendorId [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORNAME [34mvarchar[0m(255),
+        address [34mvarchar[0m(255),
+        contact [34mvarchar[0m(255),
+        phone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR (
+        vendorId [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORNAME [34mvarchar[0m(255),
+        address [34mvarchar[0m(255),
+        contact [34mvarchar[0m(255),
+        phone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorId)
+    )
+2026-03-24 05:07:47,024 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION [34minteger[0m,
+        VENDORID [34minteger[0m,
+        price [34mfloat[0m(53) [34mnot[0m [34mnull[0m,
+        vendorPartNumber [34mbigint[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorPartNumber),
+        [34munique[0m (PARTNUMBER, PARTREVISION)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION [34minteger[0m,
+        VENDORID [34minteger[0m,
+        price [34mfloat[0m(53) [34mnot[0m [34mnull[0m,
+        vendorPartNumber [34mbigint[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorPartNumber),
+        [34munique[0m (PARTNUMBER, PARTREVISION)
+    )
+2026-03-24 05:07:47,025 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       [34mforeign[0m [34mkey[0m (ORDERID) 
+       [34mreferences[0m PERSISTENCE_ORDER_CUSTOMERORDER
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       [34mforeign[0m [34mkey[0m (ORDERID) 
+       [34mreferences[0m PERSISTENCE_ORDER_CUSTOMERORDER
+2026-03-24 05:07:47,031 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK9wag1aaxyy4736nlu91njalf9 
+       [34mforeign[0m [34mkey[0m (VENDORPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK9wag1aaxyy4736nlu91njalf9 
+       [34mforeign[0m [34mkey[0m (VENDORPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR_PART
+2026-03-24 05:07:47,032 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART 
+       [34madd[0m [34mconstraint[0m FK450q3m77lfuyw40lo8ygobiju 
+       [34mforeign[0m [34mkey[0m (BOMREVISION, BOMPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART 
+       [34madd[0m [34mconstraint[0m FK450q3m77lfuyw40lo8ygobiju 
+       [34mforeign[0m [34mkey[0m (BOMREVISION, BOMPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,033 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL 
+       [34madd[0m [34mconstraint[0m FKtalx1tlrdyfl68xyu0aa3wo6e 
+       [34mforeign[0m [34mkey[0m (REVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL 
+       [34madd[0m [34mconstraint[0m FKtalx1tlrdyfl68xyu0aa3wo6e 
+       [34mforeign[0m [34mkey[0m (REVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,034 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKfo34wr4is2kfuky5gnkpxpb2f 
+       [34mforeign[0m [34mkey[0m (PARTREVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKfo34wr4is2kfuky5gnkpxpb2f 
+       [34mforeign[0m [34mkey[0m (PARTREVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,035 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKidt1tr7k5h46m5pqjt92fpisl 
+       [34mforeign[0m [34mkey[0m (VENDORID) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKidt1tr7k5h46m5pqjt92fpisl 
+       [34mforeign[0m [34mkey[0m (VENDORID) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR
+2026-03-24 05:07:47,090 INFO  [ord.ser.OrderService] (main) Created part 1234-5678-01-1
+2026-03-24 05:07:47,121 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,169 INFO  [ord.ser.OrderService] (main) Persisted part 1234-5678-01-1
+2026-03-24 05:07:47,170 INFO  [ord.ser.OrderService] (main) Created part 9876-4321-02-2
+2026-03-24 05:07:47,170 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,172 INFO  [ord.ser.OrderService] (main) Persisted part 9876-4321-02-2
+2026-03-24 05:07:47,172 INFO  [ord.ser.OrderService] (main) Created part 5456-6789-03-3
+2026-03-24 05:07:47,172 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Persisted part 5456-6789-03-3
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Created part ABCD-XYZW-FF-5
+2026-03-24 05:07:47,173 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Persisted part ABCD-XYZW-FF-5
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Created part SDFG-ERTY-BN-7
+2026-03-24 05:07:47,174 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Persisted part SDFG-ERTY-BN-7
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Part number: 1234-5678-01
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Part revision: 1
+2026-03-24 05:07:47,175 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,175 INFO  [ord.ser.OrderService] (main) Part found: 1234-5678-01
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part number: 9876-4321-02
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part revision: 2
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part found: 9876-4321-02
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part number: 5456-6789-03
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part revision: 3
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part found: 5456-6789-03
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part number: ABCD-XYZW-FF
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part revision: 5
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part found: ABCD-XYZW-FF
+2026-03-24 05:07:47,180 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+2026-03-24 05:07:47,181 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+2026-03-24 05:07:47,184 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        tbl.GEN_VALUE 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    [34mwhere[0m
+        tbl.GEN_KEY=? [34mfor[0m [34mupdate[0m
+[35m[Hibernate][0m 
+    [34mselect[0m
+        tbl.GEN_VALUE 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    [34mwhere[0m
+        tbl.GEN_KEY=? [34mfor[0m [34mupdate[0m
+2026-03-24 05:07:47,185 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    [34mset[0m
+        GEN_VALUE=?  
+    [34mwhere[0m
+        GEN_VALUE=? 
+        [34mand[0m GEN_KEY=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    [34mset[0m
+        GEN_VALUE=?  
+    [34mwhere[0m
+        GEN_VALUE=? 
+        [34mand[0m GEN_KEY=?
+2026-03-24 05:07:47,191 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,192 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,195 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,195 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,196 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,196 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,198 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,198 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,199 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,200 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,200 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,201 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,201 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,201 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,202 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,202 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,212 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,214 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,216 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,216 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,218 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,218 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,220 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,220 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,221 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,221 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,222 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,223 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,224 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,225 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,227 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,232 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,233 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,233 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,234 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,234 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,235 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,236 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,237 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,237 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,297 INFO  [io.quarkus] (main) order-quarkus 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 3.373s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:07:47,298 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 05:07:47,298 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, myfaces, narayana-jta, resteasy, resteasy-jackson, servlet, smallrye-context-propagation, vertx, websockets, websockets-client]
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /opt/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 7 items
+
+smoke.py::test_orders_page_loads FAILED                                  [ 14%]
+smoke.py::test_orders_table_in_html FAILED                               [ 28%]
+smoke.py::test_playwright_orders_table FAILED                            [ 42%]
+smoke.py::test_order_deletion PASSED                                     [ 57%]
+smoke.py::test_vendor_search_no_results PASSED                           [ 71%]
+smoke.py::test_add_line_item PASSED                                      [ 85%]
+smoke.py::test_parts_listed PASSED                                       [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_orders_page_loads ____________________________
+
+    def test_orders_page_loads():
+        """Orders page should load with expected content."""
+>       body = asyncio.run(_wait_and_get("/orders"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:835: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+smoke.py:829: in _wait_and_get
+    await wait_for_http(session, "localhost", 8082, START_TIMEOUT)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <aiohttp.client.ClientSession object at 0x7ef21c993710>
+host = 'localhost', port = 8082, timeout = 90
+
+    async def wait_for_http(session: aiohttp.ClientSession, host: str, port: int, timeout: int):
+        """Wait for HTTP server to become available"""
+        url = f"http://{host}:{port}/orders"
+        end = time.time() + timeout
+        while time.time() < end:
+            try:
+                async with session.get(url, timeout=aiohttp.ClientTimeout(total=5)) as response:
+                    vprint(f"[DEBUG] HTTP {response.status} from {url}")
+                    if response.status == 200:
+                        print(f"[PASS] Successfully connected to {url}")
+                        return
+                    else:
+                        vprint(f"[DEBUG] Non-200 response: {response.status} from {url}")
+            except (aiohttp.ClientError, asyncio.TimeoutError) as e:
+                vprint(f"[DEBUG] Waiting for {url}, error: {str(e)}")
+            await asyncio.sleep(0.5)
+>       raise TimeoutError(f"Timed out waiting for HTTP port {port} after {timeout}s")
+E       TimeoutError: Timed out waiting for HTTP port 8082 after 90s
+
+smoke.py:180: TimeoutError
+__________________________ test_orders_table_in_html ___________________________
+
+    def test_orders_table_in_html():
+        """Orders table should be present in HTML."""
+>       body = asyncio.run(_wait_and_get("/orders"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+smoke.py:841: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+smoke.py:829: in _wait_and_get
+    await wait_for_http(session, "localhost", 8082, START_TIMEOUT)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <aiohttp.client.ClientSession object at 0x7ef21c998560>
+host = 'localhost', port = 8082, timeout = 90
+
+    async def wait_for_http(session: aiohttp.ClientSession, host: str, port: int, timeout: int):
+        """Wait for HTTP server to become available"""
+        url = f"http://{host}:{port}/orders"
+        end = time.time() + timeout
+        while time.time() < end:
+            try:
+                async with session.get(url, timeout=aiohttp.ClientTimeout(total=5)) as response:
+                    vprint(f"[DEBUG] HTTP {response.status} from {url}")
+                    if response.status == 200:
+                        print(f"[PASS] Successfully connected to {url}")
+                        return
+                    else:
+                        vprint(f"[DEBUG] Non-200 response: {response.status} from {url}")
+            except (aiohttp.ClientError, asyncio.TimeoutError) as e:
+                vprint(f"[DEBUG] Waiting for {url}, error: {str(e)}")
+            await asyncio.sleep(0.5)
+>       raise TimeoutError(f"Timed out waiting for HTTP port {port} after {timeout}s")
+E       TimeoutError: Timed out waiting for HTTP port 8082 after 90s
+
+smoke.py:180: TimeoutError
+_________________________ test_playwright_orders_table _________________________
+
+    def test_playwright_orders_table():
+        """Orders table should display via Playwright."""
+        if not PLAYWRIGHT_AVAILABLE:
+            pytest.skip("Playwright not available")
+>       assert asyncio.run(run_playwright_tests()), "Playwright tests failed"
+E       AssertionError: Playwright tests failed
+E       assert False
+E        +  where False = <function run at 0x7ef21dcb1da0>(<coroutine object run_playwright_tests at 0x7ef21c3a2680>)
+E        +    where <function run at 0x7ef21dcb1da0> = asyncio.run
+E        +    and   <coroutine object run_playwright_tests at 0x7ef21c3a2680> = run_playwright_tests()
+
+smoke.py:849: AssertionError
+----------------------------- Captured stdout call -----------------------------
+[INFO] Running Playwright tests with chromium browser (headless=True)
+
+[INFO] Testing orders table UI...
+----------------------------- Captured stderr call -----------------------------
+[FAIL] Orders table UI test failed: Page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8082/orders
+Call log:
+navigating to "http://localhost:8082/orders", waiting until "load"
+
+=========================== short test summary info ============================
+FAILED smoke.py::test_orders_page_loads - TimeoutError: Timed out waiting for...
+FAILED smoke.py::test_orders_table_in_html - TimeoutError: Timed out waiting ...
+FAILED smoke.py::test_playwright_orders_table - AssertionError: Playwright te...
+=================== 3 failed, 4 passed in 182.98s (0:03:02) ====================
+=== TEST FAIL ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 05:07:44,969 INFO  [org.apa.myf.web.MyFacesContainerInitializer] (main) Using org.apache.myfaces.webapp.MyFacesContainerInitializer
+2026-03-24 05:07:45,361 INFO  [org.apa.myf.uti.ExternalSpecifications] (main) MyFaces Core Bean Validation support disabled
+2026-03-24 05:07:45,401 INFO  [org.pri.web.PostConstructApplicationEventListener] (main) Running on PrimeFaces 14.0.0
+2026-03-24 05:07:45,404 INFO  [org.apa.myf.vie.fac.ViewPoolProcessor] (main) org.apache.myfaces.CACHE_EL_EXPRESSIONS web config parameter is set to "noCache". To enable view pooling this param must be set to "alwaysRecompile". View Pooling disabled.
+2026-03-24 05:07:45,405 INFO  [org.apa.myf.web.FacesInitializerImpl] (main) MyFaces Core has started, it took [431] ms.
+2026-03-24 05:07:45,680 WARN  [io.qua.run.log.LoggingSetupRecorder] (main) Log level TRACE for category 'org.hibernate.type.descriptor.sql' set below minimum logging level DEBUG, promoting it to DEBUG. Set the build time configuration property 'quarkus.log.category."org.hibernate.type.descriptor.sql".min-level' to 'TRACE' to avoid this warning
+2026-03-24 05:07:46,430 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HT_PERSISTENCE_ORDER_PART(revision [34minteger[0m [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HT_PERSISTENCE_ORDER_PART(revision [34minteger[0m [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+2026-03-24 05:07:46,436 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HTE_PERSISTENCE_ORDER_PART(BOMREVISION [34minteger[0m, revision [34minteger[0m [34mnot[0m [34mnull[0m, revision [34minteger[0m, revisionDate [34mdate[0m, BOMPARTNUMBER [34mvarchar[0m(255), description [34mvarchar[0m(255), partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255), drawing [34mblob[0m, specification [34mclob[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mglobal[0m temporary [34mtable[0m HTE_PERSISTENCE_ORDER_PART(BOMREVISION [34minteger[0m, revision [34minteger[0m [34mnot[0m [34mnull[0m, revision [34minteger[0m, revisionDate [34mdate[0m, BOMPARTNUMBER [34mvarchar[0m(255), description [34mvarchar[0m(255), partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m, partNumber [34mvarchar[0m(255), drawing [34mblob[0m, specification [34mclob[0m, [34mprimary[0m [34mkey[0m (revision, partNumber)) TRANSACTIONAL
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_CUSTOMERORDER [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_CUSTOMERORDER [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART [34mcascade[0m 
+2026-03-24 05:07:47,007 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR [34mcascade[0m 
+2026-03-24 05:07:47,008 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART [34mcascade[0m 
+[35m[Hibernate][0m 
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART [34mcascade[0m 
+2026-03-24 05:07:47,010 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount [34minteger[0m [34mnot[0m [34mnull[0m,
+        orderId [34minteger[0m [34mnot[0m [34mnull[0m,
+        status [34mchar[0m(1) [34mnot[0m [34mnull[0m,
+        lastUpdate [34mtimestamp[0m(6),
+        shipmentInfo [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (orderId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_CUSTOMERORDER (
+        discount [34minteger[0m [34mnot[0m [34mnull[0m,
+        orderId [34minteger[0m [34mnot[0m [34mnull[0m,
+        status [34mchar[0m(1) [34mnot[0m [34mnull[0m,
+        lastUpdate [34mtimestamp[0m(6),
+        shipmentInfo [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (orderId)
+    )
+2026-03-24 05:07:47,011 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_LINEITEM (
+        ORDERID [34minteger[0m [34mnot[0m [34mnull[0m,
+        itemId [34minteger[0m [34mnot[0m [34mnull[0m,
+        quantity [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORPARTNUMBER [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (ORDERID, itemId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_LINEITEM (
+        ORDERID [34minteger[0m [34mnot[0m [34mnull[0m,
+        itemId [34minteger[0m [34mnot[0m [34mnull[0m,
+        quantity [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORPARTNUMBER [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (ORDERID, itemId)
+    )
+2026-03-24 05:07:47,012 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART (
+        BOMREVISION [34minteger[0m,
+        revision [34minteger[0m [34mnot[0m [34mnull[0m,
+        revisionDate [34mdate[0m,
+        BOMPARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (revision, partNumber)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART (
+        BOMREVISION [34minteger[0m,
+        revision [34minteger[0m [34mnot[0m [34mnull[0m,
+        revisionDate [34mdate[0m,
+        BOMPARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        partNumber [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (revision, partNumber)
+    )
+2026-03-24 05:07:47,013 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION [34minteger[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        drawing [34mblob[0m,
+        specification [34mclob[0m,
+        [34mprimary[0m [34mkey[0m (REVISION, PARTNUMBER)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_PART_DETAIL (
+        REVISION [34minteger[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        drawing [34mblob[0m,
+        specification [34mclob[0m,
+        [34mprimary[0m [34mkey[0m (REVISION, PARTNUMBER)
+    )
+2026-03-24 05:07:47,014 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE [34mbigint[0m,
+        GEN_KEY [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (GEN_KEY)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR (
+        GEN_VALUE [34mbigint[0m,
+        GEN_KEY [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (GEN_KEY)
+    )
+2026-03-24 05:07:47,014 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34minsert[0m [34minto[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) [34mvalues[0m ([36m'VENDOR_PART_ID'[0m,0)
+[35m[Hibernate][0m 
+    [34minsert[0m [34minto[0m PERSISTENCE_ORDER_SEQUENCE_GENERATOR(GEN_KEY, GEN_VALUE) [34mvalues[0m ([36m'VENDOR_PART_ID'[0m,0)
+2026-03-24 05:07:47,016 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR (
+        vendorId [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORNAME [34mvarchar[0m(255),
+        address [34mvarchar[0m(255),
+        contact [34mvarchar[0m(255),
+        phone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorId)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR (
+        vendorId [34minteger[0m [34mnot[0m [34mnull[0m,
+        VENDORNAME [34mvarchar[0m(255),
+        address [34mvarchar[0m(255),
+        contact [34mvarchar[0m(255),
+        phone [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorId)
+    )
+2026-03-24 05:07:47,024 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION [34minteger[0m,
+        VENDORID [34minteger[0m,
+        price [34mfloat[0m(53) [34mnot[0m [34mnull[0m,
+        vendorPartNumber [34mbigint[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorPartNumber),
+        [34munique[0m (PARTNUMBER, PARTREVISION)
+    )
+[35m[Hibernate][0m 
+    [34mcreate[0m [34mtable[0m PERSISTENCE_ORDER_VENDOR_PART (
+        PARTREVISION [34minteger[0m,
+        VENDORID [34minteger[0m,
+        price [34mfloat[0m(53) [34mnot[0m [34mnull[0m,
+        vendorPartNumber [34mbigint[0m [34mnot[0m [34mnull[0m,
+        PARTNUMBER [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (vendorPartNumber),
+        [34munique[0m (PARTNUMBER, PARTREVISION)
+    )
+2026-03-24 05:07:47,025 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       [34mforeign[0m [34mkey[0m (ORDERID) 
+       [34mreferences[0m PERSISTENCE_ORDER_CUSTOMERORDER
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK90cv0nfy5i1rqaw2v2o6sj7yw 
+       [34mforeign[0m [34mkey[0m (ORDERID) 
+       [34mreferences[0m PERSISTENCE_ORDER_CUSTOMERORDER
+2026-03-24 05:07:47,031 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK9wag1aaxyy4736nlu91njalf9 
+       [34mforeign[0m [34mkey[0m (VENDORPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_LINEITEM 
+       [34madd[0m [34mconstraint[0m FK9wag1aaxyy4736nlu91njalf9 
+       [34mforeign[0m [34mkey[0m (VENDORPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR_PART
+2026-03-24 05:07:47,032 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART 
+       [34madd[0m [34mconstraint[0m FK450q3m77lfuyw40lo8ygobiju 
+       [34mforeign[0m [34mkey[0m (BOMREVISION, BOMPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART 
+       [34madd[0m [34mconstraint[0m FK450q3m77lfuyw40lo8ygobiju 
+       [34mforeign[0m [34mkey[0m (BOMREVISION, BOMPARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,033 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL 
+       [34madd[0m [34mconstraint[0m FKtalx1tlrdyfl68xyu0aa3wo6e 
+       [34mforeign[0m [34mkey[0m (REVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_PART_DETAIL 
+       [34madd[0m [34mconstraint[0m FKtalx1tlrdyfl68xyu0aa3wo6e 
+       [34mforeign[0m [34mkey[0m (REVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,034 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKfo34wr4is2kfuky5gnkpxpb2f 
+       [34mforeign[0m [34mkey[0m (PARTREVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKfo34wr4is2kfuky5gnkpxpb2f 
+       [34mforeign[0m [34mkey[0m (PARTREVISION, PARTNUMBER) 
+       [34mreferences[0m PERSISTENCE_ORDER_PART
+2026-03-24 05:07:47,035 DEBUG [org.hib.SQL] (JPA Startup Thread) 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKidt1tr7k5h46m5pqjt92fpisl 
+       [34mforeign[0m [34mkey[0m (VENDORID) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR
+[35m[Hibernate][0m 
+    [34malter[0m [34mtable[0m [34mif[0m [34mexists[0m PERSISTENCE_ORDER_VENDOR_PART 
+       [34madd[0m [34mconstraint[0m FKidt1tr7k5h46m5pqjt92fpisl 
+       [34mforeign[0m [34mkey[0m (VENDORID) 
+       [34mreferences[0m PERSISTENCE_ORDER_VENDOR
+2026-03-24 05:07:47,090 INFO  [ord.ser.OrderService] (main) Created part 1234-5678-01-1
+2026-03-24 05:07:47,121 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,169 INFO  [ord.ser.OrderService] (main) Persisted part 1234-5678-01-1
+2026-03-24 05:07:47,170 INFO  [ord.ser.OrderService] (main) Created part 9876-4321-02-2
+2026-03-24 05:07:47,170 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,172 INFO  [ord.ser.OrderService] (main) Persisted part 9876-4321-02-2
+2026-03-24 05:07:47,172 INFO  [ord.ser.OrderService] (main) Created part 5456-6789-03-3
+2026-03-24 05:07:47,172 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Persisted part 5456-6789-03-3
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Created part ABCD-XYZW-FF-5
+2026-03-24 05:07:47,173 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,173 INFO  [ord.ser.OrderService] (main) Persisted part ABCD-XYZW-FF-5
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Created part SDFG-ERTY-BN-7
+2026-03-24 05:07:47,174 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        p1_0.partNumber,
+        p1_0.revision,
+        p1_0.BOMPARTNUMBER,
+        p1_0.BOMREVISION,
+        p1_0.description,
+        p1_0.revisionDate,
+        vp1_0.vendorPartNumber,
+        vp1_0.description,
+        vp1_0.price,
+        vp1_0.VENDORID 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_PART p1_0 
+    [34mleft[0m [34mjoin[0m
+        PERSISTENCE_ORDER_VENDOR_PART vp1_0 
+            [34mon[0m p1_0.partNumber=vp1_0.PARTNUMBER 
+            [34mand[0m p1_0.revision=vp1_0.PARTREVISION 
+    [34mwhere[0m
+        (
+            p1_0.partNumber, p1_0.revision
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Persisted part SDFG-ERTY-BN-7
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Part number: 1234-5678-01
+2026-03-24 05:07:47,174 INFO  [ord.ser.OrderService] (main) Part revision: 1
+2026-03-24 05:07:47,175 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,175 INFO  [ord.ser.OrderService] (main) Part found: 1234-5678-01
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part number: 9876-4321-02
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part revision: 2
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,176 INFO  [ord.ser.OrderService] (main) Part found: 9876-4321-02
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part number: 5456-6789-03
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part revision: 3
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,178 INFO  [ord.ser.OrderService] (main) Part found: 5456-6789-03
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM part number: SDFG-ERTY-BN
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM revision: 7
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part number: ABCD-XYZW-FF
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part revision: 5
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) BOM Part found: SDFG-ERTY-BN
+2026-03-24 05:07:47,179 INFO  [ord.ser.OrderService] (main) Part found: ABCD-XYZW-FF
+2026-03-24 05:07:47,180 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+2026-03-24 05:07:47,181 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        v1_0.vendorId,
+        v1_0.address,
+        v1_0.contact,
+        v1_0.VENDORNAME,
+        v1_0.phone 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_VENDOR v1_0 
+    [34mwhere[0m
+        v1_0.vendorId=?
+2026-03-24 05:07:47,184 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        tbl.GEN_VALUE 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    [34mwhere[0m
+        tbl.GEN_KEY=? [34mfor[0m [34mupdate[0m
+[35m[Hibernate][0m 
+    [34mselect[0m
+        tbl.GEN_VALUE 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR tbl 
+    [34mwhere[0m
+        tbl.GEN_KEY=? [34mfor[0m [34mupdate[0m
+2026-03-24 05:07:47,185 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    [34mset[0m
+        GEN_VALUE=?  
+    [34mwhere[0m
+        GEN_VALUE=? 
+        [34mand[0m GEN_KEY=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_SEQUENCE_GENERATOR 
+    [34mset[0m
+        GEN_VALUE=?  
+    [34mwhere[0m
+        GEN_VALUE=? 
+        [34mand[0m GEN_KEY=?
+2026-03-24 05:07:47,191 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,192 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,195 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,195 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,196 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,196 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,198 INFO  [ord.ser.OrderService] (main) Found order ID 1,111
+2026-03-24 05:07:47,198 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,199 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,200 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+[35m[Hibernate][0m 
+    [34mselect[0m
+        co1_0.orderId,
+        co1_0.discount,
+        co1_0.lastUpdate,
+        co1_0.shipmentInfo,
+        co1_0.status 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER co1_0 
+    [34mwhere[0m
+        co1_0.orderId=?
+2026-03-24 05:07:47,200 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,201 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,201 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,201 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,202 INFO  [ord.ser.OrderService] (main) Found order ID 4,312
+2026-03-24 05:07:47,202 DEBUG [org.hib.SQL] (main) 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+[35m[Hibernate][0m 
+    [34mselect[0m
+        li1_0.ORDERID,
+        li1_0.itemId,
+        li1_0.quantity,
+        li1_0.VENDORPARTNUMBER 
+    [34mfrom[0m
+        PERSISTENCE_ORDER_LINEITEM li1_0 
+    [34mwhere[0m
+        (
+            li1_0.ORDERID, li1_0.itemId
+        ) [34min[0m ((?, ?))
+2026-03-24 05:07:47,212 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,214 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,216 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,216 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,217 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,218 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART
+        (BOMPARTNUMBER, BOMREVISION, description, revisionDate, partNumber, revision) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,218 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_PART_DETAIL
+        (drawing, specification, PARTNUMBER, REVISION) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR
+        (address, contact, VENDORNAME, phone, vendorId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,219 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,220 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,220 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,221 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,221 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_VENDOR_PART
+        (description, PARTNUMBER, PARTREVISION, price, VENDORID, vendorPartNumber) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?, ?)
+2026-03-24 05:07:47,222 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,223 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,224 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,225 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_CUSTOMERORDER
+        (discount, lastUpdate, shipmentInfo, status, orderId) 
+    [34mvalues[0m
+        (?, ?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,226 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,227 DEBUG [org.hib.SQL] (main) 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+[35m[Hibernate][0m 
+    [34minsert[0m 
+    [34minto[0m
+        PERSISTENCE_ORDER_LINEITEM
+        (quantity, VENDORPARTNUMBER, ORDERID, itemId) 
+    [34mvalues[0m
+        (?, ?, ?, ?)
+2026-03-24 05:07:47,232 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,233 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,233 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,234 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_PART 
+    [34mset[0m
+        BOMPARTNUMBER=?,
+        BOMREVISION=?,
+        description=?,
+        revisionDate=? 
+    [34mwhere[0m
+        partNumber=? 
+        [34mand[0m revision=?
+2026-03-24 05:07:47,234 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,235 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,236 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,237 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,237 DEBUG [org.hib.SQL] (main) 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+[35m[Hibernate][0m 
+    [34mupdate[0m
+        PERSISTENCE_ORDER_VENDOR_PART 
+    [34mset[0m
+        description=?,
+        PARTNUMBER=?,
+        PARTREVISION=?,
+        price=?,
+        VENDORID=? 
+    [34mwhere[0m
+        vendorPartNumber=?
+2026-03-24 05:07:47,297 INFO  [io.quarkus] (main) order-quarkus 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.17.8) started in 3.373s. Listening on: http://0.0.0.0:8080
+2026-03-24 05:07:47,298 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 05:07:47,298 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, myfaces, narayana-jta, resteasy, resteasy-jackson, servlet, smallrye-context-propagation, vertx, websockets, websockets-client]
+make: *** [Makefile:52: test] Error 1

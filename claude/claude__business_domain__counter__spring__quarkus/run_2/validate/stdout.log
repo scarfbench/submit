@@ -1,0 +1,12 @@
+docker build -f Dockerfile -t "counter-quarkus":latest .
+[INFO] Built image: counter-quarkus:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "counter-quarkus" "counter-quarkus":latest
+84690410991b6b983a25f01cc26608b7bc4e7317d4b3f67d6b907b10ffc08114
+[INFO] Started counter-quarkus, waiting for app to start...
+### Check for startup failure or success
+[INFO] Quarkus application started and ready.
+---[ 00:40:11 - Smoke test ]---
+Summary: 0/2 tests passed.
+---[ 00:40:11 - Smoke test complete ]---

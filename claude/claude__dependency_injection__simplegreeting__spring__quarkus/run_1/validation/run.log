@@ -1,0 +1,64 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 996B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.1s
+
+#4 [ 4/10] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#4 CACHED
+
+#5 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#5 CACHED
+
+#6 [ 3/10] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#6 CACHED
+
+#7 [ 5/10] RUN playwright install --with-deps chromium
+#7 CACHED
+
+#8 [ 6/10] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 41.91kB 0.0s done
+#10 DONE 0.1s
+
+#11 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#11 CACHED
+
+#12 [7/9] COPY . .
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:91058e4dbbeacdcb76bf3280d554d60c477cd17662b6574f94e11a753363f4a4 done
+#14 exporting config sha256:2cff590d507cf474a6dd108fc160758b146383e9bed9a77119e939dc052b98c1 done
+#14 exporting attestation manifest sha256:3219a918669e649b8ef34597f9ba8a0a544e3d0f2fdda191e87fe5fc1ced0e72 0.1s done
+#14 exporting manifest list sha256:5e2967e8ca1a5b6b3e23bdada2f0eaf3597d519032649993111dff4f73f641f3
+#14 exporting manifest list sha256:5e2967e8ca1a5b6b3e23bdada2f0eaf3597d519032649993111dff4f73f641f3 0.1s done
+#14 naming to docker.io/library/simplegreeting-quarkus:ecc812f7 done
+#14 unpacking to docker.io/library/simplegreeting-quarkus:ecc812f7 done
+#14 DONE 0.3s
+[INFO] Built image: simplegreeting-quarkus:ecc812f7
+=== COMPILE OK ===
+=== DEPLOY START ===
+### Run the container in detached mode
+docker run -d --name simplegreeting-quarkus-91a4ba8f simplegreeting-quarkus:ecc812f7
+ecd8e03413d348479a74e69fc4e060373b46543f91e4fec7b851b9f0c8b4b82b
+[INFO] Started simplegreeting-quarkus-91a4ba8f, waiting for app to start...
+Error: Unable to access jarfile target/quarkus-app/quarkus-run.jar

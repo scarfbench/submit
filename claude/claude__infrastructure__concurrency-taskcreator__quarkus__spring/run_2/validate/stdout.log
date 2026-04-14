@@ -1,0 +1,41 @@
+docker build -f Dockerfile -t "taskcreator-springboot:latest" .
+[INFO] Built image: taskcreator-springboot:latest
+[INFO] Removing existing container
+### Run the container in detached mode
+docker run -d --name "taskcreator-springboot" "taskcreator-springboot:latest"
+c5b6bff32853d0b1c86cdc688877107ac4ab9673aca70c69fd771f8ad486a8fc
+[INFO] Started taskcreator-springboot, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+POST http://localhost:9080/taskcreator/taskinfo :: 00:42:55 - Smoke test
+RESP 200
+
+[PASS] POST /taskinfo -> 200
+Using base URL: http://localhost:9080/taskcreator
+POST http://localhost:9080/taskcreator/taskinfo :: 00:42:55 - Smoke test
+RESP 200
+
+[PASS] POST /taskinfo -> 200
+GET http://localhost:9080/taskcreator/taskinfo
+RESP 405
+{"timestamp":"2026-02-17T00:42:55.460+00:00","status":405,"error":"Method Not Allowed","path":"/taskcreator/taskinfo"}
+[PASS] GET /taskinfo -> 405 (Method Not Allowed)
+[PASS] Smoke tests complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__infrastructure__concurrency-taskcreator__quarkus__spring/run_2/output'
+docker rm -f "taskcreator-springboot"
+taskcreator-springboot
+[INFO] Container removed (if it existed)
+docker rmi "taskcreator-springboot:latest"
+Untagged: taskcreator-springboot:latest
+Deleted: sha256:3a802f4b9190c2bec2e779146e9f5bde1d1e7525f72e7378d9ad575e31da309a
+docker image prune -f
+Deleted Images:
+deleted: sha256:c1c2dc6edd74fd2330bdb2f71e882bae520e87922ecb275183ba59ac034dfa40
+deleted: sha256:35f73220d6995bd5448075d45b7f9f96d54e8ed3447df2e4e70d2fd35ecaec2e
+deleted: sha256:d988d8db2daa1cc1090ce32910f6e8b0ce7c3345690a28b53d3f09f92ba63358
+
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__infrastructure__concurrency-taskcreator__quarkus__spring/run_2/output'

@@ -1,0 +1,28 @@
+docker build -f Dockerfile -t "mood-spring:latest" .
+[INFO] Built image: mood-spring:latest
+### Run the container in detached mode
+docker run -d --name "mood-spring" "mood-spring:latest"
+f6009a8c2c80ed97388a26368391caba825e305771213cd2abeb6b8b1ee81fcf
+[INFO] Started mood-spring, waiting for app to start...
+### Check for build failure
+### Wait for success pattern
+[INFO] Spring Boot application started and ready.
+[PASS] GET /report -> 200
+[PASS] Mood displayed: awake
+[PASS] Duke image displayed: Duke with thumbs-up gesture
+[PASS] Valid HTML structure
+[PASS] Servlet title found
+
+[PASS] Smoke sequence complete
+make clean
+make[1]: Entering directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__mood__quarkus__spring/run_3/output'
+docker rm -f "mood-spring"
+mood-spring
+[INFO] Container removed (if it existed)
+docker rmi "mood-spring:latest"
+Untagged: mood-spring:latest
+Deleted: sha256:1f0b835c902ba25d6a7693a1d2937237cce637b02b8162149fd2eff4f4df3dc0
+docker image prune -f
+Total reclaimed space: 0B
+[INFO] Removed app image and pruned dangling Docker layers
+make[1]: Leaving directory '/home/rkrsn/workspace/scarfbench/conversions/agentic/eval_out/claude__presentation__mood__quarkus__spring/run_3/output'

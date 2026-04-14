@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED",
+  "agent": "claude",
+  "app": "hello-servlet",
+  "layer": "presentation",
+  "repeat": 1,
+  "source_framework": "spring",
+  "target_framework": "quarkus",
+  "num_smoke_tests": 15,
+  "compile_ok": "TRUE",
+  "deploy_ok": "TRUE",
+  "tests_passed": 12,
+  "failure_reason": "3 failed, 0 errors, 12 passed out of 15 tests",
+  "failure_category": "test_failures",
+  "solution_name": "claude-code",
+  "model": "opus 4.6"
+}

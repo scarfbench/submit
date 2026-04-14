@@ -1,0 +1,717 @@
+=== COMPILE START ===
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 996B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/maven:3.9.12-ibm-semeru-21-noble
+#2 DONE 0.1s
+
+#3 [1/9] FROM docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a
+#3 resolve docker.io/library/maven:3.9.12-ibm-semeru-21-noble@sha256:f2a51da2f47cc3304b96b2563ec67020a3f6450eb085356bbe1d58955862f58a 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 442B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 8.25MB 0.1s done
+#5 DONE 0.1s
+
+#6 [8/9] RUN if [ -f mvnw ]; then chmod +x mvnw; fi && if [ -f smoke.py ]; then chmod +x smoke.py; fi && if [ -f test.sh ]; then chmod +x test.sh; fi
+#6 CACHED
+
+#7 [3/9] RUN mkdir -p /ms-playwright && chmod 755 /ms-playwright
+#7 CACHED
+
+#8 [4/9] RUN uv venv /opt/venv     && uv pip install --python /opt/venv/bin/python playwright==1.47.0 pytest
+#8 CACHED
+
+#9 [5/9] RUN playwright install --with-deps chromium
+#9 CACHED
+
+#10 [6/9] WORKDIR /app
+#10 CACHED
+
+#11 [7/9] COPY . .
+#11 CACHED
+
+#12 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl lsof python3-venv python3-full     && curl -LsSf https://astral.sh/uv/install.sh | sh
+#12 CACHED
+
+#13 [9/9] RUN mvn clean install -DskipTests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:fcf1860288b853ffcc82e14efebef18ae2ff5cbf3560c80b04dc8d3d18224289 done
+#14 exporting config sha256:bbeb13fadf669632020008c005e10b23619cb4836eb90c9fad88a8449d65ed35 done
+#14 exporting attestation manifest sha256:95d5e566b1afbece8acb98839032d3d6ce64bef1541833076e04ab0a00fee2c6
+#14 exporting attestation manifest sha256:95d5e566b1afbece8acb98839032d3d6ce64bef1541833076e04ab0a00fee2c6 0.1s done
+#14 exporting manifest list sha256:096cd05e69b9777ce0fa10dd10c73915286ad61f76f55071cb10ad7f5c617684
+#14 exporting manifest list sha256:096cd05e69b9777ce0fa10dd10c73915286ad61f76f55071cb10ad7f5c617684 0.1s done
+#14 naming to docker.io/library/daytrader-quarkus:2c7b317d done
+#14 unpacking to docker.io/library/daytrader-quarkus:2c7b317d 0.0s done
+#14 DONE 0.4s
+[INFO] Built image: daytrader-quarkus:2c7b317d
+=== COMPILE OK ===
+=== DEPLOY START ===
+docker run -d --name daytrader-quarkus-77d1ce26 daytrader-quarkus:2c7b317d
+d7227788072f56ba5d1c90dbe551db63f4d5c8abe951b36119dde47892218056
+[INFO] Started daytrader-quarkus-77d1ce26, waiting for app to start...
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 04:27:42,349 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.websocket.MarketSummaryWebSocket for path /marketsummary
+2026-03-24 04:27:42,353 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketTextSync for path /pingTextSync
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketTextAsync for path /pingTextAsync
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketBinary for path /pingBinary
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketJson for path /pingWebSocketJson
+daytrader.properties not found (classpath)
+Running in Direct (JDBC) Mode | Order Processing Sync | MAX_USERS=500 | MAX_QUOTES=4002026-03-24 04:27:43,456 INFO  [io.quarkus] (main) daytrader 0.0.1-SNAPSHOT on JVM (powered by Quarkus 3.15.1) started in 2.161s. Listening on: http://0.0.0.0:8080
+2026-03-24 04:27:43,456 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 04:27:43,456 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-validator, jdbc-h2, narayana-jta, resteasy, scheduler, servlet, smallrye-context-propagation, vertx, websockets, websockets-client]
+[INFO] Application started and ready.
+=== DEPLOY OK ===
+=== TEST START ===
+[INFO] === Container build/startup logs ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 04:27:42,349 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.websocket.MarketSummaryWebSocket for path /marketsummary
+2026-03-24 04:27:42,353 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketTextSync for path /pingTextSync
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketTextAsync for path /pingTextAsync
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketBinary for path /pingBinary
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketJson for path /pingWebSocketJson
+daytrader.properties not found (classpath)
+Running in Direct (JDBC) Mode | Order Processing Sync | MAX_USERS=500 | MAX_QUOTES=4002026-03-24 04:27:43,456 INFO  [io.quarkus] (main) daytrader 0.0.1-SNAPSHOT on JVM (powered by Quarkus 3.15.1) started in 2.161s. Listening on: http://0.0.0.0:8080
+2026-03-24 04:27:43,456 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 04:27:43,456 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-validator, jdbc-h2, narayana-jta, resteasy, scheduler, servlet, smallrye-context-propagation, vertx, websockets, websockets-client]
+[INFO] Running smoke tests inside container daytrader-quarkus-77d1ce26...
+Using CPython 3.12.3 interpreter at: /usr/bin/python3
+Creating virtual environment at: .venv
+Resolved 20 packages in 0.49ms
+Downloading pygments (1.2MiB)
+Downloading playwright (44.1MiB)
+ Downloaded pygments
+ Downloaded playwright
+Prepared 18 packages in 994ms
+Installed 18 packages in 9ms
+ + certifi==2026.1.4
+ + charset-normalizer==3.4.4
+ + greenlet==3.3.1
+ + idna==3.11
+ + iniconfig==2.3.0
+ + packaging==26.0
+ + playwright==1.58.0
+ + pluggy==1.6.0
+ + pyee==13.0.0
+ + pygments==2.19.2
+ + pytest==8.4.2
+ + pytest-base-url==2.1.0
+ + pytest-playwright==0.7.2
+ + python-slugify==8.0.4
+ + requests==2.32.5
+ + text-unidecode==1.3
+ + typing-extensions==4.15.0
+ + urllib3==2.6.3
+Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/chrome-for-testing-public/145.0.7632.6/linux64/chrome-linux64.zip
+(node:134) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 167.3 MiB
+|■■■■■■■■                                                                        |  10% of 167.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 167.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 167.3 MiB
+Chrome for Testing 145.0.7632.6 (playwright chromium v1208) downloaded to /ms-playwright/chromium-1208
+Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+(node:145) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 2.3 MiB
+|■■■■■■■■                                                                        |  10% of 2.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+FFmpeg (playwright ffmpeg v1011) downloaded to /ms-playwright/ffmpeg-1011
+Downloading Chrome Headless Shell 145.0.7632.6 (playwright chromium-headless-shell v1208) from https://cdn.playwright.dev/chrome-for-testing-public/145.0.7632.6/linux64/chrome-headless-shell-linux64.zip
+(node:156) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+|                                                                                |   0% of 110.9 MiB
+|■■■■■■■■                                                                        |  10% of 110.9 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 110.9 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 110.9 MiB
+Chrome Headless Shell 145.0.7632.6 (playwright chromium-headless-shell v1208) downloaded to /ms-playwright/chromium_headless_shell-1208
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.2, pluggy-1.6.0 -- /app/smoke/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /app/smoke
+configfile: pytest.ini
+plugins: base-url-2.1.0, playwright-0.7.2
+collecting ... collected 30 items
+
+smoke.py::test_home_page_loads[chromium] FAILED                          [  3%]
+smoke.py::test_index_html_loads[chromium] FAILED                         [  6%]
+smoke.py::test_static_resources_available[chromium] FAILED               [ 10%]
+smoke.py::test_login_page_renders[chromium] FAILED                       [ 13%]
+smoke.py::test_login_with_valid_credentials[chromium] FAILED             [ 16%]
+smoke.py::test_login_with_invalid_credentials[chromium] FAILED           [ 20%]
+smoke.py::test_logout[chromium] ERROR                                    [ 23%]
+smoke.py::test_logout_invalidates_session[chromium] ERROR                [ 26%]
+smoke.py::test_navigation_links_after_login[chromium] ERROR              [ 30%]
+smoke.py::test_home_page_account_summary[chromium] ERROR                 [ 33%]
+smoke.py::test_view_quotes_without_login[chromium] FAILED                [ 36%]
+smoke.py::test_view_quotes_form[chromium] PASSED                         [ 40%]
+smoke.py::test_quote_data_displayed[chromium] ERROR                      [ 43%]
+smoke.py::test_view_multiple_quotes[chromium] ERROR                      [ 46%]
+smoke.py::test_quote_buy_form[chromium] ERROR                            [ 50%]
+smoke.py::test_view_portfolio[chromium] ERROR                            [ 53%]
+smoke.py::test_portfolio_shows_holdings_table[chromium] ERROR            [ 56%]
+smoke.py::test_view_account[chromium] ERROR                              [ 60%]
+smoke.py::test_account_shows_balance[chromium] ERROR                     [ 63%]
+smoke.py::test_view_account_and_orders[chromium] ERROR                   [ 66%]
+smoke.py::test_update_profile[chromium] ERROR                            [ 70%]
+smoke.py::test_buy_stock_form_exists[chromium] ERROR                     [ 73%]
+smoke.py::test_buy_stock[chromium] ERROR                                 [ 76%]
+smoke.py::test_sell_holding[chromium] ERROR                              [ 80%]
+smoke.py::test_market_summary[chromium] ERROR                            [ 83%]
+smoke.py::test_register_new_user[chromium] SKIPPED (Registration page
+not available in this deployment)                                        [ 86%]
+smoke.py::test_config_page_displays_settings[chromium] SKIPPED (Config
+page not available in this deployment)                                   [ 90%]
+smoke.py::test_rest_get_quotes[chromium] FAILED                          [ 93%]
+smoke.py::test_rest_post_quotes[chromium] FAILED                         [ 96%]
+smoke.py::test_scenario_servlet[chromium] PASSED                         [100%]
+
+==================================== ERRORS ====================================
+___________________ ERROR at setup of test_logout[chromium] ____________________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+_________ ERROR at setup of test_logout_invalidates_session[chromium] __________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+________ ERROR at setup of test_navigation_links_after_login[chromium] _________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+__________ ERROR at setup of test_home_page_account_summary[chromium] __________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+____________ ERROR at setup of test_quote_data_displayed[chromium] _____________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+____________ ERROR at setup of test_view_multiple_quotes[chromium] _____________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+_______________ ERROR at setup of test_quote_buy_form[chromium] ________________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+_______________ ERROR at setup of test_view_portfolio[chromium] ________________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+_______ ERROR at setup of test_portfolio_shows_holdings_table[chromium] ________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+________________ ERROR at setup of test_view_account[chromium] _________________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+____________ ERROR at setup of test_account_shows_balance[chromium] ____________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+___________ ERROR at setup of test_view_account_and_orders[chromium] ___________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+_______________ ERROR at setup of test_update_profile[chromium] ________________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+____________ ERROR at setup of test_buy_stock_form_exists[chromium] ____________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+__________________ ERROR at setup of test_buy_stock[chromium] __________________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+________________ ERROR at setup of test_sell_holding[chromium] _________________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+_______________ ERROR at setup of test_market_summary[chromium] ________________
+smoke.py:49: in logged_in_page
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+=================================== FAILURES ===================================
+________________________ test_home_page_loads[chromium] ________________________
+smoke.py:68: in test_home_page_loads
+    assert "daytrader" in content, "DayTrader branding not found on home page"
+E   AssertionError: DayTrader branding not found on home page
+E   assert 'daytrader' in '<html><head></head><body><h1>resource not found</h1></body></html>'
+_______________________ test_index_html_loads[chromium] ________________________
+smoke.py:77: in test_index_html_loads
+    expect(page).to_have_title(re.compile(r"daytrader", re.IGNORECASE))
+E   AssertionError: Page title expected to be 're.compile('daytrader', re.IGNORECASE)'
+E   Actual value:  
+E   Call log:
+E     - Expect "to_have_title" with timeout 5000ms
+E       9 × unexpected value ""
+__________________ test_static_resources_available[chromium] ___________________
+smoke.py:85: in test_static_resources_available
+    assert response is not None and response.ok, "style.css not accessible"
+E   AssertionError: style.css not accessible
+E   assert (<Response url='http://localhost:8080/style.css' request=<Request url='http://localhost:8080/style.css' method='GET'>> is not None and False)
+E    +  where False = <Response url='http://localhost:8080/style.css' request=<Request url='http://localhost:8080/style.css' method='GET'>>.ok
+______________________ test_login_page_renders[chromium] _______________________
+smoke.py:106: in test_login_page_renders
+    assert username_field.count() > 0, "Username field not found"
+E   AssertionError: Username field not found
+E   assert 0 > 0
+E    +  where 0 = count()
+E    +    where count = <Locator frame=<Frame name= url='http://localhost:8080/rest/app'> selector="input[name='uid']">.count
+_________________ test_login_with_valid_credentials[chromium] __________________
+smoke.py:117: in test_login_with_valid_credentials
+    page.fill("input[name='uid']", "uid:0")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+________________ test_login_with_invalid_credentials[chromium] _________________
+smoke.py:134: in test_login_with_invalid_credentials
+    page.fill("input[name='uid']", "invalid_user")
+.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:10177: in fill
+    self._sync(
+.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:893: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:607: in fill
+    await self._fill(**locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:619: in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:559: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for locator("input[name='uid']")
+___________________ test_view_quotes_without_login[chromium] ___________________
+smoke.py:233: in test_view_quotes_without_login
+    assert "s:0" in content or "quote" in content, "Quotes not displayed"
+E   AssertionError: Quotes not displayed
+E   assert ('s:0' in '<html><head></head><body><h1>resource not found</h1></body></html>' or 'quote' in '<html><head></head><body><h1>resource not found</h1></body></html>')
+________________________ test_rest_get_quotes[chromium] ________________________
+smoke.py:599: in test_rest_get_quotes
+    assert response.ok, f"REST quotes GET failed with status {response.status}"
+E   AssertionError: REST quotes GET failed with status 404
+E   assert False
+E    +  where False = <APIResponse url='http://localhost:8080/rest/quotes/s:0,s:1' status=404 status_text='Not Found'>.ok
+_______________________ test_rest_post_quotes[chromium] ________________________
+smoke.py:613: in test_rest_post_quotes
+    assert response.ok, f"REST quotes POST failed with status {response.status}"
+E   AssertionError: REST quotes POST failed with status 404
+E   assert False
+E    +  where False = <APIResponse url='http://localhost:8080/rest/quotes' status=404 status_text='Not Found'>.ok
+=========================== short test summary info ============================
+FAILED smoke.py::test_home_page_loads[chromium] - AssertionError: DayTrader branding not found on home page
+assert 'daytrader' in '<html><head></head><body><h1>resource not found</h1></body></html>'
+FAILED smoke.py::test_index_html_loads[chromium] - AssertionError: Page title expected to be 're.compile('daytrader', re.IGNORECASE)'
+Actual value:  
+Call log:
+  - Expect "to_have_title" with timeout 5000ms
+    9 × unexpected value ""
+FAILED smoke.py::test_static_resources_available[chromium] - AssertionError: style.css not accessible
+assert (<Response url='http://localhost:8080/style.css' request=<Request url='http://localhost:8080/style.css' method='GET'>> is not None and False)
+ +  where False = <Response url='http://localhost:8080/style.css' request=<Request url='http://localhost:8080/style.css' method='GET'>>.ok
+FAILED smoke.py::test_login_page_renders[chromium] - AssertionError: Username field not found
+assert 0 > 0
+ +  where 0 = count()
+ +    where count = <Locator frame=<Frame name= url='http://localhost:8080/rest/app'> selector="input[name='uid']">.count
+FAILED smoke.py::test_login_with_valid_credentials[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+FAILED smoke.py::test_login_with_invalid_credentials[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+FAILED smoke.py::test_view_quotes_without_login[chromium] - AssertionError: Quotes not displayed
+assert ('s:0' in '<html><head></head><body><h1>resource not found</h1></body></html>' or 'quote' in '<html><head></head><body><h1>resource not found</h1></body></html>')
+FAILED smoke.py::test_rest_get_quotes[chromium] - AssertionError: REST quotes GET failed with status 404
+assert False
+ +  where False = <APIResponse url='http://localhost:8080/rest/quotes/s:0,s:1' status=404 status_text='Not Found'>.ok
+FAILED smoke.py::test_rest_post_quotes[chromium] - AssertionError: REST quotes POST failed with status 404
+assert False
+ +  where False = <APIResponse url='http://localhost:8080/rest/quotes' status=404 status_text='Not Found'>.ok
+ERROR smoke.py::test_logout[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_logout_invalidates_session[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_navigation_links_after_login[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_home_page_account_summary[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_quote_data_displayed[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_view_multiple_quotes[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_quote_buy_form[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_view_portfolio[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_portfolio_shows_holdings_table[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_view_account[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_account_shows_balance[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_view_account_and_orders[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_update_profile[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_buy_stock_form_exists[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_buy_stock[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_sell_holding[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+ERROR smoke.py::test_market_summary[chromium] - playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='uid']")
+======== 9 failed, 2 passed, 2 skipped, 17 errors in 579.00s (0:09:38) =========
+=== TEST OK ===
+[INFO] === Container logs after test ===
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-03-24 04:27:42,349 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.websocket.MarketSummaryWebSocket for path /marketsummary
+2026-03-24 04:27:42,353 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketTextSync for path /pingTextSync
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketTextAsync for path /pingTextAsync
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketBinary for path /pingBinary
+2026-03-24 04:27:42,354 INFO  [io.und.websockets] (main) UT026003: Adding annotated server endpoint class com.ibm.websphere.samples.daytrader.web.prims.PingWebSocketJson for path /pingWebSocketJson
+daytrader.properties not found (classpath)
+Running in Direct (JDBC) Mode | Order Processing Sync | MAX_USERS=500 | MAX_QUOTES=4002026-03-24 04:27:43,456 INFO  [io.quarkus] (main) daytrader 0.0.1-SNAPSHOT on JVM (powered by Quarkus 3.15.1) started in 2.161s. Listening on: http://0.0.0.0:8080
+2026-03-24 04:27:43,456 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-03-24 04:27:43,456 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-validator, jdbc-h2, narayana-jta, resteasy, scheduler, servlet, smallrye-context-propagation, vertx, websockets, websockets-client]
+docker rm -f daytrader-quarkus-77d1ce26 >/dev/null 2>&1 || true
+docker rmi $(docker images -q daytrader-quarkus) 2>/dev/null
+Untagged: daytrader-quarkus:2c7b317d
+Deleted: sha256:096cd05e69b9777ce0fa10dd10c73915286ad61f76f55071cb10ad7f5c617684
+make: [Makefile:59: test] Error 1 (ignored)
+docker image prune -f
+Total reclaimed space: 0B
+[INFO] Cleaned up container and image
